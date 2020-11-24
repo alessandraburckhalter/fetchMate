@@ -34,7 +34,7 @@ router.get('/:id', (req, res) => {
         include: [db.User, {
             as: 'Members',
             model: db.User
-        }]
+        }, db.Skill]
     })
         .then(project => {
             project ? res.json(project) : res.status(404).json({error: 'Project not found'})
@@ -138,17 +138,16 @@ router.post('/', (req, res) => {
             //! we need to use the instance of that project to create skills
             //! send over the respective skills for an object in an array, where the skill is send as their iD?
             const { projectSkillsArray } = req.body;
-                console.log(req.body)
-                return db.Skill.findAll({
-                    where:{id: projectSkillsArray}
-                })
-                .then(skills => {
-                    if(!skills) {
-                        res.status(404).json({error: `A certain skill wasn't found`}) 
-                    }
-                    return project.addSkills(skills)
-                        .then(() => project)
-                })
+            return db.Skill.findAll({
+                where:{id: projectSkillsArray}
+            })
+            .then(skills => {
+                if(!skills) {
+                    res.status(404).json({error: `A certain skill wasn't found`}) 
+                }
+                return project.addSkills(skills)
+                    .then(() => project)
+            })
         })
         .then(project => {
             res.status(201).json(project)
@@ -162,33 +161,32 @@ router.post('/', (req, res) => {
 
 //* Route for adding a single team member to a already created project --> this is based on the new team members ID
 //? First find the project, then find the user, then add the user to the project
-router.post('/:projectId/teamMember/:userId', (req, res) => {
-    const { projectId, userId } = req.params;
+router.post('/:projectId/teamMember', (req, res) => {
+    const { projectId } = req.params;
+    const { memberIdArray } = req.body;
+    console.log(memberIdArray)
     db.Project.findOne({
         where:{
             id: projectId
         }
     })
         .then(project => {
-            !project ? ( 
+            if(!project){
                 res.status(404).json({error: 'Project not found'})
-            ) : (
-                db.User.findOne({
-                    where: {id: userId}
+            }
+            return db.User.findAll({
+                where:{id: memberIdArray}
+            })
+                .then(users => {
+                    if(!users){
+                        res.status(404).json({error: `A certain user wasn't found`}) 
+                    }
+                    return project.addMember(users)
+                        .then(() => project)
                 })
-                    .then(user => {
-                        !user ?
-                            res.status(404).json({error: `user with Id${userId} not found`}) 
-                        : 
-                        //? DO WE NEED TO USE TeamMember LIKE IN THE MODEL ASSOCIATION ?
-                        //? OR DOES SEQUELIZE AUTOMATICALLY KNOW DO THIS? I.E. we can just do
-                        //? project.addUser(user) --> I think this would reset the project owner if we did it that way
-                            project.addMember(user)
-                    })
-                    .catch(e => {
-                        res.status(500).json({error: 'A database error: ' + e})
-                    })
-            )
+        })
+        .then(project => {
+            res.status(201).json(project)
         })
         .catch(e => {
             res.status(500).json({
