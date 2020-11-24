@@ -6,11 +6,30 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "@sendgrid/mail": "^7.4.0",
+    "bcrypt": "^5.0.0",
+    "connect-session-sequelize": "^7.0.4",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
-    "express": "~4.16.1",
+    "express": "^4.16.4",
+    "express-session": "^1.17.1",
     "morgan": "~1.9.1",
+    "multer": "^1.4.2",
+    "nodemon": "^2.0.6",
     "pg": "^8.5.1",
     "sequelize": "^6.3.5"
-  }
+  },
+  "description": "- [**About this repository**](#about-this-repository) - [**General**](#general) - [**Requirements**](#requirements) - [**Lessons Learned**](#lessons-learned) - [**Still Todo**](#still-todo)",
+  "main": "app.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alessandraburckhalter/capstone-frontend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alessandraburckhalter/capstone-frontend/issues"
+  },
+  "homepage": "https://github.com/alessandraburckhalter/capstone-frontend#readme"
 }
