@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
         through: 'UserSkills', //* Skill.getUsers() --> gives an array of user that have that skill
       })
       Skill.belongsToMany(models.Project, {
-        through: 'UserSkills', //* Skill.getProjects() --> gives an array of the projects that require that skill
+        through: 'ProjectSkills', //* Skill.getProjects() --> gives an array of the projects that require that skill
       })
     }
   };
