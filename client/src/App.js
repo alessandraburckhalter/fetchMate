@@ -10,7 +10,8 @@ function App() {
   return (
       <Provider store={store}>
     <div className="App">
-      <MainPage />
+      {/* <MainPage /> */}
+      <SignUpPage />
 
     </div>
       </Provider>

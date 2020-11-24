@@ -4,12 +4,13 @@ const cookieParser = require('cookie-parser');
 const models = require('./models')
 const bodyParser = require('body-parser');
 const cors = require('cors');
-
+const dotenv = require("dotenv")
 const logger = require('morgan');
 const session = require('express-session')
 const SequelizeStore = require('connect-session-sequelize')(session.Store)
 const store = new SequelizeStore({db: models.sequelize})
 store.sync()
+dotenv.config()
 
 //Route files
 const usersRouter = require('./routes/user');
