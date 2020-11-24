@@ -5,6 +5,7 @@ const logger = require('morgan');
 
 //* Route Files
 const skillsRouter = require('./routes/skills');
+const projectsRouter = require('./routes/projects');
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 
 //* Skills route for getting available skills --> think profile page and project initiation page
 app.use('/api/v1/skills', skillsRouter);
+app.use('/api/v1/projects', projectsRouter);
 
 app.use('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'client/build', 'index.html'))

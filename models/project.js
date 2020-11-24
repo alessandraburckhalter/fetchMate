@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       Project.belongsTo(models.User);
       Project.belongsToMany(models.User, {
         through: 'TeamMembers',
-        as: 'Members' //* Project.members ==> makes sense
+        as: 'Members' //* Members ==> makes sense
       })
       Project.belongsToMany(models.Skill, {
         through: 'ProjectSkills',
