@@ -19,7 +19,7 @@ router.post('/welcome', (req, res) => {
         text: "Hello from Fetchmate",
         html: '<h1>Hello, Welcome to Fetchmate</h1>'
     }
-    console.log(req.body.email)
+    // console.log(req.body.email)
     sendGrid.send(msg)
         .then(result => {
             
@@ -30,7 +30,7 @@ router.post('/welcome', (req, res) => {
         })
         .catch(err => {
 
-            console.log('error: ', err);
+            // console.log('error: ', err);
             res.status(401).json({
                 success: false
             });

@@ -43,7 +43,6 @@ const upload = multer({
 
 // Create User Account
 router.post('/',upload.single('profilePicture'), (req,res) => {
-    console.log(req.file)
     if(!req.body || !req.body.email || !req.body.password || !req.body.firstName || !req.body.lastName){
         res.status(400).json({
             error: 'Please complete all required fields'

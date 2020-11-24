@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import {useHistory} from 'react-router-dom'
+import {useHistory} from 'react-router-dom'
 import '../styles/mainPage.css'
 import { Row, Col } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
@@ -8,7 +8,7 @@ import { login } from '../redux/actions';
 export default function MainPage() {
     const [password, setPassword] = useState('')
     const [email, setEmail] = useState('')
-    // const useHistory = useHistory('')
+    const history = useHistory('')
     const dispatch = useDispatch();
 
     const handleLogin = (e) => {
@@ -31,7 +31,9 @@ export default function MainPage() {
                 alert(data.error)
             }else{
                 alert('Logged In Successfully')
-                dispatch(login(data.success))
+                dispatch(login(data.user))
+                let path = "/hub"
+                history.push(path)
             }
         })
     }

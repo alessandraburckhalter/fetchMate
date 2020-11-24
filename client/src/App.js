@@ -1,20 +1,26 @@
+import React from 'react'
 import { Provider } from 'react-redux';
+import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import MainPage from './components/MainPage';
 import ProfileSetup from './components/ProfileSetup';
 import SignUpPage from './components/SignUpPage';
-import { store } from './redux/store'
+
 
 
 function App() {
   return (
-      <Provider store={store}>
-    <div className="App">
-      {/* <MainPage /> */}
-      <SignUpPage />
+    
+        <Switch>
+          <Route exact path="/"/>
+          <Route path="/register" component={SignUpPage}/>
+          <Route path="/login" component={MainPage}/>
+          <Route path="/hub" component={ProfileSetup}/>
+        </Switch>
 
-    </div>
-      </Provider>
+
+      
+      
   );
 }
 
