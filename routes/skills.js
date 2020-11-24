@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
 
 //* Get all skills for a specific category --> will return list of skills for a category name
 router.get('/:category', (req, res) => {
-    const { category } = req.params
+    const { category } = req.params;
     db.Skill.findAll({
         where: { category }
     })
