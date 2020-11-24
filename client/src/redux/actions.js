@@ -2,6 +2,7 @@ export const SET_LOGIN = 'SET_LOGIN';
 export const SET_LOGOUT = 'SET_LOGOUT';
 export const SET_USER_SKILLS = 'SET_USER_SKILLS';
 export const ADD_USER_SKILL = 'ADD_USER_SKILL';
+export const SET_USER_PROFILE_PIC = 'SET_USER_PROFILE_PIC';
 
 
 export const login = (userInfo) => {
@@ -33,6 +34,15 @@ export const addUserSkill = (individualSkill) => {
         type: ADD_USER_SKILL,
         payload:{
             individualSkill
+        }
+    }
+}
+
+export const setUserPicture = (image) => {
+    return {
+        type: SET_USER_PROFILE_PIC,
+        payload:{
+            image
         }
     }
 }
