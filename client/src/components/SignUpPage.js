@@ -6,14 +6,14 @@ import Axios from 'axios';
 
 
 export default function SignUpPage() {
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [firstName, setFirstName] = useState("")
-    const [lastName, setLastName] = useState('')
-    const [profilePicture, setProfilePicture] = useState('')
-    const [emailSent, setEmailSent ] = useState(false)
-    const formData = new FormData()
-    // const useHistory = useHistory()
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState('');
+    const [profilePicture, setProfilePicture] = useState('');
+    const [emailSent, setEmailSent ] = useState(false);
+    const formData = new FormData();
+    const history = useHistory();
     
     
     const handleSubmit = (e)=>{
@@ -61,8 +61,12 @@ export default function SignUpPage() {
                     .catch(err =>{
                         console.log("something wrong")
                     })
-        })
-        .catch()
+                })
+            .then((result) =>{
+                let path = "/login"
+                history.push(path)
+            })
+                
         
         
     }
