@@ -1,0 +1,63 @@
+#test {
+    width: 100vw;
+    height: 100vh;
+
+    position: relative;
+    display: flex;
+}
+
+#test aside {
+    width: 50%;
+    
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 80px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#test h1 {
+    width: 1.3em;
+	font-size: 6.5rem;
+	-webkit-animation: type 1s steps(10, end);
+	animation: type 1s steps(10, end);
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+
+@keyframes type {
+    0% {
+      width: 0;
+    }
+    99.9% {
+      border-right: .08em solid gray;;
+    }
+    100% {
+      border: none;
+    }
+  }
+  
+  @-webkit-keyframes type {
+    0% {
+      width: 0;
+    }
+    99.9% {
+      border-right: .08em solid gray;;
+    }
+    100% {
+      border: none;
+    }
+  }
+
+  @keyframes blink {
+	50% {
+	  border-color: transparent;
+	}
+  }
+  @-webkit-keyframes blink {
+	50% {
+	  border-color: tranparent;
+	}
+  }
