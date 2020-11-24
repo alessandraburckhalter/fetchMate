@@ -111,4 +111,32 @@ router.post('/userSkill', checkAuth, (req, res) => {
         })
 })
 
+//* Remove skill(s) to the currently logged in user --> send over as an array of the skillId's
+router.delete('/userSkill', checkAuth, (req, res) => {
+    const { userSkillsArray } = req.body;
+    db.User.findOne({
+        where: {
+            id: req.session.user.id
+        }
+    })
+        .then(user => {
+            return db.Skill.findAll({
+                where: {id: userSkillsArray}
+            })
+                .then(skills => {
+                    if(!skills){
+                        res.status(404).json({error: 'A certain skill wasn\'t found'})
+                    }
+                    return user.removeSkills(skills)
+                        .then(() => user)
+                })
+        })
+        .then(user => {
+            res.status(201).json(user)
+        })
+        .catch(e => {
+            res.status(500).json({error: 'A database error: ' + e})
+        })
+})
+
 module.exports = router
