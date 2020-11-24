@@ -6,7 +6,7 @@ const db = require('../models');
 //* Will return in DESC order based on the publishedAt
 
 //* Query param if you want to get all completed
-//* project/?complete=true
+//* project/?includeCompleted=true
 router.get('/', (req, res) => {
     const { includeCompleted } = req.query;
     console.log(includeCompleted === 'true' ? 'withCompleted' : 'defaultScope')
@@ -156,11 +156,68 @@ router.post('/', (req, res) => {
         .catch(e => {
             console.error(e)
             res.status(500).json({error: 'A database error: ' + e})
-        })
-        
+        }) 
 })
 
-//* Route for adding a single team member to a already created project --> this is based on the new team members ID
+//* Route for adding skills to a project
+router.patch('/:projectId/skills', (req, res) => {
+    const { projectId } = req.params;
+    const { projectSkillsArray } = req.body;
+    db.Project.findOne({
+        where: {
+            id: projectId
+        }
+    })
+        .then(project => {
+            return db.Skill.findAll({
+                where: {id: projectSkillsArray}
+            })
+                .then(skills => {
+                    if(!skills){
+                        res.status(404).json({error: 'A certain skill was not found'})
+                    }
+                    return project.addSkills(skills)
+                        .then(() => project)
+                })
+        })
+        .then(project => {
+            res.status(201).json(project)
+        })
+        .catch(e => {
+            res.status(500).json({error: 'A database error: ' + e})
+        })
+})
+
+//* Route for removing skills from a project
+router.delete('/:projectId/skills', (req, res) => {
+    const { projectId } = req.params;
+    const { projectSkillsArray } = req.body;
+    db.Project.findOne({
+        where: {
+            id: projectId
+        }
+    })
+        .then(project => {
+            return db.Skill.findAll({
+                where: {id: projectSkillsArray}
+            })
+                .then(skills => {
+                    if(!skills){
+                        res.status(404).json({error: 'A certain skill was not found'})
+                    }
+                    return project.removeSkills(skills)
+                        .then(() => project)
+                })
+        })
+        .then(project => {
+            res.status(201).json(project)
+        })
+        .catch(e => {
+            res.status(500).json({error: 'A database error: ' + e})
+        })
+})
+
+//* Route for adding members to an already created project --> this is based on the new team members ID
 //? First find the project, then find the user, then add the user to the project
 router.post('/:projectId/teamMember', (req, res) => {
     const { projectId } = req.params;
@@ -182,7 +239,43 @@ router.post('/:projectId/teamMember', (req, res) => {
                     if(!users){
                         res.status(404).json({error: `A certain user wasn't found`}) 
                     }
-                    return project.addMember(users)
+                    return project.addMembers(users)
+                        .then(() => project)
+                })
+        })
+        .then(project => {
+            res.status(201).json(project)
+        })
+        .catch(e => {
+            res.status(500).json({
+                error: 'Database error occurred' + e
+            })
+        })
+})
+
+//* Route for removing members from an already created project --> this is based on the team members ID
+//? First find the project, then find the user, then add the user to the project
+router.delete('/:projectId/teamMember', (req, res) => {
+    const { projectId } = req.params;
+    const { memberIdArray } = req.body;
+    console.log(memberIdArray)
+    db.Project.findOne({
+        where:{
+            id: projectId
+        }
+    })
+        .then(project => {
+            if(!project){
+                res.status(404).json({error: 'Project not found'})
+            }
+            return db.User.findAll({
+                where:{id: memberIdArray}
+            })
+                .then(users => {
+                    if(!users){
+                        res.status(404).json({error: `A certain user wasn't found`}) 
+                    }
+                    return project.removeMembers(users)
                         .then(() => project)
                 })
         })

@@ -34,6 +34,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Project',
+    //! Where the magic happens
     defaultScope: {
        where: {
         isCompleted: false
