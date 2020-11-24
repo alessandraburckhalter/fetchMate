@@ -183,7 +183,7 @@ router.post('/:projectId/teamMember/:userId', (req, res) => {
                         //? DO WE NEED TO USE TeamMember LIKE IN THE MODEL ASSOCIATION ?
                         //? OR DOES SEQUELIZE AUTOMATICALLY KNOW DO THIS? I.E. we can just do
                         //? project.addUser(user) --> I think this would reset the project owner if we did it that way
-                            project.addTeamMember(user)
+                            project.addMember(user)
                     })
                     .catch(e => {
                         res.status(500).json({error: 'A database error: ' + e})
