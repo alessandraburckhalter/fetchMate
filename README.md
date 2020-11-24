@@ -1,10 +1,10 @@
-# FullStack React Blog <!-- omit in toc -->
+# Welcome to FetchMate <!-- omit in toc -->
 
 - [**About this repository**](#about-this-repository)
 - [**General**](#general)
 - [**Requirements**](#requirements)
 - [**Lessons Learned**](#lessons-learned)
-- [**Still Todo**](#still-todo)
+- [**Copyright & Licenses**](#copyright--licenses)
   
 ## **About this repository**
 * Main goals of this repository:
@@ -33,7 +33,9 @@ The Requirements for this project were:
 
 ## **Lessons Learned**
 
-## **Still Todo**
+<!-- ## **Still Todo**
 1. Approve comments if admin
 2. edit posts if admin
-3. edit comments if admin
+3. edit comments if admin -->
+
+## **Copyright & Licenses**
