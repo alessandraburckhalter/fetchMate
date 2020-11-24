@@ -124,6 +124,25 @@ router.get('/', (req,res) => {
     })
 })
 
+//* Get specific user based on their id --> param
+router.get('/:id', (req,res) => {
+    const { id } = req.params;
+    models.User.findOne({
+        where: { id },
+        include: [db.Skill]
+    })
+    .then((user) =>{
+        if(user){
+            res.json(user)
+        }else {
+            res.status(401).json({
+                error:`User with ID ${id} not found`
+            })
+        }
+    })
+})
+
+
 //logout
 router.post('/logout', (req,res) => {
     

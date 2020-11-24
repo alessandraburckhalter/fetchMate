@@ -31,6 +31,7 @@ router.get('/:id', (req, res) => {
         //TODO gets the owner and the members
         //* First one is the owner
         //* Second are the member
+        //* Third are the project skills
         include: [db.User, {
             as: 'Members',
             model: db.User
