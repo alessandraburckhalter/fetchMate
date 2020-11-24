@@ -85,7 +85,7 @@ router.post('/login', (req,res) => {
         return;
     }
 
-    models.User.findOne({
+    models.User.scope('withPassword').findOne({
         where: {
             email: req.body.email
         }
