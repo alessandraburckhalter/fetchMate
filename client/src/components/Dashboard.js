@@ -116,6 +116,21 @@ export default function Dashboard() {
       </a>
     </div>
   </MDBCard>
+
+  <h1>Pending</h1>
+      <MDBCard className="card-body" style={{ marginTop: "1rem" }}>
+    <MDBCardTitle>Project title</MDBCardTitle>
+    <MDBCardText>
+      Project description
+    </MDBCardText>
+    <div className="flex-row ">
+    <a href="#!" className="card-link">
+        Project owner: owner name
+      </a>
+      <a href="#!" className="card-link"> 
+      </a>  
+    </div>
+  </MDBCard>
   </MDBCol>
     </MDBRow>
     </MDBContainer>
