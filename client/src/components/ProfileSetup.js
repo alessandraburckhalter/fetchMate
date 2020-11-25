@@ -43,7 +43,7 @@ export default function ProfileSetup() {
     <label htmlFor="defaultFormLoginEmailEx" className="black-text">
             Technical Skills
         </label>
-      <div className="input-group md-form form-sm form-1 pl-0">
+      {/* <div className="input-group md-form form-sm form-1 pl-0">
         <div className="input-group-prepend">
           <span className="input-group-text purple lighten-3" id="basic-text1">
             <MDBIcon className="text-white" icon="search" />
@@ -58,12 +58,14 @@ export default function ProfileSetup() {
         className="form-control"
         id="formGroupExampleInput"
       />
-    </div>
+    </div> */}
+    <SkillSearchBar category='technical'/>
 
       <label htmlFor="defaultFormLoginEmailEx" className="black-text">
           Soft Skills
         </label>
-      <div className="input-group md-form form-sm form-1 pl-0">
+        <SkillSearchBar category='soft'/>
+      {/* <div className="input-group md-form form-sm form-1 pl-0">
         <div className="input-group-prepend">
           <span className="input-group-text purple lighten-3" id="basic-text1">
             <MDBIcon className="text-white" icon="search" />
@@ -78,12 +80,12 @@ export default function ProfileSetup() {
         className="form-control"
         id="formGroupExampleInput"
       />
-    </div>
+    </div> */}
 
       <label htmlFor="defaultFormLoginEmailEx" className="black-text">
           What languages do you speak?
         </label>
-      <div className="input-group md-form form-sm form-1 pl-0">
+      {/* <div className="input-group md-form form-sm form-1 pl-0">
         <div className="input-group-prepend">
           <span className="input-group-text purple lighten-3" id="basic-text1">
             <MDBIcon className="text-white" icon="search" />
@@ -97,7 +99,8 @@ export default function ProfileSetup() {
         className="form-control"
         id="formGroupExampleInput"
       />
-    </div>
+    </div> */}
+    <SkillSearchBar category='language'/>
 
       <label htmlFor="defaultFormLoginEmailEx" className="black-text">
           Would you like to publish a project?
@@ -122,9 +125,9 @@ export default function ProfileSetup() {
     </MDBRow>
     </MDBContainer>
             {/* Pete testing */}
-            <h1>{user.loginInfo.firstName} {user.loginInfo.lastName}</h1>
+            {/* <h1>{user.loginInfo.firstName} {user.loginInfo.lastName}</h1>
             <img src={user.loginInfo.profilePicture} alt="profilePicture"/>
-            <SkillSearchBar/>
+            <SkillSearchBar/> */}
         </div>
     )
 }

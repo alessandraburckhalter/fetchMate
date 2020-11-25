@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { ADD_USER_SKILL, SET_ALL_POSSIBLE_SKILLS, SET_LOGIN, SET_LOGOUT, SET_USER_PROFILE_PIC, SET_USER_SKILLS } from './actions';
+import { ADD_SKILL_TO_SEARCH_ARRAY, ADD_USER_SKILL, REMOVE_SKILL_FROM_SEARCH_ARRAY, SET_ALL_POSSIBLE_SKILLS, SET_LOGIN, SET_LOGOUT, SET_USER_PROFILE_PIC, SET_USER_SKILLS } from './actions';
 
 
 //* This is the reducer that houses all possible actions for the user global state
@@ -38,11 +38,24 @@ const skillsReducer = (state={}, action) => {
     }
 }
 
+//* Reducer for keeping track of searchBar global state
+const searchBarReducer = (state=[], action) => {
+    switch (action.type){
+        case ADD_SKILL_TO_SEARCH_ARRAY:
+            return state.concat(action.payload.skill)
+        case REMOVE_SKILL_FROM_SEARCH_ARRAY:
+            return state.filter(skill => skill.id !== action.payload.skillId)
+        default:
+            return state;
+    }
+}
+
 //? Here we will to continue to add our global state variables.App
 //? Note that the keys for the functions below will be what the global state variables are named...so we will need to use these names to reference 
 export const rootReducer = combineReducers({
     user: userReducer,
     possibleSkills: skillsReducer,
+    searchSkillsToAdd: searchBarReducer,
 })
 
 //* For example, to access the state variable corresponding to the userReducer we would do the following:

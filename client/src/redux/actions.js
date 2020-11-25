@@ -4,6 +4,8 @@ export const SET_USER_SKILLS = 'SET_USER_SKILLS';
 export const ADD_USER_SKILL = 'ADD_USER_SKILL';
 export const SET_USER_PROFILE_PIC = 'SET_USER_PROFILE_PIC';
 export const SET_ALL_POSSIBLE_SKILLS = 'SET_ALL_POSSIBLE_SKILLS';
+export const ADD_SKILL_TO_SEARCH_ARRAY = 'ADD_SKILL_TO_SEARCH_ARRAY';
+export const REMOVE_SKILL_FROM_SEARCH_ARRAY = 'REMOVE_SKILL_FROM_SEARCH_ARRAY';
 
 
 export const login = (userInfo) => {
@@ -53,6 +55,23 @@ export const setAllPossibleSkills = (allSkills) => {
         type: SET_ALL_POSSIBLE_SKILLS,
         payload:{
             allSkills
+        }
+    }
+}
+
+export const addSkillToSearchArray = (skill) => {
+    return {
+        type: ADD_SKILL_TO_SEARCH_ARRAY,
+        payload: {
+            skill
+        }
+    }
+}
+export const removeSkillFromSearchArray = (skillId) => {
+    return {
+        type: REMOVE_SKILL_FROM_SEARCH_ARRAY,
+        payload: {
+            skillId
         }
     }
 }
