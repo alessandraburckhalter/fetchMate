@@ -6,8 +6,17 @@ import ProjectCard from './card/ProjectCard';
 
 export default function Dashboard() {
   const [ownProjects, setOwnProjects] = useState([]);
+  const [currentUserData, setCurrentUserData] = useState([])
   const user = useSelector(state => state.user);
 
+
+  const loadUserSkill = () =>{
+    fetch('/api/v1/hub/current')
+      .then(res=>res.json())
+      .then(data=>{
+        setCurrentUserData(data)
+      })
+  }
   const loadOwnProject = () =>{
     fetch(`/api/v1/projects/`)
     // ${user.loginInfo.id}
@@ -21,6 +30,7 @@ export default function Dashboard() {
   }
   useEffect(()=>{
     loadOwnProject()
+    loadUserSkill()
   }, [])
     return (
         <div id="top">
@@ -48,7 +58,13 @@ export default function Dashboard() {
             </a>
             <br/>
             <a href="#!" className="card-meta">
-              Skills: display skills
+              {console.log(currentUserData)}
+              Skills:
+              
+              {/* {currentUserData.skills.map((userData)=>{
+                return (userData.category === "technical"? userData.name : "")
+                
+              })} */}
             </a>
             <br/>
             <a href="#!" className="card-meta">
