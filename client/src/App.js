@@ -3,6 +3,7 @@ import { Provider, useDispatch, useSelector } from 'react-redux';
 import { Redirect, Route, Switch, useHistory } from 'react-router-dom';
 import './App.css';
 import Dashboard from './components/Dashboard';
+import Interested from './components/Interested';
 import MainPage from './components/MainPage';
 import ProfileSetup from './components/ProfileSetup';
 import ProjectForm from './components/ProjectForm';
@@ -48,6 +49,7 @@ function App() {
             <Route path="/projectForm" component={ProjectForm}/>
             <Route path="/dashboard" component={Dashboard}/>
             <Route path="/projects" component={Projects}/>
+            <Route path="/interested" component={Interested}/>
             </>
           )}
           <Route>
