@@ -32,7 +32,8 @@ export default function MainPage() {
             }else{
                 alert('Logged In Successfully')
                 dispatch(login(data.user))
-                let path = "/hub"
+                // change path you want for test
+                let path = "/dashboard"
                 history.push(path)
             }
         })
