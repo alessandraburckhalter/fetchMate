@@ -3,10 +3,11 @@ import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardText, MDBCardTitle, 
 import { useSelector } from 'react-redux';
 import { Form } from 'react-bootstrap';
 import '../styles/profileSetup.css'
+import SkillSearchBar from './SkillSearchBar';
 import ProjectForm from './ProjectForm';
 
 export default function ProfileSetup() {
-    const user = useSelector(state => state.userInfo)
+    const user = useSelector(state => state.user)
 
     return (
         <div id="top">
@@ -120,7 +121,10 @@ export default function ProfileSetup() {
 
     </MDBRow>
     </MDBContainer>
-
+            {/* Pete testing */}
+            <h1>{user.loginInfo.firstName} {user.loginInfo.lastName}</h1>
+            <img src={user.loginInfo.profilePicture} alt="profilePicture"/>
+            <SkillSearchBar/>
         </div>
     )
 }
