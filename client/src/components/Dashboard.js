@@ -68,7 +68,11 @@ export default function Dashboard() {
             </a>
             <br/>
             <a href="#!" className="card-meta">
-              Spoken languages: display languages
+              Spoken languages: 
+              {/* {currentUserData.skills.map((userData)=>{
+                return (userData.category === "language"? userData.name : "")
+                
+              })} */}
             </a>
           </MDBCardBody>
         </MDBCard>
