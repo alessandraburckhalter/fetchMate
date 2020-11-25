@@ -2,7 +2,7 @@
 @import url(https://fonts.googleapis.com/css?family=Anonymous+Pro);
 
 /* Global */
-html{
+/* html{
   min-height: 100%;
   overflow: hidden;
 }
@@ -12,8 +12,8 @@ body{
   color: rgba(255,255,255,.75);
   font-family: 'Anonymous Pro', monospace;  
   background-color: rgb(25,25,25);  
-}
-.line-1{
+} */
+/* .line-1{
     position: relative;
     top: 50%;  
     width: 24em;
@@ -24,4 +24,4 @@ body{
     white-space: nowrap;
     overflow: hidden;
     transform: translateY(-50%);    
-}
+} */
