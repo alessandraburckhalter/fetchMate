@@ -13,7 +13,7 @@ export default function MainPage() {
 
     const handleLogin = (e) => {
         e.preventDefault();
-        fetch('/api/v1/register/login',{
+        fetch('/api/v1/user/login',{
             method: 'POST',
             body: JSON.stringify({
                 password:password,
