@@ -1,13 +1,25 @@
 import { MDBCard, MDBCardBody, MDBCardText, MDBCardTitle, MDBCol, MDBContainer, MDBIcon, MDBRow } from 'mdbreact';
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import '../styles/dashboard.css'
 import ProjectCard from './card/ProjectCard';
 
 export default function Dashboard() {
-  const [ownProjects, setOwnProjects] = useState([])
+  const [ownProjects, setOwnProjects] = useState([]);
+  const [currentUserData, setCurrentUserData] = useState([])
+  const user = useSelector(state => state.user);
 
+
+  const loadUserSkill = () =>{
+    fetch('/api/v1/hub/current')
+      .then(res=>res.json())
+      .then(data=>{
+        setCurrentUserData(data)
+      })
+  }
   const loadOwnProject = () =>{
-    fetch('/api/v1/projects')
+    fetch(`/api/v1/projects/`)
+    // ${user.loginInfo.id}
       .then(res => res.json())
       .then(data=>{
         setOwnProjects(data)
@@ -18,6 +30,7 @@ export default function Dashboard() {
   }
   useEffect(()=>{
     loadOwnProject()
+    loadUserSkill()
   }, [])
     return (
         <div id="top">
@@ -29,9 +42,10 @@ export default function Dashboard() {
           
           <MDBCardBody>
             <img src="#" alt="profilePicture" />
+            {user.loginInfo.profilePicture}
             <MDBCardTitle>
               <a href="#!" className="title-one">
-              {/* {user.firstName} {user.lastName} */}
+              {user.loginInfo.firstName} {user.loginInfo.lastName}
               </a>
             </MDBCardTitle>
             
@@ -39,16 +53,26 @@ export default function Dashboard() {
             <a href="#!" className="card-meta">
               <span>
                 <MDBIcon icon="envelope" /> 
-                {/* {user.email} */}
+                {user.loginInfo.email}
               </span>
             </a>
             <br/>
             <a href="#!" className="card-meta">
-              Skills: display skills
+              {console.log(currentUserData)}
+              Skills:
+              
+              {/* {currentUserData.skills.map((userData)=>{
+                return (userData.category === "technical"? userData.name : "")
+                
+              })} */}
             </a>
             <br/>
             <a href="#!" className="card-meta">
-              Spoken languages: display languages
+              Spoken languages: 
+              {/* {currentUserData.skills.map((userData)=>{
+                return (userData.category === "language"? userData.name : "")
+                
+              })} */}
             </a>
           </MDBCardBody>
         </MDBCard>

@@ -50,7 +50,7 @@ app.use(
     }))
 
 //routes
-app.use('/api/v1/register', usersRouter)
+app.use('/api/v1/user', usersRouter)
 app.use('/api/v1/hub', hubRouter)
 //* Skills route for getting available skills --> think profile page and project initiation page
 app.use('/api/v1/skills', skillsRouter);

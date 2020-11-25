@@ -1,13 +1,44 @@
-import React from 'react';
-import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardText, MDBCardTitle, MDBCardVideo, MDBCol, MDBContainer, MDBFormInline, MDBIcon, MDBInput, MDBRow } from 'mdbreact';
-import { useSelector } from 'react-redux';
-import { Button, Form } from 'react-bootstrap';
+import React, { useState } from 'react';
+import {  MDBCard, MDBCardBody,  MDBCardTitle, MDBCol, MDBContainer,  MDBIcon,  MDBRow } from 'mdbreact';
+import { useDispatch, useSelector } from 'react-redux';
+import { Button } from 'react-bootstrap';
 import '../styles/profileSetup.css'
-import SkillSearchBar from './SkillSearchBar';
-import ProjectForm from './ProjectForm';
+import { logout } from '../redux/actions';
+import { useHistory } from 'react-router-dom';
 
 export default function ProfileSetup() {
     const user = useSelector(state => state.user)
+    const [password, setPassword] = useState('')
+    const [email, setEmail] = useState('')
+    const dispatch = useDispatch();
+    const history = useHistory();
+
+    const handleLogout = (e) => {
+        e.preventDefault();
+        fetch('/api/v1/user/logout',{
+            method: 'POST',
+            body: JSON.stringify({
+                password:password,
+                email: email
+            }),
+            headers: {
+                Accept:"application/json",
+                'Content-type': 'application/json'
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            if(data.error){
+                alert(data.error)
+            }else{
+                alert('Logged Out Successfully!')
+                dispatch(logout(data.user))
+                let path = "/"
+                history.push(path)
+            }
+        })
+    }
 
     return (
         <div id="top">
@@ -122,10 +153,9 @@ export default function ProfileSetup() {
                     Create a project
                 </Button>
    
-
+        <button onClick={handleLogout}>Logout</button>
      
     </MDBCol>
-
 
     </MDBRow>
     </MDBContainer>

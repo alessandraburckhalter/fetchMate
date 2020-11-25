@@ -13,7 +13,7 @@ export default function MainPage() {
 
     const handleLogin = (e) => {
         e.preventDefault();
-        fetch('/api/v1/register/login',{
+        fetch('/api/v1/user/login',{
             method: 'POST',
             body: JSON.stringify({
                 password:password,
@@ -32,7 +32,8 @@ export default function MainPage() {
             }else{
                 alert('Logged In Successfully')
                 dispatch(login(data.user))
-                let path = "/hub"
+                // change path you want for test
+                let path = "/dashboard"
                 history.push(path)
             }
         })

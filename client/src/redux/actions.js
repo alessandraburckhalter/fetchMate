@@ -1,9 +1,11 @@
+
 export const SET_LOGIN = 'SET_LOGIN';
 export const SET_LOGOUT = 'SET_LOGOUT';
 export const SET_USER_SKILLS = 'SET_USER_SKILLS';
 export const ADD_USER_SKILL = 'ADD_USER_SKILL';
 export const SET_USER_PROFILE_PIC = 'SET_USER_PROFILE_PIC';
 export const SET_ALL_POSSIBLE_SKILLS = 'SET_ALL_POSSIBLE_SKILLS';
+export const SET_CHECKED = 'SET_CHECKED'
 
 
 export const login = (userInfo) => {
@@ -18,6 +20,12 @@ export const login = (userInfo) => {
 export const logout = () => {
     return {
         type: SET_LOGOUT
+    }
+}
+
+export const checked = () => {
+    return {
+        type: SET_CHECKED
     }
 }
 
