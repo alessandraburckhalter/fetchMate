@@ -1,7 +1,7 @@
 import React from 'react';
 import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardText, MDBCardTitle, MDBCardVideo, MDBCol, MDBContainer, MDBFormInline, MDBIcon, MDBInput, MDBRow } from 'mdbreact';
 import { useSelector } from 'react-redux';
-import { Form } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
 import '../styles/profileSetup.css'
 import SkillSearchBar from './SkillSearchBar';
 import ProjectForm from './ProjectForm';
@@ -18,10 +18,14 @@ export default function ProfileSetup() {
         <MDBCard personal className="my-5">
           
           <MDBCardBody>
-            <img src="#" alt="profilePicture" />
+            <img src={user.loginInfo.profilePicture} alt="profilePicture" width="70%" />
             <MDBCardTitle>
               <a href="#!" className="title-one">
-              {/* {user.firstName} {user.lastName} */}
+              {user.loginInfo.firstName} {user.loginInfo.lastName}
+              </a> <br/>
+
+              <a href="#!" className="title-one">
+              Title
               </a>
             </MDBCardTitle>
             
@@ -29,7 +33,7 @@ export default function ProfileSetup() {
             <a href="#!" className="card-meta">
               <span>
                 <MDBIcon icon="envelope" /> 
-                {/* {user.email} */}
+                {user.loginInfo.email}
               </span>
             </a>
           </MDBCardBody>
@@ -59,7 +63,12 @@ export default function ProfileSetup() {
         id="formGroupExampleInput"
       />
     </div>
+    <Button variant="primary" type="submit">
+                    Add Skills
+                </Button>
+      </form>
 
+      <form>
       <label htmlFor="defaultFormLoginEmailEx" className="black-text">
           Soft Skills
         </label>
@@ -79,7 +88,12 @@ export default function ProfileSetup() {
         id="formGroupExampleInput"
       />
     </div>
+        <Button variant="primary" type="submit">
+                    Add Skills
+                </Button>
+      </form>
 
+      <form>
       <label htmlFor="defaultFormLoginEmailEx" className="black-text">
           What languages do you speak?
         </label>
@@ -98,33 +112,27 @@ export default function ProfileSetup() {
         id="formGroupExampleInput"
       />
     </div>
+        <Button variant="primary" type="submit">
+                    Add languages
+                </Button>
+        </form>
 
-      <label htmlFor="defaultFormLoginEmailEx" className="black-text">
-          Would you like to publish a project?
-        </label>
-        <div>
-        <div class="custom-control custom-checkbox">
-        <input type="checkbox" />
-        <label class="" for="defaultUnchecked"> Yes</label>
-      </div>
-
-      <div class="custom-control custom-checkbox">
-        <input type="checkbox" />
-        <label class="" for="defaultUnchecked"> No</label>
-      </div>
-      </div>
+        <h1>Want to publish a project?</h1>
+        <Button variant="primary" type="submit">
+                    Create a project
+                </Button>
    
 
-      </form>
+     
     </MDBCol>
 
 
     </MDBRow>
     </MDBContainer>
             {/* Pete testing */}
-            <h1>{user.loginInfo.firstName} {user.loginInfo.lastName}</h1>
+            {/* <h1>{user.loginInfo.firstName} {user.loginInfo.lastName}</h1>
             <img src={user.loginInfo.profilePicture} alt="profilePicture"/>
-            <SkillSearchBar/>
+            <SkillSearchBar/> */}
         </div>
     )
 }

@@ -1,8 +1,17 @@
-import React from 'react'
-import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardText, MDBCardTitle, MDBCardVideo, MDBCol, MDBContainer, MDBFormInline, MDBIcon, MDBInput, MDBRow } from 'mdbreact';
+import React, { useState }  from 'react'
+import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardText, MDBCardTitle, MDBCardVideo, MDBCol, MDBContainer, MDBDataTable, MDBFormInline, MDBIcon, MDBInput, MDBRow } from 'mdbreact';
 import '../styles/profileSetup.css'
+import { Button } from 'react-bootstrap';
+import { MDBDatePickerV5 } from 'mdbreact';
+import DatePicker from "react-datepicker";
+ 
+import "react-datepicker/dist/react-datepicker.css";
 
 export default function ProjectForm() {
+
+  const [startDate, setStartDate] = useState(new Date());
+
+
     return (
         <div id="top">
             <MDBContainer>
@@ -82,8 +91,22 @@ export default function ProjectForm() {
           How many people will be acceptable for this project?
         </label>
     <MDBInput label="Enter number" outline  />
-    
 
+    
+    <label htmlFor="defaultFormLoginEmailEx" className="black-text">
+          What is the deadline for this project?
+        </label>
+    <DatePicker selected={startDate} onChange={date => setStartDate(date)} /> <br/> <br/>
+     
+    
+    <label htmlFor="defaultFormLoginEmailEx" className="black-text">
+          When would you like to publish this project?
+        </label>
+    <DatePicker selected={startDate} onChange={date => setStartDate(date)} /><br/> <br/>
+
+    <Button variant="primary" type="submit">
+                    Publish Project
+                </Button>
       </form>
       </MDBRow>
     </MDBCol>
