@@ -2,15 +2,10 @@
 const {
   Model
 } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
     static associate(models) {
-      // define association here
       User.hasMany(models.Project, {
         foreignKey: 'owner' //* User.getProjects() --> gets the projects that the user in question is owner of
       })
@@ -22,6 +17,12 @@ module.exports = (sequelize, DataTypes) => {
         through: 'UserSkills', //* User.getSkills() --> gives an array of the skills that the user has
       })
     }
+    //* tells what we want to return
+    toJSON(){
+      let values = {...this.get()}
+      delete values.password
+      return values
+    }
   };
   User.init({
     firstName: DataTypes.STRING,
@@ -32,6 +33,15 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'User',
+    defaultScope: {
+      attributes: { exclude: ['password'] }
+    },
+    //* Specifically not excluding password therefore it will include it
+    scopes: {
+      withPassword:{
+        attributes: {}
+      }
+    }
   });
   return User;
 };

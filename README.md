@@ -1,4 +1,4 @@
-# FullStack React Blog <!-- omit in toc -->
+# Welcome to FetchMate <!-- omit in toc -->
 
 - [**About this repository**](#about-this-repository)
 - [**General**](#general)

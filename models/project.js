@@ -11,7 +11,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Project.belongsTo(models.User);
+      Project.belongsTo(models.User, {
+        foreignKey: 'owner' //* project.getUser ==> owner
+      }); 
       Project.belongsToMany(models.User, {
         through: 'TeamMembers',
         as: 'Members' //* Members ==> makes sense
@@ -32,6 +34,16 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Project',
+    //! Where the magic happens
+    defaultScope: {
+       where: {
+        isCompleted: false
+      }
+    },
+    //* Specifically not excluding anything, therefore it will include all types
+    scopes: {
+      withCompleted:{}
+    }
   });
   return Project;
 };
