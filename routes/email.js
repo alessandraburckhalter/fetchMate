@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
 
 //welcome email for register
 router.post('/welcome', (req, res) => {
-    sendGrid.setApiKey(`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`)
+    sendGrid.setApiKey()
     const msg = {
         to: req.body.email,
         from: "fetchmate.contact@gmail.com",
