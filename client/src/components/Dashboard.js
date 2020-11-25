@@ -1,8 +1,24 @@
 import { MDBCard, MDBCardBody, MDBCardText, MDBCardTitle, MDBCol, MDBContainer, MDBIcon, MDBRow } from 'mdbreact';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../styles/dashboard.css'
+import ProjectCard from './card/ProjectCard';
 
 export default function Dashboard() {
+  const [ownProjects, setOwnProjects] = useState([])
+
+  const loadOwnProject = () =>{
+    fetch('/api/v1/projects')
+      .then(res => res.json())
+      .then(data=>{
+        setOwnProjects(data)
+      })
+      .catch(error =>{
+        console.log(error.error)
+      })
+  }
+  useEffect(()=>{
+    loadOwnProject()
+  }, [])
     return (
         <div id="top">
 
@@ -40,6 +56,10 @@ export default function Dashboard() {
     
       <MDBCol >
           <h1 >Your Projects</h1>
+          { ownProjects.map((project, index)=>{
+            return <ProjectCard key={project.id} project={project}/>
+          })}
+          
       <MDBCard className="card-body" style={{ marginTop: "1rem" }}>
     <MDBCardTitle>Project title</MDBCardTitle>
     <MDBCardText>

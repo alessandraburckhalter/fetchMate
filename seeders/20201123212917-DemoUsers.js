@@ -18,6 +18,7 @@ module.exports = {
         lastName: 'Test',
         password:'$2b$10$RAAzrMRFz31QxzZ8JDfNsuXk/P3X5.2BvI3CqC6v4TWRri8TLPxoK', //password:12345
         email: 'test@test.com',
+        title: "Frontend developer",
         profilePicture: null,
         createdAt: "2020-11-23T20:28:24.609Z",
         updatedAt: "2020-11-23T20:28:24.609Z"
@@ -27,6 +28,7 @@ module.exports = {
         lastName: 'Demo',
         password:'$2b$10$RAAzrMRFz31QxzZ8JDfNsuXk/P3X5.2BvI3CqC6v4TWRri8TLPxoK',//password:12345
         email: 'test1@test.com',
+        title: "Backend developer",
         profilePicture: null,
         createdAt: "2020-11-23T20:28:24.609Z",
         updatedAt: "2020-11-23T20:28:24.609Z"
