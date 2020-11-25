@@ -10,8 +10,8 @@ export default function Dashboard() {
   const user = useSelector(state => state.user);
 
 
-  const loadUserSkill = () =>{
-    fetch('/api/v1/hub/current')
+  const loadUserSkill = async () =>{
+    await fetch('/api/v1/hub/current')
       .then(res=>res.json())
       .then(data=>{
         setCurrentUserData(data)
@@ -61,18 +61,22 @@ export default function Dashboard() {
               {console.log(currentUserData)}
               Skills:
               
-              {/* {currentUserData.skills.map((userData)=>{
-                return (userData.category === "technical"? userData.name : "")
+              {currentUserData && currentUserData.Skills.filter((userData)=>{
+                return (userData.category === "technical")
                 
-              })} */}
+              }).map((name)=>{
+                return name.name
+              })}
             </a>
             <br/>
             <a href="#!" className="card-meta">
               Spoken languages: 
-              {/* {currentUserData.skills.map((userData)=>{
-                return (userData.category === "language"? userData.name : "")
+              {currentUserData && currentUserData.Skills.filter((userData)=>{
+                return (userData.category === "language")
                 
-              })} */}
+              }).map((name)=>{
+                return name.name
+              })}
             </a>
           </MDBCardBody>
         </MDBCard>
