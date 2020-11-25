@@ -12,6 +12,6 @@
     display: flex;
 }
 
-label {
-    font-size: 20px;
+#top h1 {
+    margin-top: 1em;
 }
