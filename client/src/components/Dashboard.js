@@ -26,6 +26,14 @@ export default function Dashboard() {
                 {/* {user.email} */}
               </span>
             </a>
+            <br/>
+            <a href="#!" className="card-meta">
+              Skills: display skills
+            </a>
+            <br/>
+            <a href="#!" className="card-meta">
+              Spoken languages: display languages
+            </a>
           </MDBCardBody>
         </MDBCard>
       </MDBCol>
@@ -42,6 +50,12 @@ export default function Dashboard() {
         Status: status
       </a>
       <a href="#!" className="card-link">Published: date
+      </a>
+      <a href="#!" className="card-link">Member's limit: number
+      </a>
+      <a href="#!" className="card-link">Interested: number
+      </a>
+      <a href="#!" className="card-link">Accepted: number
       </a>
       <button className="card-link">Edit
       </button>
@@ -60,6 +74,12 @@ export default function Dashboard() {
         Status: status
       </a>
       <a href="#!" className="card-link">Published: date
+      </a>
+      <a href="#!" className="card-link">Member's limit: number
+      </a>
+      <a href="#!" className="card-link">Interested: number
+      </a>
+      <a href="#!" className="card-link">Accepted: number
       </a>
       <button className="card-link">Edit
       </button>

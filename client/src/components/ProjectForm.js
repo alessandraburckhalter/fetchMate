@@ -77,6 +77,11 @@ export default function ProjectForm() {
         id="formGroupExampleInput"
       />
     </div>
+
+    <label htmlFor="defaultFormLoginEmailEx" className="black-text mt-5" >
+          How many people will be acceptable for this project?
+        </label>
+    <MDBInput label="Enter number" outline  />
     
 
       </form>
