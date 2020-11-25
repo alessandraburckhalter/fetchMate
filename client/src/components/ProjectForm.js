@@ -12,7 +12,7 @@ export default function ProjectForm() {
     <label htmlFor="defaultFormLoginEmailEx" className="black-text mt-5" >
           Project Title
         </label>
-    <MDBInput label="Project title" outline disabled />
+    <MDBInput label="Project title" outline  />
     <label htmlFor="defaultFormLoginEmailEx" className="black-text">
           Describe your project
         </label>

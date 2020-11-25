@@ -24,7 +24,8 @@
     "pg": "^8.5.1",
     "react": "^17.0.1",
     "react-redux": "^7.2.2",
-    "sequelize": "^6.3.5"
+    "sequelize": "^6.3.5",
+    "sequelize-cli": "^6.2.0"
   },
   "description": "- [**About this repository**](#about-this-repository) - [**General**](#general) - [**Requirements**](#requirements) - [**Lessons Learned**](#lessons-learned) - [**Still Todo**](#still-todo)",
   "main": "app.js",
