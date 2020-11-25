@@ -43,7 +43,6 @@ const upload = multer({
 
 // Create User Account
 router.post('/',upload.single('profilePicture'), (req,res) => {
-    console.log(req.file)
     if(!req.body || !req.body.email || !req.body.password || !req.body.firstName || !req.body.lastName){
         res.status(400).json({
             error: 'Please complete all required fields'
@@ -85,7 +84,7 @@ router.post('/login', (req,res) => {
         return;
     }
 
-    models.User.findOne({
+    models.User.scope('withPassword').findOne({
         where: {
             email: req.body.email
         }
@@ -123,6 +122,25 @@ router.get('/', (req,res) => {
         res.json(user)
     })
 })
+
+//* Get specific user based on their id --> param
+router.get('/:id', (req,res) => {
+    const { id } = req.params;
+    models.User.findOne({
+        where: { id },
+        include: [db.Skill]
+    })
+    .then((user) =>{
+        if(user){
+            res.json(user)
+        }else {
+            res.status(401).json({
+                error:`User with ID ${id} not found`
+            })
+        }
+    })
+})
+
 
 //logout
 router.post('/logout', (req,res) => {

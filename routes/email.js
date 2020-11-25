@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
 
 //welcome email for register
 router.post('/welcome', (req, res) => {
-    sendGrid.setApiKey()
+    sendGrid.setApiKey(process.env.SENDGRID_API)
     const msg = {
         to: req.body.email,
         from: "fetchmate.contact@gmail.com",
@@ -19,7 +19,7 @@ router.post('/welcome', (req, res) => {
         text: "Hello from Fetchmate",
         html: '<h1>Hello, Welcome to Fetchmate</h1>'
     }
-    console.log(req.body.email)
+    // console.log(req.body.email)
     sendGrid.send(msg)
         .then(result => {
             
@@ -30,7 +30,7 @@ router.post('/welcome', (req, res) => {
         })
         .catch(err => {
 
-            console.log('error: ', err);
+            // console.log('error: ', err);
             res.status(401).json({
                 success: false
             });
@@ -44,7 +44,7 @@ router.post('/matched', (req, res) => {
 
     console.log(req.body);
 
-    sendGrid.setApiKey(`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`)
+    sendGrid.setApiKey(process.env.SENDGRID_API)
     const msg = {
         to: req.body.email,
         from: "fetchmate.contact@gmail.com",
