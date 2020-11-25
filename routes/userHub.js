@@ -4,14 +4,16 @@ const models = require('../models')
 const bcrypt = require('bcrypt') 
 const session = require('express-session')
 const multer = require('multer');
-const checkAuth = require('../checkAuth')
+const checkAuth = require('../checkAuth');
+const db = require('../models');
 
 //get profile
 router.get('/current', checkAuth, (req,res) => {
     models.User.findOne({
         where: {
             id: req.session.user.id
-        }
+        },
+        include: [db.Skill]
     })
     .then((user) =>{
         if(user){
@@ -78,6 +80,62 @@ router.patch('/', checkAuth, (req,res) => {
             res.status(404).json({
                 error: 'Email is not available'
             })
+        })
+})
+
+//* Add skill(s) to the currently logged in user --> send over as an array of the skillId's
+router.post('/userSkill', checkAuth, (req, res) => {
+    const { userSkillsArray } = req.body;
+    db.User.findOne({
+        where: {
+            id: req.session.user.id
+        }
+    })
+        .then(user => {
+            return db.Skill.findAll({
+                where: {id: userSkillsArray}
+            })
+                .then(skills => {
+                    if(!skills){
+                        res.status(404).json({error: 'A certain skill wasn\'t found'})
+                    }
+                    return user.addSkills(skills)
+                        .then(() => user)
+                })
+        })
+        .then(user => {
+            res.status(201).json(user)
+        })
+        .catch(e => {
+            res.status(500).json({error: 'A database error: ' + e})
+        })
+})
+
+//* Remove skill(s) to the currently logged in user --> send over as an array of the skillId's
+router.delete('/userSkill', checkAuth, (req, res) => {
+    const { userSkillsArray } = req.body;
+    db.User.findOne({
+        where: {
+            id: req.session.user.id
+        }
+    })
+        .then(user => {
+            return db.Skill.findAll({
+                where: {id: userSkillsArray}
+            })
+                .then(skills => {
+                    if(!skills){
+                        res.status(404).json({error: 'A certain skill wasn\'t found'})
+                    }
+                    return user.removeSkills(skills)
+                        .then(() => user)
+                })
+        })
+        .then(user => {
+            res.status(201).json(user)
+        })
+        .catch(e => {
+            res.status(500).json({error: 'A database error: ' + e})
         })
 })
 
