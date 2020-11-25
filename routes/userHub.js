@@ -14,20 +14,28 @@ router.get('/current', checkAuth, (req,res) => {
         where: {
             id: req.session.user.id
         },
-        include: [db.Project, {
-            as: "MemberProjects", 
-            model: db.Project
-        }, db.Skill]
+        include: [
+            {
+                primaryKey: 'owner',
+                model: db.Project,
+                required: false,
+            },
+            {
+                as: "MemberProjects", 
+                model: db.Project,
+                required: false
+            },
+                db.Skill]
     })
     .then((user) =>{
         console.log(user)
-        // if(user){
-        //     res.json(user)
-        // }else {
-        //     res.status(401).json({
-        //         error:'No User logged in'
-        //     })
-        // }
+        if(user){
+            res.json(user)
+        }else {
+            res.status(401).json({
+                error:'No User logged in'
+            })
+        }
     })
 })
 

@@ -65,19 +65,19 @@ export default function SkillSearchBar({category}) {
                     ) 
                 })}
             </div>
-            <MDBContainer>
-      <MDBBtn onClick={() => {setShowNewSkillModal(!showNewSkillModal)}}>Modal</MDBBtn>
-      <MDBModal isOpen={showNewSkillModal} toggle={() => {setShowNewSkillModal(!showNewSkillModal)}}>
-        <MDBModalHeader toggle={() => {setShowNewSkillModal(!showNewSkillModal)}}>MDBModal title</MDBModalHeader>
-        <MDBModalBody>
-          (...)
-        </MDBModalBody>
-        <MDBModalFooter>
-          <MDBBtn color="secondary" onClick={() => {setShowNewSkillModal(!showNewSkillModal)}}>Close</MDBBtn>
-          <MDBBtn color="primary">Save changes</MDBBtn>
-        </MDBModalFooter>
-      </MDBModal>
-    </MDBContainer>
+            {/* <MDBContainer>
+                <button onClick={() => {setShowNewSkillModal(!showNewSkillModal)}}>Modal</button>
+                <MDBModal isOpen={showNewSkillModal} toggle={() => {setShowNewSkillModal(!showNewSkillModal)}}>
+                    <MDBModalHeader toggle={() => {setShowNewSkillModal(!showNewSkillModal)}}>MDBModal title</MDBModalHeader>
+                    <MDBModalBody>
+                    (...)
+                    </MDBModalBody>
+                    <MDBModalFooter>
+                    <MDBBtn color="secondary" onClick={() => {setShowNewSkillModal(!showNewSkillModal)}}>Close</MDBBtn>
+                    <MDBBtn color="primary">Save changes</MDBBtn>
+                    </MDBModalFooter>
+                </MDBModal>
+            </MDBContainer> */}
         </>
     )
 }

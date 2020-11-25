@@ -6,6 +6,8 @@ import '../styles/profileSetup.css'
 import { logout } from '../redux/actions';
 import { useHistory } from 'react-router-dom';
 import SkillSearchBar from './SkillSearchBar';
+import Axios from 'axios';
+
 
 export default function ProfileSetup() {
     const user = useSelector(state => state.user)
@@ -13,6 +15,7 @@ export default function ProfileSetup() {
     const [email, setEmail] = useState('')
     const dispatch = useDispatch();
     const history = useHistory();
+    const pickedSkillsArray = useSelector(state => state.searchSkillsToAdd)
 
     const handleLogout = (e) => {
         e.preventDefault();
@@ -38,6 +41,19 @@ export default function ProfileSetup() {
                 let path = "/"
                 history.push(path)
             }
+        })
+    }
+
+    const handleSubmitSkills = () => {
+      const userSkillsArray = pickedSkillsArray.map(skills => skills.id)
+      Axios.post('/api/v1/hub/userSkill', {
+        userSkillsArray
+      })
+        .then(res => {
+          console.log(res)
+        })
+        .catch(e => {
+          console.log(e)
         })
     }
 
