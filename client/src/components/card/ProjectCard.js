@@ -1,21 +1,22 @@
 import { MDBCard, MDBCardText, MDBCardTitle } from 'mdbreact'
 import React from 'react'
 
-export default function ProjectCard() {
+export default function ProjectCard(props) {
+    const { owner, description, title, isCompleted, publishedAt, deadline, memberLimit} = props.project
     return (
         <div>
             <MDBCard className="card-body" style={{ marginTop: "1rem" }}>
-    <MDBCardTitle>Project title</MDBCardTitle>
+    <MDBCardTitle>{title}</MDBCardTitle>
     <MDBCardText>
-      Project description
+      {description}
     </MDBCardText>
     <div className="flex-row ">
     <a href="#!" className="card-link">
-        Status: status
+        Status: {isCompleted === false ? "open" : "closed"}
       </a>
-      <a href="#!" className="card-link">Published: date
+      <a href="#!" className="card-link">Published: {publishedAt}
       </a>
-      <a href="#!" className="card-link">Member's limit: number
+      <a href="#!" className="card-link">Member's limit: {memberLimit}
       </a>
       <a href="#!" className="card-link">Interested: number
       </a>
