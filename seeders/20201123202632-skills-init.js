@@ -240,12 +240,6 @@ module.exports = {
       },
       //! Language Skills Seeders
       {
-        name: 'Korean',
-        category: 'language',
-        createdAt: new Date,
-        updatedAt: new Date,
-      },
-      {
         name: 'Chinese',
         category: 'language',
         createdAt: new Date,

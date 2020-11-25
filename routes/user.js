@@ -60,11 +60,9 @@ router.post('/',upload.single('profilePicture'), (req,res) => {
             lastName: lastName,
             password: hash,
             profilePicture: req.file && req.file.path ? req.file.path : null
-            
         })
         .then((result) => {
             res.status(201).json(result)
-            
         })
         .catch((error) => {
             res.status(404).json({
@@ -84,7 +82,7 @@ router.post('/login', (req,res) => {
         return;
     }
 
-    models.User.scope('withPassword').findOne({
+    models.User.findOne({
         where: {
             email: req.body.email
         }
@@ -122,25 +120,6 @@ router.get('/', (req,res) => {
         res.json(user)
     })
 })
-
-//* Get specific user based on their id --> param
-router.get('/:id', (req,res) => {
-    const { id } = req.params;
-    models.User.findOne({
-        where: { id },
-        include: [db.Skill]
-    })
-    .then((user) =>{
-        if(user){
-            res.json(user)
-        }else {
-            res.status(401).json({
-                error:`User with ID ${id} not found`
-            })
-        }
-    })
-})
-
 
 //logout
 router.post('/logout', (req,res) => {
