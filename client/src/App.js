@@ -1,6 +1,6 @@
-import React from 'react'
-import { Provider } from 'react-redux';
-import { Route, Switch } from 'react-router-dom';
+import React, {useEffect} from 'react'
+import { Provider, useDispatch, useSelector } from 'react-redux';
+import { Redirect, Route, Switch, useHistory } from 'react-router-dom';
 import './App.css';
 import Dashboard from './components/Dashboard';
 import MainPage from './components/MainPage';
@@ -9,20 +9,50 @@ import ProjectForm from './components/ProjectForm';
 import Projects from './components/Projects';
 import SignUpPage from './components/SignUpPage';
 import Test from './components/Test';
+import { checked, login } from './redux/actions'
 
 
 
 function App() {
+  const user = useSelector(state => state.user)
+  const dispatch = useDispatch()
+
+
+  useEffect(() => {
+    fetch('/api/v1/user/current/')
+    .then(res => res.json())
+    .then(data => {
+      console.log(data)
+      if(data.error){
+        console.log('no user')
+        dispatch(checked())
+      }else{
+        dispatch(login(data.user))
+      }
+    })
+  },[dispatch])
+
+  if(!user.checked){
+    return 'Loading!'
+  }
   return (
     
         <Switch>
-          <Route exact path="/"/>
+          <Route exact path="/" component={MainPage}/>
           <Route path="/register" component={SignUpPage}/>
-          <Route path="/login" component={MainPage}/>
-          <Route path="/hub" component={ProfileSetup}/>
-          <Route path="/projectForm" component={ProjectForm}/>
-          <Route path="/dashboard" component={Dashboard}/>
-          <Route path="/projects" component={Projects}/>
+          
+          
+          {user.loginInfo !== null && (
+            <>
+            <Route path="/hub" component={ProfileSetup}/>
+            <Route path="/projectForm" component={ProjectForm}/>
+            <Route path="/dashboard" component={Dashboard}/>
+            <Route path="/projects" component={Projects}/>
+            </>
+          )}
+          <Route>
+            <Redirect to ='/' />
+          </Route>
         </Switch>
 
   );

@@ -57,7 +57,6 @@ router.patch('/', checkAuth, (req,res) => {
         return ;
     } 
 
-    //todo COMPLETE
     const { firstName, lastName, email, password, profilePicture } = req.body
     const params = { firstName, lastName, password, profilePicture, email }
     Object.keys(params).forEach(key => {params[key] ? updateObject[key] = params[key] : ''})

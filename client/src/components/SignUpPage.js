@@ -25,7 +25,7 @@ export default function SignUpPage() {
         formData.append('email', email)
         formData.append('password', password)
         formData.append('profilePicture', profilePicture)
-        fetch("/api/v1/register", {
+        fetch("/api/v1/user", {
             method: "POST",
             body: formData
            
@@ -63,7 +63,7 @@ export default function SignUpPage() {
                     })
                 })
             .then((result) =>{
-                let path = "/login"
+                let path = "/"
                 history.push(path)
             })
                 

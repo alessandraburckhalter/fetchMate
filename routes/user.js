@@ -123,12 +123,35 @@ router.get('/', (req,res) => {
     })
 })
 
+router.get('/current', (req,res) => {
+    if(!req.session.user) {
+        return res.status(401).json({
+            error:'No User logged in'
+        })
+    }
+    models.User.findOne({
+        where: {
+            id: req.session.user.id
+        }
+    })
+    .then((user) =>{
+        if(user){
+            res.json({user})
+        }else {
+            res.status(401).json({
+                error:'No User logged in'
+            })
+        }
+    })
+})
+
+
 //* Get specific user based on their id --> param
 router.get('/:id', (req,res) => {
     const { id } = req.params;
     models.User.findOne({
         where: { id },
-        include: [db.Skill]
+        include: [models.Skill]
     })
     .then((user) =>{
         if(user){
@@ -140,6 +163,8 @@ router.get('/:id', (req,res) => {
         }
     })
 })
+
+
 
 
 //logout
