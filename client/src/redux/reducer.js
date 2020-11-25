@@ -1,23 +1,26 @@
 import { combineReducers } from 'redux';
-import { ADD_SKILL_TO_SEARCH_ARRAY, ADD_USER_SKILL, REMOVE_SKILL_FROM_SEARCH_ARRAY, SET_ALL_POSSIBLE_SKILLS, SET_LOGIN, SET_LOGOUT, SET_USER_PROFILE_PIC, SET_USER_SKILLS } from './actions';
+import { ADD_SKILL_TO_SEARCH_ARRAY, ADD_USER_SKILL, REMOVE_SKILL_FROM_SEARCH_ARRAY, SET_ALL_POSSIBLE_SKILLS, SET_LOGIN, SET_LOGOUT, SET_USER_PROFILE_PIC, SET_USER_SKILLS, SET_CHECKED} from './actions';
+// import { ADD_USER_SKILL, checked, SET_ALL_POSSIBLE_SKILLS, SET_CHECKED, SET_LOGIN, SET_LOGOUT, SET_USER_PROFILE_PIC, SET_USER_SKILLS } from './actions';
 
 
 //* This is the reducer that houses all possible actions for the user global state
 //todo need to change the profile picture one to change user.loginInfo.profilePicture
-const userReducer = (state={}, action) => {
+const userReducer = (state={loginInfo:null, skills:null, checked:false}, action) => {
     switch (action.type){
         case SET_LOGIN:
-            return {loginInfo: action.payload.userInfo};
+            return {...state,loginInfo: action.payload.userInfo, checked:true};
         case SET_LOGOUT:
-            return null;
+            return {...state,loginInfo:null, skills:null};
         case SET_USER_SKILLS:
-            return {skills: action.payload.userSkills};
+            return {...state, skills: action.payload.userSkills};
         case ADD_USER_SKILL:
             return [...state.user.skills].push(action.payload.individualSkill);
         case SET_USER_PROFILE_PIC:
             //* When the user changes their profile picture, this will save the new picture in the old pictures spot...getting rid of the old one.
             return [...state.user.loginInfo.profilePic] = action.payload.image;
             // return {profilePic: action.payload.image};
+        case SET_CHECKED:
+            return {...state, checked:true}
         default:
             return state;
     }   
