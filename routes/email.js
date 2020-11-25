@@ -44,7 +44,7 @@ router.post('/matched', (req, res) => {
 
     console.log(req.body);
 
-    sendGrid.setApiKey(`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`)
+    sendGrid.setApiKey(process.env.SENDGRID_API)
     const msg = {
         to: req.body.email,
         from: "fetchmate.contact@gmail.com",
