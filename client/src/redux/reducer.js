@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { ADD_USER_SKILL, checked, SET_ALL_POSSIBLE_SKILLS, SET_CHECKED, SET_LOGIN, SET_LOGOUT, SET_USER_PROFILE_PIC, SET_USER_SKILLS } from './actions';
+import { ADD_USER_SKILL, SET_ALL_POSSIBLE_SKILLS, SET_CHECKED, SET_LOGIN, SET_LOGOUT, SET_USER_PROFILE_PIC, SET_USER_SKILLS } from './actions';
 
 
 //* This is the reducer that houses all possible actions for the user global state
