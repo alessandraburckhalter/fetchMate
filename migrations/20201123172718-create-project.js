@@ -24,7 +24,9 @@ module.exports = {
         type: Sequelize.STRING
       },
       isCompleted: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+        defaultValue: false,
       },
       publishedAt: {
         type: Sequelize.DATE

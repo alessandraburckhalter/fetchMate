@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'owner' //* User.getProjects() --> gets the projects that the user in question is owner of
       })
       User.belongsToMany(models.Project, {
-        through: 'TeamMembers',
+        through: models.TeamMember,
         as: 'MemberProjects' //* User.getMemberProjects() --> gets the projects that the user is a team member of
       })
       User.belongsToMany(models.Skill, {
