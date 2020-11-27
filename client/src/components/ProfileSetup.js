@@ -69,11 +69,13 @@ export default function ProfileSetup() {
             <img src={user.loginInfo.profilePicture} alt="profilePicture" width="70%" />
             <MDBCardTitle>
               <a href="#!" className="title-one">
-              {user.loginInfo.firstName} {user.loginInfo.lastName}
+              {user.loginInfo.firstName} {user.loginInfo.lastName} 
               </a> <br/>
 
+        
+
               <a href="#!" className="title-one">
-              Title
+              {user.loginInfo.title}
               </a>
             </MDBCardTitle>
             

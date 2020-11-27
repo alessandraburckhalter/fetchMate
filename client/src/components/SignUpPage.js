@@ -1,7 +1,9 @@
 import React, {useState} from 'react';
 import '../styles/signUp.css'
-import {useHistory} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 import Axios from 'axios';
+import { MDBCol, MDBContainer, MDBFooter, MDBIcon, MDBRow } from 'mdbreact';
+import logo from '../images/logo2.png'
 
 
 
@@ -11,6 +13,7 @@ export default function SignUpPage() {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState('');
     const [profilePicture, setProfilePicture] = useState('');
+    const [title, setTitle] = useState('')
     const [emailSent, setEmailSent ] = useState(false);
     const formData = new FormData();
     const history = useHistory();
@@ -72,8 +75,24 @@ export default function SignUpPage() {
     }
     
     return (
-            <div id="top">
-            <form className="signup-form" onSubmit={handleSubmit}>
+        <div>
+        <div id="left-side">
+            <aside>
+                <img src={logo} alt="logo" width="50%"/>
+
+                
+                <h2>Create an account and start publishing or searching projects today!</h2>
+
+                
+                <Link to="/" className="back-home">
+                <MDBIcon icon="arrow-left" size={30} color="red" />
+                </Link>
+                
+            </aside>
+
+            <div id="right-side">
+                <aside>
+                    <form className="signup-form" onSubmit={handleSubmit}>
 
                 <fieldset>
                     <legend className="signup-legend">SIGN UP </legend>
@@ -99,6 +118,7 @@ export default function SignUpPage() {
                             Email
                             </label>
                         <input
+                            icon="lock"
                             id="email"
                             value={email}
                             onChange={(e)=> {setEmail(e.target.value)}}
@@ -107,7 +127,7 @@ export default function SignUpPage() {
 
                     <div className="input-block">
                         <label htmlFor="password">
-                            password
+                            Password
                             </label>
                         <input
                             id="password"
@@ -133,6 +153,10 @@ export default function SignUpPage() {
                     Submit
                 </button>
             </form>
+            </aside>
+            </div>
+        </div>
+
         </div>
     )
 }

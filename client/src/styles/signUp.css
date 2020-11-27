@@ -1,28 +1,70 @@
-* {
+/* * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+} */
+
+#left-side {
+  width: 100vw;
+  height: 120vh;
+  position: relative;
+  display: flex;
 }
 
-#top {
-    width: 100vw;
-    height: auto;
-    background-image: linear-gradient(-225deg, #2CD8D5 0%, #C5C1FF 56%, #FFBAC3 100%);
-    position: relative;
-    display: flex;
+#left-side aside {
+  width: 50%;
+  background-image: url(../images/Frame3.svg);
+  background-color: rgba(145,192,241,1);
+ /* background-image: linear-gradient(-225deg, #2CD8D5 0%,  56%, #FFBAC3 100%); */
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
+
+#left-side h1 {
+  color: white;
+  font-weight: bold;
+}
+
+#left-side h2 {
+  color: white;
+  text-align: center;
+
+}
+
+#right-side {
+  width: 100vw;
+  height: 120vh;
+  position: relative;
+}
+
+#right-side aside {
+  width: 100%;
+  height: 120vh;
+  background-image: url(../images/working.jpeg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 
 form.signup-form {
     width: 500px;
-    margin: 64px auto;
-    
-    background: #ffffff;
+    margin: auto;
+    /* background: #ffffff; */
     border: 1px solid #d3e2e5;
-    border-radius: 20px;
-
-    padding: 64px 80px;
-
-    
+    /* border-radius: 20px; */
+    padding: 44px 80px;
+    /* overflow: hidden; */
+    background-color: rgba(46, 138, 138, 0.4); 
+    color: rgba(46, 138, 138, 0.4);
+    border-radius: 0;
 }
 
 form.signup-form h1 {
@@ -37,10 +79,23 @@ form.signup-form h1 {
 
 }
 
+.back-home {
+  font-size: 26px;
+  /* position: absolute; */
+  width: 80px;
+  height: 80px;
+  margin-top: 30px;
+  background: #bbe1fa;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 form.signup-form .signup-legend {
   border: none;
   margin-bottom: 0;
-  color: #8fa7b3;
+  color: white;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   font-size: 18px;
   text-align: center;
@@ -52,20 +107,16 @@ form.signup-form fieldset {
 
 form.signup-form fieldset + fieldset {
     margin-top: 80px;
-
 }
 
 form.signup-form fieldset legend {
-    width: 100%;
-
-    font-size: 20px;
-    line-height: 34px;
-    color: #5c8599;
-    
-
-    border-bottom: 1px solid #d3e2e5;
-    margin-bottom: 40px;
-    padding-bottom: 24px;
+  border: none;
+  margin-bottom: 0;
+  color: white;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-size: 18px;
+  text-align: center;
+  font-weight: 800;
 }
 
 form.signup-form .input-block + .input-block {
@@ -74,24 +125,26 @@ form.signup-form .input-block + .input-block {
   
   form.signup-form .input-block label {
     display: flex;
-    color: #8fa7b3;
+    color: white;
     margin-bottom: 8px;
     line-height: 24px;
     font-size: 18px;
+    margin-top: 18px;
+    font-weight: bold;
   }
   
   form.signup-form .input-block input,
   form.signup-form .input-block textarea {
     width: 100%;
-    background: #f5f8fa;
+    background-color: rgba(46, 138, 138, 0.1);
     border: 1px solid #d3e2e5;
-    border-radius: 20px;
+    border-radius: 0;
     outline: none;
-    color: #5c8599;
+    color: white;
   }
   
   form.signup-form .input-block input {
-    height: 64px;
+    height: 40px;
     padding: 0 16px;
   }
   
@@ -111,22 +164,20 @@ form.signup-form .input-block + .input-block {
 
    
   form.signup-form button.confirm-button {
-    margin-top: 64px;
-    
+    margin-top: 44px;
     width: 100%;
-    height: 64px;
+    height: 50px;
     border: 0;
     cursor: pointer;
-    background: #3cdc8c;
-    border-radius: 20px;
+    background: #36cf82;
+    /* border-radius: 20px; */
     color: #ffffff;
     font-weight: 800;
-  
     display: flex;
     justify-content: center;
     align-items: center;
-  
     transition: background-color 0.2s;
+    font-size: 1em;
   }
   
   form.signup-form button.confirm-button:hover {
