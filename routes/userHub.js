@@ -28,7 +28,6 @@ router.get('/current', checkAuth, (req,res) => {
                 db.Skill]
     })
     .then((user) =>{
-        console.log(user)
         if(user){
             res.json(user)
         }else {
