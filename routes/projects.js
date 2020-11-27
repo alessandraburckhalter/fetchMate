@@ -12,6 +12,7 @@ router.get('/', (req, res) => {
     console.log(includeCompleted === 'true' ? 'withCompleted' : 'defaultScope')
     db.Project.scope(includeCompleted === 'true' ? 'withCompleted' : 'defaultScope').findAll({
         order: [['publishedAt', 'DESC']],
+        include:[db.User]
     })
         .then(projects => {
             res.json(projects);
@@ -48,10 +49,10 @@ router.get('/:id', (req, res) => {
 })
 
 //* Get all projects for a specific user --> both an owner of and a team mate of
-router.get('/user/:userId', (req, res) => {
-    const { userId } = req.params;
-    db.Project.findAll({})
-})
+// router.get('/user/:userId', (req, res) => {
+//     const { userId } = req.params;
+//     db.Project.findAll({})
+// })
 
 
 //* Patch route for updating basic project information using the project id in the parameters
@@ -110,8 +111,7 @@ router.post('/', (req, res) => {
     //TODO: Will need to double check w/ front end team for these names
     const { description, title, isCompleted, publishedAt, deadline, memberLimit } = req.body;
     //TODO: May not want to make it to where the user has to submit all of these in order to create a project 
-        if(!req.body || !description || !title || (isCompleted !== 'true' && isCompleted !== 'false') || !publishedAt || !deadline || !memberLimit){
-            console.log(isCompleted !== 'false')
+        if(!req.body || !description || !title || !publishedAt || !deadline || !memberLimit){
             res.status(400).json({
                 error : 'Please submit all required fields',
                 requests: [description, title, isCompleted, publishedAt, deadline, memberLimit]
@@ -128,7 +128,6 @@ router.post('/', (req, res) => {
             return user.createProject({
                 description,
                 title,
-                isCompleted,
                 publishedAt,
                 deadline,
                 memberLimit
@@ -277,6 +276,41 @@ router.delete('/:projectId/teamMember', (req, res) => {
                         res.status(404).json({error: `A certain user wasn't found`}) 
                     }
                     return project.removeMembers(users)
+                        .then(() => project)
+                })
+        })
+        .then(project => {
+            res.status(201).json(project)
+        })
+        .catch(e => {
+            res.status(500).json({
+                error: 'Database error occurred' + e
+            })
+        })
+})
+
+//* Route for updating the approved status for a teamMember
+//? First find the project, then find the user, then update the approved status
+router.patch('/:projectId/teamMember', (req, res) => {
+    const { projectId } = req.params;
+    const { memberId, approvedStatus } = req.body;
+    db.Project.findOne({
+        where:{
+            id: projectId
+        }
+    })
+        .then(project => {
+            if(!project){
+                res.status(404).json({error: 'Project not found'})
+            }
+            return db.User.findOne({
+                where:{id: memberId}
+            })
+                .then(user => {
+                    if(!user){
+                        res.status(404).json({error: `A certain user wasn't found`}) 
+                    }
+                    return project.addMember(user, {through: {approved: approvedStatus}})
                         .then(() => project)
                 })
         })
