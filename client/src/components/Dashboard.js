@@ -12,16 +12,7 @@ export default function Dashboard() {
   const user = useSelector(state => state.user);
   const dispatch = useDispatch()
 
-  // const removeProject = (projectId) =>{
-  //   fetch(`/api/v1/projects/${}`,{
-  //     method: "DELETE"
-  //   })
-  //   .then(res=>res.json())
-      
-  //   .catch(e=>{
-  //     console.log(e)
-  //   })
-  // }
+ 
 
   const loadProject = () =>{
     fetch('/api/v1/hub/current')
