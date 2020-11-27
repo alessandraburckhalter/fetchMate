@@ -4,6 +4,7 @@ import {Link, useHistory} from 'react-router-dom'
 import Axios from 'axios';
 import { MDBCol, MDBContainer, MDBFooter, MDBIcon, MDBRow } from 'mdbreact';
 import logo from '../images/logo2.png'
+import Footer from './Footer';
 
 
 
@@ -70,8 +71,7 @@ export default function SignUpPage() {
                 history.push(path)
             })
                 
-        
-        
+    
     }
     
     return (
@@ -79,11 +79,8 @@ export default function SignUpPage() {
         <div id="left-side">
             <aside>
                 <img src={logo} alt="logo" width="50%"/>
-
-                
                 <h2>Create an account and start publishing or searching projects today!</h2>
 
-                
                 <Link to="/" className="back-home">
                 <MDBIcon icon="arrow-left" size={30} color="red" />
                 </Link>
