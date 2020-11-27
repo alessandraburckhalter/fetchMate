@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import {Link, useHistory} from 'react-router-dom'
 import '../styles/mainPage.css'
 import { useDispatch } from 'react-redux'
-import { login } from '../redux/actions';
+
+import { login,setCurrentUserInfo } from '../redux/actions';
 import {  MDBContainer, MDBIcon, MDBRow } from 'mdbreact';
 import logo from '../images/logo2.png';
 import Footer from './Footer';
+
 
 
 

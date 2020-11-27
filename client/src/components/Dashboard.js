@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { login } from '../redux/actions';
 import '../styles/dashboard.css'
 import ProjectCard from './card/DashboardProjectCard';
+import ContributeProjectCard from "./card/DashboardConProjectCard"
 
 export default function Dashboard() {
 
@@ -83,7 +84,7 @@ export default function Dashboard() {
 
   <h1>Contribuiting Projects</h1>
     {Object.keys(currentUserData).length > 0 && currentUserData.MemberProjects.map((project, index)=>{
-            return <ProjectCard key={project.id} project={project}/>
+            return <ContributeProjectCard key={project.id} project={project}/>
           })}
       {/* <MDBCard className="card-body" style={{ marginTop: "1rem" }}>
     <MDBCardTitle>Project title</MDBCardTitle>

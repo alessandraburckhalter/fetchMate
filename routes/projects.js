@@ -12,6 +12,7 @@ router.get('/', (req, res) => {
     console.log(includeCompleted === 'true' ? 'withCompleted' : 'defaultScope')
     db.Project.scope(includeCompleted === 'true' ? 'withCompleted' : 'defaultScope').findAll({
         order: [['publishedAt', 'DESC']],
+        include:[db.User]
     })
         .then(projects => {
             res.json(projects);
@@ -240,7 +241,7 @@ router.post('/:projectId/teamMember', (req, res) => {
                     if(!users){
                         res.status(404).json({error: `A certain user wasn't found`}) 
                     }
-                    return project.addMembers(users)
+                    return project.addMembers(users, {through:{approved: 'pending'}})
                         .then(() => project)
                 })
         })
@@ -277,6 +278,41 @@ router.delete('/:projectId/teamMember', (req, res) => {
                         res.status(404).json({error: `A certain user wasn't found`}) 
                     }
                     return project.removeMembers(users)
+                        .then(() => project)
+                })
+        })
+        .then(project => {
+            res.status(201).json(project)
+        })
+        .catch(e => {
+            res.status(500).json({
+                error: 'Database error occurred' + e
+            })
+        })
+})
+
+//* Route for updating the approved status for a teamMember
+//? First find the project, then find the user, then update the approved status
+router.patch('/:projectId/teamMember', (req, res) => {
+    const { projectId } = req.params;
+    const { memberId, approvedStatus } = req.body;
+    db.Project.findOne({
+        where:{
+            id: projectId
+        }
+    })
+        .then(project => {
+            if(!project){
+                res.status(404).json({error: 'Project not found'})
+            }
+            return db.User.findOne({
+                where:{id: memberId}
+            })
+                .then(user => {
+                    if(!user){
+                        res.status(404).json({error: `A certain user wasn't found`}) 
+                    }
+                    return project.addMember(user, {through: {approved: approvedStatus}})
                         .then(() => project)
                 })
         })
