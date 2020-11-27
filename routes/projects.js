@@ -50,6 +50,10 @@ router.get('/:id', (req, res) => {
 })
 
 //* Route for finding all the users that are interested in a project...I.E. Team Members
+//? NOTE: if you want to get members whose request are pending then you would use
+//? http://localhost:3000/api/v1/projects/${projectIdHere}/teamMember?onlyPending=true
+//? NOTE: if you want to get pending members and accepted members then you would use
+//? http://localhost:3000/api/v1/projects/${projectIdHere}/teamMember
 router.get('/:projectId/teamMember', (req, res) => {
     const {projectId} = req.params;
     const {onlyPending} = req.query;
