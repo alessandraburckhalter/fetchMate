@@ -21,7 +21,7 @@ router.get('/', (req, res) => {
         })
 })
 
-//* Get a specific project based on its id
+//* Get a specific project based on the project id
 //* Returns ==> the project, the owner object and an array of its members.
 router.get('/:id', (req, res) => {
     const { id } = req.params;
@@ -47,10 +47,11 @@ router.get('/:id', (req, res) => {
         })
 })
 
-//* Get skills for a specific id
-// router.get('/:id/skills', (req, res) => {
-//     //get skills where id: id
-// })
+//* Get all projects for a specific user --> both an owner of and a team mate of
+router.get('/user/:userId', (req, res) => {
+    const { userId } = req.params;
+    db.Project.findAll({})
+})
 
 
 //* Patch route for updating basic project information using the project id in the parameters

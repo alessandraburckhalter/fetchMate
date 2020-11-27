@@ -8,12 +8,24 @@ const checkAuth = require('../checkAuth');
 const db = require('../models');
 
 //get profile
+//* Added a section that includes the projects that the current user owns and is a teamMember of
 router.get('/current', checkAuth, (req,res) => {
     models.User.findOne({
         where: {
             id: req.session.user.id
         },
-        include: [db.Skill]
+        include: [
+            {
+                primaryKey: 'owner',
+                model: db.Project,
+                required: false,
+            },
+            {
+                as: "MemberProjects", 
+                model: db.Project,
+                required: false
+            },
+                db.Skill]
     })
     .then((user) =>{
         if(user){

@@ -6,7 +6,7 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     static associate(models) {
-      User.hasMany(models.Project, {
+      User.hasMany(models.Project.scope('withCompleted'), {
         foreignKey: 'owner' //* User.getProjects() --> gets the projects that the user in question is owner of
       })
       User.belongsToMany(models.Project, {
