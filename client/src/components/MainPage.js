@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import {Link, useHistory} from 'react-router-dom'
 import '../styles/mainPage.css'
-import { Row, Col } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
 import { login } from '../redux/actions';
-import { MDBCol, MDBContainer, MDBFooter, MDBIcon, MDBRow } from 'mdbreact';
+import {  MDBContainer, MDBFooter, MDBIcon, MDBRow } from 'mdbreact';
 import logo from '../images/logo2.png';
 import Footer from './Footer';
+import { login, setCurrentUserInfo } from '../redux/actions';
 
 export default function MainPage() {
     const [password, setPassword] = useState('')
@@ -28,8 +28,8 @@ export default function MainPage() {
             }
         })
         .then(res => res.json())
+        
         .then(data => {
-            console.log(data)
             if(data.error){
                 alert(data.error)
             }else{
@@ -39,7 +39,7 @@ export default function MainPage() {
                 let path = "/dashboard"
                 history.push(path)
             }
-        })
+        }) 
     }
 
 

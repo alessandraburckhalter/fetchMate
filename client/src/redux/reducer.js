@@ -5,12 +5,12 @@ import { ADD_SKILL_TO_SEARCH_ARRAY, ADD_USER_SKILL, REMOVE_SKILL_FROM_SEARCH_ARR
 
 //* This is the reducer that houses all possible actions for the user global state
 //todo need to change the profile picture one to change user.loginInfo.profilePicture
-const userReducer = (state={loginInfo:null, skills:null, checked:false}, action) => {
+const userReducer = (state={loginInfo:null, checked:false}, action) => {
     switch (action.type){
         case SET_LOGIN:
             return {...state,loginInfo: action.payload.userInfo, checked:true};
         case SET_LOGOUT:
-            return {...state,loginInfo:null, skills:null};
+            return {...state,loginInfo:null,};
         case SET_USER_SKILLS:
             return {...state, skills: action.payload.userSkills};
         case ADD_USER_SKILL:
@@ -21,6 +21,7 @@ const userReducer = (state={loginInfo:null, skills:null, checked:false}, action)
             // return {profilePic: action.payload.image};
         case SET_CHECKED:
             return {...state, checked:true}
+        
         default:
             return state;
     }   
@@ -41,6 +42,8 @@ const skillsReducer = (state={}, action) => {
     }
 }
 
+
+
 //* Reducer for keeping track of searchBar global state
 const searchBarReducer = (state=[], action) => {
     switch (action.type){
@@ -59,6 +62,7 @@ export const rootReducer = combineReducers({
     user: userReducer,
     possibleSkills: skillsReducer,
     searchSkillsToAdd: searchBarReducer,
+    
 })
 
 //* For example, to access the state variable corresponding to the userReducer we would do the following:
