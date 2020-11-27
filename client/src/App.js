@@ -47,9 +47,9 @@ function App() {
             <>
             <Route path="/hub" component={ProfileSetup}/>
             <Route path="/projectForm" component={ProjectForm}/>
-            <Route path="/dashboard" component={Dashboard}/>
+            <Route exact path="/dashboard" component={Dashboard}/>
             <Route path="/projects" component={Projects}/>
-            <Route path="/interested" component={Interested}/>
+            <Route path="/dashboard/:projectId" component={Interested}/>
             <Route path="/test" component={Test}/>
             </>
           )}

@@ -1,25 +1,41 @@
 import { MDBCard, MDBCardBody, MDBCardText, MDBCardTitle, MDBCol, MDBContainer, MDBIcon, MDBRow } from 'mdbreact'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 
 export default function Interested() {
+    const { projectId } = useParams()
+    const [project, setProject] = useState("")
+    // const publish = project.publishedAt
+    useEffect(()=>{
+      
+        fetch(`/api/v1/projects/${projectId}`)
+          .then(res =>res.json())
+          .then(data =>{
+            setProject(data)
+            
+          })
+        
+      }, [projectId, setProject])
+  
+
     return (
-        <div id="top">
+      <div id="top">
 
         <MDBContainer>
           <MDBRow>
           
         
           <MDBCol >
-              <h1 >Project Title</h1>
+            <h1 >{project.title}</h1>
           <MDBCard className="card-body" style={{ marginTop: "1rem" }}>
         <MDBCardText>
-          Full Project description
+          {project.description}
         </MDBCardText>
         <div className="flex-row ">
         <a href="#!" className="card-link">
-            Status: status
+            Status: {project.isCompleted === true ? "Close" : "Open"}
           </a>
-          <a href="#!" className="card-link">Published: date
+          <a href="#!" className="card-link">Published: {Object.keys(project).length > 0 && project.publishedAt.slice(0,10)} 
           </a>
           
         </div>
@@ -83,3 +99,5 @@ export default function Interested() {
             </div>
     )
 }
+    
+
