@@ -23,7 +23,7 @@ function App() {
     fetch('/api/v1/user/current/')
     .then(res => res.json())
     .then(data => {
-      console.log(data)
+      // console.log(data)
       if(data.error){
         console.log('no user')
         dispatch(checked())

@@ -37,7 +37,7 @@ export default function Projects() {
       </div>
     </div>
   </MDBCard>
-
+      {/* ============================================================================================== */}
   <MDBCard className="card-body" style={{ marginTop: "1rem" }}>
     <MDBCardTitle>Project title</MDBCardTitle>
     <MDBCardText>

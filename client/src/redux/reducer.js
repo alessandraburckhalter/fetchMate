@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { ADD_SKILL_TO_SEARCH_ARRAY, ADD_USER_SKILL, REMOVE_SKILL_FROM_SEARCH_ARRAY, SET_ALL_POSSIBLE_SKILLS, SET_LOGIN, SET_LOGOUT, SET_USER_PROFILE_PIC, SET_USER_SKILLS, SET_CHECKED} from './actions';
+import { ADD_SKILL_TO_SEARCH_ARRAY, ADD_USER_SKILL, REMOVE_SKILL_FROM_SEARCH_ARRAY, SET_ALL_POSSIBLE_SKILLS, SET_LOGIN, SET_LOGOUT, SET_USER_PROFILE_PIC, SET_USER_SKILLS, SET_CHECKED, SET_CURRENT_USER_INFO} from './actions';
 // import { ADD_USER_SKILL, checked, SET_ALL_POSSIBLE_SKILLS, SET_CHECKED, SET_LOGIN, SET_LOGOUT, SET_USER_PROFILE_PIC, SET_USER_SKILLS } from './actions';
 
 
@@ -21,6 +21,7 @@ const userReducer = (state={loginInfo:null, skills:null, checked:false}, action)
             // return {profilePic: action.payload.image};
         case SET_CHECKED:
             return {...state, checked:true}
+        
         default:
             return state;
     }   
@@ -36,6 +37,15 @@ const skillsReducer = (state={}, action) => {
     switch (action.type){
         case SET_ALL_POSSIBLE_SKILLS:
             return {allSkills: action.payload.allSkills}
+        default:
+            return state;
+    }
+}
+
+const currentUserReducer = (state=[], action) => {
+    switch (action.type){
+        case SET_CURRENT_USER_INFO:
+            return {...state,currentInfo: action.payload.CurrentUserInfo}    
         default:
             return state;
     }
@@ -59,6 +69,7 @@ export const rootReducer = combineReducers({
     user: userReducer,
     possibleSkills: skillsReducer,
     searchSkillsToAdd: searchBarReducer,
+    currentUser: currentUserReducer
 })
 
 //* For example, to access the state variable corresponding to the userReducer we would do the following:
