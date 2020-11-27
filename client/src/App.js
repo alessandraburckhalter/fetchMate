@@ -44,28 +44,6 @@ function App() {
     return 'Loading!'
   }
   return (
-<<<<<<< HEAD
-
-    <Switch>
-      <Route exact path="/" component={MainPage} />
-      <Route path="/register" component={SignUpPage} />
-
-
-      {user.loginInfo !== null && (
-        <>
-          <Route path="/hub" component={ProfileSetup} />
-          <Route path="/projectForm" component={ProjectForm} />
-          <Route path="/dashboard" component={Dashboard} />
-          <Route path="/projects" component={Projects} />
-          <Route path="/interested" component={Interested} />
-          <Route path="/test" component={Test} />
-        </>
-      )}
-      <Route>
-        <Redirect to='/' />
-      </Route>
-    </Switch>
-=======
     
         <Switch>
           <Route exact path="/" component={MainPage}/>
@@ -88,7 +66,6 @@ function App() {
             <Redirect to ='/' />
           </Route>
         </Switch>
->>>>>>> main
 
   );
 }
