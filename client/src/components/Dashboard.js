@@ -1,6 +1,7 @@
 import { MDBCard, MDBCardBody, MDBCardText, MDBCardTitle, MDBCol, MDBContainer, MDBIcon, MDBRow } from 'mdbreact';
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from '../redux/actions';
 import '../styles/dashboard.css'
 import ProjectCard from './card/DashboardProjectCard';
 
@@ -8,14 +9,17 @@ export default function Dashboard() {
 
   const [currentUserData, setCurrentUserData] = useState([])
   const user = useSelector(state => state.user);
+  const dispatch = useDispatch()
+
   
   useEffect(()=>{
     fetch('/api/v1/hub/current')
     .then(res=>res.json())
     .then(data=>{
       setCurrentUserData(data)
+      dispatch(login(data))
     })
-  }, [setCurrentUserData])
+  }, [dispatch, setCurrentUserData])
   
     return (
         <div id="top">
