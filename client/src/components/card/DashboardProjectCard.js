@@ -1,18 +1,19 @@
 import { MDBCard, MDBCardText, MDBCardTitle } from 'mdbreact'
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function DashboardProjectCard(props) {
-    const { owner, description, title, isCompleted, publishedAt, deadline, memberLimit} = props.project
+    const { id, owner, description, title, isCompleted, publishedAt, deadline, memberLimit} = props.project
     return (
         <div>
             <MDBCard className="card-body" style={{ marginTop: "1rem" }}>
-    <MDBCardTitle>{title}</MDBCardTitle>
+    <MDBCardTitle><Link to={`/dashboard/${id}`}>{title}</Link> </MDBCardTitle>
     <MDBCardText>
       {description}
     </MDBCardText>
     <div className="flex-row ">
     <a href="#!" className="card-link">
-        Status: {isCompleted === false ? "open" : "closed"}
+        Status: {isCompleted === false ? "Open" : "Closed"}
       </a>
       <a href="#!" className="card-link">Published: {publishedAt.slice(0,10)}
       </a>

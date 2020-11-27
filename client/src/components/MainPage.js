@@ -11,6 +11,7 @@ import Footer from './Footer';
 
 
 
+
 export default function MainPage() {
     const [password, setPassword] = useState('')
     const [email, setEmail] = useState('')
