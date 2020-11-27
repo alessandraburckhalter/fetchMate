@@ -12,14 +12,28 @@ export default function Dashboard() {
   const user = useSelector(state => state.user);
   const dispatch = useDispatch()
 
-  
-  useEffect(()=>{
+  // const removeProject = (projectId) =>{
+  //   fetch(`/api/v1/projects/${}`,{
+  //     method: "DELETE"
+  //   })
+  //   .then(res=>res.json())
+      
+  //   .catch(e=>{
+  //     console.log(e)
+  //   })
+  // }
+
+  const loadProject = () =>{
     fetch('/api/v1/hub/current')
     .then(res=>res.json())
     .then(data=>{
       setCurrentUserData(data)
       dispatch(login(data))
+      
     })
+  }
+  useEffect(()=>{
+    loadProject()
   }, [dispatch, setCurrentUserData])
   
     return (
@@ -76,7 +90,7 @@ export default function Dashboard() {
       <MDBCol >
           <h1 >Your Projects</h1>
           {Object.keys(currentUserData).length > 0 && currentUserData.Projects.map((project, index)=>{
-            return <ProjectCard key={project.id} project={project}/>
+            return <ProjectCard key={project.id} project={project} loadProject={loadProject}/>
           })} 
           
       
