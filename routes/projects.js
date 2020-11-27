@@ -49,10 +49,10 @@ router.get('/:id', (req, res) => {
 })
 
 //* Get all projects for a specific user --> both an owner of and a team mate of
-router.get('/user/:userId', (req, res) => {
-    const { userId } = req.params;
-    db.Project.findAll({})
-})
+// router.get('/user/:userId', (req, res) => {
+//     const { userId } = req.params;
+//     db.Project.findAll({})
+// })
 
 
 //* Patch route for updating basic project information using the project id in the parameters
@@ -111,8 +111,7 @@ router.post('/', (req, res) => {
     //TODO: Will need to double check w/ front end team for these names
     const { description, title, isCompleted, publishedAt, deadline, memberLimit } = req.body;
     //TODO: May not want to make it to where the user has to submit all of these in order to create a project 
-        if(!req.body || !description || !title || (isCompleted !== 'true' && isCompleted !== 'false') || !publishedAt || !deadline || !memberLimit){
-            console.log(isCompleted !== 'false')
+        if(!req.body || !description || !title || !publishedAt || !deadline || !memberLimit){
             res.status(400).json({
                 error : 'Please submit all required fields',
                 requests: [description, title, isCompleted, publishedAt, deadline, memberLimit]
@@ -129,7 +128,6 @@ router.post('/', (req, res) => {
             return user.createProject({
                 description,
                 title,
-                isCompleted,
                 publishedAt,
                 deadline,
                 memberLimit
@@ -241,7 +239,7 @@ router.post('/:projectId/teamMember', (req, res) => {
                     if(!users){
                         res.status(404).json({error: `A certain user wasn't found`}) 
                     }
-                    return project.addMembers(users, {through:{approved: 'pending'}})
+                    return project.addMembers(users)
                         .then(() => project)
                 })
         })

@@ -10,7 +10,8 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'owner' //* project.getUser ==> owner
       }); 
       Project.belongsToMany(models.User, {
-        through: 'TeamMembers',
+        //TODO ASK LACHLAN IF THEIR IS AN EASIER WAY
+        through: models.TeamMember,
         as: 'Members' //* Members ==> makes sense
       })
       Project.belongsToMany(models.Skill, {
