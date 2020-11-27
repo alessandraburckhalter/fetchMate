@@ -1,4 +1,5 @@
 const express = require('express');
+const { Op } = require('sequelize');
 const router = express.Router();
 const db = require('../models');
 
@@ -52,13 +53,16 @@ router.get('/:id', (req, res) => {
 router.get('/:projectId/teamMember', (req, res) => {
     const {projectId} = req.params;
     const {onlyPending} = req.query;
-    db.TeamMember.scope(onlyPending === 'true' ? 'pendingTeamMemberScope' : 'allTeamMemberScope').findAll({
-        where: {
-            ProjectId: projectId
-        },
-        //! Ask Lachlan about below
-        include:[db.User]
-    })
+    const queryObject = {include: [db.User], where:{
+        [Op.or] : [{approved: 'pending'}, {approved: 'accepted'}],
+        ProjectId: projectId,
+    }};
+    //* If only pending is true then it only shows the pending teamMembers
+    //* Else it shows both the pending and the accepted teammembers
+    if(onlyPending){
+        queryObject.where = {ProjectId: projectId, approved: 'pending'}
+    }
+    db.TeamMember.findAll(queryObject)
         .then(teamMembers => {
             res.json(teamMembers)
         })
@@ -315,12 +319,6 @@ router.delete('/:projectId/teamMember', (req, res) => {
 router.patch('/:projectId/teamMember', (req, res) => {
     const { projectId } = req.params;
     const { memberId, approvedStatus } = req.body;
-    db.TeamMember.findOne({
-        where:{UserId: memberId, ProjectId: projectId}
-    })
-        // .then(member => {
-        //     return member.update({approved: approvedStatus})
-        // })
     db.Project.findOne({
         where:{
             id: projectId
@@ -337,7 +335,6 @@ router.patch('/:projectId/teamMember', (req, res) => {
                     if(!user){
                         res.status(404).json({error: `A certain user wasn't found`}) 
                     }
-                    //! We need to change this to an update 
                     return project.addMember(user, {through: {approved: approvedStatus}})
                         .then(() => project)
                 })
