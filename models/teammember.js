@@ -1,3 +1,5 @@
+//TODO ASK LACHLAN IF THEIR IS AN EASIER WAY
+
 'use strict';
 const {
   Model
