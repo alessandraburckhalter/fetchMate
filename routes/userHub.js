@@ -38,6 +38,38 @@ router.get('/current', checkAuth, (req,res) => {
     })
 })
 
+
+// all info by user id
+router.get('/user/:id', checkAuth, (req,res) => {
+    const {id} = req.params
+    models.User.findOne({
+        where: {
+            id
+        },
+        include: [
+            {
+                primaryKey: 'owner',
+                model: db.Project,
+                required: false,
+            },
+            {
+                as: "MemberProjects", 
+                model: db.Project,
+                required: false
+            },
+                db.Skill]
+    })
+    .then((user) =>{
+        if(user){
+            res.json(user)
+        }else {
+            res.status(401).json({
+                error:'No User logged in'
+            })
+        }
+    })
+})
+
 //update profile PUT
 // router.put('/', checkAuth, (req,res) => {
 //     models.User.findOne({

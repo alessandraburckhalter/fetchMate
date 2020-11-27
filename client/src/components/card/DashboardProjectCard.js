@@ -4,6 +4,22 @@ import { Link } from 'react-router-dom'
 
 export default function DashboardProjectCard(props) {
     const { id, owner, description, title, isCompleted, publishedAt, deadline, memberLimit} = props.project
+
+    const removeProject = (projectId) =>{
+      fetch(`/api/v1/projects/${id}`,{
+        method: "DELETE"
+      })
+      .then(res=>res.json())
+      .then(result=>{
+        props.loadProject()
+      })  
+      .catch(e=>{
+        console.log(e)
+      })
+    }
+
+
+
     return (
         <div>
             <MDBCard className="card-body" style={{ marginTop: "1rem" }}>
@@ -25,7 +41,7 @@ export default function DashboardProjectCard(props) {
       </a>
       <button className="card-link">Edit
       </button>
-      <button className="card-link">Delete
+      <button className="card-link" onClick={ () => removeProject(id)}>Delete
       </button>
     </div>
   </MDBCard>

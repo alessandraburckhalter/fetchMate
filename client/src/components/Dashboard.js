@@ -13,14 +13,19 @@ export default function Dashboard() {
   const user = useSelector(state => state.user);
   const dispatch = useDispatch()
 
-  
-  useEffect(()=>{
+ 
+
+  const loadProject = () =>{
     fetch('/api/v1/hub/current')
     .then(res=>res.json())
     .then(data=>{
       setCurrentUserData(data)
       dispatch(login(data))
+      
     })
+  }
+  useEffect(()=>{
+    loadProject()
   }, [dispatch, setCurrentUserData])
   
     return (
@@ -77,7 +82,7 @@ export default function Dashboard() {
       <MDBCol >
           <h1 >Your Projects</h1>
           {Object.keys(currentUserData).length > 0 && currentUserData.Projects.map((project, index)=>{
-            return <ProjectCard key={project.id} project={project}/>
+            return <ProjectCard key={project.id} project={project} loadProject={loadProject}/>
           })} 
           
       
