@@ -1,6 +1,7 @@
 import { MDBCard, MDBCardBody, MDBCardText, MDBCardTitle, MDBCol, MDBContainer, MDBIcon, MDBRow } from 'mdbreact';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { login } from '../redux/actions';
 import '../styles/dashboard.css'
 import ProjectCard from './card/DashboardProjectCard';
@@ -30,7 +31,7 @@ export default function Dashboard() {
         <MDBCard personal className="my-5">
           
           <MDBCardBody>
-            <img src={user.loginInfo.profilePicture} alt="profilePicture" />
+            <img src={user.loginInfo.profilePicture} alt="profilePicture" width="70%" />
             
             <MDBCardTitle>
               <a href="#!" className="title-one">
@@ -119,9 +120,10 @@ export default function Dashboard() {
       Project description
     </MDBCardText>
     <div className="flex-row ">
-    <a href="#!" className="card-link">
+    <Link to="/public" className="card-link">
+      
         Project owner: owner name
-      </a>
+      </Link>
       <a href="#!" className="card-link"> 
       </a>  
     </div>

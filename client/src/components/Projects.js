@@ -1,5 +1,6 @@
 import { MDBCard, MDBCardText, MDBCardTitle, MDBCol, MDBContainer, MDBRow } from 'mdbreact'
 import React from 'react'
+import { Link } from 'react-router-dom'
 import '../styles/projects.css'
 
 export default function Projects() {
@@ -28,8 +29,8 @@ export default function Projects() {
       </a>
       <a href="#!" className="card-link">Published: date
       </a>
-      <a href="#!" className="card-link">Project Owner: owner's name
-      </a>
+      <Link to="/public" className="card-link">Project Owner: owner's name
+      </Link>
       <div>
       <button className="participate-button">
         I want to be part of this project

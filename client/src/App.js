@@ -2,12 +2,14 @@ import React, {useEffect} from 'react'
 import { Provider, useDispatch, useSelector } from 'react-redux';
 import { Redirect, Route, Switch, useHistory } from 'react-router-dom';
 import './App.css';
+import ContribuingProjects from './components/ContribuingProjects';
 import Dashboard from './components/Dashboard';
 import Interested from './components/Interested';
 import MainPage from './components/MainPage';
 import ProfileSetup from './components/ProfileSetup';
 import ProjectForm from './components/ProjectForm';
 import Projects from './components/Projects';
+import PublicProfile from './components/PublicProfile';
 import SignUpPage from './components/SignUpPage';
 import Test from './components/Test';
 import { checked, login } from './redux/actions'
@@ -51,6 +53,8 @@ function App() {
             <Route path="/projects" component={Projects}/>
             <Route path="/interested" component={Interested}/>
             <Route path="/test" component={Test}/>
+            <Route path="/public" component={PublicProfile}/>
+            <Route path="/contribuing" component={ContribuingProjects}/>
             </>
           )}
           <Route>
