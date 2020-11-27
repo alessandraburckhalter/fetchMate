@@ -13,6 +13,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      //! Ask Lachlan about below
+      // TeamMember.belongsTo(models.User)
+      // TeamMember.belongsTo(models.Project)
     }
   };
   TeamMember.init({
@@ -24,6 +27,24 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'TeamMember',
+    defaultScope:{
+      where:{
+        approved: 'accepted'
+      }
+    },
+    scopes:{
+      all:{},
+      pendingTeamMemberScope: {
+        where: {
+          approved: 'pending'
+        }
+      },
+      allTeamMemberScope: {
+        where: {
+          approved: ['pending','approved']
+        }
+      }
+    }
   });
   return TeamMember;
 };

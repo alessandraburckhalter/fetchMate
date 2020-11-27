@@ -48,6 +48,27 @@ router.get('/:id', (req, res) => {
         })
 })
 
+//* Route for finding all the users that are interested in a project...I.E. Team Members
+router.get('/:projectId/teamMember', (req, res) => {
+    const {projectId} = req.params;
+    const {onlyPending} = req.query;
+    db.TeamMember.scope(onlyPending === 'true' ? 'pendingTeamMemberScope' : 'allTeamMemberScope').findAll({
+        where: {
+            ProjectId: projectId
+        },
+        //! Ask Lachlan about below
+        include:[db.User]
+    })
+        .then(teamMembers => {
+            res.json(teamMembers)
+        })
+        .catch(e => {
+            res.status(500).json({
+                error: 'Database error occurred' + e
+            })
+        })
+})
+
 //* Get all projects for a specific user --> both an owner of and a team mate of
 // router.get('/user/:userId', (req, res) => {
 //     const { userId } = req.params;
@@ -294,6 +315,12 @@ router.delete('/:projectId/teamMember', (req, res) => {
 router.patch('/:projectId/teamMember', (req, res) => {
     const { projectId } = req.params;
     const { memberId, approvedStatus } = req.body;
+    db.TeamMember.findOne({
+        where:{UserId: memberId, ProjectId: projectId}
+    })
+        // .then(member => {
+        //     return member.update({approved: approvedStatus})
+        // })
     db.Project.findOne({
         where:{
             id: projectId
@@ -310,6 +337,7 @@ router.patch('/:projectId/teamMember', (req, res) => {
                     if(!user){
                         res.status(404).json({error: `A certain user wasn't found`}) 
                     }
+                    //! We need to change this to an update 
                     return project.addMember(user, {through: {approved: approvedStatus}})
                         .then(() => project)
                 })
