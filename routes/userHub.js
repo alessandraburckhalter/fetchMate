@@ -116,12 +116,12 @@ router.patch('/', checkAuth, (req,res) => {
                 })
             :
                 res.status(404).json({
-                    error: 'Profile not updated'
+                    error: 'Profile not found'
                 })
         })
-        .catch((error) => {
-            res.status(404).json({
-                error: 'Email is not available'
+        .catch((e) => {
+            res.status(500).json({
+                error: 'Database error occurred' + e
             })
         })
 })

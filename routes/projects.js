@@ -1,4 +1,5 @@
 const express = require('express');
+const { Op } = require('sequelize');
 const router = express.Router();
 const db = require('../models');
 
@@ -40,6 +41,34 @@ router.get('/:id', (req, res) => {
     })
         .then(project => {
             project ? res.json(project) : res.status(404).json({error: 'Project not found'})
+        })
+        .catch(e => {
+            res.status(500).json({
+                error: 'Database error occurred' + e
+            })
+        })
+})
+
+//* Route for finding all the users that are interested in a project...I.E. Team Members
+//? NOTE: if you want to get members whose request are pending then you would use
+//? http://localhost:3000/api/v1/projects/${projectIdHere}/teamMember?onlyPending=true
+//? NOTE: if you want to get pending members and accepted members then you would use
+//? http://localhost:3000/api/v1/projects/${projectIdHere}/teamMember
+router.get('/:projectId/teamMember', (req, res) => {
+    const {projectId} = req.params;
+    const {onlyPending} = req.query;
+    const queryObject = {include: [db.User], where:{
+        [Op.or] : [{approved: 'pending'}, {approved: 'accepted'}],
+        ProjectId: projectId,
+    }};
+    //* If only pending is true then it only shows the pending teamMembers
+    //* Else it shows both the pending and the accepted teammembers
+    if(onlyPending){
+        queryObject.where = {ProjectId: projectId, approved: 'pending'}
+    }
+    db.TeamMember.findAll(queryObject)
+        .then(teamMembers => {
+            res.json(teamMembers)
         })
         .catch(e => {
             res.status(500).json({

@@ -13,6 +13,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      //! Ask Lachlan about below
+      TeamMember.belongsTo(models.User)
+      TeamMember.belongsTo(models.Project)
     }
   };
   TeamMember.init({
@@ -24,6 +27,25 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'TeamMember',
+    //!For some reason this is making it to where when changing status it adds a new instance
+    // defaultScope:{
+    //   where:{
+    //     approved: 'accepted'
+    //   }
+    // },
+    // scopes:{
+    //   all:{},
+    //   pendingTeamMemberScope: {
+    //     where: {
+    //       approved: 'pending'
+    //     }
+    //   },
+    //   allTeamMemberScope: {
+    //     where: {
+    //       approved: ['pending','approved']
+    //     }
+    //   }
+    // }
   });
   return TeamMember;
 };
