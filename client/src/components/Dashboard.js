@@ -21,6 +21,7 @@ export default function Dashboard() {
     .then(data=>{
       setCurrentUserData(data)
       dispatch(login(data))
+      console.log(data)
       
     })
   }
