@@ -1,4 +1,5 @@
 const express = require('express');
+const { Op } = require('sequelize');
 const router = express.Router();
 const db = require('../models');
 
@@ -48,11 +49,39 @@ router.get('/:id', (req, res) => {
         })
 })
 
-//* Get all projects for a specific user --> both an owner of and a team mate of
-router.get('/user/:userId', (req, res) => {
-    const { userId } = req.params;
-    db.Project.findAll({})
+//* Route for finding all the users that are interested in a project...I.E. Team Members
+//? NOTE: if you want to get members whose request are pending then you would use
+//? http://localhost:3000/api/v1/projects/${projectIdHere}/teamMember?onlyPending=true
+//? NOTE: if you want to get pending members and accepted members then you would use
+//? http://localhost:3000/api/v1/projects/${projectIdHere}/teamMember
+router.get('/:projectId/teamMember', (req, res) => {
+    const {projectId} = req.params;
+    const {onlyPending} = req.query;
+    const queryObject = {include: [db.User], where:{
+        [Op.or] : [{approved: 'pending'}, {approved: 'accepted'}],
+        ProjectId: projectId,
+    }};
+    //* If only pending is true then it only shows the pending teamMembers
+    //* Else it shows both the pending and the accepted teammembers
+    if(onlyPending){
+        queryObject.where = {ProjectId: projectId, approved: 'pending'}
+    }
+    db.TeamMember.findAll(queryObject)
+        .then(teamMembers => {
+            res.json(teamMembers)
+        })
+        .catch(e => {
+            res.status(500).json({
+                error: 'Database error occurred' + e
+            })
+        })
 })
+
+//* Get all projects for a specific user --> both an owner of and a team mate of
+// router.get('/user/:userId', (req, res) => {
+//     const { userId } = req.params;
+//     db.Project.findAll({})
+// })
 
 
 //* Patch route for updating basic project information using the project id in the parameters
@@ -111,8 +140,7 @@ router.post('/', (req, res) => {
     //TODO: Will need to double check w/ front end team for these names
     const { description, title, isCompleted, publishedAt, deadline, memberLimit } = req.body;
     //TODO: May not want to make it to where the user has to submit all of these in order to create a project 
-        if(!req.body || !description || !title || (isCompleted !== 'true' && isCompleted !== 'false') || !publishedAt || !deadline || !memberLimit){
-            console.log(isCompleted !== 'false')
+        if(!req.body || !description || !title || !publishedAt || !deadline || !memberLimit){
             res.status(400).json({
                 error : 'Please submit all required fields',
                 requests: [description, title, isCompleted, publishedAt, deadline, memberLimit]
@@ -129,7 +157,6 @@ router.post('/', (req, res) => {
             return user.createProject({
                 description,
                 title,
-                isCompleted,
                 publishedAt,
                 deadline,
                 memberLimit
@@ -241,7 +268,7 @@ router.post('/:projectId/teamMember', (req, res) => {
                     if(!users){
                         res.status(404).json({error: `A certain user wasn't found`}) 
                     }
-                    return project.addMembers(users, {through:{approved: 'pending'}})
+                    return project.addMembers(users)
                         .then(() => project)
                 })
         })

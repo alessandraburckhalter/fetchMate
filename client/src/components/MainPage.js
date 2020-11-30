@@ -3,7 +3,7 @@ import {Link, useHistory} from 'react-router-dom'
 import '../styles/mainPage.css'
 import { useDispatch } from 'react-redux'
 
-import { login,setCurrentUserInfo } from '../redux/actions';
+import { login } from '../redux/actions';
 import {  MDBContainer, MDBIcon, MDBRow } from 'mdbreact';
 import logo from '../images/logo3.png';
 import Footer from './Footer';
