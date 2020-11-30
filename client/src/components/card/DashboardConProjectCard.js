@@ -1,4 +1,4 @@
-import { MDBCard, MDBCardText, MDBCardTitle } from 'mdbreact'
+import { MDBCard, MDBCardText, MDBCardTitle, MDBIcon } from 'mdbreact'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
@@ -17,18 +17,27 @@ export default function DashboardConProjectCard(props) {
       }, [owner])
     return (
         <div>
-            <MDBCard className="card-body" style={{ marginTop: "1rem" }}>
-                <MDBCardTitle><Link to={`/dashboard/contribute/${id}`}>{title}</Link></MDBCardTitle>
+            <MDBCard className="card-body card-body-contributing1 mb-4" >
+            <aside>
+    
+            </aside>
+            <MDBCard className="card-body card-body-contribuing2">
+                <aside>
+                <MDBCardTitle className="project-title"><Link to={`/dashboard/contribute/${id}`}>{title}</Link></MDBCardTitle>
                 <MDBCardText>
                     {description}
                 </MDBCardText>
                 <div className="flex-row ">
                     <a href="#!" className="card-link">
-                        Project owner: {projectOwner.firstName} {projectOwner.lastName}  
-      </a>
-                    <a href="#!" className="card-link">Chat
-      </a>
+
+                <MDBIcon icon="user" /> {projectOwner.firstName} {projectOwner.lastName}  
+                    </a>
+                    <a href="#!" className="card-link"> <MDBIcon icon="comments" />
+                    </a>
+
                 </div>
+                </aside>
+                </MDBCard>
             </MDBCard>
         </div>
     )
