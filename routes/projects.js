@@ -64,11 +64,13 @@ router.get('/:id', (req, res) => {
 
 router.get('/:projectId/teamMember', (req, res) => {
     const {projectId} = req.params;
+
     const {status} = req.query;
 
     db.TeamMember.scope(status ? status : 'defaultScope').findAll({
         where: {ProjectId: projectId}
     })
+
         .then(teamMembers => {
             res.json(teamMembers)
         })
