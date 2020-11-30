@@ -9,6 +9,16 @@ export default function Interested() {
     const [interested, setInterested] = useState([])
     
     // const publish = project.publishedAt
+
+    const displayInterest = () =>{
+      fetch(`/api/v1/projects/${projectId}/teamMember?status=pending`)
+          .then(res =>res.json())
+          .then(result =>{
+            setInterested(result)
+            console.log(result)
+            
+          })
+    }
     useEffect(()=>{
       
         fetch(`/api/v1/projects/${projectId}`)
@@ -17,13 +27,7 @@ export default function Interested() {
             setProject(data)
             
           })
-          fetch(`/api/v1/projects/${projectId}/teamMember?onlyPending=true`)
-          .then(res =>res.json())
-          .then(result =>{
-            setInterested(result)
-            console.log(result)
-            
-          })
+          displayInterest()
           
         
         
@@ -55,8 +59,9 @@ export default function Interested() {
      
     
       <h1>Interested People</h1>
-      {interested.length > 0 && interested.map((interestedUser, index)=>{
-            return <InterestedCard key={interestedUser.id} interestedUser={interestedUser} />
+      {console.log(interested)}
+      {interested.length > 0 && interested.map((interestedUser, index, project)=>{
+            return <InterestedCard key={interestedUser.id} project={project[0]} interestedUser={interestedUser} displayInterest={displayInterest} />
           })} 
      
       

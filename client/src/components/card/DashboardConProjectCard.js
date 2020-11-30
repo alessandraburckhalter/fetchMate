@@ -16,7 +16,7 @@ export default function DashboardConProjectCard(props) {
         })
       }, [owner])
     return (
-        <div>
+        
             <MDBCard className="card-body card-body-contributing1 mb-4" >
             <aside>
     
@@ -39,6 +39,6 @@ export default function DashboardConProjectCard(props) {
                 </aside>
                 </MDBCard>
             </MDBCard>
-        </div>
+        
     )
 }
