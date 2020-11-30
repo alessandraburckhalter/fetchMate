@@ -50,23 +50,27 @@ router.get('/:id', (req, res) => {
 })
 
 //* Route for finding all the users that are interested in a project...I.E. Team Members
-//? NOTE: if you want to get members whose request are pending then you would use
-//? http://localhost:3000/api/v1/projects/${projectIdHere}/teamMember?onlyPending=true
-//? NOTE: if you want to get pending members and accepted members then you would use
+//? NOTE: if you want to get only pending members then you would use:
+//? http://localhost:3000/api/v1/projects/${projectIdHere}/teamMember?status=pending
+//? NOTE: if you want to get only approved members then you would use
+//? http://localhost:3000/api/v1/projects/${projectIdHere}/teamMember?status=approved
+//? NOTE: if you want to get both pending and approved members then you would use:
 //? http://localhost:3000/api/v1/projects/${projectIdHere}/teamMember
+//? NOTE: if you want to get pending, approved and declined members then you would use:
+//? http://localhost:3000/api/v1/projects/${projectIdHere}/teamMember?status=all
+//? NOTE: if you want to get only declined members then you would use:
+//? http://localhost:3000/api/v1/projects/${projectIdHere}/teamMember?status=declined
+
+
 router.get('/:projectId/teamMember', (req, res) => {
     const {projectId} = req.params;
-    const {onlyPending} = req.query;
-    const queryObject = {include: [db.User], where:{
-        [Op.or] : [{approved: 'pending'}, {approved: 'approved'}],
-        ProjectId: projectId,
-    }};
-    //* If only pending is true then it only shows the pending teamMembers
-    //* Else it shows both the pending and the accepted teammembers
-    if(onlyPending){
-        queryObject.where = {ProjectId: projectId, approved: 'pending'}
-    }
-    db.TeamMember.findAll(queryObject)
+
+    const {status} = req.query;
+
+    db.TeamMember.scope(status ? status : 'defaultScope').findAll({
+        where: {ProjectId: projectId}
+    })
+
         .then(teamMembers => {
             res.json(teamMembers)
         })
@@ -320,37 +324,64 @@ router.delete('/:projectId/teamMember', (req, res) => {
 
 //* Route for updating the approved status for a teamMember
 //? First find the project, then find the user, then update the approved status
+//todo look at sequelize validation
 router.patch('/:projectId/teamMember', (req, res) => {
     const { projectId } = req.params;
     const { memberId, approvedStatus } = req.body;
-    db.Project.findOne({
-        where:{
-            id: projectId
+    
+    db.TeamMember.scope('all').findOne({
+        where: {
+            ProjectId: projectId,
+            UserId: memberId
         }
     })
-        .then(project => {
-            if(!project){
-                res.status(404).json({error: 'Project not found'})
+        .then(member => {
+            if(!member){
+                res.status(404).json({error: 'Member not found'})
             }
-            return db.User.findOne({
-                where:{id: memberId}
-            })
-                .then(user => {
-                    if(!user){
-                        res.status(404).json({error: `A certain user wasn't found`}) 
-                    }
-                    return project.addMember(user, {through: {approved: approvedStatus}})
-                        .then(() => project)
+            return member.update({approved: approvedStatus})
+                .then(updatedMember => {
+                    console.log(updatedMember);
+                if(updatedMember) {
+                    res.status(202).json({success : 'Member status updated'})
+                } 
                 })
         })
-        .then(project => {
-            res.status(201).json(project)
-        })
         .catch(e => {
+            if(/SequelizeValidationError/.test(e.toString()) ){
+                res.status(400).json({
+                    error: e.errors[0].message
+                })
+            }
             res.status(500).json({
                 error: 'Database error occurred' + e
             })
         })
+
+    // db.Project.findOne({
+    //     where:{
+    //         id: projectId
+    //     }
+    // })
+    //     .then(project => {
+    //         if(!project){
+    //             res.status(404).json({error: 'Project not found'})
+    //         }
+    //         return db.User.findOne({
+    //             where:{id: memberId}
+    //         })
+    //             .then(user => {
+    //                 if(!user){
+    //                     res.status(404).json({error: `A certain user wasn't found`}) 
+    //                 }
+    //                 return project.updateMember(user, {through: {approved: approvedStatus}})
+    //                     .then(() => project)
+    //             })
+    //     })
+    //     .then(project => {
+    //         res.status(201).json(project)
+    //     })
+  
 })
 
 

@@ -27,7 +27,8 @@
 #left-side h2 {
   color: white;
   text-align: center;
-
+  font-family: fontastique;
+  font-size: 2.1em;
 }
 
 #right-side {
@@ -53,12 +54,12 @@ form.signup-form {
     margin: auto;
     /* background: #ffffff; */
     border: 1px solid #d3e2e5;
-    /* border-radius: 20px; */
+    border-radius: 20px;
     padding: 44px 80px;
     /* overflow: hidden; */
     background-color: rgba(46, 138, 138, 0.4); 
     color: rgba(46, 138, 138, 0.4);
-    border-radius: 0;
+    
 }
 
 form.signup-form h1 {
@@ -70,7 +71,7 @@ form.signup-form h1 {
   margin-bottom: 40px;
   padding-bottom: 24px;
   border-bottom: 1px solid #d3e2e5;
-
+  
 }
 
 .back-home {
@@ -90,9 +91,10 @@ form.signup-form .signup-legend {
   border: none;
   margin-bottom: 0;
   color: white;
-  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-  font-size: 18px;
+  font-family: fontastique;
+  font-size: 22px;
   text-align: center;
+  font-weight: 400;
 }
 
 form.signup-form fieldset {
@@ -137,18 +139,19 @@ form.signup-form .input-block + .input-block {
     color: white;
   }
   
-  form.signup-form .input-block input {
+form.signup-form .input-block input {
     height: 40px;
     padding: 0 16px;
-  }
+    border-radius: 5px;
+}
   
-  form.signup-form .input-block textarea {
+form.signup-form .input-block textarea {
     min-height: 120px;
     max-height: 240px;
     resize: vertical;
     padding: 16px;
     line-height: 28px;
-  }
+}
 
 
 #profilePicture {
@@ -157,11 +160,12 @@ form.signup-form .input-block + .input-block {
 }
 
    
-  form.signup-form button.confirm-button {
+form.signup-form button.confirm-button {
     margin-top: 44px;
     width: 100%;
     height: 50px;
     border: 0;
+    border-radius: 5px;
     cursor: pointer;
     background: #36cf82;
     /* border-radius: 20px; */
@@ -178,3 +182,21 @@ form.signup-form .input-block + .input-block {
     background: #36cf82;
   }
 
+/* add profile pic input */
+.input-block input[type=file] {
+    visibility: hidden;
+    display: none;
+}
+
+/* add profile pic input */
+.input-block .new-image {
+  height: 50px;
+  width: 50px;
+  background-color: rgba(46, 138, 138, 0.7); 
+    color: rgba(46, 138, 138, 0.4);
+  border: 1px dashed #96d2f0;
+  border-radius: 20px;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+}

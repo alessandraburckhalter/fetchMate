@@ -39,28 +39,31 @@ export default function SkillSearchBar({category}) {
     return (
         <>
             <div className="input-group md-form form-sm form-1 pl-0">
+                
                 <div className="input-group-prepend">
-                    <span className="input-group-text purple lighten-3" id="basic-text1">
+                    <span className="input-group-text" color="#01a0dd" id="basic-text1">
                         <MDBIcon className="text-white" icon="search" />
                     </span>
                 </div>
-                <input className="form-control my-0 py-1" type="text" value={currentSearch} onChange={(e) => {setCurrentSearch(e.target.value)}} placeholder="Search for technical skills" aria-label="Search" />
+                <input className="form-control my-0 py-1" type="text" value={currentSearch} onChange={(e) => {setCurrentSearch(e.target.value)}} placeholder="Start typing to see options" aria-label="Search" />
             </div>
             <div>
                 {filteredForAlreadyPicked.map((option) => {
                     return <SkillSearchOption key={option.id} option={option}/>
                 })}
                 {filteredForAlreadyPicked.length === 0 && currentSearch.length > 0 ? (
-                <button type="button" onClick={(e) => {setShowNewSkillModal(true)}}>Create New Skill</button>
+                <button className="new-skill-button" type="button" onClick={(e) => {setShowNewSkillModal(true)}}>Create New Skill</button>
                 ):('')}
             </div>
 
             <div className="form-group">
                 {pickedSkillsArray.filter(skill => skill.category === category).map(addedSkill => {
                     return (
-                        <span>
+                        
+                        <span className="skill-remove-button">
                             {addedSkill.name}
-                            <button type="button" onClick={() => {dispatch(removeSkillFromSearchArray(addedSkill.id))}}>x</button>
+                            
+                            <button className="remove-skill-button" type="button" onClick={() => {dispatch(removeSkillFromSearchArray(addedSkill.id))}}><MDBIcon far icon="trash-alt red-text" /></button>
                         </span>
                     ) 
                 })}
