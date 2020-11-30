@@ -1,10 +1,13 @@
 import { MDBCard, MDBCardBody, MDBCardText, MDBCardTitle, MDBCol, MDBContainer, MDBIcon, MDBRow } from 'mdbreact'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import InterestedCard from './card/InterestedCard'
 
 export default function Interested() {
     const { projectId } = useParams()
     const [project, setProject] = useState("")
+    const [interested, setInterested] = useState([])
+    
     // const publish = project.publishedAt
     useEffect(()=>{
       
@@ -14,6 +17,15 @@ export default function Interested() {
             setProject(data)
             
           })
+          fetch(`/api/v1/projects/${projectId}/teamMember?onlyPending=true`)
+          .then(res =>res.json())
+          .then(result =>{
+            setInterested(result)
+            console.log(result)
+            
+          })
+          
+        
         
       }, [projectId, setProject])
   
@@ -43,54 +55,9 @@ export default function Interested() {
      
     
       <h1>Interested People</h1>
-      <MDBCol md="6" lg="4">
-        <MDBCard personal className="my-5">
-          
-          <MDBCardBody>
-            <img src="#" alt="profilePicture" />
-            <MDBCardTitle>
-              <a href="#!" className="title-one">
-              Full Name
-              </a>
-            </MDBCardTitle>
-            
-            <hr />
-            <a href="#!" className="card-meta">
-                Skills: display skills
-            </a><br/>
-            <a href="#!" className="card-meta">
-                Spoken languages: display languages
-            </a> <br/>
-            <button className="card-link">Accept
-             </button> <button className="card-link">Decline
-             </button>
-          </MDBCardBody>
-        </MDBCard>
-      
-        <MDBCard personal className="my-5">
-          
-          <MDBCardBody>
-            <img src="#" alt="profilePicture" />
-            <MDBCardTitle>
-              <a href="#!" className="title-one">
-              Full Name
-              </a>
-            </MDBCardTitle>
-            
-            <hr />
-            <a href="#!" className="card-meta">
-                Skills: display skills
-            </a><br/>
-            <a href="#!" className="card-meta">
-                Spoken languages: display languages
-            </a>
-            <br/>
-            <button className="card-link">Accept
-             </button> <button className="card-link">Decline
-             </button>
-          </MDBCardBody>
-        </MDBCard>
-      </MDBCol>
+      {interested.length > 0 && interested.map((interestedUser, index)=>{
+            return <InterestedCard key={interestedUser.id} interestedUser={interestedUser} />
+          })} 
      
       
       </MDBCol>
