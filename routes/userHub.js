@@ -94,15 +94,15 @@ router.get('/user/:id', checkAuth, (req,res) => {
 router.patch('/', checkAuth, (req,res) => {
     
     const updateObject = {}
-    if(!req.body.firstName && !req.body.lastName && !req.body.email && !req.body.password && !req.body.profilePicture ){
+    if(!req.body.firstName && !req.body.lastName && !req.body.email && !req.body.password && !req.body.profilePicture && !req.body.title){
         res.status(400).json({
             error: 'Please pick a field to change'
         })
         return ;
     } 
 
-    const { firstName, lastName, email, password, profilePicture } = req.body
-    const params = { firstName, lastName, password, profilePicture, email }
+    const { firstName, lastName, email, password, profilePicture, title } = req.body
+    const params = { firstName, lastName, password, profilePicture, email, title }
     Object.keys(params).forEach(key => {params[key] ? updateObject[key] = params[key] : ''})
     models.User.update(updateObject, {
         where: {

@@ -18,6 +18,7 @@ export default function ProfileSetup() {
     const user = useSelector(state => state.user)
     const [password, setPassword] = useState('')
     const [email, setEmail] = useState('')
+    const [headline, setHeadline] = useState('');
     const dispatch = useDispatch();
     const history = useHistory();
     const pickedSkillsArray = useSelector(state => state.searchSkillsToAdd)
@@ -49,10 +50,21 @@ export default function ProfileSetup() {
         })
     }
 
-    const handleSubmitSkills = () => {
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      setHeadline('');
       const userSkillsArray = pickedSkillsArray.map(skills => skills.id)
       Axios.post('/api/v1/hub/userSkill', {
         userSkillsArray
+      })
+        .then(res => {
+          console.log(res)
+        })
+        .catch(e => {
+          console.log(e)
+        })
+      Axios.patch('/api/v1/hub', {
+        title: headline
       })
         .then(res => {
           console.log(res)
@@ -180,10 +192,10 @@ export default function ProfileSetup() {
           COMPLETE YOUR PROFILE <MDBIcon icon="edit indigo-text" />
           </div>
         <div >
-          <form>
+          <form onSubmit={(e) => {handleSubmit(e)}}>
             <label htmlFor="defaultFormCardNameEx" className="labe-headline"><MDBIcon icon="share indigo-text" />  Headline
            </label>
-            <input type="text" id="defaultFormCardNameEx" className="form-control" />
+            <input type="text" id="defaultFormCardNameEx" className="form-control" value={headline} onChange={(e) => {setHeadline(e.target.value)}}/>
             <br />
             
             <h1 className=" label-skillbar"><MDBIcon icon="share indigo-text" /> Technical Skills</h1>
@@ -195,7 +207,7 @@ export default function ProfileSetup() {
             <br />
             
             <h1 className=" label-skillbar"> <MDBIcon icon="share indigo-text" /> Spoken Languages</h1>
-            <SkillSearchBar category='languages'/><br/>
+            <SkillSearchBar category='language'/><br/>
 
             <Button variant="success" type="submit" className="btn btn-lg btn-block mb-5">
             SUBMIT <MDBIcon far icon="paper-plane" />
