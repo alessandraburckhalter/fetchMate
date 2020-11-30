@@ -1,7 +1,7 @@
 import { MDBCol, MDBContainer, MDBFooter, MDBRow } from 'mdbreact'
 import React from 'react'
 import { Link } from 'react-router-dom';
-import logo from '../images/logo2.png';
+import logo from '../images/logo3.png';
 import '../styles/footer.css'
 
 export default function Footer() {
@@ -67,7 +67,7 @@ export default function Footer() {
         </MDBRow>
       </MDBContainer>
 
-      <div className=" text-right py-4 " >
+      <div className=" text-right py-1 " >
         <MDBContainer fluid >
           &copy; {new Date().getFullYear()} Copyright
         </MDBContainer>

@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+@font-face {
+    font-family: fontastique;
+    src: url(../styles/font/fontastique.ttf);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -7,12 +14,187 @@
 #top {
     width: 100vw;
     min-height: 100vh;
-    /* background-image: linear-gradient(-225deg, #2CD8D5 0%, #C5C1FF 56%, #FFBAC3 100%); */
-    background-color: black;
+    /* background-image: url(../images/Frame3.svg); */
     position: relative;
     display: flex;
 }
 
-label {
-    font-size: 20px;
+
+.navbar {
+    height: 80px;
+    background-color: rgba(145,192,241,1);
+    background-image: url(../images/Frame3.svg);
+    box-shadow: none !important;
 }
+
+.navbar-dark .navbar-brand {
+    width: 10%;
+}
+
+.navbar-nav a {
+    padding: 10px;
+    color: white;
+    font-weight: bold;
+}
+
+/* 158467 logo */
+/* 3e978b */
+
+/* input form */
+.input-group.md-form.form-sm.form-1 input {
+    border: 1px solid #4285f4;
+    border-top-right-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+    background: white;
+}
+
+/* placeholder form */
+.input-group.md-form.form-sm.form-1 ::placeholder {
+    color: #8fa7b3;
+    font-style: italic;
+    font-size: 14px;
+}
+
+/* search icon */
+.md-form.input-group .input-group-text {
+    background-color: #4285f4 !important;
+}
+
+/* form input border */
+.form-control {
+    /* background: #f5f8fa !important; */
+    border-color: #4285f4 !important;
+}
+
+/* create new skill button */
+button.new-skill-button  {
+    text-transform: uppercase;
+    height: 35px;
+    font-size: .81rem;
+    border: 1px solid #ced4da;
+    border-top-right-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+    border-top-left-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+    transition: color 0.15s ease-in-out,background-color 0.15s ease-in-out,border-color 0.15s ease-in-out,box-shadow 0.15s ease-in-out;
+    padding: .84rem 0.6rem;
+    background: #4285f4;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+/* trash icon (remove skill) */
+button.remove-skill-button{
+    border: none;
+    background: none;
+    margin-left: 9px;
+    cursor: pointer;
+}
+
+/* span skill + trash icon */
+.skill-remove-button {
+    border: 1px solid #30B0F8;
+    border-top-right-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+    border-top-left-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+    padding: 8px;
+    font-weight: 400;
+    margin: 2px;
+    display: -webkit-inline-box;
+    color: #6B6B6B;
+    cursor: pointer;
+    background-color: white;
+}
+
+/* skillbar label */
+.label-skillbar {
+    font-size: 16px;
+    margin-bottom: -12px;
+    cursor: pointer;
+    color: black;
+    font-weight: 400;
+    font-family: 'Open Sans',sans-serif;
+    text-transform: uppercase;
+}
+
+/* regular input label */
+.labe-headline {
+    color: black;
+    font-weight: 400;
+    font-family: 'Open Sans',sans-serif;
+    text-transform: uppercase;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* form padding */
+form {
+    padding: 34px 80px;
+}
+
+/* complete your profile container */
+.container-form {
+    margin-left: 80px;
+    box-shadow: none !important;
+}
+
+/* complete your profile card */
+.card-complete-profile {
+    box-shadow: none !important;
+    background-color: transparent !important;
+    margin-top: 50px;
+}
+
+/* user profile info */
+.card-profile {
+    box-shadow: none !important;
+    background-color: transparent !important;
+}
+
+/* name and email */
+h4.card-title {
+    font-size: 0.9em;
+    cursor: pointer;
+}
+
+/* progress bar label */
+.filled-profile {
+    text-align: center;
+    font-size: 13px;
+    color: black;
+    font-weight: bold;
+    font-family: 'Open Sans',sans-serif;
+    cursor: pointer;
+}
+
+/* complete your profile title */
+.form-title {
+    text-align: center;
+    font-family: fontastique;
+    font-size: 20px;
+    letter-spacing: 3px;
+    cursor: pointer;
+}
+
+/* profile image */
+.img-fluid {
+    border-radius: solid black 2px;
+    cursor: pointer;
+}
+
+/* profile image */
+img.img-fluid.rounded-circle.hoverable.border.border-info {
+    border: 5px solid #33b5e5!important;
+}
+
+/* BLUE AND GREEN TRANSPARENT RGBA  */
+/* background-color: rgba(46, 138, 237, 0.2); 
+color: rgba(46, 138, 237, 0.5); */
+/* background-color: rgba(46, 138, 138, 0.2); 
+  color: rgba(46, 138, 138, 0.4); */

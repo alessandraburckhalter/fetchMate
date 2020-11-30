@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux'
 
 import { login,setCurrentUserInfo } from '../redux/actions';
 import {  MDBContainer, MDBIcon, MDBRow } from 'mdbreact';
-import logo from '../images/logo2.png';
+import logo from '../images/logo3.png';
 import Footer from './Footer';
 
 
@@ -79,14 +79,14 @@ export default function MainPage() {
                 </fieldset>
 
                 <button className="login-button btn-grad " type="submit">
-                    Log In
+                    Log In <MDBIcon icon="sign-in-alt ml-1" />
                 </button>
 
                 <div className="forgot-password">Forgot Password?</div>
 
                 <Link to="/register">
                 <button className="newAccount-button" >
-                            Create New Account
+                            Create New Account <MDBIcon icon="user-plus ml-1" />
                 </button></Link>
 
             </form>

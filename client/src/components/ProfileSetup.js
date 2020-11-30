@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
-import {  MDBCard, MDBCardBody,  MDBCardTitle, MDBCol, MDBCollapse, MDBContainer,  MDBDropdown,  MDBDropdownItem,  MDBDropdownMenu,  MDBDropdownToggle,  MDBIcon,  MDBNavbar,  MDBNavbarBrand,  MDBNavbarNav,  MDBNavbarToggler,  MDBNavItem,  MDBNavLink,  MDBRow } from 'mdbreact';
+import {  MDBCard, MDBCardBody,  MDBCardTitle, MDBCol, MDBCollapse, MDBContainer,  MDBDropdown,  MDBDropdownItem,  MDBDropdownMenu,  MDBDropdownToggle,  MDBIcon,  MDBNav,  MDBNavbar,  MDBNavbarBrand,  MDBNavbarNav,  MDBNavbarToggler,  MDBNavItem,   MDBProgress,   MDBRow } from 'mdbreact';
 import { useDispatch, useSelector } from 'react-redux';
-import { Button } from 'react-bootstrap';
+import { Button, NavItem } from 'react-bootstrap';
 import '../styles/profileSetup.css'
 import { logout } from '../redux/actions';
-import { useHistory } from 'react-router-dom';
+import { BrowserRouter, Link, NavLink, useHistory } from 'react-router-dom';
 import SkillSearchBar from './SkillSearchBar';
 import Axios from 'axios';
+import { BrowserRouter as Router } from 'react-router-dom';
+import logo from '../images/logo3.png';
+import Footer from './Footer'
 
 
 
@@ -60,26 +63,55 @@ export default function ProfileSetup() {
     
 
     return (
-        <div id="top">
-
-{/* <>
-      <MDBNavbar color="default-color" dark expand="md">
+      <>
+{/*    
+  <div id="header">
+    <div className="header container">
+      <div className="nav-bar">
+        <div className="brand">
+          <img src="#" alt="logo" />
+        </div>
+        <div className="nav-list">
+          <div className="hamburger">
+            <div className="bar">
+        </div>
+            </div>
+          <ul>
+            <li><a href="#top" data-after="Home">Home</a></li>
+            <li><a href="#about" data-after="About">About</a></li>
+            <li><a href="#projects" data-after="Projects">Projects</a></li>
+            <li><a href="#skills" data-after="Skills">Skills</a></li>
+            <li><a href="#contact" data-after="Contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div> */}
+  
+  <BrowserRouter>
+  <MDBNavbar  dark expand="md">
         <MDBNavbarBrand>
-          <strong className="white-text">Navbar</strong>
+        <img src={logo} alt="logo" width="60%"/>
         </MDBNavbarBrand>
-        <MDBNavbarToggler  />
-        <MDBCollapse id="navbarCollapse3"  navbar>
+        <MDBNavbarToggler />
+        <MDBCollapse id="navbarCollapse3"  navbar className="d-flex justify-content-around">
           <MDBNavbarNav left>
             <MDBNavItem active>
-              <MDBNavLink to="#!">Home</MDBNavLink>
+              <Link to="#!">Home</Link>
             </MDBNavItem>
             <MDBNavItem>
-              <MDBNavLink to="#!">Features</MDBNavLink>
+              <Link to="/hub">Profile Setup</Link>
             </MDBNavItem>
             <MDBNavItem>
-              <MDBNavLink to="#!">Pricing</MDBNavLink>
+              <Link to="/projectForm">Project Form</Link>
             </MDBNavItem>
             <MDBNavItem>
+              <Link to="/dashboard">Dashboard</Link>
+            </MDBNavItem>
+            <MDBNavItem>
+              <Link to="#!" onClick={handleLogout} >Logout</Link>
+            </MDBNavItem>
+            {/* <MDBNavItem>
               <MDBDropdown>
                 <MDBDropdownToggle nav caret>
                   <div className="d-none d-md-inline">Dropdown</div>
@@ -95,14 +127,14 @@ export default function ProfileSetup() {
           </MDBNavbarNav>
           <MDBNavbarNav right>
             <MDBNavItem>
-              <MDBNavLink className="waves-effect waves-light" to="#!">
+              <Link className="waves-effect waves-light" to="#!">
                 <MDBIcon fab icon="twitter" />
-              </MDBNavLink>
+              </Link>
             </MDBNavItem>
             <MDBNavItem>
-              <MDBNavLink className="waves-effect waves-light" to="#!">
+              <Link className="waves-effect waves-light" to="#!">
                 <MDBIcon fab icon="google-plus-g" />
-              </MDBNavLink>
+              </Link>
             </MDBNavItem>
             <MDBNavItem>
               <MDBDropdown>
@@ -116,15 +148,19 @@ export default function ProfileSetup() {
                   <MDBDropdownItem href="#!">Something else here</MDBDropdownItem>
                 </MDBDropdownMenu>
               </MDBDropdown>
-            </MDBNavItem>
+            </MDBNavItem> */}
           </MDBNavbarNav>
         </MDBCollapse>
       </MDBNavbar>
-    </> */}
 
+  </BrowserRouter>
+         
+         
+
+    <div id="top">
     <MDBContainer>
       <MDBRow>
-      <MDBCol md="6" lg="4">
+      {/* <MDBCol md="6" lg="4">
         <MDBCard personal className="my-5">
           
           <MDBCardBody>
@@ -150,67 +186,107 @@ export default function ProfileSetup() {
             </a>
           </MDBCardBody>
         </MDBCard>
-      </MDBCol>
-    
+      </MDBCol> */}
 
-    <MDBCol md="4">
-    <form>
-    <p className="h5 text-center mb-4 mt-5">Your Profile</p>
-    <label htmlFor="defaultFormLoginEmailEx" className="black-text">
-            Technical Skills
-    </label>
-      <SkillSearchBar category='technical'/>
-   
-    <Button variant="primary" type="submit">
-        Add Skills
-    </Button>
-    </form>
+      {/* <div className="box-item meu-perfil">
+          <div className="box-item-header">
+          <span class="header-title">P R O F I L E</span>
+          </div>
+        <div className="box-item-content">
+          <div className="user-box">
+            <img src={user.loginInfo.profilePicture} alt="" className="img-fluid rounded-circle hoverable"/>
+            <div className="user-box-info">
+              <p>{user.loginInfo.firstName} {user.loginInfo.lastName}</p>
+              <p><MDBIcon icon="star amber-text" /><MDBIcon icon="star amber-text" /><MDBIcon icon="star amber-text" /><MDBIcon icon="star amber-text" /><MDBIcon icon="star amber-text" /></p>
+            </div>
+          </div>
+          <div className="todo-box">
+          <p class="center">Filled profile (20%)</p>
+          <div className="loading-bar-outer">
+            <div className="loading-bar-inner">
 
-      <form>
-        <label htmlFor="defaultFormLoginEmailEx" className="black-text">
-          Soft Skills
-        </label>
-        <SkillSearchBar category='soft'/>
-        <Button variant="primary" type="submit">
-          Add Skills
-        </Button>
-      </form>
+            </div>
 
-      <form>
-      <label htmlFor="defaultFormLoginEmailEx" className="black-text">
-          What languages do you speak?
-        </label>
-      <div className="input-group md-form form-sm form-1 pl-0">
-        <div className="input-group-prepend">
-          <span className="input-group-text purple lighten-3" id="basic-text1">
-            <MDBIcon className="text-white" icon="search" />
-          </span>
+          </div>
+          </div>
         </div>
-        <input className="form-control my-0 py-1" type="text" placeholder="Search for spoken languages" aria-label="Search" />
-      </div>
-      <div className="form-group">
-      <input
-        type="text"
-        className="form-control"
-        id="formGroupExampleInput"
-      />
-    </div>
-        <Button variant="primary" type="submit">
-                    Add languages
-                </Button>
-        </form>
 
-        <h1>Want to publish a project?</h1>
+      </div> */}
+
+     
+      <MDBCol md='3' className="mt-5">
+        <MDBCard testimonial className="card-profile" >
+          <div gradient='aqua' backgroundColor="red"/>
+          <div className='mx-auto white'>
+            <img
+              src={user.loginInfo.profilePicture} 
+              alt='' className="img-fluid rounded-circle hoverable border border-info" width="100%" 
+            />
+          </div>
+          <MDBCardBody>
+          <h4 className='card-title'> <MDBIcon icon="user indigo-text" /> {user.loginInfo.firstName} {user.loginInfo.lastName} </h4>
+          <h4 className='card-title'> <MDBIcon icon="envelope orange-text" /> {user.loginInfo.email} </h4>
+            <hr />
+            
+          <p class="filled-profile">Filled profile (20%)</p>
+         
+            <div >
+            <MDBProgress value={20} className="my-2" />
+            </div>
+          </MDBCardBody>
+        </MDBCard>
+      </MDBCol>
+   
+    
+      <MDBCol md="7" className="mt-5 container-form">
+    <MDBCard className="card-complete-profile" testimonial>
+          <div className="form-title">
+          COMPLETE YOUR PROFILE <MDBIcon icon="edit indigo-text" />
+          </div>
+        <div >
+          <form>
+            <label htmlFor="defaultFormCardNameEx" className="labe-headline"><MDBIcon icon="share indigo-text" />  Headline
+           </label>
+            <input type="text" id="defaultFormCardNameEx" className="form-control" />
+            <br />
+            
+            <h1 className=" label-skillbar"><MDBIcon icon="share indigo-text" /> Technical Skills</h1>
+            <SkillSearchBar category='technical'/>
+            <br />
+            
+            <h1 className=" label-skillbar"><MDBIcon icon="share indigo-text" /> Soft Skills</h1>
+            <SkillSearchBar category='soft'/>
+            <br />
+            
+            <h1 className=" label-skillbar"> <MDBIcon icon="share indigo-text" /> Spoken Languages</h1>
+            <SkillSearchBar category='languages'/><br/>
+
+            <Button variant="success" type="submit" className="btn btn-lg btn-block mb-5">
+            SUBMIT <MDBIcon far icon="paper-plane" />
+          </Button>
+          </form>
+        </div>
+
+        </MDBCard>
+      </MDBCol>
+
+    {/* <MDBCol md="4"> */}
+   
+
+        {/* <h1>Want to publish a project?</h1>
         <Button variant="primary" type="submit">
                     Create a project
-                </Button>
+                </Button> */}
    
-        <button onClick={handleLogout}>Logout</button>
+        {/* <button onClick={handleLogout}>Logout</button> */}
      
-    </MDBCol>
+    {/* </MDBCol> */}
 
     </MDBRow>
     </MDBContainer>
     </div>
+
+    <Footer />
+    </>
     )
 }

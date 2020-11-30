@@ -3,7 +3,7 @@ import '../styles/signUp.css'
 import {Link, useHistory} from 'react-router-dom'
 import Axios from 'axios';
 import { MDBCol, MDBContainer, MDBFooter, MDBIcon, MDBRow } from 'mdbreact';
-import logo from '../images/logo2.png'
+import logo from '../images/logo3.png'
 import Footer from './Footer';
 
 
@@ -82,7 +82,7 @@ export default function SignUpPage() {
                 <h2>Create an account and start publishing or searching projects today!</h2>
 
                 <Link to="/" className="back-home">
-                <MDBIcon icon="arrow-left" size={30} color="red" />
+                <MDBIcon icon="angle-double-left" size={30}  />
                 </Link>
                 
             </aside>
@@ -92,7 +92,7 @@ export default function SignUpPage() {
                     <form className="signup-form" onSubmit={handleSubmit}>
 
                 <fieldset>
-                    <legend className="signup-legend">SIGN UP </legend>
+                    <legend className="signup-legend">Sign Up </legend>
 
                     <div className="input-block">
                         <label htmlFor="firstName">First name</label>
@@ -137,6 +137,11 @@ export default function SignUpPage() {
                         <label htmlFor="profilePicture">
                             Profile picture
                             </label>
+
+                            <label htmlFor="profilePicture" className="new-image">
+                            <MDBIcon icon="plus" />
+                            </label>
+
                         <input
                             id="profilePicture" 
                             type="file"
@@ -147,7 +152,7 @@ export default function SignUpPage() {
                 </fieldset>
 
                 <button className="confirm-button" type="submit">
-                    Submit
+                    Submit  <MDBIcon far icon="paper-plane ml-1" />
                 </button>
             </form>
             </aside>
