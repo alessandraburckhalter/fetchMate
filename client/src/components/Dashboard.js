@@ -10,6 +10,7 @@ import logo from '../images/logo3.png';
 import Footer from './Footer';
 import DashboardConProjectsCard from "./card/DashboardConProjectCard"
 import DashboardPenProjectCard from './card/DashboardPenProjectCard';
+import Navbar from '../components/Navbar'
 
 export default function Dashboard() {
 
@@ -35,33 +36,7 @@ export default function Dashboard() {
   
     return (
     <>
-      <BrowserRouter>
-  <MDBNavbar  dark expand="md">
-        <MDBNavbarBrand>
-        <img src={logo} alt="logo" width="60%"/>
-        </MDBNavbarBrand>
-        <MDBNavbarToggler />
-        <MDBCollapse id="navbarCollapse3"  navbar className="d-flex justify-content-around">
-          <MDBNavbarNav left>
-            <MDBNavItem active>
-              <Link to="#!">Home</Link>
-            </MDBNavItem>
-            <MDBNavItem>
-              <Link to="/hub">Profile Setup</Link>
-            </MDBNavItem>
-            <MDBNavItem>
-              <Link to="/projectForm">Project Form</Link>
-            </MDBNavItem>
-            <MDBNavItem>
-              <Link to="/dashboard">Dashboard</Link>
-            </MDBNavItem>
-            <MDBNavItem>
-              <Link to="#!" >Logout</Link>
-            </MDBNavItem>
-            </MDBNavbarNav>
-        </MDBCollapse>
-      </MDBNavbar>
-  </BrowserRouter>
+      <Navbar />
 
       <div id="top">
     <MDBContainer>
@@ -142,10 +117,7 @@ export default function Dashboard() {
      
           
         </aside>
-
-      
-    
-  {Object.keys(currentUserData).length > 0 && currentUserData.MemberProjects.map((project, index)=>{
+            {Object.keys(currentUserData).length > 0 && currentUserData.MemberProjects.map((project, index)=>{
             if(project.TeamMember.approved === "pending"){
               return <DashboardPenProjectCard key={project.id} project={project}/>
 
