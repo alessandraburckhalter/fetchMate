@@ -58,7 +58,7 @@ router.get('/:projectId/teamMember', (req, res) => {
     const {projectId} = req.params;
     const {onlyPending} = req.query;
     const queryObject = {include: [db.User], where:{
-        [Op.or] : [{approved: 'pending'}, {approved: 'accepted'}],
+        [Op.or] : [{approved: 'pending'}, {approved: 'approved'}],
         ProjectId: projectId,
     }};
     //* If only pending is true then it only shows the pending teamMembers
