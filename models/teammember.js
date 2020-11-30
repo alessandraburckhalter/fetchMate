@@ -22,30 +22,41 @@ module.exports = (sequelize, DataTypes) => {
     approved: {
       allowNull: false,
       defaultValue: 'pending',
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      validate: {
+        isIn: {
+          args: [['pending', 'approved', 'declined']],
+          msg: "Approved must be either pending, approved, or declined"
+        }
+      }
     }
   }, {
     sequelize,
     modelName: 'TeamMember',
     //!For some reason this is making it to where when changing status it adds a new instance
-    // defaultScope:{
-    //   where:{
-    //     approved: 'accepted'
-    //   }
-    // },
-    // scopes:{
-    //   all:{},
-    //   pendingTeamMemberScope: {
-    //     where: {
-    //       approved: 'pending'
-    //     }
-    //   },
-    //   allTeamMemberScope: {
-    //     where: {
-    //       approved: ['pending','approved']
-    //     }
-    //   }
-    // }
+    defaultScope:{
+      where:{
+        approved: ['pending', 'approved']
+      }
+    },
+    scopes:{
+      all:{},
+      pending: {
+        where: {
+          approved: 'pending'
+        }
+      },
+      approved: {
+        where: {
+          approved: 'approved'
+        }
+      },
+      declined: {
+        where: {
+          approved: 'declined'
+        }
+      }
+    }
   });
   return TeamMember;
 };
