@@ -13,7 +13,11 @@ router.get('/', (req, res) => {
     console.log(includeCompleted === 'true' ? 'withCompleted' : 'defaultScope')
     db.Project.scope(includeCompleted === 'true' ? 'withCompleted' : 'defaultScope').findAll({
         order: [['publishedAt', 'DESC']],
-        include:[db.User]
+        include:[db.User,{
+            model: db.User,
+            through: db.TeamMember,
+        as: 'Members' 
+        }]
     })
         .then(projects => {
             res.json(projects);
