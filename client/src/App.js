@@ -58,7 +58,7 @@ function App() {
             <Route path="/projects" component={Projects}/>
             <Route exact path="/dashboard/:projectId" component={Interested}/>
             <Route path="/test" component={Test}/>
-            <Route path="/public" component={PublicProfile}/>
+            <Route exact path="/dashboard/public/:pendingId" component={PublicProfile}/>
             <Route path="/dashboard/contribute/:contributeId" component={ContribuingProjects}/>
             </>
           )}

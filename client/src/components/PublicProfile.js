@@ -1,8 +1,10 @@
 import React from 'react'
 import { MDBCard, MDBCardBody, MDBCol, MDBContainer, MDBRow } from 'mdbreact'
 import '../styles/publicProfile.css'
+import { useParams } from 'react-router-dom'
 
 export default function PublicProfile() {
+  const { pendingId } = useParams()
     return (
         <div>
             <MDBContainer>

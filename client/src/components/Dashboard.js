@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom';
 import { login } from '../redux/actions';
 import '../styles/dashboard.css'
 import ProjectCard from './card/DashboardProjectCard';
-import ContributeProjectCard from "./card/DashboardConProjectCard"
+import DashboardConProjectsCard from "./card/DashboardConProjectCard"
+import DashboardPenProjectCard from './card/DashboardPenProjectCard';
 
 export default function Dashboard() {
 
@@ -90,7 +91,10 @@ export default function Dashboard() {
 
   <h1>Contribuiting Projects</h1>
     {Object.keys(currentUserData).length > 0 && currentUserData.MemberProjects.map((project, index)=>{
-            return <ContributeProjectCard key={project.id} project={project}/>
+            if(project.TeamMember.approved === "approved"){
+              return <DashboardConProjectsCard key={project.id} project={project}/>
+
+            }
           })}
       {/* <MDBCard className="card-body" style={{ marginTop: "1rem" }}>
     <MDBCardTitle>Project title</MDBCardTitle>
@@ -121,6 +125,12 @@ export default function Dashboard() {
   </MDBCard> */}
 
   <h1>Pending</h1>
+  {Object.keys(currentUserData).length > 0 && currentUserData.MemberProjects.map((project, index)=>{
+            if(project.TeamMember.approved === "pending"){
+              return <DashboardPenProjectCard key={project.id} project={project}/>
+
+            }
+          })}
       <MDBCard className="card-body" style={{ marginTop: "1rem" }}>
     <MDBCardTitle>Project title</MDBCardTitle>
     <MDBCardText>
