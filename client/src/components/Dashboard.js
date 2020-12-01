@@ -51,7 +51,7 @@ export default function Dashboard() {
           </div>
           <MDBCardBody>
           <h4 className='card-title'> <MDBIcon icon="user indigo-text" /> {user.loginInfo.firstName} {user.loginInfo.lastName} </h4>
-          <h4 className='card-title'><MDBIcon far icon="newspaper" /> Headline</h4>
+          <h4 className='card-title'><MDBIcon far icon="newspaper" /> {user.loginInfo.title}</h4>
           <h4 className='card-title'> <MDBIcon icon="envelope orange-text" /> {user.loginInfo.email} </h4> 
           <Link to="/hub"><button name="button" type="button" class="btn btn-block  edit-button">Edit profile</button></Link>
             <hr />
@@ -59,14 +59,12 @@ export default function Dashboard() {
             <h3 class="card-title">
             <MDBIcon icon="cogs grey-text" /> Technical Skills</h3>
             <h2>
-              {console.log(currentUserData)}
               {Object.keys(currentUserData).length > 0 && currentUserData.Skills.filter((userData)=>{
                 return (userData.category === "technical")
-                
               }).map((name)=>{
                 return <span className="skills-dashboard">{name.name}</span>
               })}
-              </h2>
+            </h2>
             
             <br/>
             <hr />
@@ -74,6 +72,13 @@ export default function Dashboard() {
             <h3 class="card-title">
             <MDBIcon icon="hand-holding-heart pink-text" /> Soft Skills
             </h3>
+            <h2>
+              {Object.keys(currentUserData).length > 0 && currentUserData.Skills.filter((userData)=>{
+                return (userData.category === "soft")
+              }).map((name)=>{
+                return name.name + " " 
+              })}
+            </h2>
             <br/>
             <hr />
 
