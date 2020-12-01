@@ -121,6 +121,7 @@ button.remove-skill-button{
 /* form padding */
 form {
     padding: 34px 80px;
+    margin-bottom: 150px;
 }
 
 /* complete your profile container */
@@ -178,6 +179,17 @@ h4.card-title {
 /* profile image */
 img.img-fluid.rounded-circle.hoverable.border.border-info {
     border: 5px solid #33b5e5!important;
+}
+
+/* projectForm page datepicker input */
+.react-datepicker__input-container input {
+    border: 1px solid #4285f4 !important;
+    border-radius: 4px;
+    padding:  6px 12px;
+}
+
+.md-form.md-outline .form-control {
+    border-radius: 4px;
 }
 
 /* BLUE AND GREEN TRANSPARENT RGBA  */

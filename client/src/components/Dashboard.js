@@ -130,7 +130,7 @@ export default function Dashboard() {
               {Object.keys(currentUserData).length > 0 && currentUserData.Skills.filter((userData)=>{
                 return (userData.category === "soft")
               }).map((name)=>{
-                return name.name + " " 
+                return <span className="skills-dashboard">{name.name}</span>
               })}
             </h2>
             <br/>
@@ -143,7 +143,7 @@ export default function Dashboard() {
                 return (userData.category === "language")
                 
               }).map((name)=>{
-                return  <span>{name.name} </span> 
+                return  <span className="skills-dashboard">{name.name}</span>
               })}
               </h2>
             

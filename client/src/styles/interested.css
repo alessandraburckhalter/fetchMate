@@ -7,8 +7,10 @@
 #top {
     width: 100vw;
     min-height: 100vh;
-    background-color: black;
     position: relative;
     display: flex;
 }
 
+.interested-col {
+    margin-top: 80px;
+}
