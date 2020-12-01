@@ -36,7 +36,7 @@ module.exports = {
     },{
       owner: 2,
       description: 'In tempor nunc sed finibus ultrices. Curabitur nec venenatis nulla. Curabitur ipsum eros, luctus nec mauris euismod, faucibus posuere lacus. Suspendisse pharetra id orci malesuada ullamcorper. Quisque sit amet ultrices tellus, nec interdum dolor. Aliquam erat volutpat. Donec arcu nisi, aliquet id nunc non, convallis lacinia purus. Ut sed accumsan sapien, et luctus libero.',
-      title:'Demo Project333, its contributing project for user1(test@test.com)', 
+      title:'Demo Project333, its contributing project for user1', 
       isCompleted: false,
       publishedAt: new Date,
       deadline: "2020-12-23T20:28:24.609Z",

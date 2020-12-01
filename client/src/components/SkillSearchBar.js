@@ -66,7 +66,7 @@ export default function SkillSearchBar({category}) {
                     return <SkillSearchOption key={option.id} option={option}/>
                 })}
                 {filteredForAlreadyPicked.length === 0 && currentSearch.length > 0 ? (
-                <button className="new-skill-button" type="button" onClick={createNewSkill}>Create New Skill</button>
+                <button className="new-skill-button" type="button" onClick={createNewSkill}>Create New One</button>
                 ):('')}
             </div>
 

@@ -178,4 +178,5 @@ Link.project-title {
     padding: 4px;
     font-weight: 400;
     margin: 2px;
+    display: -webkit-inline-box;
 }
