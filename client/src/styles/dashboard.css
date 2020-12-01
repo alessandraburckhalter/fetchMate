@@ -134,6 +134,10 @@ Link.project-title {
     text-align: center;
 }
 
+.icon-width {
+    width: 56px !important;
+}
+
 
 .icon span {
     position: relative;
@@ -163,4 +167,15 @@ Link.project-title {
 
 .icon:hover > span {
     opacity: 1;
+}
+
+.skills-dashboard {
+    border: 1px solid #30B0F8;
+    border-top-right-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+    border-top-left-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+    padding: 4px;
+    font-weight: 400;
+    margin: 2px;
 }
