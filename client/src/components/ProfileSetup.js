@@ -74,9 +74,6 @@ export default function ProfileSetup() {
         .catch(e => {
           console.log(e)
         })
-      Axios.patch()
-      let path = '/dashboard'
-      history.push(path)
     }
     
 
@@ -124,10 +121,6 @@ export default function ProfileSetup() {
            </label>
            
             <input type="text" id="defaultFormCardNameEx" className="form-control" value={headline} onChange={(e) => {setHeadline(e.target.value)}}/>
-            <br />
-            <label htmlFor="defaultFormCardNameEx" className="labe-headline"><MDBIcon icon="share indigo-text" />  Profile Picture
-           </label>
-            <input type="file" id="defaultFormCardNameEx" className="form-control" value={headline} onChange={(e) => {setHeadline(e.target.value)}}/>
             <br />
             
             <h1 className=" label-skillbar"><MDBIcon icon="share indigo-text" /> Technical Skills</h1>
