@@ -11,7 +11,7 @@ import ProjectForm from './components/ProjectForm';
 import Projects from './components/Projects';
 import PublicProfile from './components/PublicProfile';
 import SignUpPage from './components/SignUpPage';
-import Test from './components/Test';
+//import Test from './components/Test';
 import { checked, login } from './redux/actions'
 
 
@@ -57,7 +57,7 @@ function App() {
             <Route exact path="/dashboard" component={Dashboard}/>
             <Route path="/projects" component={Projects}/>
             <Route path="/interested" component={Interested}/>
-            <Route path="/test" component={Test}/>
+            {/* <Route path="/test" component={Test}/> */}
             </>
           )}
           <Route>

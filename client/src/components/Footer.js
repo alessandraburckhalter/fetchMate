@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import logo from '../images/logo3.png';
 import '../styles/footer.css'
 
+
 export default function Footer() {
     return (
         <div>
@@ -11,7 +12,7 @@ export default function Footer() {
         <MDBContainer fluid className="text-center ">
         <MDBRow>
           <MDBCol md="2" className="ml-5">
-          <img src={logo} alt="logo" width="50%"/>
+          <img src={logo} alt="logo" className="img-fluid"/>
             <p>
               We help you to connect with people and find a partner for your project.
             </p>

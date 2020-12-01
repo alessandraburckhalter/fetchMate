@@ -45,3 +45,8 @@
   .footer  p {
     color: white;
   }
+
+.img-footer {
+  max-width: 25% !important;
+ 
+}
