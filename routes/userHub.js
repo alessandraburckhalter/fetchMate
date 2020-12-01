@@ -138,10 +138,9 @@ router.patch('/',upload.single('profilePicture'), checkAuth, (req,res) => {
         res.status(400).json({
             error: 'Please pick a field to change'
         })
-        return ;
     } 
 
-    const { firstName, lastName, email, password, title } = req.body
+    const { firstName, lastName, email, password, title, userSkillsArray } = req.body
     const  profilePicture  = req.file && req.file.path ? req.file.path : null
     const params = { firstName, lastName, password, profilePicture, email, title }
     Object.keys(params).forEach(key => {params[key] ? updateObject[key] = params[key] : ''})
@@ -151,14 +150,36 @@ router.patch('/',upload.single('profilePicture'), checkAuth, (req,res) => {
         }
     })
         .then((updated) => {
-            updated && updated[0] > 0 ?
-                res.status(202).json({
-                    success: 'profile updated'
-                })
-            :
+            if(updated && updated[0] > 0){
+                return updated
+            }else{
                 res.status(404).json({
                     error: 'Profile not found'
                 })
+            }
+        })
+        .then(updated => {
+            return db.User.findOne({
+                where: {
+                    id: req.session.user.id
+                }
+            })
+                .then(user => user)
+        })
+        .then(user => {
+            return db.Skill.findAll({
+                where: {id: userSkillsArray}
+            })
+                .then(skills => {
+                    if(!skills){
+                        res.status(404).json({error: 'A certain skill wasn\'t found'})
+                    }
+                    return user.setSkills(skills)
+                        .then(() => user)
+                })
+        })
+        .then(user => {
+            res.status(201).json({success: 'User updated'})
         })
         .catch((e) => {
             res.status(500).json({
@@ -183,7 +204,7 @@ router.post('/userSkill', checkAuth, (req, res) => {
                     if(!skills){
                         res.status(404).json({error: 'A certain skill wasn\'t found'})
                     }
-                    return user.addSkills(skills)
+                    return user.setSkills(skills)
                         .then(() => user)
                 })
         })

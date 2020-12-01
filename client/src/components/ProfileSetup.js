@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Button } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 import '../styles/profileSetup.css'
-import { clearSearchSkillArray, logout } from '../redux/actions';
+import { clearSearchSkillArray, logout, setSearchSkillArray } from '../redux/actions';
 import SkillSearchBar from './SkillSearchBar';
 import Axios from 'axios';
 import Footer from './Footer'
@@ -22,7 +22,7 @@ export default function ProfileSetup() {
     const pickedSkillsArray = useSelector(state => state.searchSkillsToAdd)
 
     useEffect(() => {
-      dispatch(clearSearchSkillArray())
+      dispatch(setSearchSkillArray(user.loginInfo.Skills))
     }, [])
 
     const handleLogout = (e) => {
@@ -56,17 +56,9 @@ export default function ProfileSetup() {
       e.preventDefault();
       setHeadline('');
       const userSkillsArray = pickedSkillsArray.map(skill => skill.id)
-      Axios.post('/api/v1/hub/userSkill', {
-        userSkillsArray
-      })
-        .then(res => {
-          console.log(res)
-        })
-        .catch(e => {
-          console.log(e)
-        })
       Axios.patch('/api/v1/hub', {
-        title: headline
+        title: headline,
+        userSkillsArray
       })
         .then(res => {
           console.log(res)
