@@ -124,7 +124,7 @@ export default function DashboardProjectCard(props) {
               <MDBModal isOpen={modal} toggle={toggle}>
                 <MDBModalHeader toggle={toggle}>{title}</MDBModalHeader>
                 <MDBModalBody>
-                <form onSubmit={e => handleSubmit(e)}>
+                <form>
                     <label htmlFor="defaultFormCardNameEx" className="labe-headline"><MDBIcon icon="share indigo-text" /> Describe your project</label>
                     <MDBInput type="textarea" label="Brief description of your project" outline value={descriptionEdit} onChange={(e) => { setDescriptionEdit(e.target.value) }} />
 
@@ -142,24 +142,20 @@ export default function DashboardProjectCard(props) {
 
                     <label htmlFor="defaultFormCardNameEx" className="labe-headline" >
                       How many people will be acceptable for this project?
-          </label>
+                    </label>
                     <MDBInput label="Enter number" outline value={memberLimitEdit} onChange={(e) => { setMemberLimitEdit(e.target.value) }} />
 
 
                     <label htmlFor="defaultFormCardNameEx" className="labe-headline">
                       What is the deadline for this project?
-          </label>
+                    </label>
                     <DatePicker selected={deadlineEdit} onChange={date => setDeadlineEdit(date)} /> <br /> <br />
 
 
                     <label htmlFor="defaultFormCardNameEx" className="labe-headline">
                       When would you like to publish this project?
-          </label>
+                    </label>
                     <DatePicker selected={publishedAtEdit} onChange={date => setPublishedAtEdit(date)} /><br /> <br />
-
-                    {/* <Button variant="primary" type="submit">
-                      Publish Project <MDBIcon icon="file-upload" />
-                    </Button> */}
                   </form>
                 </MDBModalBody>
                 <MDBModalFooter>
