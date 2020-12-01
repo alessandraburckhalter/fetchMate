@@ -1,15 +1,15 @@
 import React, { useEffect, useState }  from 'react'
-import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardText, MDBCardTitle, MDBCardVideo, MDBCol, MDBContainer, MDBDataTable, MDBFormInline, MDBIcon, MDBInput, MDBRow } from 'mdbreact';
+import { MDBCard, MDBCol, MDBContainer, MDBIcon, MDBInput, MDBRow } from 'mdbreact';
 import '../styles/profileSetup.css'
 import { Button } from 'react-bootstrap';
-import { MDBDatePickerV5 } from 'mdbreact';
 import DatePicker from "react-datepicker";
- 
 import "react-datepicker/dist/react-datepicker.css";
+import Navbar from './Navbar';
 import SkillSearchBar from './SkillSearchBar';
 import Axios from 'axios';
 import { clearSearchSkillArray } from '../redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
+import Footer from './Footer';
 
 export default function ProjectForm() {
   const [title, setTitle] = useState('');
@@ -48,17 +48,25 @@ export default function ProjectForm() {
   }
 
     return (
+        <>
+        <Navbar />
+
         <div id="top">
             <MDBContainer>
-            <MDBCol md="4">
             <MDBRow>
-    <form md="4" onSubmit={e => handleSubmit(e)}>
-      <label htmlFor="defaultFormLoginEmailEx" className="black-text mt-5" >
-            Project Title
+            <MDBCol md="7" className=" container-form">
+            <MDBCard className="card-complete-profile" testimonial>
+          <div className="form-title">
+          TELL US ABOUT YOUR PROJECT <MDBIcon icon="file-signature indigo-text" /> 
+          </div>
+          <div >
+    <form onSubmit={e => handleSubmit(e)}>
+      <label htmlFor="defaultFormCardNameEx" className="labe-headline" ><MDBIcon icon="share indigo-text" /> Project Title
           </label>
+          
       <MDBInput label="Project title" outline  value={title} onChange={(e) => {setTitle(e.target.value)}}/>
-      <label htmlFor="defaultFormLoginEmailEx" className="black-text">
-            Describe your project
+
+      <label htmlFor="defaultFormCardNameEx" className="labe-headline"><MDBIcon icon="share indigo-text" /> Describe your project
           </label>
       <MDBInput type="textarea" label="Brief description of your project" outline value={description} onChange={(e) => {setDescription(e.target.value)}}/>
 
@@ -74,30 +82,35 @@ export default function ProjectForm() {
       <SkillSearchBar category='language'/><br/>
 
 
-      <label htmlFor="defaultFormLoginEmailEx" className="black-text mt-5" >
+      <label htmlFor="defaultFormCardNameEx" className="labe-headline" >
             How many people will be acceptable for this project?
           </label>
       <MDBInput label="Enter number" outline  value={memberLimit} onChange={(e) => {setMemberLimit(e.target.value)}}/>
 
       
-      <label htmlFor="defaultFormLoginEmailEx" className="black-text">
+      <label htmlFor="defaultFormCardNameEx" className="labe-headline">
             What is the deadline for this project?
           </label>
       <DatePicker selected={deadline} onChange={date => setDeadline(date)} /> <br/> <br/>
       
       
-      <label htmlFor="defaultFormLoginEmailEx" className="black-text">
+      <label htmlFor="defaultFormCardNameEx" className="labe-headline">
             When would you like to publish this project?
           </label>
       <DatePicker selected={publishedAt} onChange={date => setPublishedAt(date)} /><br/> <br/>
 
       <Button variant="primary" type="submit">
-        Publish Project
+        Publish Project <MDBIcon icon="file-upload" />
       </Button>
       </form>
-      </MDBRow>
+      </div>
+      </MDBCard>
     </MDBCol>
+      </MDBRow>
             </MDBContainer>
         </div>
+
+        <Footer />
+      </>
     )
 }

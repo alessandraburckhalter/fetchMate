@@ -2,6 +2,7 @@ import { MDBCard, MDBCardBody, MDBCardText, MDBCardTitle, MDBCol, MDBContainer, 
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import InterestedCard from './card/InterestedCard'
+import Navbar from './Navbar'
 
 export default function Interested() {
     const { projectId } = useParams()
@@ -35,6 +36,9 @@ export default function Interested() {
   
 
     return (
+      <>
+
+      <Navbar />  
       <div id="top">
 
         <MDBContainer>
@@ -69,6 +73,7 @@ export default function Interested() {
         </MDBRow>
         </MDBContainer>
             </div>
+      </>
     )
 }
     

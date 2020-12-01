@@ -20,6 +20,12 @@ h3.card-title {
     font-size: 1em;
     cursor: pointer;
     text-transform: uppercase;
+    font-weight: 500 !important;
+}
+
+.card-body h2 {
+    font-size: 15px;
+    
 }
 
 button.edit-button {
@@ -45,7 +51,7 @@ button.edit-button.btn {
 .card-body-pending1 {
     padding: 0 !important;
     background-color: red !important;
-    margin-bottom: 10em;
+    margin-bottom: 20em;
 }
 
 .card-body-pending2 {
@@ -98,7 +104,8 @@ button.publish-button {
 
 .projects-col {
     margin-left: 50px;
-    margin-top: 20px;
+    margin-top: 150px;
+    margin-bottom: 150px;
 }
 
 .title-cards {
@@ -117,4 +124,43 @@ button.publish-button {
 
 Link.project-title {
     color: black !important;
+}
+
+.icon {
+    position: relative;
+    display: inline-block;
+    margin-right: 0 !important ;
+    padding: 0 ;
+    text-align: center;
+}
+
+
+.icon span {
+    position: relative;
+    /* width: 10px; */
+    color: #4285f4;
+    text-align: center;
+    display: block;
+    margin: 0 !important;
+    opacity: 0;
+    transition: 0.6s opacity;
+    font-size: 10px;
+    display: block;
+    text-align: center;
+    padding: 0 !important;
+}
+
+.icon span:before {
+    content: '';
+    /* width: 10px; */
+    /* height: 10px; */
+    position: absolute;
+    top: -6px;
+    z-index: -1;
+    left: 50%;
+    transform: translate(-50%) rotate(45deg);
+}
+
+.icon:hover > span {
+    opacity: 1;
 }

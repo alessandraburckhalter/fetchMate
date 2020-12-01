@@ -1,7 +1,8 @@
-import { MDBCard, MDBCardText, MDBCardTitle, MDBIcon } from 'mdbreact'
-import React from 'react'
+import { MDBCard, MDBCardText, MDBCardTitle, MDBContainer, MDBIcon, MDBModal, MDBModalBody, MDBModalFooter, MDBModalHeader } from 'mdbreact'
+import React, { useState }  from 'react'
 import { Dropdown, DropdownButton } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux';
 
 export default function DashboardProjectCard(props) {
     const { id, owner, description, title, isCompleted, publishedAt, deadline, memberLimit} = props.project
@@ -19,6 +20,12 @@ export default function DashboardProjectCard(props) {
       })
     }
 
+    const [modal, setModal] = useState(false);
+
+    const toggle = () => {
+        setModal(!modal);
+    }
+
 
 
     return (
@@ -34,24 +41,34 @@ export default function DashboardProjectCard(props) {
       {description}
     </MDBCardText>
     <div className="flex-row ">
-    <a href="#!" className="card-link">
-        Status: {isCompleted === false ? "Open" : "Closed"}
+    <a href="#!" className="card-link icon">
+        Status: {isCompleted === false ? "Open" : "Closed"} <span>Project Status</span>
       </a>
       
-      <a href="#!" className="card-link"><MDBIcon icon="calendar-alt deep-purple-text" /> {publishedAt.slice(0,10)}
+      <a href="#!" className="card-link icon"><MDBIcon icon="calendar-alt deep-purple-text" />  {publishedAt.slice(0,10)} <span>Published date</span>
       </a>
-      <a href="#!" className="card-link"><MDBIcon icon="users indigo-text" /> {memberLimit}
+      <a href="#!" className="card-link icon"><MDBIcon icon="users indigo-text" /> {memberLimit} <span>Member's limit</span> 
       </a>
-      <a href="#!" className="card-link"><MDBIcon fab icon="gratipay pink-text" /> 0
+      <a href="#!" className="card-link icon"><MDBIcon fab icon="gratipay pink-text" /> 0 <span>Interested People</span>
       </a>
-      <a href="#!" className="card-link"><MDBIcon icon="check-square green-text" /> 0  
+      <a href="#!" className="card-link icon"><MDBIcon icon="check-square green-text" /> 0 <span>Approved</span>
       </a>
-      <button className="card-link edit-card"><MDBIcon icon="edit" />
-      </button>
 
-      <button className="card-link delete-card" onClick={ () => removeProject(id)}><MDBIcon icon="trash-restore-alt red-text" />
+      <a href="#!" ><button className="card-link icon delete-card" onClick={ () => removeProject(id)}><MDBIcon icon="trash-restore-alt red-text" /><span>Delete</span> 
+      </button></a>
+      
+      <Link to='#' className="card-link icon edit-card" onClick={toggle}><MDBIcon icon="edit" /><span>Edit</span> </Link>
+          <MDBModal isOpen={modal} toggle={toggle}>
+          <MDBModalHeader toggle={toggle}>{title}</MDBModalHeader>
+                <MDBModalBody>
+                  {description}
+                </MDBModalBody>
+                <MDBModalFooter>
+                    <button className='btn btn-primary' onClick={toggle}>Close</button>
+                    <button type="submit" className='btn btn-secondary' onClick={toggle}>Save Changes</button>
+                </MDBModalFooter>
+            </MDBModal>
 
-      </button>
     </div>
     </aside>
     </MDBCard>

@@ -27,6 +27,7 @@ export default function PublicProfile() {
   }, [project.owner, pendingId])
   
     return (
+      
         <div>
             <MDBContainer>
                 <MDBRow>
