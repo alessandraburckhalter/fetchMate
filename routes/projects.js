@@ -112,16 +112,39 @@ router.patch('/:id', (req, res) => {
         }
     })
         .then(updatedProject => {
-            updatedProject && updatedProject[0] > 0 ?
-                res.status(202).json({success: 'Project updated'})
-            :
+            if(updatedProject && updatedProject[0] > 0){
+                return updatedProject;
+            }else{
                 res.status(404).json({error: 'Project not found'})
+            }
+        })
+        .then(updated => {
+            //! Once we update the project:
+            //! we need to find the project again, since the update method doesn't return an instance of he project
+            //! Once we find the right project, we can then use the addSkills magic method to update new skills.
+            db.Project.findOne({where: {id}})
+                .then(project => {
+                    const { projectSkillsArray } = req.body;
+                    return db.Skill.findAll({
+                        where:{id: projectSkillsArray}
+                    })
+                        .then(skills => {
+                            if(!skills) {
+                                res.status(404).json({error: `A certain skill wasn't found`}) 
+                            }
+                            //! 
+                            return project.setSkills(skills)
+                                .then(() => project)
+                        })
+                })
+        })
+        .then(project => {
+            res.status(202).json({success: 'Project updated'})
         })
         .catch(e => {
-            res.status(500).json({
-                error: 'Database error occurred: ' + e
-            })
-        })
+            console.error(e)
+            res.status(500).json({error: 'A database error: ' + e})
+        }) 
 })
 
 //* Delete Project route --> based on the project id to be deleted

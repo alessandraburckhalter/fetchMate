@@ -53,11 +53,17 @@ router.get('/current', checkAuth, (req,res) => {
                 primaryKey: 'owner',
                 model: db.Project,
                 required: false,
+                include:[
+                    db.Skill
+                ]
             },
             {
                 as: "MemberProjects", 
                 model: db.Project,
-                required: false
+                required: false,
+                include:[
+                    db.Skill
+                ]
             },
                 db.Skill]
     })

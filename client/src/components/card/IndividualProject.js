@@ -2,6 +2,7 @@ import { MDBCard, MDBCardText, MDBCardTitle, MDBCol, MDBModal, MDBModalBody, MDB
 import React, {  useState } from 'react'
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom'
+
 export default function IndividualProject({ project }) {
     const user = useSelector(state => state.user)
     // !! makes it a boolean
