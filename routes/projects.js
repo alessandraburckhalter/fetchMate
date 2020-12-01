@@ -97,7 +97,7 @@ router.patch('/:id', (req, res) => {
     const { id } = req.params;
     const updateObject = {};
     //TODO: Will need to double check w/ front end team for these names
-    const { description, title, isCompleted, publishedAt, deadline, memberLimit } = req.res;
+    const { description, title, isCompleted, publishedAt, deadline, memberLimit } = req.body;
     //TODO: May not want to make it to where the user has to submit all of these in order to create a project 
     if(!description && !title && !isCompleted && !publishedAt && !deadline && !memberLimit){
         res.status(400).json({
@@ -111,7 +111,7 @@ router.patch('/:id', (req, res) => {
             id
         }
     })
-        then(updatedProject => {
+        .then(updatedProject => {
             updatedProject && updatedProject[0] > 0 ?
                 res.status(202).json({success: 'Project updated'})
             :
