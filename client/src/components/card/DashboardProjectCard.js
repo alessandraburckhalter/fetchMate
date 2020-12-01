@@ -122,7 +122,7 @@ export default function DashboardProjectCard(props) {
         Status: {isCompleted === false ? "Open" : "Closed"} <span>Project Status</span>
       </a>
       
-      <a href="#!" className="card-link icon "><MDBIcon icon="calendar-alt deep-purple-text" />  {publishedAt.slice(0,10)} <span>Published date</span>
+      <a href="#!" className="card-link icon "><MDBIcon icon="calendar-alt deep-purple-text" />  {deadline.slice(0,10)} <span>Deadline</span>
       </a>
       <a href="#!" className="card-link icon icon-width"><MDBIcon icon="users indigo-text" /> {memberLimit} <span>Member's limit</span> 
       </a>

@@ -72,6 +72,25 @@ export default function ContribuingProjects() {
           <h3>Published: {Object.keys(project).length > 0 && project.publishedAt.slice(0,10)} </h3>
           <h3>DeadLine: {Object.keys(project).length > 0 && project.deadline.slice(0,10)} </h3>
           <h3>Member Limit: {project.memberLimit}</h3>
+          <h3>Language: 
+          {Object.keys(project).length > 0 && project.Skills.filter((userData)=>{
+                return (userData.category === "language")
+              }).map((name)=>{
+                return name.name + " " 
+              })}
+          </h3>
+          <h3>Soft Skills: {Object.keys(project).length > 0 && project.Skills.filter((userData)=>{
+                return (userData.category === "soft")
+              }).map((name)=>{
+                return name.name + " " 
+              })}</h3>
+          <h3>Technical Skills: 
+          {Object.keys(project).length > 0 && project.Skills.filter((userData)=>{
+                return (userData.category === "technical")
+              }).map((name)=>{
+                return name.name + " " 
+              })}
+          </h3>
           
     
   </MDBCol>

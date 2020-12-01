@@ -9,7 +9,7 @@ export default function InterestedCard(props) {
     
     // for email
     const id = props.project.ProjectId 
-    console.log(props.project)
+    
     const userIdForProjectOwner = props.project.UserId
     const [ownerProject, setOwnerProject] = useState("")
     const email = interestedUser.email
@@ -115,7 +115,7 @@ export default function InterestedCard(props) {
     return (
         <MDBCol md="6" lg="4">
       <MDBCard personal className="my-5">
-          
+          {console.log(project)}
           <MDBCardBody>
             <img src={interestedUser.profilePicture} alt="profilePicture" />
             <MDBCardTitle>

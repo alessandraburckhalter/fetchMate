@@ -10,7 +10,7 @@ export default function Interested() {
     const [interested, setInterested] = useState([])
     
     // const publish = project.publishedAt
-
+    console.log(project)
     const displayInterest = () =>{
       fetch(`/api/v1/projects/${projectId}/teamMember?status=pending`)
           .then(res =>res.json())
@@ -55,7 +55,29 @@ export default function Interested() {
         <a href="#!" className="card-link">
             Status: {project.isCompleted === true ? "Close" : "Open"}
           </a>
-          <a href="#!" className="card-link">Published: {Object.keys(project).length > 0 && project.publishedAt.slice(0,10)} 
+          <a href="#!" className="card-link">Deadline: {Object.keys(project).length > 0 && project.deadline.slice(0,10)} 
+          </a>
+          <a href="#!" className="card-link">
+            language: 
+            {Object.keys(project).length > 0 && project.Skills.filter((userData)=>{
+                return (userData.category === "language")
+              }).map((name)=>{
+                return name.name+ " "
+              })}
+          </a>
+          <a href="#!" className="card-link">
+            Soft Skills: {Object.keys(project).length > 0 && project.Skills.filter((userData)=>{
+                return (userData.category === "soft")
+              }).map((name)=>{
+                return name.name+ " "
+              })}
+          </a>
+          <a href="#!" className="card-link">
+            Technical Skills: {Object.keys(project).length > 0 && project.Skills.filter((userData)=>{
+                return (userData.category === "technical")
+              }).map((name)=>{
+                return name.name + " " 
+              })}
           </a>
           
         </div>

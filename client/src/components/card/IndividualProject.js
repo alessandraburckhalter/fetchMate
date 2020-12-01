@@ -2,7 +2,7 @@ import { MDBCard, MDBCardText, MDBCardTitle, MDBCol, MDBModal, MDBModalBody, MDB
 import React, {  useState } from 'react'
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom'
-import javascript from './js-brands.svg'
+
 export default function IndividualProject({ project }) {
     const user = useSelector(state => state.user)
     // !! makes it a boolean
@@ -15,6 +15,23 @@ export default function IndividualProject({ project }) {
 
     const [modal, setModal] = useState(false);
 
+    const cancelApply = () =>{
+        fetch(`/api/v1/projects/${project.id}/teamMember`, {
+            method: 'DELETE',
+            body: JSON.stringify({
+                memberIdArray: user.loginInfo.id
+            }),
+            headers: {
+                Accept: "application/json",
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                setApplied(false) 
+            })    
+    }
     const applyProject = (e) => {
         console.log(user)
         fetch(`/api/v1/projects/${project.id}/teamMember`, {
@@ -104,11 +121,13 @@ export default function IndividualProject({ project }) {
                                                 You own this Project
                                         </button>
                                         :
-                                        applied ?                                
+                                        applied ?
+                                        <>                                
                                             <button className="inactive" disabled>
                                                 Applied to this project!
                                             </button>
-                                            
+                                            <button onClick={cancelApply}>cancel</button>
+                                        </>    
                                             :
                                             <button className="participate-button" onClick={applyProject}>
                                                 I want to be part of this project
