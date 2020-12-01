@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {  MDBCard, MDBCardBody,  MDBCardTitle, MDBCol, MDBCollapse, MDBContainer,  MDBDropdown,  MDBDropdownItem,  MDBDropdownMenu,  MDBDropdownToggle,  MDBIcon,  MDBNav,  MDBNavbar,  MDBNavbarBrand,  MDBNavbarNav,  MDBNavbarToggler,  MDBNavItem,   MDBProgress,   MDBRow } from 'mdbreact';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, NavItem } from 'react-bootstrap';
 import '../styles/profileSetup.css'
-import { logout } from '../redux/actions';
+import { clearSearchSkillArray, logout } from '../redux/actions';
 import { BrowserRouter, Link, NavLink, useHistory } from 'react-router-dom';
 import SkillSearchBar from './SkillSearchBar';
 import Axios from 'axios';
@@ -22,6 +22,10 @@ export default function ProfileSetup() {
     const dispatch = useDispatch();
     const history = useHistory();
     const pickedSkillsArray = useSelector(state => state.searchSkillsToAdd)
+
+    useEffect(() => {
+      dispatch(clearSearchSkillArray())
+    }, [])
 
     const handleLogout = (e) => {
         e.preventDefault();
@@ -53,7 +57,7 @@ export default function ProfileSetup() {
     const handleSubmit = (e) => {
       e.preventDefault();
       setHeadline('');
-      const userSkillsArray = pickedSkillsArray.map(skills => skills.id)
+      const userSkillsArray = pickedSkillsArray.map(skill => skill.id)
       Axios.post('/api/v1/hub/userSkill', {
         userSkillsArray
       })
