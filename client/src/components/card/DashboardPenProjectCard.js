@@ -16,28 +16,33 @@ export default function DashboardPenProjectCard(props) {
         })
       }, [owner])
     return (
+
         <div>
-            <MDBCard className="card-body card-body-pending1 mb-4" >
+            
+        <MDBCard className="card-body card-body-pending1 mb-4">
             <aside>
      
             </aside>
-            <MDBCard className="card-body card-body-pending2">
-             <aside>
-                <MDBCardTitle className="project-title"><MDBIcon icon="link" /> {title}</MDBCardTitle>
-                <MDBCardText>
-                    {description}
-                </MDBCardText>
-                <div className="flex-row ">
-                    <Link to="/public" className="card-link">
+        <MDBCard className="card-body card-body-pending2">
+        <aside>
+      <MDBCardTitle className="project-title"> <MDBIcon icon="link" /> {title}</MDBCardTitle>
+    <MDBCardText>
+    {description}
+    </MDBCardText>
 
-                    <MDBIcon icon="user" /> <Link to={`/dashboard/public/${id}`}>{projectOwner.firstName} {projectOwner.lastName}</Link>
-                        </Link>
-                    <a href="#!" className="card-link">
-                    </a>
-                </div>
-                </aside>
-                </MDBCard>
-            </MDBCard>
-        </div>
+    <div className="flex-row ">
+    <Link to="/public" className="card-link">
+      
+    <MDBIcon icon="user" />  
+      <Link to={`/dashboard/public/${id}`}>{projectOwner.firstName} {projectOwner.lastName}</Link>
+      </Link>
+    </div>
+    </aside>
+    </MDBCard>
+    </MDBCard>
+    </div>
+
     )
 }
+
+

@@ -1,12 +1,10 @@
-import { MDBCard, MDBCardBody, MDBCardText, MDBCardTitle, MDBCol, MDBCollapse, MDBContainer, MDBIcon, MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavbarToggler, MDBNavItem, MDBRow } from 'mdbreact';
+import { MDBCard, MDBCardBody, MDBCol, MDBContainer, MDBIcon, MDBRow } from 'mdbreact';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { BrowserRouter, Link } from 'react-router-dom';
 import { login } from '../redux/actions';
 import '../styles/dashboard.css'
 import ProjectCard from './card/DashboardProjectCard';
 import ContributeProjectCard from "./card/DashboardConProjectCard";
-import logo from '../images/logo3.png';
 import Footer from './Footer';
 import DashboardConProjectsCard from "./card/DashboardConProjectCard"
 import DashboardPenProjectCard from './card/DashboardPenProjectCard';
@@ -124,25 +122,7 @@ export default function Dashboard() {
 
             }
           })}
-     {/* <MDBCard className="card-body card-body-pending2">
-        <aside>
-      <MDBCardTitle className="project-title"> <MDBIcon icon="link" /> Project title</MDBCardTitle>
-    <MDBCardText>
-    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-    </MDBCardText>
-
-    <div className="flex-row ">
-    <Link to="/public" className="card-link">
-      
-    <MDBIcon icon="user" /> owners name
-      </Link>
-      <a href="#!" className="card-link"> 
-      </a>  
-    </div>
-    </aside> */}
-    {/* </MDBCard>
-  </MDBCard> */}
-
+     
   </MDBCol>
     </MDBRow>
     </MDBContainer>

@@ -1,16 +1,50 @@
-import React, { useState }  from 'react'
+import React, { useEffect, useState }  from 'react'
 import { MDBCol, MDBContainer, MDBIcon, MDBInput, MDBRow } from 'mdbreact';
 import '../styles/profileSetup.css'
 import { Button } from 'react-bootstrap';
 import DatePicker from "react-datepicker";
- 
 import "react-datepicker/dist/react-datepicker.css";
 import Navbar from './Navbar';
+import SkillSearchBar from './SkillSearchBar';
+import Axios from 'axios';
+import { clearSearchSkillArray } from '../redux/actions';
+import { useDispatch, useSelector } from 'react-redux';
 
 export default function ProjectForm() {
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [publishedAt, setPublishedAt] = useState(new Date());
+  const [deadline, setDeadline]  = useState(new Date());
+  const [memberLimit, setMemberLimit] = useState(0);
+  const dispatch = useDispatch();
+  const pickedSkillsArray = useSelector(state => state.searchSkillsToAdd)
 
-  const [startDate, setStartDate] = useState(new Date());
+  useEffect(() => {
+    dispatch(clearSearchSkillArray())
+  }, [])
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    setTitle('');
+    setDescription('');
+    setMemberLimit(0);
+    const projectSkillsArray = pickedSkillsArray.map(skill => skill.id)
+    Axios.post(`/api/v1/projects/`,{
+      title,
+      description,
+      publishedAt,
+      deadline,
+      memberLimit,
+      projectSkillsArray
+    })
+      .then(res => {
+        console.log(res)
+        dispatch(clearSearchSkillArray());
+      })
+      .catch(e => {
+        console.log(e)
+      })
+  }
 
     return (
         <>
@@ -20,96 +54,48 @@ export default function ProjectForm() {
             <MDBContainer>
             <MDBCol md="4">
             <MDBRow>
-    <form md="4">
-    <label htmlFor="defaultFormLoginEmailEx" className="black-text mt-5" >
-          Project Title
-        </label>
-    <MDBInput label="Project title" outline  />
-    <label htmlFor="defaultFormLoginEmailEx" className="black-text">
-          Describe your project
-        </label>
-    <MDBInput type="textarea" label="Brief description of your project" outline />
-
-    <label htmlFor="defaultFormLoginEmailEx" className="black-text">
-          What technical skills you are looking for?
-        </label>
-      <div className="input-group md-form form-sm form-1 pl-0">
-        <div className="input-group-prepend">
-          <span className="input-group-text purple lighten-3" id="basic-text1">
-            <MDBIcon className="text-white" icon="search" />
-          </span>
-        </div>
-        <input className="form-control my-0 py-1" type="text" placeholder="Search for skills" aria-label="Search" />
-      </div>
-
-      <div className="form-group">
-      <input
-        type="text"
-        className="form-control"
-        id="formGroupExampleInput"
-      />
-    </div>
-
+    <form md="4" onSubmit={e => handleSubmit(e)}>
+      <label htmlFor="defaultFormLoginEmailEx" className="black-text mt-5" >
+            Project Title
+          </label>
+      <MDBInput label="Project title" outline  value={title} onChange={(e) => {setTitle(e.target.value)}}/>
       <label htmlFor="defaultFormLoginEmailEx" className="black-text">
-          What soft skills you are looking for?
-        </label>
-      <div className="input-group md-form form-sm form-1 pl-0">
-        <div className="input-group-prepend">
-          <span className="input-group-text purple lighten-3" id="basic-text1">
-            <MDBIcon className="text-white" icon="search" />
-          </span>
-        </div>
-        <input className="form-control my-0 py-1" type="text" placeholder="Search for skills" aria-label="Search" />
-      </div>
+            Describe your project
+          </label>
+      <MDBInput type="textarea" label="Brief description of your project" outline value={description} onChange={(e) => {setDescription(e.target.value)}}/>
 
-      <div className="form-group">
-      <input
-        type="text"
-        className="form-control"
-        id="formGroupExampleInput"
-      />
-    </div>
+      <h1 className=" label-skillbar"><MDBIcon icon="share indigo-text" /> What technical skills are you looking for?</h1>
+      <SkillSearchBar category='technical'/>
+      <br />
+      
+      <h1 className=" label-skillbar"><MDBIcon icon="share indigo-text" /> What soft skills are you looking for?</h1>
+      <SkillSearchBar category='soft'/>
+      <br />
+      
+      <h1 className=" label-skillbar"> <MDBIcon icon="share indigo-text" /> Any language preference?</h1>
+      <SkillSearchBar category='language'/><br/>
 
+
+      <label htmlFor="defaultFormLoginEmailEx" className="black-text mt-5" >
+            How many people will be acceptable for this project?
+          </label>
+      <MDBInput label="Enter number" outline  value={memberLimit} onChange={(e) => {setMemberLimit(e.target.value)}}/>
+
+      
       <label htmlFor="defaultFormLoginEmailEx" className="black-text">
-         Any language preference?
-        </label>
-      <div className="input-group md-form form-sm form-1 pl-0">
-        <div className="input-group-prepend">
-          <span className="input-group-text purple lighten-3" id="basic-text1">
-            <MDBIcon className="text-white" icon="search" />
-          </span>
-        </div>
-        <input className="form-control my-0 py-1" type="text" placeholder="Search for spoken languages" aria-label="Search" />
-      </div>
+            What is the deadline for this project?
+          </label>
+      <DatePicker selected={deadline} onChange={date => setDeadline(date)} /> <br/> <br/>
+      
+      
+      <label htmlFor="defaultFormLoginEmailEx" className="black-text">
+            When would you like to publish this project?
+          </label>
+      <DatePicker selected={publishedAt} onChange={date => setPublishedAt(date)} /><br/> <br/>
 
-      <div className="form-group">
-      <input
-        type="text"
-        className="form-control"
-        id="formGroupExampleInput"
-      />
-    </div>
-
-    <label htmlFor="defaultFormLoginEmailEx" className="black-text mt-5" >
-          How many people will be acceptable for this project?
-        </label>
-    <MDBInput label="Enter number" outline  />
-
-    
-    <label htmlFor="defaultFormLoginEmailEx" className="black-text">
-          What is the deadline for this project?
-        </label>
-    <DatePicker selected={startDate} onChange={date => setStartDate(date)} /> <br/> <br/>
-     
-    
-    <label htmlFor="defaultFormLoginEmailEx" className="black-text">
-          When would you like to publish this project?
-        </label>
-    <DatePicker selected={startDate} onChange={date => setStartDate(date)} /><br/> <br/>
-
-    <Button variant="primary" type="submit">
-                    Publish Project
-                </Button>
+      <Button variant="primary" type="submit">
+        Publish Project
+      </Button>
       </form>
       </MDBRow>
     </MDBCol>
