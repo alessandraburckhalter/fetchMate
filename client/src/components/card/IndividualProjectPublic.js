@@ -3,52 +3,19 @@ import React, {  useState } from 'react'
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom'
 
-export default function IndividualProject({ project }) {
+export default function IndividualProjectPublic({ project }) {
     const user = useSelector(state => state.user)
     // !! makes it a boolean
-    const isMember = !!(project.Members.find(member => {
-        return member.id === user.loginInfo.id
-    }))
-    const isOwner = project.User.id === user.loginInfo.id
+    
+    
 
-    const [applied, setApplied] = useState(isMember)
+ 
 
     const [modal, setModal] = useState(false);
 
-    const cancelApply = () =>{
-        fetch(`/api/v1/projects/${project.id}/teamMember`, {
-            method: 'DELETE',
-            body: JSON.stringify({
-                memberIdArray: user.loginInfo.id
-            }),
-            headers: {
-                Accept: "application/json",
-                'Content-Type': 'application/json'
-            }
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                setApplied(false) 
-            })    
-    }
+   
     const applyProject = (e) => {
-        console.log(user)
-        fetch(`/api/v1/projects/${project.id}/teamMember`, {
-            method: 'POST',
-            body: JSON.stringify({
-                memberIdArray: user.loginInfo.id
-            }),
-            headers: {
-                Accept: "application/json",
-                'Content-Type': 'application/json'
-            }
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                setApplied(true) 
-            })
+        alert("You need to login")
     }
 
     // Modal
@@ -115,24 +82,12 @@ export default function IndividualProject({ project }) {
                                 </a>
                                 <div>
 
-                                    {
-                                        isOwner ?
-                                        <button className="inactive">
-                                                You own this Project
-                                        </button>
-                                        :
-                                        applied ?
-                                        <>                                
-                                            <button className="inactive" disabled>
-                                                Applied to this project!
-                                            </button>
-                                            <button onClick={cancelApply}>cancel</button>
-                                        </>    
-                                            :
+                                    
+                                        
                                             <button className="participate-button" onClick={applyProject}>
                                                 I want to be part of this project
                                             </button>
-                                    }
+                                    
 
                                     {/* {   
                                         applied ?                                
