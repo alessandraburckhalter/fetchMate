@@ -59,7 +59,7 @@ router.post('/',upload.single('profilePicture'), (req,res) => {
             firstName: firstName,
             lastName: lastName,
             password: hash,
-            profilePicture: req.file && req.file.path ? req.file.path : null
+            profilePicture: req.file && req.file.path ? req.file.path : '/uploads/default.png'
             
         })
         .then((result) => {
