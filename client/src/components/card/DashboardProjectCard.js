@@ -20,10 +20,18 @@ export default function DashboardProjectCard(props) {
   
   const dispatch = useDispatch();
   const pickedSkillsArray = useSelector(state => state.searchSkillsToAdd)
-  // console.log(props.project)
   useEffect(() => {
     dispatch(clearSearchSkillArray())
   }, [])
+
+  //? We need this one to get the info for the members
+  useEffect(()=>{
+    fetch(`/api/v1/projects/${id}`)
+      .then(res=>res.json())
+      .then(data=>{
+        setProjectInfo(data)
+      })
+    },[id])
 
   const handleSubmit = () => {
     toggle()
@@ -45,22 +53,13 @@ export default function DashboardProjectCard(props) {
       .catch(e => {
         console.log(e)
       })
-      // fetch(`/api/v1/projects/${id}`)
-      //   .then(res=>res.json())
-      //   .then(data=>{
-      //     setProjectInfo(data)
-      //   })
   }
 
     const addAcceptedMember = () =>{
-      console.log(projectInfo.Members)
       const acceptMember = projectInfo.Members && projectInfo.Members.filter((acceptedMember)=>{
         return acceptedMember.TeamMember.approved === "approved"
       })
-      console.log(acceptMember)
-      
           return setAcceptedMember(acceptMember)  
-      
     }
       
     const removeProject = (projectId) =>{
@@ -76,16 +75,6 @@ export default function DashboardProjectCard(props) {
       })
     }
 
-    // useEffect(()=>{
-    //   fetch(`/api/v1/projects/${id}`)
-    //     .then(res=>res.json())
-    //     .then(data=>{
-    //       setProjectInfo(data)
-    //       // data.Skills.forEach((skill)=>{
-    //       //   dispatch(addSkillToSearchArray(skill))
-    //       // })
-    //     })
-    // },[id])
     const [modal, setModal] = useState(false);
 
     const toggle = () => {
@@ -99,13 +88,7 @@ export default function DashboardProjectCard(props) {
     useEffect(()=>{
         addAcceptedMember() 
     },[projectInfo])  
-          
-          
-          
         
-        
-    console.log(projectInfo)
-
     return (
       <div>
            
