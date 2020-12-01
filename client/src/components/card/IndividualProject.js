@@ -2,7 +2,7 @@ import { MDBCard, MDBCardText, MDBCardTitle, MDBCol, MDBModal, MDBModalBody, MDB
 import React, {  useState } from 'react'
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom'
-
+import javascript from './js-brands.svg'
 export default function IndividualProject({ project }) {
     const user = useSelector(state => state.user)
     // !! makes it a boolean
@@ -64,10 +64,26 @@ export default function IndividualProject({ project }) {
 
                             </MDBCardText>
                             <MDBCardText>
-                                Skills wanted: displays skills here
+                                Technical
+                                {project.Skills.filter(skill => skill.category === 'technical').map((skill) => {
+                                    console.log(skill)
+                                    return <li>{skill.name}</li>
+                                    
+                                })}
+                                Soft Skills
+                                {project.Skills.filter(skill => skill.category === 'soft').map((skill) => {
+                                    console.log(skill)
+                                    return <li>{skill.name}</li>
+                                    
+                                })}
                             </MDBCardText>
                             <MDBCardText>
-                                Acceptable spoken languages: displays languages here
+                                Acceptable Spoken languages
+                                {project.Skills.filter(skill => skill.category === 'language').map((skill) => {
+                                    console.log(skill)
+                                    return <li>{skill.name}</li>
+                                    
+                                })}
                             </MDBCardText>
                             <div className="flex-row ">
                                 <a href="#!" className="card-link">
