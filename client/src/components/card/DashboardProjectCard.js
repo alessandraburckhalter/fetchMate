@@ -6,20 +6,21 @@ import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import SkillSearchBar from '../SkillSearchBar';
 import Axios from 'axios';
-import { addSkillToSearchArray, clearSearchSkillArray } from '../../redux/actions';
+import { addSkillToSearchArray, clearSearchSkillArray, setSearchSkillArray } from '../../redux/actions';
 
 export default function DashboardProjectCard(props) {
-    const { id, owner, description, title, isCompleted, publishedAt, deadline, memberLimit} = props.project
-    const [projectInfo, setProjectInfo] = useState([])
-    const [acceptedMember, setAcceptedMember] = useState([])
+  const { id, owner, description, title, isCompleted, publishedAt, deadline, memberLimit, Skills} = props.project
+  const [projectInfo, setProjectInfo] = useState([])
+  const [acceptedMember, setAcceptedMember] = useState([])
   //edit project
-    const [descriptionEdit, setDescriptionEdit] = useState(description);
+  const [descriptionEdit, setDescriptionEdit] = useState(description);
   const [publishedAtEdit, setPublishedAtEdit] = useState(new Date(publishedAt));
   const [deadlineEdit, setDeadlineEdit]  = useState(new Date(deadline));
   const [memberLimitEdit, setMemberLimitEdit] = useState(memberLimit);
+  
   const dispatch = useDispatch();
   const pickedSkillsArray = useSelector(state => state.searchSkillsToAdd)
-  console.log(props.project)
+  // console.log(props.project)
   useEffect(() => {
     dispatch(clearSearchSkillArray())
   }, [])
@@ -44,9 +45,13 @@ export default function DashboardProjectCard(props) {
       .catch(e => {
         console.log(e)
       })
+      // fetch(`/api/v1/projects/${id}`)
+      //   .then(res=>res.json())
+      //   .then(data=>{
+      //     setProjectInfo(data)
+      //   })
   }
 
-    
     const addAcceptedMember = () =>{
       console.log(projectInfo.Members)
       const acceptMember = projectInfo.Members && projectInfo.Members.filter((acceptedMember)=>{
@@ -57,10 +62,7 @@ export default function DashboardProjectCard(props) {
           return setAcceptedMember(acceptMember)  
       
     }
-        
-
-       
-    
+      
     const removeProject = (projectId) =>{
       fetch(`/api/v1/projects/${id}`,{
         method: "DELETE"
@@ -74,27 +76,27 @@ export default function DashboardProjectCard(props) {
       })
     }
 
-    useEffect(()=>{
-      fetch(`/api/v1/projects/${id}`)
-        .then(res=>res.json())
-        .then(data=>{
-          setProjectInfo(data)
-          data.Skills.forEach((skill)=>{
-            dispatch(addSkillToSearchArray(skill))
-          })
-          
-        })
-
-    },[id])
+    // useEffect(()=>{
+    //   fetch(`/api/v1/projects/${id}`)
+    //     .then(res=>res.json())
+    //     .then(data=>{
+    //       setProjectInfo(data)
+    //       // data.Skills.forEach((skill)=>{
+    //       //   dispatch(addSkillToSearchArray(skill))
+    //       // })
+    //     })
+    // },[id])
     const [modal, setModal] = useState(false);
 
     const toggle = () => {
         setModal(!modal);
     }
-
+    const handleOpen = () => {
+      setModal(true);
+      dispatch(setSearchSkillArray(Skills))
+    }
 
     useEffect(()=>{
-
         addAcceptedMember() 
     },[projectInfo])  
           
@@ -135,15 +137,12 @@ export default function DashboardProjectCard(props) {
       <a href="#!" ><button className="card-link icon delete-card icon-width" onClick={ () => removeProject(id)}><MDBIcon icon="trash-restore-alt red-text" /><span>Delete</span> 
       </button></a>
       
-              <Link to='#' className="card-link icon edit-card icon-width" onClick={toggle}><MDBIcon icon="edit" /><span>Edit</span> </Link>
+              <Link to='#' className="card-link icon edit-card icon-width" onClick={handleOpen}><MDBIcon icon="edit" /><span>Edit</span> </Link>
               <MDBModal isOpen={modal} toggle={toggle}>
                 <MDBModalHeader toggle={toggle}>{title}</MDBModalHeader>
                 <MDBModalBody>
-
                 <form onSubmit={e => handleSubmit(e)}>
-                    
-                    <label htmlFor="defaultFormCardNameEx" className="labe-headline"><MDBIcon icon="share indigo-text" /> Describe your project
-          </label>
+                    <label htmlFor="defaultFormCardNameEx" className="labe-headline"><MDBIcon icon="share indigo-text" /> Describe your project</label>
                     <MDBInput type="textarea" label="Brief description of your project" outline value={descriptionEdit} onChange={(e) => { setDescriptionEdit(e.target.value) }} />
 
                     <h1 className=" label-skillbar"><MDBIcon icon="share indigo-text" /> What technical skills are you looking for?</h1>
