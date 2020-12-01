@@ -16,7 +16,7 @@ export default function ProfileSetup() {
     const user = useSelector(state => state.user)
     const [password, setPassword] = useState('')
     const [email, setEmail] = useState('')
-    const [headline, setHeadline] = useState('');
+    const [headline, setHeadline] = useState(user.loginInfo.title);
     const dispatch = useDispatch();
     const history = useHistory();
     const pickedSkillsArray = useSelector(state => state.searchSkillsToAdd)
