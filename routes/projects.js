@@ -16,8 +16,8 @@ router.get('/', (req, res) => {
         include:[db.User,{
             model: db.User,
             through: db.TeamMember,
-        as: 'Members' 
-        }]
+                as: 'Members'
+        }, db.Skill]
     })
         .then(projects => {
             res.json(projects);
