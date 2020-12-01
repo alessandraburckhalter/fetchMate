@@ -45,7 +45,7 @@ button.edit-button.btn {
 .card-body-pending1 {
     padding: 0 !important;
     background-color: red !important;
-    margin-bottom: 10em;
+    margin-bottom: 20em;
 }
 
 .card-body-pending2 {
@@ -98,7 +98,8 @@ button.publish-button {
 
 .projects-col {
     margin-left: 50px;
-    margin-top: 20px;
+    margin-top: 150px;
+    margin-bottom: 150px;
 }
 
 .title-cards {

@@ -20,22 +20,7 @@
 }
 
 
-.navbar {
-    height: 80px;
-    background-color: rgba(145,192,241,1);
-    background-image: url(../images/Frame3.svg);
-    box-shadow: none !important;
-}
 
-.navbar-dark .navbar-brand {
-    width: 10%;
-}
-
-.navbar-nav a {
-    padding: 10px;
-    color: white;
-    font-weight: bold;
-}
 
 /* 158467 logo */
 /* 3e978b */
@@ -142,6 +127,7 @@ form {
 .container-form {
     margin-left: 80px;
     box-shadow: none !important;
+    margin-top: 160px;
 }
 
 /* complete your profile card */
@@ -155,6 +141,7 @@ form {
 .card-profile {
     box-shadow: none !important;
     background-color: transparent !important;
+    margin-top: 150px;
 }
 
 /* name and email */

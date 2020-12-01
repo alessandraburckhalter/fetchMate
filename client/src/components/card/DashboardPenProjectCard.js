@@ -1,4 +1,4 @@
-import { MDBCard, MDBCardText, MDBCardTitle } from 'mdbreact'
+import { MDBCard, MDBCardText, MDBCardTitle, MDBIcon } from 'mdbreact'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
@@ -17,19 +17,26 @@ export default function DashboardPenProjectCard(props) {
       }, [owner])
     return (
         <div>
-            <MDBCard className="card-body" style={{ marginTop: "1rem" }}>
-                <MDBCardTitle>{title}</MDBCardTitle>
+            <MDBCard className="card-body card-body-pending1 mb-4" >
+            <aside>
+     
+            </aside>
+            <MDBCard className="card-body card-body-pending2">
+             <aside>
+                <MDBCardTitle className="project-title"><MDBIcon icon="link" /> {title}</MDBCardTitle>
                 <MDBCardText>
                     {description}
-    </MDBCardText>
+                </MDBCardText>
                 <div className="flex-row ">
                     <Link to="/public" className="card-link">
 
-                        Project owner: <Link to={`/dashboard/public/${id}`}>{projectOwner.firstName} {projectOwner.lastName}</Link>
-      </Link>
+                    <MDBIcon icon="user" /> <Link to={`/dashboard/public/${id}`}>{projectOwner.firstName} {projectOwner.lastName}</Link>
+                        </Link>
                     <a href="#!" className="card-link">
                     </a>
                 </div>
+                </aside>
+                </MDBCard>
             </MDBCard>
         </div>
     )

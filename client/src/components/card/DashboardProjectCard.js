@@ -1,7 +1,8 @@
-import { MDBCard, MDBCardText, MDBCardTitle, MDBIcon } from 'mdbreact'
-import React from 'react'
+import { MDBCard, MDBCardText, MDBCardTitle, MDBContainer, MDBIcon, MDBModal, MDBModalBody, MDBModalFooter, MDBModalHeader } from 'mdbreact'
+import React, { useState }  from 'react'
 import { Dropdown, DropdownButton } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux';
 
 export default function DashboardProjectCard(props) {
     const { id, owner, description, title, isCompleted, publishedAt, deadline, memberLimit} = props.project
@@ -17,6 +18,12 @@ export default function DashboardProjectCard(props) {
       .catch(e=>{
         console.log(e)
       })
+    }
+
+    const [modal, setModal] = useState(false);
+
+    const toggle = () => {
+        setModal(!modal);
     }
 
 
@@ -46,12 +53,22 @@ export default function DashboardProjectCard(props) {
       </a>
       <a href="#!" className="card-link"><MDBIcon icon="check-square green-text" /> 0  
       </a>
-      <button className="card-link edit-card"><MDBIcon icon="edit" />
-      </button>
 
       <button className="card-link delete-card" onClick={ () => removeProject(id)}><MDBIcon icon="trash-restore-alt red-text" />
-
       </button>
+      
+      <Link to='#' className="card-link edit-card" onClick={toggle}><MDBIcon icon="edit" /></Link>
+          <MDBModal isOpen={modal} toggle={toggle}>
+          <MDBModalHeader toggle={toggle}>{title}</MDBModalHeader>
+                <MDBModalBody>
+                  {description}
+                </MDBModalBody>
+                <MDBModalFooter>
+                    <button className='btn btn-primary' onClick={toggle}>Close</button>
+                    <button className='btn btn-secondary' onClick={toggle}>Save Changes</button>
+                </MDBModalFooter>
+            </MDBModal>
+
     </div>
     </aside>
     </MDBCard>

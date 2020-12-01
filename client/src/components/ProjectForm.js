@@ -1,11 +1,11 @@
 import React, { useState }  from 'react'
-import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardText, MDBCardTitle, MDBCardVideo, MDBCol, MDBContainer, MDBDataTable, MDBFormInline, MDBIcon, MDBInput, MDBRow } from 'mdbreact';
+import { MDBCol, MDBContainer, MDBIcon, MDBInput, MDBRow } from 'mdbreact';
 import '../styles/profileSetup.css'
 import { Button } from 'react-bootstrap';
-import { MDBDatePickerV5 } from 'mdbreact';
 import DatePicker from "react-datepicker";
  
 import "react-datepicker/dist/react-datepicker.css";
+import Navbar from './Navbar';
 
 export default function ProjectForm() {
 
@@ -13,6 +13,9 @@ export default function ProjectForm() {
 
 
     return (
+        <>
+
+        <Navbar />
         <div id="top">
             <MDBContainer>
             <MDBCol md="4">
@@ -112,5 +115,6 @@ export default function ProjectForm() {
     </MDBCol>
             </MDBContainer>
         </div>
+      </>
     )
 }

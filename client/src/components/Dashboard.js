@@ -104,26 +104,27 @@ export default function Dashboard() {
           <br />
 
           <h1 className="title-cards">Contribuiting Projects</h1>
-    {Object.keys(currentUserData).length > 0 && currentUserData.MemberProjects.map((project, index)=>{
+            {Object.keys(currentUserData).length > 0 && currentUserData.MemberProjects.map((project, index)=>{
             if(project.TeamMember.approved === "approved"){
               return <DashboardConProjectsCard key={project.id} project={project}/>
 
             }
           })}
       
-  <h1 className="title-cards">Pending Projects</h1>
-      <MDBCard className="card-body card-body-pending1 " >
+
+          <h1 className="title-cards">Pending Projects</h1>
+            {/* <MDBCard className="card-body card-body-pending1 " >
         <aside>
      
           
-        </aside>
+        </aside> */}
             {Object.keys(currentUserData).length > 0 && currentUserData.MemberProjects.map((project, index)=>{
             if(project.TeamMember.approved === "pending"){
               return <DashboardPenProjectCard key={project.id} project={project}/>
 
             }
           })}
-     <MDBCard className="card-body card-body-pending2">
+     {/* <MDBCard className="card-body card-body-pending2">
         <aside>
       <MDBCardTitle className="project-title"> <MDBIcon icon="link" /> Project title</MDBCardTitle>
     <MDBCardText>
@@ -138,9 +139,10 @@ export default function Dashboard() {
       <a href="#!" className="card-link"> 
       </a>  
     </div>
-    </aside>
-    </MDBCard>
-  </MDBCard>
+    </aside> */}
+    {/* </MDBCard>
+  </MDBCard> */}
+
   </MDBCol>
     </MDBRow>
     </MDBContainer>

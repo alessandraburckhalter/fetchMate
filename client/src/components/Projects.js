@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
 import '../styles/projects.css'
 import IndividualProject from './card/IndividualProject'
+import Navbar from './Navbar'
 
 export default function Projects() {
   const [projects, setProjects] = useState([])
@@ -23,6 +24,8 @@ export default function Projects() {
 
   return (
     <>
+      <Navbar />  
+        
         <div id="top">
           <MDBContainer>
             <h1 >Projects</h1>

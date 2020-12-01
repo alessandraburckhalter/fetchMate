@@ -1,6 +1,7 @@
 import { MDBCard, MDBCardBody, MDBCardTitle, MDBCol, MDBContainer, MDBIcon, MDBRow } from 'mdbreact'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import Navbar from './Navbar'
 
 export default function ContribuingProjects() {
     const { contributeId } = useParams()
@@ -28,6 +29,9 @@ export default function ContribuingProjects() {
         
 
     return (
+      <>
+      <Navbar />
+
         <div>
              <MDBContainer>
       <MDBRow>
@@ -75,5 +79,6 @@ export default function ContribuingProjects() {
     </MDBContainer>
             
         </div>
+    </>
     )
 }
