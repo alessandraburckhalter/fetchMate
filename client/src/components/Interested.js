@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import InterestedCard from './card/InterestedCard'
 import Navbar from './Navbar'
+import '../styles/interested.css'
 
 export default function Interested() {
     const { projectId } = useParams()
@@ -41,11 +42,9 @@ export default function Interested() {
       <Navbar />  
       <div id="top">
 
-        <MDBContainer>
+        <MDBContainer >
           <MDBRow>
-          
-        
-          <MDBCol >
+          <MDBCol className="interested-col">
             <h1 >{project.title}</h1>
           <MDBCard className="card-body" style={{ marginTop: "1rem" }}>
         <MDBCardText>
