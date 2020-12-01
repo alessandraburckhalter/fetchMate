@@ -9,6 +9,7 @@ import Footer from './Footer';
 import DashboardConProjectsCard from "./card/DashboardConProjectCard"
 import DashboardPenProjectCard from './card/DashboardPenProjectCard';
 import Navbar from '../components/Navbar'
+import { Link } from 'react-router-dom';
 
 export default function Dashboard() {
 
@@ -52,11 +53,12 @@ export default function Dashboard() {
           <h4 className='card-title'> <MDBIcon icon="user indigo-text" /> {user.loginInfo.firstName} {user.loginInfo.lastName} </h4>
           <h4 className='card-title'><MDBIcon far icon="newspaper" /> Headline</h4>
           <h4 className='card-title'> <MDBIcon icon="envelope orange-text" /> {user.loginInfo.email} </h4> 
-          <button name="button" type="button" class="btn btn-block  edit-button" >Edit profile</button>
+          <Link to="/hub"><button name="button" type="button" class="btn btn-block  edit-button">Edit profile</button></Link>
             <hr />
 
             <h3 class="card-title">
-            <MDBIcon icon="cogs grey-text" /> Technical Skills
+            <MDBIcon icon="cogs grey-text" /> Technical Skills</h3>
+            <h2>
               {console.log(currentUserData)}
               {Object.keys(currentUserData).length > 0 && currentUserData.Skills.filter((userData)=>{
                 return (userData.category === "technical")
@@ -64,7 +66,8 @@ export default function Dashboard() {
               }).map((name)=>{
                 return name.name + " " 
               })}
-            </h3>
+              </h2>
+            
             <br/>
             <hr />
 
@@ -75,15 +78,16 @@ export default function Dashboard() {
             <hr />
 
             <h3 class="card-title">
-            <MDBIcon icon="language purple-text" /> Spoken languages
-              
+            <MDBIcon icon="language purple-text" /> Spoken languages </h3>
+              <h2>
               {Object.keys(currentUserData).length > 0 && currentUserData.Skills.filter((userData)=>{
                 return (userData.category === "language")
                 
               }).map((name)=>{
                 return name.name + " "
               })}
-            </h3>
+              </h2>
+            
             <br/>
             <hr />
           </MDBCardBody>
@@ -96,9 +100,9 @@ export default function Dashboard() {
           {Object.keys(currentUserData).length > 0 && currentUserData.Projects.map((project, index)=>{
             return <ProjectCard key={project.id} project={project} loadProject={loadProject}/>
           })} 
-          <button className="btn btn-block mb-3 publish-button">
+          <Link to="/projectForm"><button className="btn btn-block mb-3 publish-button">
             Publish a new project
-          </button>
+          </button></Link>
           <br />
 
           <h1 className="title-cards">Contribuiting Projects</h1>

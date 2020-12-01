@@ -119,6 +119,7 @@ export default function ProfileSetup() {
           <form onSubmit={(e) => {handleSubmit(e)}}>
             <label htmlFor="defaultFormCardNameEx" className="labe-headline"><MDBIcon icon="share indigo-text" />  Headline
            </label>
+           
             <input type="text" id="defaultFormCardNameEx" className="form-control" value={headline} onChange={(e) => {setHeadline(e.target.value)}}/>
             <br />
             
