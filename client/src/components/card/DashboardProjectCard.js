@@ -1,11 +1,30 @@
 import { MDBCard, MDBCardText, MDBCardTitle, MDBIcon } from 'mdbreact'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Dropdown, DropdownButton } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 export default function DashboardProjectCard(props) {
     const { id, owner, description, title, isCompleted, publishedAt, deadline, memberLimit} = props.project
+    const [projectInfo, setProjectInfo] = useState([])
+    const [acceptedMember, setAcceptedMember] = useState([])
+    
+    
 
+    
+    const addAcceptedMember = () =>{
+      console.log(projectInfo.Members)
+      const acceptMember = projectInfo.Members && projectInfo.Members.filter((acceptedMember)=>{
+        return acceptedMember.TeamMember.approved === "approved"
+      })
+      console.log(acceptMember)
+      
+          return setAcceptedMember(acceptMember) 
+      
+    }
+        
+
+       
+    
     const removeProject = (projectId) =>{
       fetch(`/api/v1/projects/${id}`,{
         method: "DELETE"
@@ -19,10 +38,28 @@ export default function DashboardProjectCard(props) {
       })
     }
 
+    useEffect(()=>{
+      fetch(`/api/v1/projects/${id}`)
+        .then(res=>res.json())
+        .then(data=>{
+          setProjectInfo(data)
+        })
+    },[id])
 
+    useEffect(()=>{
+
+        addAcceptedMember() 
+    },[projectInfo])  
+          
+          
+          
+        
+        
+    console.log(projectInfo)
 
     return (
-        <div>
+      <div>
+           
             <MDBCard className="card-body card-body-projects1 mb-4" >
             <aside>
     
@@ -42,15 +79,15 @@ export default function DashboardProjectCard(props) {
       </a>
       <a href="#!" className="card-link"><MDBIcon icon="users indigo-text" /> {memberLimit}
       </a>
-      <a href="#!" className="card-link"><MDBIcon fab icon="gratipay pink-text" /> 0
+      <a href="#!" className="card-link"><MDBIcon fab icon="gratipay pink-text" /> {Object.keys(projectInfo).length > 0 && projectInfo.Members.length}
       </a>
-      <a href="#!" className="card-link"><MDBIcon icon="check-square green-text" /> 0  
+      <a href="#!" className="card-link"><MDBIcon icon="check-square green-text" /> {acceptedMember && acceptedMember.length } 
       </a>
       <button className="card-link edit-card"><MDBIcon icon="edit" />
       </button>
 
       <button className="card-link delete-card" onClick={ () => removeProject(id)}><MDBIcon icon="trash-restore-alt red-text" />
-
+      {console.log(acceptedMember)}  
       </button>
     </div>
     </aside>
