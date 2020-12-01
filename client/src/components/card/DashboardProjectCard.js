@@ -35,7 +35,7 @@ export default function DashboardProjectCard(props) {
       publishedAt:publishedAtEdit,
       deadline:deadlineEdit,
       memberLimit:memberLimitEdit,
-      // projectSkillsArray
+      projectSkillsArray
     })
       .then(res => {
         console.log(res)
