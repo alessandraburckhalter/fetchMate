@@ -79,25 +79,25 @@ export default function DashboardProjectCard(props) {
     <MDBCardText>
       {description}
     </MDBCardText>
-    <div className="flex-row ">
+    <div className="flex-row d-flex">
     <a href="#!" className="card-link icon">
         Status: {isCompleted === false ? "Open" : "Closed"} <span>Project Status</span>
       </a>
       
-      <a href="#!" className="card-link icon"><MDBIcon icon="calendar-alt deep-purple-text" />  {publishedAt.slice(0,10)} <span>Published date</span>
+      <a href="#!" className="card-link icon "><MDBIcon icon="calendar-alt deep-purple-text" />  {publishedAt.slice(0,10)} <span>Published date</span>
       </a>
-      <a href="#!" className="card-link icon"><MDBIcon icon="users indigo-text" /> {memberLimit} <span>Member's limit</span> 
+      <a href="#!" className="card-link icon icon-width"><MDBIcon icon="users indigo-text" /> {memberLimit} <span>Member's limit</span> 
       </a>
     
-      <a href="#!" className="card-link icon"><MDBIcon fab icon="gratipay pink-text" /> {Object.keys(projectInfo).length > 0 && projectInfo.Members.length} <span>Interested People</span>
+      <a href="#!" className="card-link icon icon-width"><MDBIcon fab icon="gratipay pink-text" /> {Object.keys(projectInfo).length > 0 && projectInfo.Members.length} <span>Applications</span>
       </a>
-      <a href="#!" className="card-link icon"><MDBIcon icon="check-square green-text" /> {acceptedMember && acceptedMember.length }  <span>Approved</span>
+      <a href="#!" className="card-link icon icon-width"><MDBIcon icon="check-square green-text" /> {acceptedMember && acceptedMember.length }  <span>Approved</span>
       </a>
 
-      <a href="#!" ><button className="card-link icon delete-card" onClick={ () => removeProject(id)}><MDBIcon icon="trash-restore-alt red-text" /><span>Delete</span> 
+      <a href="#!" ><button className="card-link icon delete-card icon-width" onClick={ () => removeProject(id)}><MDBIcon icon="trash-restore-alt red-text" /><span>Delete</span> 
       </button></a>
       
-      <Link to='#' className="card-link icon edit-card" onClick={toggle}><MDBIcon icon="edit" /><span>Edit</span> </Link>
+      <Link to='#' className="card-link icon edit-card icon-width" onClick={toggle}><MDBIcon icon="edit" /><span>Edit</span> </Link>
           <MDBModal isOpen={modal} toggle={toggle}>
           <MDBModalHeader toggle={toggle}>{title}</MDBModalHeader>
                 <MDBModalBody>

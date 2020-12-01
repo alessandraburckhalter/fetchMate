@@ -64,7 +64,7 @@ export default function Dashboard() {
                 return (userData.category === "technical")
                 
               }).map((name)=>{
-                return name.name + " " 
+                return <span className="skills-dashboard">{name.name}</span>
               })}
               </h2>
             
@@ -84,7 +84,7 @@ export default function Dashboard() {
                 return (userData.category === "language")
                 
               }).map((name)=>{
-                return name.name + " "
+                return  <span>{name.name}</span>
               })}
               </h2>
             
