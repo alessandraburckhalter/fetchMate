@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import '../styles/projects.css'
 import IndividualProject from './card/IndividualProject'
+import IndividualProjectPublic from './card/IndividualProjectPublic'
 import Navbar from './Navbar'
 
 export default function Projects() {
@@ -23,18 +24,25 @@ export default function Projects() {
 
 
 
+  console.log(user)
   return (
     <>
       <Navbar />  
-        
         <div id="top">
           <MDBContainer>
             <h1 >Projects</h1>
-      {projects.map((project) => {
+            {user.loginInfo ? (projects.map((project) => {
         return (
-            <IndividualProject key={project.id} project={project} />
+          <IndividualProject key={project.id} project={project} />
+            
         );
-      })}
+      })) : (projects.map((project) => {
+        return (
+          <IndividualProjectPublic key={project.id} project={project} />
+            
+        );
+      }))} 
+      
       </MDBContainer>
       </div>
     </>
