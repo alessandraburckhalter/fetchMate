@@ -75,6 +75,8 @@ export default function ProfileSetup() {
           console.log(e)
         })
       Axios.patch()
+      let path = '/dashboard'
+      history.push(path)
     }
     
 

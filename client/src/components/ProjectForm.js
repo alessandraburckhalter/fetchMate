@@ -10,6 +10,7 @@ import Axios from 'axios';
 import { clearSearchSkillArray } from '../redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import Footer from './Footer';
+import { useHistory } from 'react-router-dom';
 
 export default function ProjectForm() {
   const [title, setTitle] = useState('');
@@ -17,6 +18,7 @@ export default function ProjectForm() {
   const [publishedAt, setPublishedAt] = useState(new Date());
   const [deadline, setDeadline]  = useState(new Date());
   const [memberLimit, setMemberLimit] = useState(0);
+  const history = useHistory();
   const dispatch = useDispatch();
   const pickedSkillsArray = useSelector(state => state.searchSkillsToAdd)
 
@@ -40,7 +42,9 @@ export default function ProjectForm() {
     })
       .then(res => {
         console.log(res)
-        dispatch(clearSearchSkillArray());
+        // dispatch(clearSearchSkillArray());
+        let path = '/dashboard'
+        history.push(path)
       })
       .catch(e => {
         console.log(e)
