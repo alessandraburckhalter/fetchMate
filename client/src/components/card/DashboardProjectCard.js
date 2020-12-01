@@ -21,7 +21,7 @@ export default function DashboardProjectCard(props) {
       })
       console.log(acceptMember)
       
-          return setAcceptedMember(acceptMember) 
+          return setAcceptedMember(acceptMember)  
       
     }
         
