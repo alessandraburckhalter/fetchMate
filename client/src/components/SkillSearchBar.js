@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
-import { removeSkillFromSearchArray, setAllPossibleSkills } from '../redux/actions';
+import { addSkillToSearchArray, removeSkillFromSearchArray, setAllPossibleSkills } from '../redux/actions';
 import SkillSearchOption from './SkillSearchOption';
 import { MDBBtn, MDBContainer, MDBIcon, MDBModal, MDBModalBody, MDBModalFooter, MDBModalHeader } from 'mdbreact';
 
@@ -9,7 +9,7 @@ export default function SkillSearchBar({category}) {
     const dispatch = useDispatch();
     const [currentSearch, setCurrentSearch] = useState('');
     const [searchOptions, setSearchOptions] = useState([]);
-    const [showNewSkillModal, setShowNewSkillModal] = useState(false);
+    
     const pickedSkillsArray = useSelector(state => state.searchSkillsToAdd)
     useEffect(() => {
         //* This is the fetch request to get all available skills from backend
@@ -25,6 +25,20 @@ export default function SkillSearchBar({category}) {
             })
 
     }, [dispatch])
+
+    const createNewSkill = () => {
+        Axios.post(`/api/v1/skills`, {
+            name: currentSearch,
+            category: category
+        })
+            .then(res => {
+                console.log(res)
+                dispatch(addSkillToSearchArray(res.data))
+            })
+            .catch(e => {
+                console.log(e)
+            })
+    }
 
     //* Little regex magic --> basically searches for words that start with the typed in value, not really sure if the [a-zA-Z] part is necessary
     //* we then filter over all of the options and check if the option.name matches the regex expression (if expression evaluates to true then that option is kept)...
@@ -52,17 +66,15 @@ export default function SkillSearchBar({category}) {
                     return <SkillSearchOption key={option.id} option={option}/>
                 })}
                 {filteredForAlreadyPicked.length === 0 && currentSearch.length > 0 ? (
-                <button className="new-skill-button" type="button" onClick={(e) => {setShowNewSkillModal(true)}}>Create New Skill</button>
+                <button className="new-skill-button" type="button" onClick={createNewSkill}>Create New Skill</button>
                 ):('')}
             </div>
 
             <div className="form-group">
                 {pickedSkillsArray.filter(skill => skill.category === category).map(addedSkill => {
-                    return (
-                        
+                    return (   
                         <span className="skill-remove-button">
                             {addedSkill.name}
-                            
                             <button className="remove-skill-button" type="button" onClick={() => {dispatch(removeSkillFromSearchArray(addedSkill.id))}}><MDBIcon far icon="trash-alt red-text" /></button>
                         </span>
                     ) 
@@ -81,6 +93,7 @@ export default function SkillSearchBar({category}) {
                     </MDBModalFooter>
                 </MDBModal>
             </MDBContainer> */}
+
         </>
     )
 }

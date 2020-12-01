@@ -1,0 +1,36 @@
+.navbar {
+    height: 80px;
+    background-color: rgba(145,192,241,1);
+    background-image: url(../images/Frame3.svg);
+    box-shadow: none !important;
+} 
+
+.navbar-dark .navbar-brand {
+    width: auto;
+}
+
+.navbar-nav a {
+    padding: 15px;
+    
+    color: white;
+    font-weight: bold;
+    display: block;
+}
+
+.nav-link {
+    padding: 0 !important;
+    padding-left: 15px !important
+}
+
+a.dropdown-toggle.nav-link {
+    /* margin-left: 50px;
+    padding-right: 50px; */
+}
+
+.dropdown-user {
+    /* left: -100px !important; */
+}
+
+.dropdown-menu {
+    min-width: auto !important; 
+}

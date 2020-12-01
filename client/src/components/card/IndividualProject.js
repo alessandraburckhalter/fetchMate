@@ -1,4 +1,4 @@
-import { MDBCard, MDBCardText, MDBCardTitle, MDBCol, MDBRow } from 'mdbreact'
+import { MDBCard, MDBCardText, MDBCardTitle, MDBCol, MDBModal, MDBModalBody, MDBModalFooter, MDBModalHeader, MDBRow } from 'mdbreact'
 import React, {  useState } from 'react'
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom'
@@ -12,6 +12,8 @@ export default function IndividualProject({ project }) {
     const isOwner = project.User.id === user.loginInfo.id
 
     const [applied, setApplied] = useState(isMember)
+
+    const [modal, setModal] = useState(false);
 
     const applyProject = (e) => {
         console.log(user)
@@ -32,6 +34,10 @@ export default function IndividualProject({ project }) {
             })
     }
 
+    // Modal
+    const toggle = () => {
+        setModal(!modal);
+    }
 
     return (
         <div>
@@ -41,9 +47,21 @@ export default function IndividualProject({ project }) {
 
                     <MDBCol >
                         <MDBCard className="card-body" style={{ marginTop: "1rem" }}>
-                            <MDBCardTitle><Link to="/interested">{project.title}</Link></MDBCardTitle>
+                            <MDBCardTitle><Link to="/interested">{project.title} {isOwner && '(owner)'}</Link></MDBCardTitle>
                             <MDBCardText>
-                                {project.description} {isOwner && '(owner)'}
+                                {project.description.slice(0, 90)}{(project.description.length > 90 && "...")} <Link to="#" onClick={toggle}>Read More</Link> 
+                                <MDBModal isOpen={modal} toggle={toggle}>
+                                <MDBModalHeader toggle={toggle}>Privacy Measures</MDBModalHeader>
+                                <MDBModalBody>
+                            We respect our users privacy. The full description will only be available after the project owner accepts your application. We appreciate your understanding.
+                            </MDBModalBody>
+                            <MDBModalFooter>
+                                <button className='btn btn-primary' onClick={toggle}>Close</button>
+                            </MDBModalFooter>
+                        </MDBModal>
+
+
+
                             </MDBCardText>
                             <MDBCardText>
                                 Skills wanted: displays skills here
