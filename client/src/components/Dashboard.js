@@ -9,7 +9,7 @@ import Footer from './Footer';
 import DashboardConProjectsCard from "./card/DashboardConProjectCard"
 import DashboardPenProjectCard from './card/DashboardPenProjectCard';
 import Navbar from '../components/Navbar'
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { Button, Modal } from 'react-bootstrap';
 
 export default function Dashboard() {
@@ -18,6 +18,7 @@ export default function Dashboard() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [currentUserData, setCurrentUserData] = useState([])
+  const history = useHistory()
   const user = useSelector(state => state.user);
   const dispatch = useDispatch()
   const formData = new FormData()
@@ -36,6 +37,8 @@ export default function Dashboard() {
       .then(data => {
         console.log(data)
         alert('Profile Updated!')
+        let path = "/dashboard"
+        history.push(path)
       })
       .catch(e => {
         console.log(e)
