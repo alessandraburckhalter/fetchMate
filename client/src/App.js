@@ -51,7 +51,7 @@ function App() {
           <Route path="/register" component={SignUpPage}/>
           
           
-          <Route path="/projects" component={Projects}/>
+          <Route exact path="/projects" component={Projects}/>
           {user.loginInfo !== null && (
             <>
             <Route path="/hub" component={ProfileSetup}/>
