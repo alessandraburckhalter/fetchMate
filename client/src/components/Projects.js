@@ -4,7 +4,8 @@ import { useSelector } from 'react-redux'
 import '../styles/projects.css'
 import IndividualProject from './card/IndividualProject'
 import IndividualProjectPublic from './card/IndividualProjectPublic'
-import Navbar from './Navbar'
+import Navbar from './Navbar';
+import Footer from './Footer'
 
 export default function Projects() {
   const [projects, setProjects] = useState([])
@@ -29,8 +30,8 @@ export default function Projects() {
     <>
       <Navbar />  
         <div id="top">
-          <MDBContainer>
-            <h1 >Projects</h1>
+          <MDBContainer className="projects-container">
+          <h1 className="all-projects-title">Projects</h1>
             {user.loginInfo ? (projects.map((project) => {
         return (
           <IndividualProject key={project.id} project={project} />
@@ -45,6 +46,8 @@ export default function Projects() {
       
       </MDBContainer>
       </div>
+
+      <Footer />
     </>
   )
 }

@@ -1,0 +1,11 @@
+h2.card-title-public {
+    font-size: 1.3em;
+    cursor: pointer;
+}
+
+h4.card-title-public {
+    font-size: 1.2em;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: 500 !important;
+}

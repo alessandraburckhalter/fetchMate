@@ -103,6 +103,7 @@ export default function Dashboard() {
           </Button>
         </Modal.Footer>
       </Modal>
+      
           <MDBCardBody>
           <h4 className='card-title'> <MDBIcon icon="user indigo-text" /> {user.loginInfo.firstName} {user.loginInfo.lastName} </h4>
           <h4 className='card-title'><MDBIcon far icon="newspaper" /> {user.loginInfo.title}</h4>
