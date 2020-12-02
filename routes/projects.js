@@ -411,6 +411,51 @@ router.patch('/:projectId/teamMember', (req, res) => {
   
 })
 
+// get comment router with project id
+router.get('/:projectId/comments',(req, res)=>{
+    db.Comment.findAll({
+        where:{
+            ProjectId: req.params.projectId
+        }
+    })
+    .then(comments =>{
+        res.status(202).json(comments)
+    })
+    .then(e=>{
+        res.status(400).json({
+            error:"No comments" + e
+        })
+    })
+})
+
+// post comment router with project id
+router.post('/:projectId/comments',(req, res)=>{
+    if(!req.body || !req.body.content){
+        res.status(400).json({
+            error: "Please fill all required fields"
+        })
+        return;
+    }
+    db.Project.findByPk(req.params.projectId)
+        .then(project =>{
+            if(!project){
+                res.status(404).json({
+                    error: "No project found"
+                })
+            }
+            return db.Comment.create({
+                content: req.body.content,
+                UserId: req.session.user.id,
+                ProjectId: req.params.projectId
+            })
+        })
+        .then(comment =>{
+            req.json({
+                success: "Comment added",
+                comment: comment
+            })
+        })
+})
 
 
 module.exports = router;

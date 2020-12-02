@@ -71,7 +71,7 @@ router.post('/matched', (req, res) => {
         });
 });
 
-// matching email 
+
 router.post('/declined', (req, res) => {
 
     console.log(req.body);
