@@ -1,13 +1,16 @@
-import React, {  useState } from 'react';
+import React, {  useEffect, useState } from 'react';
 import Navbar from './Navbar'
 import Footer from './Footer'
 import { MDBCard, MDBCardText, MDBCardTitle, MDBCol, MDBContainer, MDBIcon, MDBModal, MDBModalBody, MDBModalFooter, MDBModalHeader, MDBRow } from 'mdbreact';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import '../styles/comments.css'
 
 export default function Comments({ project }) {
+    const { projectId } = useParams()
     const user = useSelector(state => state.user)
+    const [comments, setComments] = useState([])
+    const [content, setContent] = useState("")
   
 
     const [modal, setModal] = useState(false);
@@ -15,6 +18,33 @@ export default function Comments({ project }) {
      const toggle = () => {
         setModal(!modal);
     }
+
+    const commentHandle = (e) =>{
+        e.preventDefault()
+        fetch(`/api/v1/projects/${projectId}/comments`,{
+            method: 'POST',
+            body: JSON.stringify({
+                content: content
+            }),
+            headers:{'Content-Type' : 'application/json'}
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            setComments(comments.concat([data.comment]))
+            setContent("")
+        })
+    }
+
+  
+    useEffect(()=>{
+        
+
+        fetch(`/api/v1/projects/${projectId}/comments`)
+            .then(res=>res.json())
+            .then(data=>{
+                setComments(data)
+            })
+    },[projectId])
 
     return (
         <>
@@ -91,13 +121,14 @@ export default function Comments({ project }) {
                             </aside>
                             </MDBCard>
                         </MDBCard>
-                    
-                        <form>
+                        
+
+                        <form onSubmit={commentHandle}>
                 
                         <label htmlFor="defaultFormCardNameEx" className="grey-text font-weight-light">
                        Leave a comment
                         </label>
-                        <input type="text-area" id="defaultFormCardNameEx" className="form-control" />
+                        <input type="text-area" id="defaultFormCardNameEx" value={content} className="form-control" onChange={(e) => {setContent(e.target.value)}}/>
                         <br />
                     
                         <div className="text-center py-4 mt-3">
@@ -107,11 +138,13 @@ export default function Comments({ project }) {
                         </button>
                         </div>
                     </form>
-
+                    
                     <div>
                         <h1>Comments</h1>
                                  <div>
-                                     Display comments here
+                                 {comments.length > 0 ? (comments.map((comment)=>{
+                                return <h6>💬{comment.User.firstName} {comment.User.lastName}: {comment.content}</h6> 
+                                })) : "No comments"} 
                                  </div>
                                  
                     </div>
