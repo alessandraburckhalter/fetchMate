@@ -41,8 +41,8 @@ export default function PublicProfile() {
         <div gradient='aqua' backgroundColor="red"/>
           <div className=''>
           <img
-              src={owner.profilePicture} 
-              alt='' className="rounded-circle hoverable border border-info public-profile" 
+              src={user.loginInfo.profilePicture} 
+              alt='profilePicture' className="rounded-circle hoverable border border-info public-profile" 
             />
           </div><br/>
           
