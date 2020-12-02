@@ -37,12 +37,12 @@ export default function PublicProfile() {
             <MDBContainer>
               <MDBRow>
             <MDBCol  className="mt-5">
-        <MDBCard testimonial className="card-profile">
+        <MDBCard testimonial className="card-profile card-public-profile">
         <div gradient='aqua' backgroundColor="red"/>
-          <div className='mx-auto white'>
+          <div className=''>
           <img
               src={owner.profilePicture} 
-              alt='' className="img-fluid rounded-circle hoverable border border-info" width="100%" 
+              alt='' className="rounded-circle hoverable border border-info public-profile" 
             />
           </div><br/>
           

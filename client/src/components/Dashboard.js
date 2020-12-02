@@ -71,19 +71,19 @@ export default function Dashboard() {
       <MDBCol md='3' className="mt-5">
       <MDBCard testimonial className="card-profile" >
       <div gradient='aqua' backgroundColor="red"/>
-          <div className='mx-auto white'>
+          <div className='image-and-camera'>
           <img
               src={user.loginInfo.profilePicture} 
-              alt='' className="img-fluid rounded-circle hoverable border border-info" width="100%" 
+              alt='' className="rounded-circle hoverable border border-info" 
             />
+          <button className="camera-button" onClick={handleShow}>
+          <MDBIcon icon="camera" />
+          </button>
           </div>
-          <Button variant="primary" onClick={handleShow}>
-        Update Profile Picture
-      </Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Update your profile picture</Modal.Title>
         </Modal.Header>
         <Modal.Body><form onSubmit={(e) => {handleSubmit(e)}}>
             <label htmlFor="defaultFormCardNameEx" className="labe-headline"><MDBIcon icon="share indigo-text" />  Profile Picture

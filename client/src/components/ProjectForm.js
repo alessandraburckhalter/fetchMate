@@ -65,7 +65,7 @@ export default function ProjectForm() {
           <div className='mx-auto white'>
             <img
               src={user.loginInfo.profilePicture} 
-              alt='' className="img-fluid rounded-circle hoverable border border-info" width="100%" 
+              alt='' className="rounded-circle hoverable border border-info" 
             />
           </div>
           <MDBCardBody>
