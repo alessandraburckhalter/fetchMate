@@ -12,14 +12,15 @@ body {
   display: flex;
 }
 
-#first-section aside {
-  width: 50%;
-  background-image: url(../images/Frame3.svg);
+.aside {
+  /* width: 50%; */
+  /* background-image: url(../images/Frame3.svg); */
   background-color: rgba(145,192,241,1);
  /* background-image: linear-gradient(-225deg, #2CD8D5 0%,  56%, #FFBAC3 100%); */
   background-size: cover;
   background-repeat: no-repeat;
   padding: 80px;
+  /* margin: 10px; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -39,22 +40,22 @@ body {
   font-size: 2.1em;
 }
 
-form.login-form {
-  width: 500px;
+.login-form {
+  max-width: 500px;
   margin: auto;
   /* background: #ffffff; */
-  border: 1px solid #d3e2e5;
+  border: 1px solid #d3e2e5; 
   border-radius: 20px;
   padding: 64px 80px;
-  overflow: hidden;
-  /* background-color: rgba(46, 140, 140, 2);
-  color: rgba(46, 138, 138, 2); */
-  background-color: rgba(46, 138, 138, 0.4); 
+  overflow: hidden; 
+  /* background-color: rgba(46, 140, 140, 2); */
+  /* color: rgba(46, 138, 138, 2);  */
+  background-color: rgba(46, 138, 138, 0.1); 
   color: rgba(46, 138, 138, 0.4);
 }
 
-form.login-form .input-block input,
-form.login-form .input-block textarea {
+.input-block input,
+.input-block textarea {
   width: 100%;
   background-color: rgba(46, 138, 140, 0.1);
   border: 1px solid #d3e2e5;
@@ -63,13 +64,13 @@ form.login-form .input-block textarea {
   color: white;
 }
 
-form.login-form .input-block input {
+.input-block input {
   height: 40px;
   padding: 0 16px;
   border-radius: 5px;
 }
 
-form.login-form .login-legend {
+.login-legend {
   border: none;
   margin-bottom: 0;
   color: white;
@@ -81,7 +82,7 @@ form.login-form .login-legend {
   
 }
 
-form.login-form .input-block label {
+.input-block label {
   display: flex;
   color: white;
   margin-bottom: 8px;
@@ -109,7 +110,7 @@ button.login-button {
   font-size: 1em;
 }
 
-form.login-form .forgot-password {
+.forgot-password {
   color: white;
   font-size: 1em;
   font-weight: 800;
@@ -140,15 +141,15 @@ button.newAccount-button {
 font-size: 40px;
 }
 
-#first-section-login {
+/* #first-section-login {
   width: 100vw;
   height: 100vh;
   position: relative;
-}
+} */
 
 #first-section-login aside {
-  width: 100%;
-  height: 100vh;
+  /* width: 100%;
+  height: 100vh; */
   background-image: url(../images/working.jpeg);
   background-size: cover;
   background-repeat: no-repeat;
@@ -159,7 +160,7 @@ font-size: 40px;
 
 .second-section {
   width: 100vw;
-  height: 70vh;
+  min-height: 70vh;
   position: relative;
   display: block;
   /* background-image: url(../images/Frame3.svg);
@@ -179,4 +180,3 @@ font-size: 40px;
   color: black;
   font-family: Arial, Helvetica, sans-serif;
 }
-
