@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import SkillSearchBar from '../SkillSearchBar';
 import Axios from 'axios';
-import { addSkillToSearchArray, clearSearchSkillArray, setSearchSkillArray } from '../../redux/actions';
+import { clearSearchSkillArray, setSearchSkillArray } from '../../redux/actions';
 
 export default function DashboardProjectCard(props) {
   const { id, owner, description, title, isCompleted, publishedAt, deadline, memberLimit, Skills} = props.project
@@ -98,27 +98,27 @@ export default function DashboardProjectCard(props) {
             </aside>
             <MDBCard className="card-body card-body-projects2">
           <aside>
-    <MDBCardTitle className="project-title"> <Link className="project-title" to={`/dashboard/${id}`}><MDBIcon icon="link" /> {title}</Link> </MDBCardTitle>
-    <MDBCardText>
-      {description}
-    </MDBCardText>
-    <div className="flex-row d-flex">
-    <a href="#!" className="card-link icon">
-        Status: {isCompleted === false ? "Open" : "Closed"} <span>Project Status</span>
-      </a>
-      
-      <a href="#!" className="card-link icon "><MDBIcon icon="calendar-alt deep-purple-text" />  {deadline.slice(0,10)} <span>Deadline</span>
-      </a>
-      <a href="#!" className="card-link icon icon-width"><MDBIcon icon="users indigo-text" /> {memberLimit} <span>Member's limit</span> 
-      </a>
-    
-      <a href="#!" className="card-link icon icon-width"><MDBIcon fab icon="gratipay pink-text" /> {Object.keys(projectInfo).length > 0 && projectInfo.Members.length} <span>Applications</span>
-      </a>
-      <a href="#!" className="card-link icon icon-width"><MDBIcon icon="check-square green-text" /> {acceptedMember && acceptedMember.length }  <span>Approved</span>
-      </a>
+          <MDBCardTitle className="project-title"> <Link className="project-title" to={`/dashboard/${id}`}><MDBIcon icon="link" /> {title}</Link> </MDBCardTitle>
+          <MDBCardText>
+            {description}
+          </MDBCardText>
+          <div className="flex-row d-flex">
+          <a href="#!" className="card-link icon">
+              Status: {isCompleted === false ? "Open" : "Closed"} <span>Project Status</span>
+            </a>
+            
+            <a href="#!" className="card-link icon "><MDBIcon icon="calendar-alt deep-purple-text" />  {deadline.slice(0,10)} <span>Deadline</span>
+            </a>
+            <a href="#!" className="card-link icon icon-width"><MDBIcon icon="users indigo-text" /> {memberLimit} <span>Member's limit</span> 
+            </a>
+          
+            <a href="#!" className="card-link icon icon-width"><MDBIcon fab icon="gratipay pink-text" /> {Object.keys(projectInfo).length > 0 && projectInfo.Members.length} <span>Applications</span>
+            </a>
+            <a href="#!" className="card-link icon icon-width"><MDBIcon icon="check-square green-text" /> {acceptedMember && acceptedMember.length }  <span>Approved</span>
+            </a>
 
-      <a href="#!" ><button className="card-link icon delete-card icon-width" onClick={ () => removeProject(id)}><MDBIcon icon="trash-restore-alt red-text" /><span>Delete</span> 
-      </button></a>
+            <a href="#!" ><button className="card-link icon delete-card icon-width" onClick={ () => removeProject(id)}><MDBIcon icon="trash-restore-alt red-text" /><span>Delete</span> 
+            </button></a>
       
               <Link to='#' className="card-link icon edit-card icon-width" onClick={handleOpen}><MDBIcon icon="edit" /><span>Edit</span> </Link>
               <MDBModal isOpen={modal} toggle={toggle}>

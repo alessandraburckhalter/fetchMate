@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Button } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 import '../styles/profileSetup.css'
-import { clearSearchSkillArray, logout } from '../redux/actions';
+import { clearSearchSkillArray, logout, setSearchSkillArray } from '../redux/actions';
 import SkillSearchBar from './SkillSearchBar';
 import Axios from 'axios';
 import Footer from './Footer'
@@ -16,13 +16,13 @@ export default function ProfileSetup() {
     const user = useSelector(state => state.user)
     const [password, setPassword] = useState('')
     const [email, setEmail] = useState('')
-    const [headline, setHeadline] = useState('');
+    const [headline, setHeadline] = useState(user.loginInfo.title);
     const dispatch = useDispatch();
     const history = useHistory();
     const pickedSkillsArray = useSelector(state => state.searchSkillsToAdd)
 
     useEffect(() => {
-      dispatch(clearSearchSkillArray())
+      dispatch(setSearchSkillArray(user.loginInfo.Skills))
     }, [])
 
     const handleLogout = (e) => {
@@ -56,7 +56,8 @@ export default function ProfileSetup() {
       e.preventDefault();
       setHeadline('');
       const userSkillsArray = pickedSkillsArray.map(skill => skill.id)
-      Axios.post('/api/v1/hub/userSkill', {
+      Axios.patch('/api/v1/hub', {
+        title: headline,
         userSkillsArray
       })
         .then(res => {
@@ -65,16 +66,6 @@ export default function ProfileSetup() {
         .catch(e => {
           console.log(e)
         })
-      Axios.patch('/api/v1/hub', {
-        title: headline
-      })
-        .then(res => {
-          console.log(res)
-        })
-        .catch(e => {
-          console.log(e)
-        })
-      Axios.patch()
     }
     
 
@@ -122,10 +113,6 @@ export default function ProfileSetup() {
            </label>
            
             <input type="text" id="defaultFormCardNameEx" className="form-control" value={headline} onChange={(e) => {setHeadline(e.target.value)}}/>
-            <br />
-            <label htmlFor="defaultFormCardNameEx" className="labe-headline"><MDBIcon icon="share indigo-text" />  Profile Picture
-           </label>
-            <input type="file" id="defaultFormCardNameEx" className="form-control" value={headline} onChange={(e) => {setHeadline(e.target.value)}}/>
             <br />
             
             <h1 className=" label-skillbar"><MDBIcon icon="share indigo-text" /> Technical Skills</h1>
