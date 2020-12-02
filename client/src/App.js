@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { Provider, useDispatch, useSelector } from 'react-redux';
 import { Redirect, Route, Switch, useHistory } from 'react-router-dom';
 import './App.css';
+import Chat from './components/Chat';
 import Comments from './components/Comments';
 import ContribuingProjects from './components/ContribuingProjects';
 import Dashboard from './components/Dashboard';
@@ -49,7 +50,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={MainPage}/>
           <Route path="/register" component={SignUpPage}/>
-          
+          <Route path="/chat" component={Chat}/>
           
           <Route exact path="/projects" component={Projects}/>
           {user.loginInfo !== null && (
