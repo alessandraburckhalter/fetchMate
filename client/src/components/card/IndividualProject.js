@@ -121,8 +121,10 @@ export default function IndividualProject({ project }) {
                                 </a>
                                 <a href="#!" className="card-link icon icon-all-projects-width"><MDBIcon icon="users indigo-text" /> {project.memberLimit} <span>Member's limit</span> 
                                 </a>
+                                <Link to="/comments" className="card-link icon icon-all-projects-width"><i class="fas fa-comment-dots"></i> 0 <span>Comments</span> 
+                                </Link>
+                                
                                 <div>
-
                                     {
                                         isOwner ?
                                         <button className=" inactive-own">

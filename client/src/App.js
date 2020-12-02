@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { Provider, useDispatch, useSelector } from 'react-redux';
 import { Redirect, Route, Switch, useHistory } from 'react-router-dom';
 import './App.css';
+import Comments from './components/Comments';
 import ContribuingProjects from './components/ContribuingProjects';
 import Dashboard from './components/Dashboard';
 import Interested from './components/Interested';
@@ -60,6 +61,7 @@ function App() {
             <Route path="/test" component={Test}/>
             <Route exact path="/dashboard/public/:pendingId" component={PublicProfile}/>
             <Route path="/dashboard/contribute/:contributeId" component={ContribuingProjects}/>
+            <Route path="/comments" component={Comments}/>
             </>
           )}
           <Route>
