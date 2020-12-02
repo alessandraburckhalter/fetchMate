@@ -17,6 +17,7 @@ module.exports = (sequelize, DataTypes) => {
       Project.belongsToMany(models.Skill, {
         through: 'ProjectSkills',
       })
+      Project.hasMany(models.Comment)
     }
   };
   Project.init({

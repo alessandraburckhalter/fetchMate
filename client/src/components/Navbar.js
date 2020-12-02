@@ -77,7 +77,7 @@ export default function Navbar() {
                 </MDBDropdownToggle>
                 <MDBDropdownMenu className="dropdown-default">
                   <MDBDropdownItem href="/projectForm">Publish a project</MDBDropdownItem>
-                  <MDBDropdownItem href="projects">See all projects</MDBDropdownItem>
+                  <MDBDropdownItem href="/projects">See all projects</MDBDropdownItem>
                 </MDBDropdownMenu>
               </MDBDropdown>
             </MDBNavItem>

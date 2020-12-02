@@ -4,11 +4,13 @@ import { useParams } from 'react-router-dom'
 import InterestedCard from './card/InterestedCard'
 import Navbar from './Navbar'
 import '../styles/interested.css'
+import AcceptedCard from './card/AcceptedCard'
 
 export default function Interested() {
     const { projectId } = useParams()
-    const [project, setProject] = useState("")
+    const [project, setProject] = useState({})
     const [interested, setInterested] = useState([])
+    const [accepted, setAccepted] = useState([])
     
     // const publish = project.publishedAt
     console.log(project)
@@ -21,6 +23,16 @@ export default function Interested() {
             
           })
     }
+
+    const displayAccepted = () =>{
+      fetch(`/api/v1/projects/${projectId}/teamMember?status=approved`)
+          .then(res =>res.json())
+          .then(result =>{
+            setAccepted(result)
+            
+            
+          })
+    }
     useEffect(()=>{
       
         fetch(`/api/v1/projects/${projectId}`)
@@ -30,10 +42,11 @@ export default function Interested() {
             
           })
           displayInterest()
+          displayAccepted()
           
         
         
-      }, [projectId, setProject])
+      }, [projectId, setProject, setInterested, setAccepted])
   
 
     return (
@@ -84,10 +97,16 @@ export default function Interested() {
      
     
       <h1>Interested People</h1>
-      {console.log(interested)}
-      {interested.length > 0 && interested.map((interestedUser, index, project)=>{
-            return <InterestedCard key={interestedUser.id} project={project[0]} interestedUser={interestedUser} displayInterest={displayInterest} />
-          })} 
+      
+      {interested.length > 0 ? (interested.map((interestedUser, index, project)=>{
+            return <InterestedCard key={interestedUser.id} project={project[0]} interestedUser={interestedUser} displayInterest={displayInterest} displayAccepted={displayAccepted}/>
+          })) : "No application"} 
+      
+      <h1>My team member</h1>
+     
+      {accepted.length > 0 ? (accepted.map((acceptedMember, index, project)=>{
+            return <AcceptedCard key={acceptedMember.id} project={project[0]} acceptedMember={acceptedMember} displayAccepted={displayAccepted} displayInterest={displayInterest}/>
+          })) : "No team Member"} 
      
       
       </MDBCol>

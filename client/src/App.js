@@ -12,7 +12,7 @@ import ProjectForm from './components/ProjectForm';
 import Projects from './components/Projects';
 import PublicProfile from './components/PublicProfile';
 import SignUpPage from './components/SignUpPage';
-import Test from './components/Test';
+//import Test from './components/Test';
 import { checked, login } from './redux/actions'
 
 
@@ -51,17 +51,20 @@ function App() {
           <Route path="/register" component={SignUpPage}/>
           
           
-          <Route path="/projects" component={Projects}/>
+          <Route exact path="/projects" component={Projects}/>
           {user.loginInfo !== null && (
             <>
             <Route path="/hub" component={ProfileSetup}/>
             <Route path="/projectForm" component={ProjectForm}/>
             <Route exact path="/dashboard" component={Dashboard}/>
+
             <Route exact path="/dashboard/:projectId" component={Interested}/>
             <Route path="/test" component={Test}/>
             <Route exact path="/dashboard/public/:pendingId" component={PublicProfile}/>
             <Route path="/dashboard/contribute/:contributeId" component={ContribuingProjects}/>
+
             <Route path="/comments" component={Comments}/>
+
             </>
           )}
           <Route>
