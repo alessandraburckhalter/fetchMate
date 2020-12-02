@@ -81,10 +81,10 @@ export default function ProfileSetup() {
       <MDBCol md='3' className="mt-5">
         <MDBCard testimonial className="card-profile" >
           <div gradient='aqua' backgroundColor="red"/>
-          <div className='mx-auto white'>
+          <div className='image-and-camera'>
             <img
               src={user.loginInfo.profilePicture} 
-              alt='' className="img-fluid rounded-circle hoverable border border-info" width="100%" 
+              alt='' className="rounded-circle hoverable border border-info profile-setup"  
             />
           </div>
           <MDBCardBody>

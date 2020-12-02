@@ -179,6 +179,15 @@ h4.card-title {
 /* profile image */
 img.img-fluid.rounded-circle.hoverable.border.border-info {
     border: 5px solid #33b5e5!important;
+    height: 210px !important;
+    width: 100% !important;
+    object-fit: cover !important;
+}
+
+img.rounded-circle {
+    height: 210px !important;
+    width: 100% !important;
+    object-fit: cover !important;
 }
 
 /* projectForm page datepicker input */
