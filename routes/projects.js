@@ -411,6 +411,64 @@ router.patch('/:projectId/teamMember', (req, res) => {
   
 })
 
+// get comment router with project id
+router.get('/:projectId/comments',(req, res)=>{
+    db.Comment.findAll({
+        where:{
+            ProjectId: req.params.projectId
+        },
+        include:[
+            db.User,
+            db.Project
+        ]
+    })
+    .then(comments =>{
+        res.status(202).json(comments)
+    })
+    .catch(e=>{
+        res.status(500).json({
+            error:"No comments" + e
+        })
+    })
+})
+
+// post comment router with project id
+router.post('/:projectId/comments',(req, res)=>{
+    if(!req.body || !req.body.content){
+        res.status(400).json({
+            error: "Please fill all required fields"
+        })
+        
+    }
+    db.Project.findByPk(req.params.projectId)
+        .then(project =>{
+            if(!project){
+                res.status(404).json({
+                    error: "No project found"
+                })
+            }
+            return db.Comment.create({
+                content: req.body.content,
+                UserId: req.session.user.id,
+                ProjectId: req.params.projectId
+            })
+        })
+        .then(comment =>{
+            comment.getUser().then(user=>{
+                comment.setDataValue('User',user)
+                res.json({
+                    success: "Comment added",
+                    comment: comment
+                })
+
+            })
+        })
+        .catch(e=>{
+            res.status(500).json({
+                error:"Database error occurred" + e
+            })
+        })
+})
 
 
 module.exports = router;

@@ -141,7 +141,7 @@ router.patch('/',upload.single('profilePicture'), checkAuth, (req,res) => {
     } 
 
     const { firstName, lastName, email, password, title, userSkillsArray } = req.body
-    const  profilePicture  = req.file && req.file.path ? req.file.path : null
+    const  profilePicture  = req.file && req.file.path ? "/" + req.file.path : null
     const params = { firstName, lastName, password, profilePicture, email, title }
     Object.keys(params).forEach(key => {params[key] ? updateObject[key] = params[key] : ''})
     models.User.update(updateObject, {

@@ -5,6 +5,7 @@
     white-space: nowrap;
     overflow: hidden;
   }
+  
   .css-typing p:nth-child(1) {
     width: 7.3em;
     -webkit-animation: type 2s steps(40, end);

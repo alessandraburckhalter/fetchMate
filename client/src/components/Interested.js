@@ -8,7 +8,7 @@ import AcceptedCard from './card/AcceptedCard'
 
 export default function Interested() {
     const { projectId } = useParams()
-    const [project, setProject] = useState("")
+    const [project, setProject] = useState({})
     const [interested, setInterested] = useState([])
     const [accepted, setAccepted] = useState([])
     
