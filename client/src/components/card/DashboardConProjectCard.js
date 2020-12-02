@@ -1,6 +1,7 @@
 import { MDBCard, MDBCardText, MDBCardTitle, MDBIcon } from 'mdbreact'
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import '../../styles/dashboard.css'
 
 export default function DashboardConProjectCard(props) {
     const { id, owner, description, title, isCompleted, publishedAt, deadline, memberLimit } = props.project
@@ -21,7 +22,7 @@ export default function DashboardConProjectCard(props) {
             <aside>
     
             </aside>
-            <MDBCard className="card-body card-body-contribuing2">
+            <MDBCard className="card-body card-body-contributing2">
                 <aside>
                 <MDBCardTitle className="project-title"><Link to={`/dashboard/contribute/${id}`}>{title}</Link></MDBCardTitle>
                 <MDBCardText>

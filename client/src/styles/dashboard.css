@@ -16,6 +16,12 @@
     margin-top: 1em;
 }
 
+img.rounded-circle {
+    height: 210px !important;
+    width: 100% !important;
+    object-fit: cover !important;
+}
+
 h3.card-title {
     font-size: 1em;
     cursor: pointer;
@@ -70,12 +76,12 @@ button.edit-button.btn {
     width: 97%;
 }
 
-.card-body-contribuiting1 {
+.card-body-contributing1 {
     padding: 0 !important;
     background-color: #fecd1a !important;
 }
 
-.card-body-contribuiting2 {
+.card-body-contributing2 {
     padding: 15px !important;
     width: 97%;
 }
@@ -179,4 +185,17 @@ Link.project-title {
     font-weight: 400;
     margin: 2px;
     display: -webkit-inline-box;
+}
+
+/* update profile picture camera button */
+button.camera-button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    float: right;
+}
+
+/* wrapping camera icon and picture */
+.image-and-camera {
+    display: inline-grid;
 }
