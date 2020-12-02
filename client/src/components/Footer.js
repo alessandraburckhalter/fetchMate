@@ -11,8 +11,9 @@ export default function Footer() {
             <MDBFooter className="font-large pt-5 mt-4 footer">
         <MDBContainer fluid className="text-center ">
         <MDBRow>
-          <MDBCol md="2" className="ml-5">
-          <img src={logo} alt="logo" className="img-fluid"/>
+          <MDBCol md="2" className="logo-footer">
+          <img src={logo} alt="logo" className="img-footer" />
+         
             <p>
               We help you to connect with people and find a partner for your project.
             </p>
