@@ -20,22 +20,7 @@
 }
 
 
-.navbar {
-    height: 80px;
-    background-color: rgba(145,192,241,1);
-    background-image: url(../images/Frame3.svg);
-    box-shadow: none !important;
-}
 
-.navbar-dark .navbar-brand {
-    width: 10%;
-}
-
-.navbar-nav a {
-    padding: 10px;
-    color: white;
-    font-weight: bold;
-}
 
 /* 158467 logo */
 /* 3e978b */
@@ -136,12 +121,14 @@ button.remove-skill-button{
 /* form padding */
 form {
     padding: 34px 80px;
+    margin-bottom: 150px;
 }
 
 /* complete your profile container */
 .container-form {
     margin-left: 80px;
     box-shadow: none !important;
+    margin-top: 160px;
 }
 
 /* complete your profile card */
@@ -155,6 +142,7 @@ form {
 .card-profile {
     box-shadow: none !important;
     background-color: transparent !important;
+    margin-top: 150px;
 }
 
 /* name and email */
@@ -191,6 +179,26 @@ h4.card-title {
 /* profile image */
 img.img-fluid.rounded-circle.hoverable.border.border-info {
     border: 5px solid #33b5e5!important;
+    height: 210px !important;
+    width: 100% !important;
+    object-fit: cover !important;
+}
+
+img.rounded-circle {
+    height: 210px !important;
+    width: 100% !important;
+    object-fit: cover !important;
+}
+
+/* projectForm page datepicker input */
+.react-datepicker__input-container input {
+    border: 1px solid #4285f4 !important;
+    border-radius: 4px;
+    padding:  6px 12px;
+}
+
+.md-form.md-outline .form-control {
+    border-radius: 4px;
 }
 
 /* BLUE AND GREEN TRANSPARENT RGBA  */

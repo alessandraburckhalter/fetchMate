@@ -138,9 +138,12 @@ export default function SignUpPage() {
                             Profile picture
                             </label>
 
+                           
+                                
                             <label htmlFor="profilePicture" className="new-image">
                             <MDBIcon icon="plus" />
                             </label>
+                            {profilePicture ? profilePicture.name : ''}
 
                         <input
                             id="profilePicture" 

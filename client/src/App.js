@@ -50,14 +50,18 @@ function App() {
           <Route path="/register" component={SignUpPage}/>
           
           
+          <Route path="/projects" component={Projects}/>
           {user.loginInfo !== null && (
             <>
             <Route path="/hub" component={ProfileSetup}/>
             <Route path="/projectForm" component={ProjectForm}/>
             <Route exact path="/dashboard" component={Dashboard}/>
-            <Route path="/projects" component={Projects}/>
-            <Route path="/interested" component={Interested}/>
-            {/* <Route path="/test" component={Test}/> */}
+
+            <Route exact path="/dashboard/:projectId" component={Interested}/>
+            <Route path="/test" component={Test}/>
+            <Route exact path="/dashboard/public/:pendingId" component={PublicProfile}/>
+            <Route path="/dashboard/contribute/:contributeId" component={ContribuingProjects}/>
+
             </>
           )}
           <Route>

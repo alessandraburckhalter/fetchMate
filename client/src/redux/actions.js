@@ -7,7 +7,9 @@ export const SET_USER_PROFILE_PIC = 'SET_USER_PROFILE_PIC';
 export const SET_ALL_POSSIBLE_SKILLS = 'SET_ALL_POSSIBLE_SKILLS';
 export const ADD_SKILL_TO_SEARCH_ARRAY = 'ADD_SKILL_TO_SEARCH_ARRAY';
 export const REMOVE_SKILL_FROM_SEARCH_ARRAY = 'REMOVE_SKILL_FROM_SEARCH_ARRAY';
+export const CLEAR_SEARCH_SKILL_ARRAY = 'CLEAR_SEARCH_SKILL_ARRAY';
 export const SET_CHECKED = 'SET_CHECKED';
+export const SET_SEARCH_SKILL_ARRAY = 'SET_SEARCH_SKILL_ARRAY';
 
 
 
@@ -84,4 +86,17 @@ export const removeSkillFromSearchArray = (skillId) => {
         }
     }
 }
+export const clearSearchSkillArray = () => {
+    return {
+        type: CLEAR_SEARCH_SKILL_ARRAY
+    }
+}
 
+export const setSearchSkillArray = (skillArray) => {
+    return {
+        type: SET_SEARCH_SKILL_ARRAY,
+        payload:{
+            skillArray
+        }
+    }
+}

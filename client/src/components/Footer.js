@@ -11,9 +11,11 @@ export default function Footer() {
             <MDBFooter className="font-large pt-5 mt-4 footer">
         <MDBContainer fluid className="text-center ">
         <MDBRow>
+
           <MDBCol md="2" className="logo-footer">
           <img src={logo} alt="logo" className="img-footer" />
          
+
             <p>
               We help you to connect with people and find a partner for your project.
             </p>
@@ -29,10 +31,10 @@ export default function Footer() {
               <i class="fas fa-chevron-right"></i> <Link to="/register">Sign Up</Link>
               </li>
               <li className="list-unstyled">
-              <i class="fas fa-chevron-right"></i> <a href="#!">About</a>
+              <i class="fas fa-chevron-right"></i> <Link to="/projects">Projects</Link>
               </li>
               <li className="list-unstyled">
-              <i class="fas fa-chevron-right"></i> <a href="#!">Projects</a>
+              <i class="fas fa-chevron-right"></i> <a href="#!">About</a>
               </li>
               <li className="list-unstyled">
               <i class="fas fa-chevron-right"></i> <a href="#!">FAQ</a>

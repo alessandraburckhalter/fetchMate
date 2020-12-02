@@ -7,6 +7,40 @@ const multer = require('multer');
 const checkAuth = require('../checkAuth');
 const db = require('../models');
 
+
+// multer storage
+const storage = multer.diskStorage({
+    destination: function(req, file, cb){
+        cb(null, './uploads/');
+    },
+    filename: function(req,file,cb){
+        cb(null, new Date().toISOString() + file.originalname);
+    }
+})
+
+// filter types of images that multer will accept
+const fileFilter = (req,file,cb) => {
+    
+    if(file.mimetype === 'image/jpeg' || file.mimetype === 'image/png'){
+        // accept a file
+        console.log('file accepted')
+        cb(null, true)
+    }else{
+        // reject a file
+        console.log('file denied')
+        cb(null, false)
+    }
+    
+}
+
+const upload = multer({
+    storage: storage, 
+    limits:{
+        fileSize: 1024 * 1024 * 5
+    },
+    fileFilter: fileFilter
+});
+
 //get profile
 //* Added a section that includes the projects that the current user owns and is a teamMember of
 router.get('/current', checkAuth, (req,res) => {
@@ -19,11 +53,17 @@ router.get('/current', checkAuth, (req,res) => {
                 primaryKey: 'owner',
                 model: db.Project,
                 required: false,
+                include:[
+                    db.Skill
+                ]
             },
             {
                 as: "MemberProjects", 
                 model: db.Project,
-                required: false
+                required: false,
+                include:[
+                    db.Skill
+                ]
             },
                 db.Skill]
     })
@@ -91,18 +131,18 @@ router.get('/user/:id', checkAuth, (req,res) => {
 // })
 
 //update profile
-router.patch('/', checkAuth, (req,res) => {
+router.patch('/',upload.single('profilePicture'), checkAuth, (req,res) => {
     
     const updateObject = {}
-    if(!req.body.firstName && !req.body.lastName && !req.body.email && !req.body.password && !req.body.profilePicture ){
+    if(!req.body.firstName && !req.body.lastName && !req.body.email && !req.body.password &&  !req.body.title && !req.file){
         res.status(400).json({
             error: 'Please pick a field to change'
         })
-        return ;
     } 
 
-    const { firstName, lastName, email, password, profilePicture } = req.body
-    const params = { firstName, lastName, password, profilePicture, email }
+    const { firstName, lastName, email, password, title, userSkillsArray } = req.body
+    const  profilePicture  = req.file && req.file.path ? req.file.path : null
+    const params = { firstName, lastName, password, profilePicture, email, title }
     Object.keys(params).forEach(key => {params[key] ? updateObject[key] = params[key] : ''})
     models.User.update(updateObject, {
         where: {
@@ -110,14 +150,36 @@ router.patch('/', checkAuth, (req,res) => {
         }
     })
         .then((updated) => {
-            updated && updated[0] > 0 ?
-                res.status(202).json({
-                    success: 'profile updated'
-                })
-            :
+            if(updated && updated[0] > 0){
+                return updated
+            }else{
                 res.status(404).json({
                     error: 'Profile not found'
                 })
+            }
+        })
+        .then(updated => {
+            return db.User.findOne({
+                where: {
+                    id: req.session.user.id
+                }
+            })
+                .then(user => user)
+        })
+        .then(user => {
+            return db.Skill.findAll({
+                where: {id: userSkillsArray}
+            })
+                .then(skills => {
+                    if(!skills){
+                        res.status(404).json({error: 'A certain skill wasn\'t found'})
+                    }
+                    return user.setSkills(skills)
+                        .then(() => user)
+                })
+        })
+        .then(user => {
+            res.status(201).json({success: 'User updated'})
         })
         .catch((e) => {
             res.status(500).json({
@@ -142,7 +204,7 @@ router.post('/userSkill', checkAuth, (req, res) => {
                     if(!skills){
                         res.status(404).json({error: 'A certain skill wasn\'t found'})
                     }
-                    return user.addSkills(skills)
+                    return user.setSkills(skills)
                         .then(() => user)
                 })
         })

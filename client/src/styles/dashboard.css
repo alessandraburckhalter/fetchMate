@@ -16,10 +16,22 @@
     margin-top: 1em;
 }
 
+img.rounded-circle {
+    height: 210px !important;
+    width: 100% !important;
+    object-fit: cover !important;
+}
+
 h3.card-title {
     font-size: 1em;
     cursor: pointer;
     text-transform: uppercase;
+    font-weight: 500 !important;
+}
+
+.card-body h2 {
+    font-size: 15px;
+    
 }
 
 button.edit-button {
@@ -45,7 +57,7 @@ button.edit-button.btn {
 .card-body-pending1 {
     padding: 0 !important;
     background-color: red !important;
-    margin-bottom: 10em;
+    margin-bottom: 20em;
 }
 
 .card-body-pending2 {
@@ -64,12 +76,12 @@ button.edit-button.btn {
     width: 97%;
 }
 
-.card-body-contribuiting1 {
+.card-body-contributing1 {
     padding: 0 !important;
     background-color: #fecd1a !important;
 }
 
-.card-body-contribuiting2 {
+.card-body-contributing2 {
     padding: 15px !important;
     width: 97%;
 }
@@ -98,7 +110,8 @@ button.publish-button {
 
 .projects-col {
     margin-left: 50px;
-    margin-top: 20px;
+    margin-top: 150px;
+    margin-bottom: 150px;
 }
 
 .title-cards {
@@ -117,4 +130,72 @@ button.publish-button {
 
 Link.project-title {
     color: black !important;
+}
+
+.icon {
+    position: relative;
+    display: inline-block;
+    margin-right: 0 !important ;
+    padding: 0 ;
+    text-align: center;
+}
+
+.icon-width {
+    width: 56px !important;
+}
+
+
+.icon span {
+    position: relative;
+    /* width: 10px; */
+    color: #4285f4;
+    text-align: center;
+    display: block;
+    margin: 0 !important;
+    opacity: 0;
+    transition: 0.6s opacity;
+    font-size: 10px;
+    display: block;
+    text-align: center;
+    padding: 0 !important;
+}
+
+.icon span:before {
+    content: '';
+    /* width: 10px; */
+    /* height: 10px; */
+    position: absolute;
+    top: -6px;
+    z-index: -1;
+    left: 50%;
+    transform: translate(-50%) rotate(45deg);
+}
+
+.icon:hover > span {
+    opacity: 1;
+}
+
+.skills-dashboard {
+    border: 1px solid #30B0F8;
+    border-top-right-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+    border-top-left-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+    padding: 4px;
+    font-weight: 400;
+    margin: 2px;
+    display: -webkit-inline-box;
+}
+
+/* update profile picture camera button */
+button.camera-button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    float: right;
+}
+
+/* wrapping camera icon and picture */
+.image-and-camera {
+    display: inline-grid;
 }

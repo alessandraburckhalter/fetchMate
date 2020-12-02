@@ -13,7 +13,11 @@ router.get('/', (req, res) => {
     console.log(includeCompleted === 'true' ? 'withCompleted' : 'defaultScope')
     db.Project.scope(includeCompleted === 'true' ? 'withCompleted' : 'defaultScope').findAll({
         order: [['publishedAt', 'DESC']],
-        include:[db.User]
+        include:[db.User,{
+            model: db.User,
+            through: db.TeamMember,
+                as: 'Members'
+        }, db.Skill]
     })
         .then(projects => {
             res.json(projects);
@@ -93,7 +97,7 @@ router.patch('/:id', (req, res) => {
     const { id } = req.params;
     const updateObject = {};
     //TODO: Will need to double check w/ front end team for these names
-    const { description, title, isCompleted, publishedAt, deadline, memberLimit } = req.res;
+    const { description, title, isCompleted, publishedAt, deadline, memberLimit } = req.body;
     //TODO: May not want to make it to where the user has to submit all of these in order to create a project 
     if(!description && !title && !isCompleted && !publishedAt && !deadline && !memberLimit){
         res.status(400).json({
@@ -107,17 +111,40 @@ router.patch('/:id', (req, res) => {
             id
         }
     })
-        then(updatedProject => {
-            updatedProject && updatedProject[0] > 0 ?
-                res.status(202).json({success: 'Project updated'})
-            :
+        .then(updatedProject => {
+            if(updatedProject && updatedProject[0] > 0){
+                return updatedProject;
+            }else{
                 res.status(404).json({error: 'Project not found'})
+            }
+        })
+        .then(updated => {
+            //! Once we update the project:
+            //! we need to find the project again, since the update method doesn't return an instance of he project
+            //! Once we find the right project, we can then use the addSkills magic method to update new skills.
+            db.Project.findOne({where: {id}})
+                .then(project => {
+                    const { projectSkillsArray } = req.body;
+                    return db.Skill.findAll({
+                        where:{id: projectSkillsArray}
+                    })
+                        .then(skills => {
+                            if(!skills) {
+                                res.status(404).json({error: `A certain skill wasn't found`}) 
+                            }
+                            //! 
+                            return project.setSkills(skills)
+                                .then(() => project)
+                        })
+                })
+        })
+        .then(project => {
+            res.status(202).json({success: 'Project updated'})
         })
         .catch(e => {
-            res.status(500).json({
-                error: 'Database error occurred: ' + e
-            })
-        })
+            console.error(e)
+            res.status(500).json({error: 'A database error: ' + e})
+        }) 
 })
 
 //* Delete Project route --> based on the project id to be deleted

@@ -1,4 +1,4 @@
-import { MDBCard, MDBCardText, MDBCardTitle, MDBCol, MDBContainer, MDBRow } from 'mdbreact'
+import { MDBCard, MDBCardText, MDBCardTitle, MDBCol, MDBRow } from 'mdbreact'
 import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
@@ -32,7 +32,10 @@ export default function ApplyProject() {
       .then(res => res.json())
       .then(data => {
         console.log(data)
+
       })
+
+
     }
 
 

@@ -1,0 +1,26 @@
+h2.card-title-public {
+    font-size: 1.3em;
+    cursor: pointer;
+}
+
+h4.card-title-public {
+    font-size: 1.2em;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: 500 !important;
+}
+
+img.public-profile {
+    height: 250px !important;
+    width: 30% !important;
+    object-fit: cover !important;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+.card-public-profile {
+    margin-bottom: 250px;
+}

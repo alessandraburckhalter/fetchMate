@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { ADD_SKILL_TO_SEARCH_ARRAY, ADD_USER_SKILL, REMOVE_SKILL_FROM_SEARCH_ARRAY, SET_ALL_POSSIBLE_SKILLS, SET_LOGIN, SET_LOGOUT, SET_USER_PROFILE_PIC, SET_USER_SKILLS, SET_CHECKED} from './actions';
+import { ADD_SKILL_TO_SEARCH_ARRAY, ADD_USER_SKILL, REMOVE_SKILL_FROM_SEARCH_ARRAY, SET_ALL_POSSIBLE_SKILLS, SET_LOGIN, SET_LOGOUT, SET_USER_PROFILE_PIC, SET_USER_SKILLS, SET_CHECKED, CLEAR_SEARCH_SKILL_ARRAY, SET_SEARCH_SKILL_ARRAY} from './actions';
 // import { ADD_USER_SKILL, checked, SET_ALL_POSSIBLE_SKILLS, SET_CHECKED, SET_LOGIN, SET_LOGOUT, SET_USER_PROFILE_PIC, SET_USER_SKILLS } from './actions';
 
 
@@ -48,9 +48,13 @@ const skillsReducer = (state={}, action) => {
 const searchBarReducer = (state=[], action) => {
     switch (action.type){
         case ADD_SKILL_TO_SEARCH_ARRAY:
-            return state.concat(action.payload.skill)
+            return state.concat(action.payload.skill);
         case REMOVE_SKILL_FROM_SEARCH_ARRAY:
-            return state.filter(skill => skill.id !== action.payload.skillId)
+            return state.filter(skill => skill.id !== action.payload.skillId);
+        case SET_SEARCH_SKILL_ARRAY:
+            return action.payload.skillArray;
+        case CLEAR_SEARCH_SKILL_ARRAY:
+            return [];
         default:
             return state;
     }

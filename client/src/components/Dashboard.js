@@ -1,22 +1,50 @@
-import { MDBCard, MDBCardBody, MDBCardText, MDBCardTitle, MDBCol, MDBCollapse, MDBContainer, MDBIcon, MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavbarToggler, MDBNavItem, MDBRow } from 'mdbreact';
+import { MDBCard, MDBCardBody, MDBCol, MDBContainer, MDBIcon, MDBRow } from 'mdbreact';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { BrowserRouter, Link } from 'react-router-dom';
 import { login } from '../redux/actions';
 import '../styles/dashboard.css'
 import ProjectCard from './card/DashboardProjectCard';
 import ContributeProjectCard from "./card/DashboardConProjectCard";
-import logo from '../images/logo3.png';
 import Footer from './Footer';
 import DashboardConProjectsCard from "./card/DashboardConProjectCard"
 import DashboardPenProjectCard from './card/DashboardPenProjectCard';
+import Navbar from '../components/Navbar'
+import { Link, useHistory } from 'react-router-dom';
+import { Button, Modal } from 'react-bootstrap';
 
 export default function Dashboard() {
-
+  const [show, setShow] = useState(false);
+  const [profilePicture, setProfilePicture] = useState('')
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   const [currentUserData, setCurrentUserData] = useState([])
+  const history = useHistory()
   const user = useSelector(state => state.user);
   const dispatch = useDispatch()
+  const formData = new FormData()
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    formData.append('profilePicture',profilePicture)
+    
+    fetch('/api/v1/hub', {
+      method: 'PATCH',
+      body:formData
+    })
+      .then(res => {
+        console.log(res)
+      })
+      .then(data => {
+        console.log(data)
+        alert('Profile Updated!')
+        let path = "/dashboard"
+        history.push(path)
+      })
+      .catch(e => {
+        console.log(e)
+      })
+    
+  }
  
 
   const loadProject = () =>{
@@ -25,7 +53,7 @@ export default function Dashboard() {
     .then(data=>{
       setCurrentUserData(data)
       dispatch(login(data))
-      console.log(data)
+      
       
     })
   }
@@ -35,33 +63,7 @@ export default function Dashboard() {
   
     return (
     <>
-      <BrowserRouter>
-  <MDBNavbar  dark expand="md">
-        <MDBNavbarBrand>
-        <img src={logo} alt="logo" width="60%"/>
-        </MDBNavbarBrand>
-        <MDBNavbarToggler />
-        <MDBCollapse id="navbarCollapse3"  navbar className="d-flex justify-content-around">
-          <MDBNavbarNav left>
-            <MDBNavItem active>
-              <Link to="#!">Home</Link>
-            </MDBNavItem>
-            <MDBNavItem>
-              <Link to="/hub">Profile Setup</Link>
-            </MDBNavItem>
-            <MDBNavItem>
-              <Link to="/projectForm">Project Form</Link>
-            </MDBNavItem>
-            <MDBNavItem>
-              <Link to="/dashboard">Dashboard</Link>
-            </MDBNavItem>
-            <MDBNavItem>
-              <Link to="#!" >Logout</Link>
-            </MDBNavItem>
-            </MDBNavbarNav>
-        </MDBCollapse>
-      </MDBNavbar>
-  </BrowserRouter>
+      <Navbar />
 
       <div id="top">
     <MDBContainer>
@@ -69,48 +71,86 @@ export default function Dashboard() {
       <MDBCol md='3' className="mt-5">
       <MDBCard testimonial className="card-profile" >
       <div gradient='aqua' backgroundColor="red"/>
-          <div className='mx-auto white'>
+          <div className='image-and-camera'>
           <img
               src={user.loginInfo.profilePicture} 
-              alt='' className="img-fluid rounded-circle hoverable border border-info" width="100%" 
+              alt='' className="rounded-circle hoverable border border-info" 
             />
+          <button className="camera-button" onClick={handleShow}>
+          <MDBIcon icon="camera" />
+          </button>
           </div>
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Update your profile picture</Modal.Title>
+        </Modal.Header>
+        <Modal.Body><form onSubmit={(e) => {handleSubmit(e)}}>
+            <label htmlFor="defaultFormCardNameEx" className="labe-headline"><MDBIcon icon="share indigo-text" />  Profile Picture
+           </label>
+           
+            <input type="file" id="defaultFormCardNameEx" className="form-control" onChange={(e) => {setProfilePicture(e.target.files[0])}}/>
+            <br />
+
+            <Button variant="success" type="submit" className="btn btn-lg btn-block mb-5">
+            SUBMIT <MDBIcon far icon="paper-plane" />
+          </Button>
+          </form>
+          </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
+      
           <MDBCardBody>
           <h4 className='card-title'> <MDBIcon icon="user indigo-text" /> {user.loginInfo.firstName} {user.loginInfo.lastName} </h4>
-          <h4 className='card-title'><MDBIcon far icon="newspaper" /> Headline</h4>
+          <h4 className='card-title'><MDBIcon far icon="newspaper" /> {user.loginInfo.title}</h4>
           <h4 className='card-title'> <MDBIcon icon="envelope orange-text" /> {user.loginInfo.email} </h4> 
-          <button name="button" type="button" class="btn btn-block  edit-button" >Edit profile</button>
+          <Link to="/hub"><button name="button" type="button" class="btn btn-block  edit-button">Edit profile</button></Link>
             <hr />
 
             <h3 class="card-title">
-            <MDBIcon icon="cogs grey-text" /> Technical Skills
-              {console.log(currentUserData)}
+            <MDBIcon icon="cogs grey-text" /> Technical Skills</h3>
+            <h2>
               {Object.keys(currentUserData).length > 0 && currentUserData.Skills.filter((userData)=>{
                 return (userData.category === "technical")
-                
               }).map((name)=>{
-                return name.name + " " 
+                return <span className="skills-dashboard">{name.name} </span> 
               })}
-            </h3>
+            </h2>
+            
             <br/>
             <hr />
 
             <h3 class="card-title">
             <MDBIcon icon="hand-holding-heart pink-text" /> Soft Skills
             </h3>
+            <h2>
+              {Object.keys(currentUserData).length > 0 && currentUserData.Skills.filter((userData)=>{
+                return (userData.category === "soft")
+              }).map((name)=>{
+                return <span className="skills-dashboard">{name.name}</span>
+              })}
+            </h2>
             <br/>
             <hr />
 
             <h3 class="card-title">
-            <MDBIcon icon="language purple-text" /> Spoken languages
-              
+            <MDBIcon icon="language purple-text" /> Spoken languages </h3>
+              <h2>
               {Object.keys(currentUserData).length > 0 && currentUserData.Skills.filter((userData)=>{
                 return (userData.category === "language")
                 
               }).map((name)=>{
-                return name.name + " "
+                return  <span className="skills-dashboard">{name.name}</span>
               })}
-            </h3>
+              </h2>
+            
             <br/>
             <hr />
           </MDBCardBody>
@@ -123,52 +163,33 @@ export default function Dashboard() {
           {Object.keys(currentUserData).length > 0 && currentUserData.Projects.map((project, index)=>{
             return <ProjectCard key={project.id} project={project} loadProject={loadProject}/>
           })} 
-          <button className="btn btn-block mb-3 publish-button">
+          <Link to="/projectForm"><button className="btn btn-block mb-3 publish-button">
             Publish a new project
-          </button>
+          </button></Link>
           <br />
 
           <h1 className="title-cards">Contribuiting Projects</h1>
-    {Object.keys(currentUserData).length > 0 && currentUserData.MemberProjects.map((project, index)=>{
+            {Object.keys(currentUserData).length > 0 && currentUserData.MemberProjects.map((project, index)=>{
             if(project.TeamMember.approved === "approved"){
               return <DashboardConProjectsCard key={project.id} project={project}/>
 
             }
           })}
       
-  <h1 className="title-cards">Pending Projects</h1>
-      <MDBCard className="card-body card-body-pending1 " >
+
+          <h1 className="title-cards">Pending Projects</h1>
+            {/* <MDBCard className="card-body card-body-pending1 " >
         <aside>
      
           
-        </aside>
-
-      
-    
-  {Object.keys(currentUserData).length > 0 && currentUserData.MemberProjects.map((project, index)=>{
+        </aside> */}
+            {Object.keys(currentUserData).length > 0 && currentUserData.MemberProjects.map((project, index)=>{
             if(project.TeamMember.approved === "pending"){
               return <DashboardPenProjectCard key={project.id} project={project}/>
 
             }
           })}
-     <MDBCard className="card-body card-body-pending2">
-        <aside>
-      <MDBCardTitle className="project-title"> <MDBIcon icon="link" /> Project title</MDBCardTitle>
-    <MDBCardText>
-    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-    </MDBCardText>
-
-    <div className="flex-row ">
-    <Link to="/public" className="card-link">
-      
-    <MDBIcon icon="user" /> owners name
-      </Link>
-      <a href="#!" className="card-link"> 
-      </a>  
-    </div>
-    </aside>
-    </MDBCard>
-  </MDBCard>
+     
   </MDBCol>
     </MDBRow>
     </MDBContainer>
