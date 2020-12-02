@@ -6,9 +6,10 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const dotenv = require("dotenv")
 const logger = require('morgan');
-const session = require('express-session')
-const SequelizeStore = require('connect-session-sequelize')(session.Store)
+const expressSession = require('express-session')
+const SequelizeStore = require('connect-session-sequelize')(expressSession.Store)
 const store = new SequelizeStore({db: models.sequelize})
+const sharedSession = require('express-socket.io-session');
 store.sync()
 dotenv.config()
 
@@ -18,6 +19,7 @@ const hubRouter = require('./routes/userHub');
 const skillsRouter = require('./routes/skills');
 const projectsRouter = require('./routes/projects');
 const emailsRouter = require('./routes/email');
+const socketApi = require('./socketApi');
 
 const app = express();
 
@@ -40,14 +42,18 @@ app.use((req, res, next) => {
 // Get images
 app.use('/uploads', express.static('uploads'))
 
+const session = expressSession({
+    secret: 'Deejay', // used to sign the cookie
+    resave: false, // update session even w/ no changes
+    saveUninitialized: false, // always create a session
+    store: store,
+})
 
-app.use(
-    session({
-        secret: 'Deejay', // used to sign the cookie
-        resave: false, // update session even w/ no changes
-        saveUninitialized: false, // always create a session
-        store: store,
-    }))
+app.use(session)
+
+socketApi.io.use(sharedSession(session, {
+    autoSave:true
+}));
 
 //routes
 app.use('/api/v1/user', usersRouter)

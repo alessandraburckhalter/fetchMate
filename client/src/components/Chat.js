@@ -1,22 +1,20 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { useSelector } from 'react-redux';
+
 
 import io from 'socket.io-client';
 
 export default function Chat() {
     const socketRef = useRef();
-    const [yourId, setYourId] = useState('');
     const [messages, setMessages] = useState([]);
     const [newMessage, setNewMessage] = useState('');
-    const user = useSelector(state => state.user);
-    
+    //todo eventually will come from prop
+    const projectId = 1;
     const sendMessage = (e) => {
         e.preventDefault();
         const messagePayload = {
             body: newMessage,
-            id: yourId,
             //todo eventually need below
-            //projectId: projectId
+            projectId: projectId
         }
         setNewMessage('');
         socketRef.current.emit("send project message", messagePayload)
@@ -24,14 +22,13 @@ export default function Chat() {
     
     useEffect(() => {
         //todo we need to eventually add a fetch call to a backend route that retrieves all of the old messages for a project chat room
-        socketRef.current = io.connect('/')
-
-        socketRef.current.on('your id', id => {
-            setYourId(id)
-        })
-
+        //todo this we be done using the projectId
+        socketRef.current = io.connect(`/`);
+        //* Immediately emits a join project room event, if the user is found as a member of that group
+        //* Then it will join them to that group, if not, then they cannot see those chat messages
+        socketRef.current.emit("join project room", projectId)
         socketRef.current.on('project message', payload => {
-            setMessages([...messages].concat(payload));
+            setMessages(messages.concat([payload]));
         })
     }, [messages])
 
