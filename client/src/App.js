@@ -63,7 +63,7 @@ function App() {
             <Route exact path="/dashboard/public/:pendingId" component={PublicProfile}/>
             <Route path="/dashboard/contribute/:contributeId" component={ContribuingProjects}/>
 
-            <Route path="/comments" component={Comments}/>
+            <Route path="/projects/:projectId" component={Comments}/>
 
             </>
           )}
