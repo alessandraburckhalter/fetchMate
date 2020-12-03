@@ -11,6 +11,7 @@
     "lorem-ipsum": "^2.0.3",
     "mdbootstrap": "^4.19.1",
     "mdbreact": "^4.27.0",
+    "moment": "^2.29.1",
     "pg": "^8.5.1",
     "react": "^16.14.0",
     "react-bootstrap": "^1.4.0",

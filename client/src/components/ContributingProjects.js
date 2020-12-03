@@ -3,9 +3,9 @@ import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import Footer from './Footer'
 import Navbar from './Navbar';
-import '../styles/contribuiding.css'
+import '../styles/contributing.css'
 
-export default function ContribuingProjects() {
+export default function ContributingProjects() {
     const { contributeId } = useParams()
     const [project, setProject] = useState([])
     const [owner, setOwner] = useState([])
@@ -35,11 +35,11 @@ export default function ContribuingProjects() {
       <Navbar />
 
         <div id="top">
-      <MDBContainer className="contribuiding-container">
-        <h1 className="contribuiting-title ">Contribution project overview</h1>
+      <MDBContainer className="contributing-container">
+        <h1 className="contributing-title ">Contribution project overview</h1>
       <MDBRow>
       <MDBCol md="3" lg="4" className="mt-5 ">
-        <MDBCard testimonal className="card-body-contribuiting">
+        <MDBCard testimonal className="card-body-contributing">
           
           <MDBCardBody>
           <div className=''>
@@ -63,7 +63,7 @@ export default function ContribuingProjects() {
         </MDBCard>
       </MDBCol>
     
-      <MDBCol className="mt-5 contribuiting-col">
+      <MDBCol className="mt-5 contributing-col">
       <MDBCard className="card-body " >
       <MDBCardTitle className="project-title"><MDBIcon icon="link" />
           {project.title}</MDBCardTitle > 

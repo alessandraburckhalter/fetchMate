@@ -20,4 +20,17 @@
     letter-spacing: 3px;
     color: #065c6f !important;
     text-align: center;
+    padding-top: 50px;
+}
+
+.under-title {
+    padding-bottom: 40px !important;
+}
+
+.fetch {
+    color: #0f8cd1;
+}
+
+.mate {
+    color: #158467;
 }

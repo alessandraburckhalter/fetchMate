@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
     const { includeCompleted } = req.query;
     console.log(includeCompleted === 'true' ? 'withCompleted' : 'defaultScope')
     db.Project.scope(includeCompleted === 'true' ? 'withCompleted' : 'defaultScope').findAll({
-        order: [['publishedAt', 'DESC']],
+        order: [['id', 'DESC']],
         include:[db.User,{
             model: db.User,
             through: db.TeamMember,
@@ -420,7 +420,8 @@ router.get('/:projectId/comments',(req, res)=>{
         include:[
             db.User,
             db.Project
-        ]
+        ],
+        order: [['id', 'ASC']]
     })
     .then(comments =>{
         res.status(202).json(comments)
