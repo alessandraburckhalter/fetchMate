@@ -39,7 +39,7 @@ io.on('connection', (socket) => {
     
     //? We need to get 2 things from the message payload
     //* 1. Content
-    //* 3. Project Id
+    //* 2. Project Id
     socket.on('send project message', (projectMessagePayload) => {
         //todo eventually will need to hookup the chat db table here and save the userId, project id and the projectMessagePayload.content to the db
         io.to(projectMessagePayload.projectId).emit('project message', projectMessagePayload)

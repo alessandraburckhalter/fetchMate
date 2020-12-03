@@ -13,7 +13,6 @@ export default function Chat() {
         e.preventDefault();
         const messagePayload = {
             body: newMessage,
-            //todo eventually need below
             projectId: projectId
         }
         setNewMessage('');
@@ -28,9 +27,10 @@ export default function Chat() {
         //* Then it will join them to that group, if not, then they cannot see those chat messages
         socketRef.current.emit("join project room", projectId)
         socketRef.current.on('project message', payload => {
-            setMessages(messages.concat([payload]));
+            //gets the latest messages and passes it through so they are updated
+            setMessages(messages => messages.concat([payload]));
         })
-    }, [messages])
+    }, [])
 
     return (
         <div className="chat-box">
