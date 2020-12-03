@@ -1,0 +1,23 @@
+@font-face {
+    font-family: fontastique;
+    src: url(../styles/font/fontastique.ttf);
+}
+
+.about-container {
+    margin-top: 150px;
+    margin-bottom: 180px;
+}
+
+/* alessandra's name */
+.alessandra {
+    font-size: 0.9em;
+}
+
+/* main title */
+.about-title {
+    font-family: fontastique !important;
+    font-size: 50px;
+    letter-spacing: 3px;
+    color: #065c6f !important;
+    text-align: center;
+}

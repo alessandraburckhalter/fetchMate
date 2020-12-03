@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { Provider, useDispatch, useSelector } from 'react-redux';
 import { Redirect, Route, Switch, useHistory } from 'react-router-dom';
 import './App.css';
+import About from './components/About';
 import Comments from './components/Comments';
 import ContribuingProjects from './components/ContribuingProjects';
 import Dashboard from './components/Dashboard';
@@ -49,9 +50,10 @@ function App() {
         <Switch>
           <Route exact path="/" component={MainPage}/>
           <Route path="/register" component={SignUpPage}/>
-          
-          
           <Route exact path="/projects" component={Projects}/>
+          <Route exact path="/about" component={About}/>
+          
+          
           {user.loginInfo !== null && (
             <>
             <Route path="/hub" component={ProfileSetup}/>
@@ -59,7 +61,6 @@ function App() {
             <Route exact path="/dashboard" component={Dashboard}/>
 
             <Route exact path="/dashboard/:projectId" component={Interested}/>
-            <Route path="/test" component={Test}/>
             <Route exact path="/dashboard/public/:pendingId" component={PublicProfile}/>
             <Route path="/dashboard/contribute/:contributeId" component={ContribuingProjects}/>
 

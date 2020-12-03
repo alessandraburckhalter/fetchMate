@@ -87,7 +87,7 @@ export default function Navbar() {
                   <div className="d-none d-md-inline">About</div>
                 </MDBDropdownToggle>
                 <MDBDropdownMenu className="dropdown-default">
-                  <MDBDropdownItem href="#!">About us</MDBDropdownItem>
+                  <MDBDropdownItem href="/about">The Team</MDBDropdownItem>
                   <MDBDropdownItem href="#!">FAQ</MDBDropdownItem>
                 </MDBDropdownMenu>
               </MDBDropdown>
