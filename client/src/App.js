@@ -3,6 +3,7 @@ import { Provider, useDispatch, useSelector } from 'react-redux';
 import { Redirect, Route, Switch, useHistory } from 'react-router-dom';
 import './App.css';
 import About from './components/About';
+import Chat from './components/Chat';
 import Comments from './components/Comments';
 import ContribuingProjects from './components/ContribuingProjects';
 import Dashboard from './components/Dashboard';
@@ -53,6 +54,7 @@ function App() {
           <Route exact path="/projects" component={Projects}/>
           <Route exact path="/about" component={About}/>
           
+          <Route path="/chat" component={Chat}/>
           
           {user.loginInfo !== null && (
             <>
@@ -64,7 +66,7 @@ function App() {
             <Route exact path="/dashboard/public/:pendingId" component={PublicProfile}/>
             <Route path="/dashboard/contribute/:contributeId" component={ContribuingProjects}/>
 
-            <Route path="/comments" component={Comments}/>
+            <Route path="/projects/:projectId" component={Comments}/>
 
             </>
           )}

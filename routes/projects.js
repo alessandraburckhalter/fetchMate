@@ -416,13 +416,17 @@ router.get('/:projectId/comments',(req, res)=>{
     db.Comment.findAll({
         where:{
             ProjectId: req.params.projectId
-        }
+        },
+        include:[
+            db.User,
+            db.Project
+        ]
     })
     .then(comments =>{
         res.status(202).json(comments)
     })
-    .then(e=>{
-        res.status(400).json({
+    .catch(e=>{
+        res.status(500).json({
             error:"No comments" + e
         })
     })
@@ -434,7 +438,7 @@ router.post('/:projectId/comments',(req, res)=>{
         res.status(400).json({
             error: "Please fill all required fields"
         })
-        return;
+        
     }
     db.Project.findByPk(req.params.projectId)
         .then(project =>{
@@ -450,9 +454,18 @@ router.post('/:projectId/comments',(req, res)=>{
             })
         })
         .then(comment =>{
-            req.json({
-                success: "Comment added",
-                comment: comment
+            comment.getUser().then(user=>{
+                comment.setDataValue('User',user)
+                res.json({
+                    success: "Comment added",
+                    comment: comment
+                })
+
+            })
+        })
+        .catch(e=>{
+            res.status(500).json({
+                error:"Database error occurred" + e
             })
         })
 })
