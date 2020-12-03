@@ -76,6 +76,7 @@ function App() {
             <Route path="/dashboard/contribute/:contributeId" component={ContributingProjects}/>
 
             <Route path="/projects/:projectId" component={Comments}/>
+            <Route path="/chat/:projectId" component={Chat}/>
 
             </>
           )}
