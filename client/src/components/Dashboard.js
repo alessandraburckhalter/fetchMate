@@ -37,6 +37,7 @@ export default function Dashboard() {
       .then(data => {
         console.log(data)
         alert('Profile Updated!')
+        dispatch(setProfilePicture(data))
         let path = "/dashboard"
         history.push(path)
       })
