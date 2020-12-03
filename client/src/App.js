@@ -5,8 +5,10 @@ import './App.css';
 import About from './components/About';
 import Chat from './components/Chat';
 import Comments from './components/Comments';
+import Contact from './components/Contact';
 import ContribuingProjects from './components/ContribuingProjects';
 import Dashboard from './components/Dashboard';
+import FAQ from './components/FAQ';
 import Interested from './components/Interested';
 import MainPage from './components/MainPage';
 import ProfileSetup from './components/ProfileSetup';
@@ -53,8 +55,9 @@ function App() {
           <Route path="/register" component={SignUpPage}/>
           <Route exact path="/projects" component={Projects}/>
           <Route exact path="/about" component={About}/>
-          
+          <Route exact path="/faq" component={FAQ}/>
           <Route path="/chat" component={Chat}/>
+          <Route path="/contact" component={Contact}/>
           
           {user.loginInfo !== null && (
             <>

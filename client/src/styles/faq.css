@@ -1,0 +1,23 @@
+.faq-container {
+    margin-top: 180px;
+}
+
+.card-faq {
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+button.faq-button {
+    background: transparent !important;
+    border: none !important;
+    margin: 0 !important;
+    text-align: left;
+    outline: none !important;
+}
+
+#section1 {
+    height: 50vh;
+    background-image: url(../images/background-tt.jpg);
+    background-color: rgba(46, 138, 138, 0.4); 
+  color: rgba(46, 138, 138, 0.4);
+}
