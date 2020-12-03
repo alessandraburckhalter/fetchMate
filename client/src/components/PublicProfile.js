@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from 'react'
-import { MDBCard, MDBCardBody, MDBCol, MDBContainer, MDBRow } from 'mdbreact'
+import { MDBCard, MDBCardBody, MDBCol, MDBContainer, MDBIcon, MDBRow } from 'mdbreact'
 import '../styles/publicProfile.css'
-import { useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom';
+import Navbar from './Navbar';
+import Footer from './Footer'
+import { useSelector } from 'react-redux';
 
 export default function PublicProfile() {
   const { pendingId } = useParams()
   const [project, setProject] = useState([])
   const [owner, setOwner] = useState([])
+  const user = useSelector(state => state.user);
+  
 
   useEffect(() => {
     fetch(`/api/v1/projects/${pendingId}`)
@@ -27,47 +32,61 @@ export default function PublicProfile() {
   }, [project.owner, pendingId])
   
     return (
-      
-        <div>
+      <>
+      <Navbar />
+        <div id="top">
             <MDBContainer>
-                <MDBRow>
-            <MDBCol md="6" lg="4">
-        <MDBCard personal className="my-5">
+              <MDBRow>
+            <MDBCol  className="mt-5">
+        <MDBCard testimonial className="card-profile card-public-profile">
+        <div gradient='aqua' backgroundColor="red"/>
+          <div className=''>
+            {console.log(owner)}
+          <img
+              src={owner.profilePicture} 
+              alt='aaa' className="rounded-circle hoverable border border-info public-profile" 
+            />
+          </div><br/>
           
           <MDBCardBody>
-            <img src={owner.profilePicture} alt="profilePicture" width="70%" />
-          </MDBCardBody>
-        </MDBCard>
-      </MDBCol>
+          <h2 className='card-title-public'> <MDBIcon icon="user indigo-text" /> {owner.firstName} {owner.lastName} </h2> <br/>
+          <h2 className='card-title-public'><MDBIcon far icon="newspaper" /> {owner.title}</h2> 
 
-      <MDBCol >
-      <br/><br/><br/>
-          <h1 >{owner.firstName} {owner.lastName}</h1><br/>
-          <h1>{owner.title}</h1><br/>
-          <h1>Soft Skills: {Object.keys(owner).length > 0 && owner.Skills.filter((userData)=>{
-                return (userData.category === "soft")
-                
-              }).map((name)=>{
-                return name.name + " " 
-              })}</h1> <br/>
-          <h1>Tech Skills: {Object.keys(owner).length > 0 && owner.Skills.filter((userData)=>{
+          <br/>
+          <hr />    
+          <br/>
+
+            <h4 class="card-title-public">
+            <MDBIcon icon="cogs grey-text" /> Technical Skills <br/> {Object.keys(owner).length > 0 && owner.Skills.filter((userData)=>{
                 return (userData.category === "technical")
                 
               }).map((name)=>{
-                return name.name + " " 
-              })}</h1><br/>
-          <h1>Spoken languages: {Object.keys(owner).length > 0 && owner.Skills.filter((userData)=>{
+                return <span className="skills-dashboard">{name.name}</span>
+              })}</h4><br/><br/>
+
+          <h4 class="card-title-public">
+            <MDBIcon icon="hand-holding-heart pink-text"/> Soft Skills <br/> {Object.keys(owner).length > 0 && owner.Skills.filter((userData)=>{
+                return (userData.category === "soft")
+                
+              }).map((name)=>{
+                return <span className="skills-dashboard">{name.name}</span>
+              })}</h4> <br/><br/>
+
+
+          <h4 class="card-title-public">
+            <MDBIcon icon="language purple-text" /> Spoken languages <br/> {Object.keys(owner).length > 0 && owner.Skills.filter((userData)=>{
                 return (userData.category === "language")
                 
               }).map((name)=>{
-                return name.name + " " 
-              })}</h1>
+                return <span className="skills-dashboard">{name.name}</span>
+              })}</h4>
+              </MDBCardBody>
+        </MDBCard>
      </MDBCol>
-
-
-
       </MDBRow>
       </MDBContainer>
         </div>
+        <Footer />
+      </>
     )
 }

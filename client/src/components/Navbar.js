@@ -77,7 +77,7 @@ export default function Navbar() {
                 </MDBDropdownToggle>
                 <MDBDropdownMenu className="dropdown-default">
                   <MDBDropdownItem href="/projectForm">Publish a project</MDBDropdownItem>
-                  <MDBDropdownItem href="projects">See all projects</MDBDropdownItem>
+                  <MDBDropdownItem href="/projects">See all projects</MDBDropdownItem>
                 </MDBDropdownMenu>
               </MDBDropdown>
             </MDBNavItem>
@@ -87,7 +87,7 @@ export default function Navbar() {
                   <div className="d-none d-md-inline">About</div>
                 </MDBDropdownToggle>
                 <MDBDropdownMenu className="dropdown-default">
-                  <MDBDropdownItem href="#!">About us</MDBDropdownItem>
+                  <MDBDropdownItem href="/about">The Team</MDBDropdownItem>
                   <MDBDropdownItem href="#!">FAQ</MDBDropdownItem>
                 </MDBDropdownMenu>
               </MDBDropdown>

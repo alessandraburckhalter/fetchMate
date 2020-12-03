@@ -121,6 +121,7 @@ button.remove-skill-button{
 /* form padding */
 form {
     padding: 34px 80px;
+    margin-bottom: 150px;
 }
 
 /* complete your profile container */
@@ -150,15 +151,6 @@ h4.card-title {
     cursor: pointer;
 }
 
-/* progress bar label */
-.filled-profile {
-    text-align: center;
-    font-size: 13px;
-    color: black;
-    font-weight: bold;
-    font-family: 'Open Sans',sans-serif;
-    cursor: pointer;
-}
 
 /* complete your profile title */
 .form-title {
@@ -176,8 +168,28 @@ h4.card-title {
 }
 
 /* profile image */
-img.img-fluid.rounded-circle.hoverable.border.border-info {
+img.rounded-circle.hoverable.border.border-info {
     border: 5px solid #33b5e5!important;
+    height: 210px !important;
+    width: 100% !important;
+    object-fit: cover !important;
+}
+
+img.rounded-circle {
+    height: 210px !important;
+    width: 100% !important;
+    object-fit: cover !important;
+}
+
+/* projectForm page datepicker input */
+.react-datepicker__input-container input {
+    border: 1px solid #4285f4 !important;
+    border-radius: 4px;
+    padding:  6px 12px;
+}
+
+.md-form.md-outline .form-control {
+    border-radius: 4px;
 }
 
 /* BLUE AND GREEN TRANSPARENT RGBA  */

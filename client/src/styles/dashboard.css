@@ -16,6 +16,12 @@
     margin-top: 1em;
 }
 
+img.rounded-circle {
+    height: 210px !important;
+    width: 100% !important;
+    object-fit: cover !important;
+}
+
 h3.card-title {
     font-size: 1em;
     cursor: pointer;
@@ -70,12 +76,12 @@ button.edit-button.btn {
     width: 97%;
 }
 
-.card-body-contribuiting1 {
+.card-body-contributing1 {
     padding: 0 !important;
     background-color: #fecd1a !important;
 }
 
-.card-body-contribuiting2 {
+.card-body-contributing2 {
     padding: 15px !important;
     width: 97%;
 }
@@ -134,6 +140,10 @@ Link.project-title {
     text-align: center;
 }
 
+.icon-width {
+    width: 56px !important;
+}
+
 
 .icon span {
     position: relative;
@@ -163,4 +173,41 @@ Link.project-title {
 
 .icon:hover > span {
     opacity: 1;
+}
+
+.skills-dashboard {
+    border: 1px solid #30B0F8;
+    border-top-right-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+    border-top-left-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+    padding: 4px;
+    font-weight: 400;
+    margin: 2px;
+    display: -webkit-inline-box;
+}
+
+/* update profile picture camera button */
+button.camera-button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    float: right;
+}
+
+/* wrapping camera icon and picture */
+.image-and-camera {
+    display: inline-grid;
+}
+
+button.dropdown-status {
+    background: none !important;
+}
+
+.btn-secondary.dropdown-toggle  {
+    background-color: white !important;
+    color: white;
+    padding: 1px;
+    margin: 0;
+    box-shadow: none;
 }

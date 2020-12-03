@@ -2,8 +2,15 @@ import React, { useEffect } from 'react'
 import { Provider, useDispatch, useSelector } from 'react-redux';
 import { Redirect, Route, Switch, useHistory } from 'react-router-dom';
 import './App.css';
-import ContribuingProjects from './components/ContribuingProjects';
+import About from './components/About';
+import Chat from './components/Chat';
+import Comments from './components/Comments';
+
+import ContributingProjects from './components/ContributingProjects';
+import Contact from './components/Contact';
+
 import Dashboard from './components/Dashboard';
+import FAQ from './components/FAQ';
 import Interested from './components/Interested';
 import MainPage from './components/MainPage';
 import ResetPassword from './components/ResetPassword';
@@ -12,7 +19,7 @@ import ProjectForm from './components/ProjectForm';
 import Projects from './components/Projects';
 import PublicProfile from './components/PublicProfile';
 import SignUpPage from './components/SignUpPage';
-import Test from './components/Test';
+//import Test from './components/Test';
 import { checked, login } from './redux/actions'
 import ForgotPassword from './components/ForgotPassword';
 
@@ -52,16 +59,24 @@ function App() {
           <Route path="/register" component={SignUpPage}/>
           <Route path="/forgotpassword" component={ForgotPassword}/>
           <Route exact path="/resetpassword" component={ResetPassword}/>
+          <Route exact path="/projects" component={Projects}/>
+          <Route exact path="/about" component={About}/>
+          <Route exact path="/faq" component={FAQ}/>
+          <Route path="/chat" component={Chat}/>
+          <Route path="/contact" component={Contact}/>
+          
           {user.loginInfo !== null && (
             <>
             <Route path="/hub" component={ProfileSetup}/>
             <Route path="/projectForm" component={ProjectForm}/>
             <Route exact path="/dashboard" component={Dashboard}/>
-            <Route path="/projects" component={Projects}/>
+
             <Route exact path="/dashboard/:projectId" component={Interested}/>
-            <Route path="/test" component={Test}/>
             <Route exact path="/dashboard/public/:pendingId" component={PublicProfile}/>
-            <Route path="/dashboard/contribute/:contributeId" component={ContribuingProjects}/>
+            <Route path="/dashboard/contribute/:contributeId" component={ContributingProjects}/>
+
+            <Route path="/projects/:projectId" component={Comments}/>
+
             </>
           )}
           <Route>

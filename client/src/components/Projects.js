@@ -3,13 +3,16 @@ import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import '../styles/projects.css'
 import IndividualProject from './card/IndividualProject'
-import Navbar from './Navbar'
+import IndividualProjectPublic from './card/IndividualProjectPublic'
+import Navbar from './Navbar';
+import Footer from './Footer'
 
 export default function Projects() {
   const [projects, setProjects] = useState([])
   const user = useSelector(state => state.user)
+  console.log(projects)
 
-  useEffect(() => {
+  const loadProject = () =>{
     fetch('/api/v1/projects')
       .then((res) => res.json())
       .then((data) => {
@@ -19,24 +22,36 @@ export default function Projects() {
         setProjects(data)
         console.log(data)
       })
+  }
+  useEffect(() => {
+    loadProject()
   }, [])
 
 
 
+  console.log(user)
   return (
     <>
       <Navbar />  
-        
         <div id="top">
-          <MDBContainer>
-            <h1 >Projects</h1>
-      {projects.map((project) => {
+          <MDBContainer className="projects-container">
+          <h1 className="all-projects-title">Projects</h1>
+            {user.loginInfo ? (projects.map((project) => {
         return (
-            <IndividualProject key={project.id} project={project} />
+          <IndividualProject key={project.id} project={project} loadProject={loadProject}/>
+            
         );
-      })}
+      })) : (projects.map((project) => {
+        return (
+          <IndividualProjectPublic key={project.id} project={project} />
+            
+        );
+      }))} 
+      
       </MDBContainer>
       </div>
+
+      <Footer />
     </>
   )
 }

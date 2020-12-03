@@ -1,8 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
-
 body {
   background-image: url(../images/Frame3.svg);
- 
 }
 
 #first-section {
@@ -78,7 +76,6 @@ form.login-form .login-legend {
   text-align: center;
   font-weight: 400;
   font-family: fontastique;
-  
 }
 
 form.login-form .input-block label {
@@ -159,24 +156,20 @@ font-size: 40px;
 
 .second-section {
   width: 100vw;
-  height: 70vh;
+  min-height: 70vh;
   position: relative;
   display: block;
   /* background-image: url(../images/Frame3.svg);
   background-size: cover; */
 }
-
 .second-section h1 {
   font-weight: bold;
   margin-top: 25em;
 }
-
 .second-section p {
   font-size: 18px;
 }
-
 .text-center {
   color: black;
   font-family: Arial, Helvetica, sans-serif;
 }
-

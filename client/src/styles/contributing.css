@@ -1,0 +1,21 @@
+.contributing-container {
+    margin-top: 180px;
+    margin-bottom: 150px;
+}
+
+.contributing-col {
+    margin-top: 80px;
+}
+
+.card-body-contributing {
+    box-shadow: none !important;
+    background-color: transparent !important;
+}
+
+.contributing-title  {
+    font-family: fontastique;
+    font-size: 50px;
+    letter-spacing: 3px;
+    color: #065c6f !important;
+    text-align: center;
+}

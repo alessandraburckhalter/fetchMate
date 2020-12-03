@@ -36,10 +36,10 @@ export default function Dashboard() {
       })
       .then(data => {
         console.log(data)
+        loadProject()
         alert('Profile Updated!')
-        dispatch(setProfilePicture(data))
-        let path = "/dashboard"
-        history.push(path)
+        handleClose()
+        
       })
       .catch(e => {
         console.log(e)
@@ -55,11 +55,12 @@ export default function Dashboard() {
       setCurrentUserData(data)
       dispatch(login(data))
       
-      
     })
   }
+      
   useEffect(()=>{
     loadProject()
+    
   }, [dispatch, setCurrentUserData])
   
     return (
@@ -72,44 +73,44 @@ export default function Dashboard() {
       <MDBCol md='3' className="mt-5">
       <MDBCard testimonial className="card-profile" >
       <div gradient='aqua' backgroundColor="red"/>
-          <div className='mx-auto white'>
+          <div className='image-and-camera'>
           <img
               src={user.loginInfo.profilePicture} 
-              alt='' className="img-fluid rounded-circle hoverable border border-info" width="100%" 
+              alt='' className="rounded-circle hoverable border border-info" 
             />
+          <button className="camera-button" onClick={handleShow}>
+          <MDBIcon icon="camera" />
+          </button>
           </div>
-          <Button variant="primary" onClick={handleShow}>
-        Update Profile Picture
-      </Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Update your profile picture</Modal.Title>
         </Modal.Header>
-        <Modal.Body><form onSubmit={(e) => {handleSubmit(e)}}>
+        <Modal.Body><form id="profilePic" onSubmit={(e) => {handleSubmit(e)}}>
             <label htmlFor="defaultFormCardNameEx" className="labe-headline"><MDBIcon icon="share indigo-text" />  Profile Picture
            </label>
            
             <input type="file" id="defaultFormCardNameEx" className="form-control" onChange={(e) => {setProfilePicture(e.target.files[0])}}/>
             <br />
 
-            <Button variant="success" type="submit" className="btn btn-lg btn-block mb-5">
-            SUBMIT <MDBIcon far icon="paper-plane" />
-          </Button>
+            
           </form>
           </Modal.Body>
         <Modal.Footer>
+        <Button form="profilePic" variant="success" type="submit" className="btn btn-lg btn-block mb-5">
+            SUBMIT <MDBIcon far icon="paper-plane" />
+          </Button>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
+          
         </Modal.Footer>
       </Modal>
+      
           <MDBCardBody>
           <h4 className='card-title'> <MDBIcon icon="user indigo-text" /> {user.loginInfo.firstName} {user.loginInfo.lastName} </h4>
-          <h4 className='card-title'><MDBIcon far icon="newspaper" /> Headline</h4>
+          <h4 className='card-title'><MDBIcon far icon="newspaper" /> {user.loginInfo.title}</h4>
           <h4 className='card-title'> <MDBIcon icon="envelope orange-text" /> {user.loginInfo.email} </h4> 
           <Link to="/hub"><button name="button" type="button" class="btn btn-block  edit-button">Edit profile</button></Link>
             <hr />
@@ -117,14 +118,12 @@ export default function Dashboard() {
             <h3 class="card-title">
             <MDBIcon icon="cogs grey-text" /> Technical Skills</h3>
             <h2>
-              {console.log(currentUserData)}
               {Object.keys(currentUserData).length > 0 && currentUserData.Skills.filter((userData)=>{
                 return (userData.category === "technical")
-                
               }).map((name)=>{
-                return name.name + " " 
+                return <span className="skills-dashboard">{name.name} </span> 
               })}
-              </h2>
+            </h2>
             
             <br/>
             <hr />
@@ -132,6 +131,13 @@ export default function Dashboard() {
             <h3 class="card-title">
             <MDBIcon icon="hand-holding-heart pink-text" /> Soft Skills
             </h3>
+            <h2>
+              {Object.keys(currentUserData).length > 0 && currentUserData.Skills.filter((userData)=>{
+                return (userData.category === "soft")
+              }).map((name)=>{
+                return <span className="skills-dashboard">{name.name}</span>
+              })}
+            </h2>
             <br/>
             <hr />
 
@@ -142,7 +148,7 @@ export default function Dashboard() {
                 return (userData.category === "language")
                 
               }).map((name)=>{
-                return name.name + " "
+                return  <span className="skills-dashboard">{name.name}</span>
               })}
               </h2>
             
@@ -163,7 +169,7 @@ export default function Dashboard() {
           </button></Link>
           <br />
 
-          <h1 className="title-cards">Contribuiting Projects</h1>
+          <h1 className="title-cards">Contributing Projects</h1>
             {Object.keys(currentUserData).length > 0 && currentUserData.MemberProjects.map((project, index)=>{
             if(project.TeamMember.approved === "approved"){
               return <DashboardConProjectsCard key={project.id} project={project}/>

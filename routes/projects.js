@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
     const { includeCompleted } = req.query;
     console.log(includeCompleted === 'true' ? 'withCompleted' : 'defaultScope')
     db.Project.scope(includeCompleted === 'true' ? 'withCompleted' : 'defaultScope').findAll({
-        order: [['publishedAt', 'DESC']],
+        order: [['id', 'DESC']],
         include:[db.User,{
             model: db.User,
             through: db.TeamMember,
@@ -97,7 +97,7 @@ router.patch('/:id', (req, res) => {
     const { id } = req.params;
     const updateObject = {};
     //TODO: Will need to double check w/ front end team for these names
-    const { description, title, isCompleted, publishedAt, deadline, memberLimit } = req.res;
+    const { description, title, isCompleted, publishedAt, deadline, memberLimit } = req.body;
     //TODO: May not want to make it to where the user has to submit all of these in order to create a project 
     if(!description && !title && !isCompleted && !publishedAt && !deadline && !memberLimit){
         res.status(400).json({
@@ -111,17 +111,40 @@ router.patch('/:id', (req, res) => {
             id
         }
     })
-        then(updatedProject => {
-            updatedProject && updatedProject[0] > 0 ?
-                res.status(202).json({success: 'Project updated'})
-            :
+        .then(updatedProject => {
+            if(updatedProject && updatedProject[0] > 0){
+                return updatedProject;
+            }else{
                 res.status(404).json({error: 'Project not found'})
+            }
+        })
+        .then(updated => {
+            //! Once we update the project:
+            //! we need to find the project again, since the update method doesn't return an instance of he project
+            //! Once we find the right project, we can then use the addSkills magic method to update new skills.
+            db.Project.findOne({where: {id}})
+                .then(project => {
+                    const { projectSkillsArray } = req.body;
+                    return db.Skill.findAll({
+                        where:{id: projectSkillsArray}
+                    })
+                        .then(skills => {
+                            if(!skills) {
+                                res.status(404).json({error: `A certain skill wasn't found`}) 
+                            }
+                            //! 
+                            return project.setSkills(skills)
+                                .then(() => project)
+                        })
+                })
+        })
+        .then(project => {
+            res.status(202).json({success: 'Project updated'})
         })
         .catch(e => {
-            res.status(500).json({
-                error: 'Database error occurred: ' + e
-            })
-        })
+            console.error(e)
+            res.status(500).json({error: 'A database error: ' + e})
+        }) 
 })
 
 //* Delete Project route --> based on the project id to be deleted
@@ -388,6 +411,65 @@ router.patch('/:projectId/teamMember', (req, res) => {
   
 })
 
+// get comment router with project id
+router.get('/:projectId/comments',(req, res)=>{
+    db.Comment.findAll({
+        where:{
+            ProjectId: req.params.projectId
+        },
+        include:[
+            db.User,
+            db.Project
+        ],
+        order: [['id', 'ASC']]
+    })
+    .then(comments =>{
+        res.status(202).json(comments)
+    })
+    .catch(e=>{
+        res.status(500).json({
+            error:"No comments" + e
+        })
+    })
+})
+
+// post comment router with project id
+router.post('/:projectId/comments',(req, res)=>{
+    if(!req.body || !req.body.content){
+        res.status(400).json({
+            error: "Please fill all required fields"
+        })
+        
+    }
+    db.Project.findByPk(req.params.projectId)
+        .then(project =>{
+            if(!project){
+                res.status(404).json({
+                    error: "No project found"
+                })
+            }
+            return db.Comment.create({
+                content: req.body.content,
+                UserId: req.session.user.id,
+                ProjectId: req.params.projectId
+            })
+        })
+        .then(comment =>{
+            comment.getUser().then(user=>{
+                comment.setDataValue('User',user)
+                res.json({
+                    success: "Comment added",
+                    comment: comment
+                })
+
+            })
+        })
+        .catch(e=>{
+            res.status(500).json({
+                error:"Database error occurred" + e
+            })
+        })
+})
 
 
 module.exports = router;

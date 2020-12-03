@@ -1,5 +1,5 @@
 import Axios from 'axios'
-import { MDBCard, MDBCardBody, MDBCardTitle, MDBCol } from 'mdbreact'
+import { MDBCard, MDBCardBody, MDBCardTitle, MDBCol, MDBIcon } from 'mdbreact'
 import React, { useEffect, useState } from 'react'
 
 export default function InterestedCard(props) {
@@ -9,7 +9,7 @@ export default function InterestedCard(props) {
     
     // for email
     const id = props.project.ProjectId 
-    console.log(props.project)
+    
     const userIdForProjectOwner = props.project.UserId
     const [ownerProject, setOwnerProject] = useState("")
     const email = interestedUser.email
@@ -73,6 +73,7 @@ export default function InterestedCard(props) {
                     .then(res =>{
                         if(res.data.success){
                             alert("success sending Email")
+                            props.displayAccepted()
                         }else{
                             alert("Fail sending Email")
                         }
@@ -103,9 +104,10 @@ export default function InterestedCard(props) {
         .then(res =>res.json())
         .then(data =>{
             setProject(data)
-        // console.log(project)
+    })
     
-})
+        
+    
       
       
     }, [UserId, userIdForProjectOwner])
@@ -113,15 +115,18 @@ export default function InterestedCard(props) {
         
 
     return (
-        <MDBCol md="6" lg="4">
-      <MDBCard personal className="my-5">
-          
+        
+        <MDBCol md="3" lg="4">
+            
+      <MDBCard personal className="my-5 ">
+
           <MDBCardBody>
-            <img src={interestedUser.profilePicture} alt="profilePicture" />
+          <div className=''>
+            <img src={interestedUser.profilePicture} alt="profilePicture" className="rounded-circle hoverable border border-info profile-setup" />
+            </div>
             <MDBCardTitle>
-              <a href="#!" className="title-one">
-              {interestedUser.firstName} {interestedUser.lastName}
-              </a>
+            <h4 className='card-title-interested mt-4'> <MDBIcon icon="user indigo-text" /> {interestedUser.firstName} {interestedUser.lastName}
+              </h4>
             </MDBCardTitle>
             {/* <input
                             icon="lock"
@@ -131,26 +136,38 @@ export default function InterestedCard(props) {
                            
                         /> */}
             <hr />
-            <a href="#!" className="card-meta">
-                Skills:{Object.keys(interestedUser).length > 0 && interestedUser.Skills.filter((userData)=>{
+            <h3 class="card-title">
+            <MDBIcon icon="cogs grey-text" /> Technical Skills</h3> 
+            {Object.keys(interestedUser).length > 0 && interestedUser.Skills.filter((userData)=>{
           return (userData.category === "technical")
           
         }).map((name)=>{
-          return name.name + " " 
+          return <span className="skills-dashboard">{name.name} </span> 
         })}
+
+            <br/>
+            <h3 class="card-title">
+            <MDBIcon icon="hand-holding-heart pink-text" /> Soft Skills</h3> 
+            {Object.keys(interestedUser).length > 0 && interestedUser.Skills.filter((userData)=>{
+          return (userData.category === "soft")
+          
+        }).map((name)=>{
+          return <span className="skills-dashboard">{name.name} </span> 
+        })}     
        
-            </a><br/>
-            <a href="#!" className="card-meta">
-                Spoken languages: {Object.keys(interestedUser).length > 0 && interestedUser.Skills.filter((userData)=>{
+            <br/>
+            <h3 class="card-title">
+            <MDBIcon icon="language purple-text" /> Spoken languages </h3>
+            {Object.keys(interestedUser).length > 0 && interestedUser.Skills.filter((userData)=>{
           return (userData.category === "language")
           
         }).map((name)=>{
-          return name.name + " " 
+          return <span className="skills-dashboard">{name.name} </span> 
         })}
-            </a> <br/>
-            <button className="card-link" onClick={acceptMember}>Accept
+             <br/>
+            <button className="card-link btn accept" onClick={acceptMember}>Accept
              </button> 
-             <button className="card-link" onClick={declineMember}>Decline
+             <button className="card-link btn decline" onClick={declineMember}>Decline
              </button>
           </MDBCardBody>
         </MDBCard>
