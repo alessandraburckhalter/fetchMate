@@ -104,9 +104,10 @@ export default function InterestedCard(props) {
         .then(res =>res.json())
         .then(data =>{
             setProject(data)
-        // console.log(project)
+    })
     
-})
+        
+    
       
       
     }, [UserId, userIdForProjectOwner])
