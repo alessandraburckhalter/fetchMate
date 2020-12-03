@@ -1,19 +1,30 @@
 import React, { useEffect, useRef, useState } from 'react'
+import { useSelector } from 'react-redux';
 
 
 import io from 'socket.io-client';
+import ChatMessage from './ChatMessage';
+
+const Demo_Test = 'Lets do this'; //Sent @ 9:35 pm
 
 export default function Chat() {
+    const user = useSelector(state => state.user);
     const socketRef = useRef();
     const [messages, setMessages] = useState([]);
     const [newMessage, setNewMessage] = useState('');
+    const initialValue = "```javascript\nconst "
+    const middleValue = " = '"
+    const endingValue = "';\n```"
+    const comment = '\/\/'
     //todo eventually will come from prop
     const projectId = 1;
     const sendMessage = (e) => {
         e.preventDefault();
+        const sandwich = initialValue + user.loginInfo.firstName + '_' + user.loginInfo.lastName + middleValue + newMessage + endingValue;
         const messagePayload = {
-            body: newMessage,
-            projectId: projectId
+            content: sandwich,
+            projectId: projectId,
+            timeSent: new Date()
         }
         setNewMessage('');
         socketRef.current.emit("send project message", messagePayload)
@@ -22,6 +33,13 @@ export default function Chat() {
     useEffect(() => {
         //todo we need to eventually add a fetch call to a backend route that retrieves all of the old messages for a project chat room
         //todo this we be done using the projectId
+        fetch(`/api/v1/chat/${projectId}`)
+            .then(data => data.json())
+            .then(chatMessages => {
+                setMessages(chatMessages)
+            })
+            .catch(e => console.error(e))
+
         socketRef.current = io.connect(`/`);
         //* Immediately emits a join project room event, if the user is found as a member of that group
         //* Then it will join them to that group, if not, then they cannot see those chat messages
@@ -35,16 +53,20 @@ export default function Chat() {
     return (
         <div className="chat-box">
             <div className="messages">
-                {messages.map( (message, index) => {
+                {messages.length > 0 && messages.map( (message, index) => {
                     return(
-                        <div key={index}>
-                            {message.body}
-                        </div>
+                        <ChatMessage key={index} message={message} />
                     )
                 })}
             </div>
             <form onSubmit={sendMessage}>
-                <input type='textArea' value={newMessage} onChange={(e) => {setNewMessage(e.target.value);}} />
+                {/* <input type='textArea'  value={newMessage} onChange={(e) => {setNewMessage(e.target.value)}} /> */}
+                <textarea
+                    className="form-control"
+                    value={newMessage}
+                    onChange={(e) => {setNewMessage(e.target.value)}}
+                    rows="5"
+                />
                 <button type="submit">Send</button>
             </form>
         </div>

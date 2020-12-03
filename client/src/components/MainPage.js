@@ -58,6 +58,7 @@ export default function MainPage() {
                             Password
                             </label>
                         <input
+                            type="password"
                             id="about"
                             onChange={(e) => {setPassword(e.target.value)} }
                         />
