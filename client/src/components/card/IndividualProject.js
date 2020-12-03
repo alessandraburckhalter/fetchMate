@@ -1,21 +1,26 @@
 import { MDBCard, MDBCardText, MDBCardTitle, MDBCol, MDBIcon, MDBModal, MDBModalBody, MDBModalFooter, MDBModalHeader, MDBRow } from 'mdbreact'
-import React, {  useState } from 'react'
+import React, {  useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 
-export default function IndividualProject({ project }) {
+export default function IndividualProject(props) {
+    const {project} = props
     const user = useSelector(state => state.user)
     // !! makes it a boolean
-    const isMember = !!(project.Members.find(member => {
+    const isApplied = !!(project.Members.find(member => {
         return member.id === user.loginInfo.id
     }))
+    const isAccepted = !!(user.loginInfo.MemberProjects.find(memProject => {
+        return memProject.TeamMember.ProjectId === project.id && memProject.TeamMember.approved === "approved"
+    }))
     const isOwner = project.User.id === user.loginInfo.id
-
-    const [applied, setApplied] = useState(isMember)
-
+    
+    const [accepted, setAccepted] = useState(isAccepted)
+    const [applied, setApplied] = useState(isApplied)
+    const [comment, setComment] = useState([])
     const [modal, setModal] = useState(false);
-
+    console.log(project)
     const cancelApply = () =>{
         fetch(`/api/v1/projects/${project.id}/teamMember`, {
             method: 'DELETE',
@@ -30,7 +35,8 @@ export default function IndividualProject({ project }) {
             .then(res => res.json())
             .then(data => {
                 console.log(data)
-                setApplied(false) 
+                setApplied(false)
+                props.loadProject() 
             })    
     }
     const applyProject = (e) => {
@@ -48,9 +54,22 @@ export default function IndividualProject({ project }) {
             .then(res => res.json())
             .then(data => {
                 console.log(data)
-                setApplied(true) 
+                setApplied(true)
+                props.loadProject() 
             })
     }
+    useEffect(()=>{
+        fetch(`/api/v1/projects/${project.id}/comments`)
+    .then(res=>res.json())
+    .then(data=>{
+        setComment(data)
+    })
+    },[project.id])
+    
+    // useEffect(()=>{
+    //     cancelApply()
+    //     applyProject()
+    // },[cancelApply, applyProject])
 
     // Modal
     const toggle = () => {
@@ -121,27 +140,38 @@ export default function IndividualProject({ project }) {
                                 </a>
                                 <a href="#!" className="card-link icon icon-all-projects-width"><MDBIcon icon="users indigo-text" /> {project.memberLimit} <span>Member's limit</span> 
                                 </a>
+                                <Link to={`/projects/${project.id}`} className="card-link icon icon-all-projects-width"><i class="fas fa-comment-dots"></i> {comment && comment.length} <span>Comments</span> 
+                                </Link>
+                                
                                 <div>
-
                                     {
                                         isOwner ?
                                         <button className=" inactive-own">
                                                 You own this project
                                         </button>
                                         :
-                                        applied ?
+                                        isAccepted ?
                                         <>                                
+                                            <button className="inactive-applied" disabled>
+                                                You are in this project
+                                            </button>
+                                            
+                                        </>    
+                                            :
+                                        isApplied ?
+                                            <>                                
                                             <button className="inactive-applied" disabled>
                                                 You applied to this project 
                                             </button>
                                             <button className='btn  cancel-application' onClick={cancelApply}>Cancel application</button>
-                                        </>    
-                                            :
-                                            <button className=" participate-button" onClick={applyProject}>
+                                        </> 
+                                        :
+                                        <button className=" participate-button" onClick={applyProject}>
                                                 I want to be part of this project
                                             </button>
+                                            
                                     }
-
+                                    
                                     {/* {   
                                         applied ?                                
                                             <button className="inactive" disabled>

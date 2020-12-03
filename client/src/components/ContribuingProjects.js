@@ -1,7 +1,9 @@
-import { MDBCard, MDBCardBody, MDBCardTitle, MDBCol, MDBContainer, MDBIcon, MDBRow } from 'mdbreact'
+import { MDBCard, MDBCardBody, MDBCardText, MDBCardTitle, MDBCol, MDBContainer, MDBIcon, MDBRow } from 'mdbreact'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import Navbar from './Navbar'
+import Footer from './Footer'
+import Navbar from './Navbar';
+import '../styles/contribuiding.css'
 
 export default function ContribuingProjects() {
     const { contributeId } = useParams()
@@ -32,72 +34,89 @@ export default function ContribuingProjects() {
       <>
       <Navbar />
 
-        <div>
-             <MDBContainer>
+        <div id="top">
+      <MDBContainer className="contribuiding-container">
+        <h1 className="contribuiting-title ">Contribution project overview</h1>
       <MDBRow>
-      <MDBCol md="6" lg="4">
-        <MDBCard personal className="my-5">
+      <MDBCol md="3" lg="4" className="mt-5 ">
+        <MDBCard testimonal className="card-body-contribuiting">
           
           <MDBCardBody>
-            <img src={owner.profilePicture}alt="profilePicture" width="70%" />
-            
+          <div className=''>
+            <img src={owner.profilePicture}alt="profilePicture" className="rounded-circle hoverable border border-info profile-setup"  />
+          </div>
             <MDBCardTitle>
-              <a href="#!" className="title-one">
-              Owner: {owner.firstName} {owner.lastName}
-              </a> <br />
-              <a href="#!" className="title-one">
-              {owner.title}
-              </a>
+            <h4 className='card-title-interested mt-4'> <MDBIcon icon="user indigo-text" /> {owner.firstName} {owner.lastName}
+              </h4>
+              <h4 className='card-title'><MDBIcon far icon="newspaper" /> {owner.title}
+              </h4>
             </MDBCardTitle>
             
             <hr />
-            <a href="#!" className="title-one">
-              Chat
-              </a> <br />
-            <a href="#!" className="card-meta">
-              <span>
-                Contact Info: {owner.email}
-              </span>
-            </a>
+            <h4 className="card-title">
+            <MDBIcon icon="comments blue-text" /> Chat now with {owner.firstName} {owner.lastName}
+              </h4> 
             <br/>
           </MDBCardBody>
         </MDBCard>
       </MDBCol>
     
-      <MDBCol >
-          <br/><br/>
-          <h1>{project.title}</h1> <br/>
-          <h3>Project Detail: {project.description}</h3>
-          <h3>status: {project.isCompleted === false ? "Open" : "Closed"}</h3>
-          <h3>Published: {Object.keys(project).length > 0 && project.publishedAt.slice(0,10)} </h3>
-          <h3>DeadLine: {Object.keys(project).length > 0 && project.deadline.slice(0,10)} </h3>
-          <h3>Member Limit: {project.memberLimit}</h3>
-          <h3>Language: 
+      <MDBCol className="mt-5 contribuiting-col">
+      <MDBCard className="card-body " >
+      <MDBCardTitle className="project-title"><MDBIcon icon="link" />
+          {project.title}</MDBCardTitle > 
+          <MDBCardText>
+          {project.description} 
+          </MDBCardText>
+         <MDBCardText>
+        <h1 className="all-prjects-skills-title">
+            Desirable Technical Skills </h1>
+
+            {Object.keys(project).length > 0 && project.Skills.filter((userData)=>{
+                  return (userData.category === "technical")
+                }).map((name)=>{
+                  return <span className="all-projects-skills">{name.name}</span>
+                })}
+
+        <h1 className="all-prjects-skills-title">
+            Desirable Soft Skills </h1>  
+            {Object.keys(project).length > 0 && project.Skills.filter((userData)=>{
+                return (userData.category === "soft")
+              }).map((name)=>{
+                return <span className="all-projects-skills">{name.name}</span>
+              })}
+
+        <h1 className="all-prjects-skills-title">
+            Acceptable Spoken Languages </h1>
+
           {Object.keys(project).length > 0 && project.Skills.filter((userData)=>{
                 return (userData.category === "language")
               }).map((name)=>{
-                return name.name + " " 
+                return <span className="all-projects-skills">{name.name}</span>
               })}
-          </h3>
-          <h3>Soft Skills: {Object.keys(project).length > 0 && project.Skills.filter((userData)=>{
-                return (userData.category === "soft")
-              }).map((name)=>{
-                return name.name + " " 
-              })}</h3>
-          <h3>Technical Skills: 
-          {Object.keys(project).length > 0 && project.Skills.filter((userData)=>{
-                return (userData.category === "technical")
-              }).map((name)=>{
-                return name.name + " " 
-              })}
-          </h3>
+        </MDBCardText>
+            <div className="flex-row ">
+            <a href="#!" className="card-link icon icon-all-projects-width">
+                                 {project.isCompleted === false ? 
+                                 (<><MDBIcon icon="lock-open green-text" /> Available</>) : 
+                                 (<><MDBIcon icon="lock black-text" /> Unavailable</>)} <span>Project Status</span>
+                                </a>
+                                <a href="#!" className="card-link icon icon-all-projects-width"><MDBIcon icon="calendar-alt deep-purple-text" /> {Object.keys(project).length > 0 && project.deadline.slice(0, 10)} <span>Deadline</span>
+                                </a>
+
+                                <a href="#!" className="card-link icon icon-all-projects-width"><MDBIcon icon="users indigo-text" /> {project.memberLimit}<span>Member's limit</span> 
+                                 </a>
+          </div>
+         
           
-    
+          
+  </MDBCard>  
   </MDBCol>
     </MDBRow>
     </MDBContainer>
             
         </div>
+        <Footer/>
     </>
     )
 }

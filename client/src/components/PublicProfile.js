@@ -11,6 +11,7 @@ export default function PublicProfile() {
   const [project, setProject] = useState([])
   const [owner, setOwner] = useState([])
   const user = useSelector(state => state.user);
+  
 
   useEffect(() => {
     fetch(`/api/v1/projects/${pendingId}`)
@@ -40,9 +41,10 @@ export default function PublicProfile() {
         <MDBCard testimonial className="card-profile card-public-profile">
         <div gradient='aqua' backgroundColor="red"/>
           <div className=''>
+            {console.log(owner)}
           <img
               src={owner.profilePicture} 
-              alt='' className="rounded-circle hoverable border border-info public-profile" 
+              alt='aaa' className="rounded-circle hoverable border border-info public-profile" 
             />
           </div><br/>
           

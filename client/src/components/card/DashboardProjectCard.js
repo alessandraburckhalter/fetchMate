@@ -1,12 +1,13 @@
 
 import React, { useEffect, useState } from 'react'
-import { MDBCard, MDBCardText, MDBCardTitle, MDBContainer, MDBIcon, MDBInput, MDBModal, MDBModalBody, MDBModalFooter, MDBModalHeader } from 'mdbreact'
+import { MDBCard, MDBCardText, MDBCardTitle, MDBContainer, MDBDropdown, MDBDropdownItem, MDBDropdownMenu, MDBDropdownToggle, MDBIcon, MDBInput, MDBModal, MDBModalBody, MDBModalFooter, MDBModalHeader } from 'mdbreact'
 import DatePicker from "react-datepicker";
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import SkillSearchBar from '../SkillSearchBar';
 import Axios from 'axios';
 import { clearSearchSkillArray, setSearchSkillArray } from '../../redux/actions';
+import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
 export default function DashboardProjectCard(props) {
   const { id, owner, description, title, isCompleted, publishedAt, deadline, memberLimit, Skills} = props.project
@@ -87,7 +88,11 @@ export default function DashboardProjectCard(props) {
 
     useEffect(()=>{
         addAcceptedMember() 
-    },[projectInfo])  
+    },[projectInfo])
+
+    const [dropdownOpen, setDropdownOpen] = useState(false);
+
+    const statusToggle = () => setDropdownOpen(prevState => !prevState);
         
     return (
       <div>
@@ -103,9 +108,20 @@ export default function DashboardProjectCard(props) {
             {description}
           </MDBCardText>
           <div className="flex-row d-flex">
-          <a href="#!" className="card-link icon">
+          {/* <a href="#!" className="card-link icon">
               Status: {isCompleted === false ? "Open" : "Closed"} <span>Project Status</span>
-            </a>
+            </a> */}
+           
+            <Dropdown className="card-link icon dropdown-status" isOpen={dropdownOpen} toggle={statusToggle}>
+            <DropdownToggle caret className="dropdown-status">
+              Status
+              </DropdownToggle>
+            <DropdownMenu className="dropdown-status">
+              <DropdownItem>Open</DropdownItem>
+              <DropdownItem>Closed</DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
+  
             
             <a href="#!" className="card-link icon "><MDBIcon icon="calendar-alt deep-purple-text" />  {deadline.slice(0,10)} <span>Deadline</span>
             </a>
