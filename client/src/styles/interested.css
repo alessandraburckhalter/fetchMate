@@ -14,3 +14,47 @@
 .interested-col {
     margin-top: 80px;
 }
+
+button.accept {
+    background-color: green;
+    color: white;
+    border-radius: 4px;
+    padding: 13px;
+}
+
+button.decline {
+    background-color: #ec0101;
+    color: white;
+    border-radius: 4px;
+    padding: 13px;
+}
+
+button.remove-member {
+    padding: 20px;
+    background-color: #ec0101;
+    color: white;
+    border-radius: 4px;
+}
+
+.team-members-container {
+    margin-bottom: 150px;
+}
+
+/* main titles */
+.interested-titles {
+    font-family: fontastique;
+    font-size: 50px;
+    letter-spacing: 3px;
+    color: #065c6f !important;
+}
+
+.project-overview-container {
+    margin-top: 80px;
+}
+
+/* first and last name */
+.card-title-interested {
+    font-size: 1.2em;
+}
+
+

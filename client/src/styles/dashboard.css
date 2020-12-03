@@ -199,3 +199,15 @@ button.camera-button {
 .image-and-camera {
     display: inline-grid;
 }
+
+button.dropdown-status {
+    background: none !important;
+}
+
+.btn-secondary.dropdown-toggle  {
+    background-color: white !important;
+    color: white;
+    padding: 1px;
+    margin: 0;
+    box-shadow: none;
+}

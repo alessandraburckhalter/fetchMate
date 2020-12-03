@@ -1,5 +1,5 @@
 
-import { MDBCard, MDBCardBody, MDBCardTitle, MDBCol } from 'mdbreact'
+import { MDBCard, MDBCardBody, MDBCardTitle, MDBCol, MDBIcon } from 'mdbreact'
 import React, { useEffect, useState } from 'react'
 
 export default function AcceptedCard(props) {
@@ -61,15 +61,16 @@ export default function AcceptedCard(props) {
         
 
     return (
-        <MDBCol md="6" lg="4">
-      <MDBCard personal className="my-5">
-          {console.log(project)}
+        <MDBCol md="3" lg="4">
+        <MDBCard personal className="my-5">
           <MDBCardBody>
-            <img src={interestedUser.profilePicture} alt="profilePicture" />
+          <div className=''>
+            <img src={interestedUser.profilePicture} alt="profilePicture" className="rounded-circle hoverable border border-info profile-setup"/>
+            </div>
             <MDBCardTitle>
-              <a href="#!" className="title-one">
+            <h4 className='card-title mt-4'> <MDBIcon icon="user indigo-text" />
               {interestedUser.firstName} {interestedUser.lastName}
-              </a>
+              </h4>
             </MDBCardTitle>
             {/* <input
                             icon="lock"
@@ -79,25 +80,37 @@ export default function AcceptedCard(props) {
                            
                         /> */}
             <hr />
-            <a href="#!" className="card-meta">
-                Skills:{Object.keys(interestedUser).length > 0 && interestedUser.Skills.filter((userData)=>{
+            <h3 class="card-title">
+            <MDBIcon icon="cogs grey-text" /> Technical Skills</h3> 
+            {Object.keys(interestedUser).length > 0 && interestedUser.Skills.filter((userData)=>{
           return (userData.category === "technical")
           
         }).map((name)=>{
-          return name.name + " " 
+          return <span className="skills-dashboard">{name.name} </span> 
         })}
+
+            <br/>
+            <h3 class="card-title">
+            <MDBIcon icon="hand-holding-heart pink-text" /> Soft Skills</h3> 
+            {Object.keys(interestedUser).length > 0 && interestedUser.Skills.filter((userData)=>{
+          return (userData.category === "soft")
+          
+        }).map((name)=>{
+          return <span className="skills-dashboard">{name.name} </span> 
+        })}     
        
-            </a><br/>
-            <a href="#!" className="card-meta">
-                Spoken languages: {Object.keys(interestedUser).length > 0 && interestedUser.Skills.filter((userData)=>{
+            <br/>
+            <h3 class="card-title">
+            <MDBIcon icon="language purple-text" /> Spoken languages </h3>
+            {Object.keys(interestedUser).length > 0 && interestedUser.Skills.filter((userData)=>{
           return (userData.category === "language")
           
         }).map((name)=>{
-          return name.name + " " 
+          return <span className="skills-dashboard">{name.name} </span> 
         })}
-            </a> <br/>
+             <br/>
             
-             <button className="card-link" onClick={pendingMember}>Remove(pending)
+             <button className="card-link btn remove-member" onClick={pendingMember}>Remove Member from this project
              </button>
           </MDBCardBody>
         </MDBCard>
