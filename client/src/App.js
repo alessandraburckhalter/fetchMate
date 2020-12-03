@@ -5,8 +5,10 @@ import './App.css';
 import About from './components/About';
 import Chat from './components/Chat';
 import Comments from './components/Comments';
+
+import ContributingProjects from './components/ContributingProjects';
 import Contact from './components/Contact';
-import ContribuingProjects from './components/ContribuingProjects';
+
 import Dashboard from './components/Dashboard';
 import FAQ from './components/FAQ';
 import Interested from './components/Interested';
@@ -67,7 +69,7 @@ function App() {
 
             <Route exact path="/dashboard/:projectId" component={Interested}/>
             <Route exact path="/dashboard/public/:pendingId" component={PublicProfile}/>
-            <Route path="/dashboard/contribute/:contributeId" component={ContribuingProjects}/>
+            <Route path="/dashboard/contribute/:contributeId" component={ContributingProjects}/>
 
             <Route path="/projects/:projectId" component={Comments}/>
 
