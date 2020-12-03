@@ -54,7 +54,6 @@ function App() {
           <Route exact path="/projects" component={Projects}/>
           <Route exact path="/about" component={About}/>
           
-          <Route path="/chat" component={Chat}/>
           
           {user.loginInfo !== null && (
             <>
@@ -67,6 +66,7 @@ function App() {
             <Route path="/dashboard/contribute/:contributeId" component={ContribuingProjects}/>
 
             <Route path="/projects/:projectId" component={Comments}/>
+            <Route path="/chat/:projectId" component={Chat}/>
 
             </>
           )}

@@ -27,6 +27,8 @@ io.on('connection', (socket) => {
         })
         //! For lachlan: if the user doesn't belong to the project, then how do I send back a message to the user
         //! Saying they don't belong to the project?
+        //* you can send a response, but it would be an emit
+        //* would have to emit a whole new type of action
             .then(project => {
                 let found = project.Members.find(members => members.dataValues.id === socket.handshake.session.user.id)
                 console.log('\n\n\n\n\n' + found);
@@ -49,7 +51,7 @@ io.on('connection', (socket) => {
                 if(!project){
                     console.log('Cannot find that project');
                 }else{
-                    io.to(projectMessagePayload.projectId).emit('project message', projectMessagePayload)
+                    
                     return project.createChat({
                         content: projectMessagePayload.content,
                         UserId: socket.handshake.session.user.id
@@ -57,7 +59,7 @@ io.on('connection', (socket) => {
                 }
             })
             .then(chat => {
-                console.log('Chat created');
+                io.to(projectMessagePayload.projectId).emit('project message', chat)
             })
             .catch(e => {
                 console.error(e);

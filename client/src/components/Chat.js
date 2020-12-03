@@ -1,9 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useSelector } from 'react-redux';
-
+import moment from 'moment';
 
 import io from 'socket.io-client';
 import ChatMessage from './ChatMessage';
+import { useParams } from 'react-router-dom';
+import Navbar from './Navbar';
+import { MDBContainer } from 'mdbreact';
 
 const Demo_Test = 'Lets do this'; //Sent @ 9:35 pm
 
@@ -13,18 +16,18 @@ export default function Chat() {
     const [messages, setMessages] = useState([]);
     const [newMessage, setNewMessage] = useState('');
     const initialValue = "```javascript\nconst "
-    const middleValue = " = '"
-    const endingValue = "';\n```"
-    const comment = '\/\/'
+    const middleValue = " = `"
+    const endingValue = "```"
+    const chatTime = `\` \/\/Sent @ ${moment().format("dddd, MMMM Do YYYY, h:mm a")}\n`
     //todo eventually will come from prop
-    const projectId = 1;
+    const {projectId} = useParams();
+    // const projectId = 1;
     const sendMessage = (e) => {
         e.preventDefault();
-        const sandwich = initialValue + user.loginInfo.firstName + '_' + user.loginInfo.lastName + middleValue + newMessage + endingValue;
+        const sandwich = initialValue + user.loginInfo.firstName + '_' + user.loginInfo.lastName + middleValue + newMessage + chatTime + endingValue;
         const messagePayload = {
             content: sandwich,
-            projectId: projectId,
-            timeSent: new Date()
+            projectId: projectId
         }
         setNewMessage('');
         socketRef.current.emit("send project message", messagePayload)
@@ -51,24 +54,23 @@ export default function Chat() {
     }, [])
 
     return (
-        <div className="chat-box">
-            <div className="messages">
-                {messages.length > 0 && messages.map( (message, index) => {
-                    return(
-                        <ChatMessage key={index} message={message} />
-                    )
-                })}
-            </div>
-            <form onSubmit={sendMessage}>
-                {/* <input type='textArea'  value={newMessage} onChange={(e) => {setNewMessage(e.target.value)}} /> */}
-                <textarea
-                    className="form-control"
-                    value={newMessage}
-                    onChange={(e) => {setNewMessage(e.target.value)}}
-                    rows="5"
-                />
-                <button type="submit">Send</button>
-            </form>
-        </div>
+        <>
+            <Navbar />
+            <MDBContainer style={{marginTop: '100px'}}>
+                <div className="chat-box">
+                    <div className="messages">
+                        {messages.length > 0 && messages.map( (message, index) => {
+                            return(
+                                <ChatMessage key={index} message={message} />
+                            )
+                        })}
+                    </div>
+                    <form onSubmit={sendMessage}>
+                        <input type='text'  value={newMessage} onChange={(e) => {setNewMessage(e.target.value)}} />
+                        <button type="submit">Send</button>
+                    </form>
+                </div>
+            </MDBContainer>
+        </>
     )
 }
