@@ -18,6 +18,7 @@ export default function SignUpPage() {
     const [emailSent, setEmailSent ] = useState(false);
     const formData = new FormData();
     const history = useHistory();
+
     
     
     const handleSubmit = (e)=>{
@@ -128,6 +129,7 @@ export default function SignUpPage() {
                             </label>
                         <input
                             id="password"
+                            type="password"
                             value={password}
                             onChange={(e)=> {setPassword(e.target.value)}}
                         />

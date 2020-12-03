@@ -1,6 +1,6 @@
 import { MDBCard, MDBCardBody, MDBCardText, MDBCardTitle, MDBCol, MDBContainer, MDBIcon, MDBRow } from 'mdbreact'
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import Footer from './Footer'
 import Navbar from './Navbar';
 import '../styles/contributing.css'
@@ -54,8 +54,10 @@ export default function ContributingProjects() {
             
             <hr />
             <h4 className="card-title">
-            <MDBIcon icon="comments blue-text" /> Chat now with {owner.firstName} {owner.lastName}
-              </h4> 
+              <Link to={`/chat/${project.id}`}>
+                <MDBIcon icon="comments blue-text" /> Chat now with the Team
+              </Link>
+            </h4> 
             <br/>
           </MDBCardBody>
         </MDBCard>
