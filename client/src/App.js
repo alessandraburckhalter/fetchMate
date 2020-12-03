@@ -5,7 +5,7 @@ import './App.css';
 import About from './components/About';
 import Chat from './components/Chat';
 import Comments from './components/Comments';
-import ContribuingProjects from './components/ContribuingProjects';
+import ContributingProjects from './components/ContributingProjects';
 import Dashboard from './components/Dashboard';
 import Interested from './components/Interested';
 import MainPage from './components/MainPage';
@@ -64,7 +64,7 @@ function App() {
 
             <Route exact path="/dashboard/:projectId" component={Interested}/>
             <Route exact path="/dashboard/public/:pendingId" component={PublicProfile}/>
-            <Route path="/dashboard/contribute/:contributeId" component={ContribuingProjects}/>
+            <Route path="/dashboard/contribute/:contributeId" component={ContributingProjects}/>
 
             <Route path="/projects/:projectId" component={Comments}/>
 

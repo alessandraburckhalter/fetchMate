@@ -29,10 +29,10 @@ export default function DashboardConProjectCard(props) {
                     {description}
                 </MDBCardText>
                 <div className="flex-row ">
-                    <a href="#!" className="card-link">
+                    <Link to={`/dashboard/contribute/${id}`} className="card-link">
 
                 <MDBIcon icon="user" /> {projectOwner.firstName} {projectOwner.lastName}  
-                    </a>
+                    </Link>
                     <a href="#!" className="card-link"> <MDBIcon icon="comments" />
                     </a>
 

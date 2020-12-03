@@ -5,6 +5,8 @@ import { MDBCard, MDBCardText, MDBCardTitle, MDBCol, MDBContainer, MDBIcon, MDBM
 import { Link, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import '../styles/comments.css'
+import CommentList from './card/CommentList';
+
 
 export default function Comments() {
     const { projectId } = useParams()
@@ -12,6 +14,7 @@ export default function Comments() {
     const [comments, setComments] = useState([])
     const [content, setContent] = useState("")
     const [project, setProject] = useState("")
+    const [commentEdit, setCommentEdit] = useState("")
   
     
     const [modal, setModal] = useState(false);
@@ -19,6 +22,11 @@ export default function Comments() {
      const toggle = () => {
         setModal(!modal);
     }
+    const [modalForComment, setModalForComment] = useState(false);
+    const toggleForComment = () => {
+        setModalForComment(!modalForComment);
+    }
+    
 
     const commentHandle = (e) =>{
         e.preventDefault()
@@ -36,8 +44,7 @@ export default function Comments() {
         })
     }
 
-  
-    useEffect(()=>{
+    const loadComments = () =>{
         fetch(`/api/v1/projects/${projectId}/comments`)
             .then(res=>res.json())
             .then(data=>{
@@ -48,6 +55,9 @@ export default function Comments() {
             .then(data=>{
                 setProject(data)
             })
+    }
+    useEffect(()=>{
+        loadComments()
         
 
     },[projectId])
@@ -158,9 +168,13 @@ export default function Comments() {
                         <h1>Comments</h1>
                                  <div>
                                  {comments.length > 0 ? (comments.map((comment)=>{
-                                return <h6>💬{comment.User.firstName} {comment.User.lastName}: {comment.content}</h6> 
+                                return <>
+                                    <CommentList key={comment.id} comment={comment} loadComments={loadComments}/>
+                                </> 
                                 })) : "No comments"} 
                                  </div>
+
+                                 
                                  
                     </div>
                     </MDBCol>
