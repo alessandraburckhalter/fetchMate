@@ -6,6 +6,8 @@ import Navbar from './Navbar';
 import Alessandra from '../images/Alessandra.JPG';
 import Derek from '../images/Derek.png';
 import Pete from '../images/Pete.jpeg';
+import Heeyoung from '../images/Heeyoung.jpg';
+import Jacky from '../images/Jacky.jpg';
 
 export default function About() {
     return (
@@ -13,15 +15,15 @@ export default function About() {
             <Navbar />
             <MDBContainer className="about-container">
           
-            <h1 className='text-center  about-title'>Meet the fetchMate Team</h1>
-            <p className='text-center mb-5 w-responsive mx-auto'>
+            <h1 className='text-center  about-title'>Meet the <span className="fetch">fetch</span><span className="mate">Mate</span> team</h1>
+            <p className='text-center w-responsive mx-auto under-title'>
             These are the people that make the magic happen. Get to know our team of awesome talent.
             </p>
             <MDBRow className='mb-lg-4 text-center text-md-left mt-5'>
               <MDBCol lg='6' md='12' className='mb-4'>
                 <MDBCol md='6' className='float-left'>
                   <img
-                    className='mx-auto mb-md-0 mb-4 rounded z-depth-1 img-fluid' src={Alessandra} alt='Profile Picture'
+                    className='mx-auto mb-md-0 mb-4 rounded z-depth-1 img-fluid' src={Alessandra} alt='avatar pic'
                   />
                 </MDBCol>
                 <MDBCol md='6' className='float-right'>
@@ -60,7 +62,7 @@ export default function About() {
                     tag='img'
                     className='mx-auto mb-md-0 mb-4 rounded z-depth-1 img-fluid'
                     src={Derek}
-                    alt='Profile Picture'
+                    alt='avatar pic'
                   />
                 </MDBCol>
 
@@ -101,8 +103,8 @@ export default function About() {
                   <img
                     tag='img'
                     className='mx-auto mb-md-0 mb-4 rounded z-depth-1 img-fluid'
-                    src="https://mdbootstrap.com/img/Photos/Avatars/img%20(32).jpg"
-                    alt='Profile Picture'
+                    src={Heeyoung}
+                    alt='avatar pic'
                   />
                 </MDBCol>
                 <MDBCol md='6' className='float-right'>
@@ -110,7 +112,7 @@ export default function About() {
                     <strong>Heeyoung Song</strong>
                   </h4>
                   <h6 className='font-weight-bold grey-text mb-4'>
-                    Software Engineer
+                    Full-Stack Developer
                   </h6>
                   <p className='grey-text'>
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eos id officiis hic tenetur.
@@ -140,7 +142,7 @@ export default function About() {
                     tag='img'
                     className='mx-auto mb-md-0 mb-4 rounded z-depth-1 img-fluid'
                     src={Pete}
-                    alt='Profile Picture'
+                    alt='avatar pic'
                   />
                 </MDBCol>
                 <MDBCol md='6' className='float-right'>
@@ -148,10 +150,10 @@ export default function About() {
                     <strong>Pete Looney</strong>
                   </h4>
                   <h6 className='font-weight-bold grey-text mb-4'>
-                    Software Engineer
+                    Software & Industrial Engineer
                   </h6>
                   <p className='grey-text'>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eos id officiis hic tenetur.
+                  Creative problem solver, and lifelong learner eager to use his expertise to resolve real-world issues.
                   </p>
                   <a href='https://www.linkedin.com/in/peter-looney-27b732166/' target='_blank' rel="noopener noreferrer">
                     <MDBIcon
@@ -180,8 +182,8 @@ export default function About() {
                   <img
                     tag='img'
                     className='mx-auto mb-md-0 mb-4 rounded z-depth-1 img-fluid'
-                    src="https://mdbootstrap.com/img/Photos/Avatars/img%20(32).jpg"
-                    alt='Profile Picture'
+                    src={Jacky}
+                    alt='avatar pic'
                   />
                 </MDBCol>
                 <MDBCol md='6' className='float-right'>

@@ -14,7 +14,9 @@ export default function Comments() {
     const [comments, setComments] = useState([])
     const [content, setContent] = useState("")
     const [project, setProject] = useState("")
+
     const [commentEdit, setCommentEdit] = useState("")
+
   
     
     const [modal, setModal] = useState(false);
@@ -44,7 +46,10 @@ export default function Comments() {
         })
     }
 
+
     const loadComments = () =>{
+
+
         fetch(`/api/v1/projects/${projectId}/comments`)
             .then(res=>res.json())
             .then(data=>{
@@ -55,10 +60,10 @@ export default function Comments() {
             .then(data=>{
                 setProject(data)
             })
+
     }
     useEffect(()=>{
         loadComments()
-        
 
     },[projectId])
 
