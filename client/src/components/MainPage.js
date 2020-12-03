@@ -66,7 +66,12 @@ export default function MainPage() {
                 <button className="login-button btn-grad " type="submit">
                     Log In <MDBIcon icon="sign-in-alt ml-1" />
                 </button>
-                <div className="forgot-password">Forgot Password?</div>
+
+                <div className="forgot-password"><Link to='/forgotpassword'><button className="login-button btn-grad " type="submit">
+                    Forgot Password <MDBIcon icon="sign-in-alt ml-1" />
+                </button></Link>
+                </div>
+
                 <Link to="/register">
                 <button className="newAccount-button" >
                             Create New Account <MDBIcon icon="user-plus ml-1" />

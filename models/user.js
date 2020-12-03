@@ -16,6 +16,7 @@ module.exports = (sequelize, DataTypes) => {
       User.belongsToMany(models.Skill, {
         through: 'UserSkills', //* User.getSkills() --> gives an array of the skills that the user has
       })
+      User.hasMany(models.ResetPassword)
       User.hasMany(models.Comment)
     }
     //* tells what we want to return

@@ -18,6 +18,7 @@ export default function SignUpPage() {
     const [emailSent, setEmailSent ] = useState(false);
     const formData = new FormData();
     const history = useHistory();
+
     
     
     const handleSubmit = (e)=>{
