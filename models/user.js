@@ -17,6 +17,7 @@ module.exports = (sequelize, DataTypes) => {
         through: 'UserSkills', //* User.getSkills() --> gives an array of the skills that the user has
       })
       User.hasMany(models.Comment)
+      User.hasMany(models.Chat)
     }
     //* tells what we want to return
     toJSON(){
