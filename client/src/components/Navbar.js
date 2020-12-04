@@ -88,7 +88,7 @@ export default function Navbar() {
                 </MDBDropdownToggle>
                 <MDBDropdownMenu className="dropdown-default">
                   <MDBDropdownItem href="/about">The Team</MDBDropdownItem>
-                  <MDBDropdownItem href="#!">FAQ</MDBDropdownItem>
+                  <MDBDropdownItem href="/faq">FAQ</MDBDropdownItem>
                 </MDBDropdownMenu>
               </MDBDropdown>
             </MDBNavItem>

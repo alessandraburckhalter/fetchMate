@@ -37,7 +37,10 @@ export default function Footer() {
               <i class="fas fa-chevron-right"></i> <Link to="/about">The Team</Link>
               </li>
               <li className="list-unstyled">
-              <i class="fas fa-chevron-right"></i> <a href="#!">FAQ</a>
+              <i class="fas fa-chevron-right"></i> <Link to="/contact">Get in touch</Link>
+              </li>
+              <li className="list-unstyled">
+              <i class="fas fa-chevron-right"></i> <Link to="/faq">FAQ</Link>
               </li>
             </ul>
         </MDBCol>
