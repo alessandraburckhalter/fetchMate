@@ -17,7 +17,9 @@ export default function CommentList(props) {
         }
 
     }
-
+    const toggleClose = () =>{
+        setModalForComment(false)
+    }
     const editComment = (comment) =>{
         if(user.loginInfo.id === comment.UserId){
             fetch(`/api/v1/comments/${comment.id}`,{
@@ -69,7 +71,7 @@ export default function CommentList(props) {
                             </MDBModalBody>
                             <MDBModalFooter>
                                 <button onClick={ () => editComment(comment)} form="edit">Save</button>
-                                <button className='btn btn-primary' onClick={toggleForComment}>Close</button>
+                                <button className='btn btn-primary' onClick={toggleClose}>Close</button>
                             </MDBModalFooter>
                         </MDBModal>
         </div>
