@@ -71,10 +71,10 @@ export default function About() {
                     <strong>Derek James</strong>
                   </h4>
                   <h6 className='font-weight-bold grey-text mb-4'>
-                    Software Engineer
+                    Full Stack Developer
                   </h6>
                   <p className='grey-text'>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eos id officiis hic tenetur.
+                  Has a knack for front end JavaScript and dedicates his free time to improve his back end skills
                   </p>
                   <a href='https://www.linkedin.com/in/derek-james-40287610b/' target='_blank' rel="noopener noreferrer">
                     <MDBIcon

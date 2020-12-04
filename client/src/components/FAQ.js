@@ -84,16 +84,7 @@ export default function FAQ() {
           </button>
           <MDBCollapse id="collapse3" isOpen={collapseID}>
             <MDBCardBody>
-              Anim pariatur cliche reprehenderit, enim eiusmod high life
-              accusamus terry richardson ad squid. 3 wolf moon officia aute, non
-              cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
-              laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
-              on it squid single-origin coffee nulla assumenda shoreditch et.
-              Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred
-              nesciunt sapiente ea proident. Ad vegan excepteur butcher vice
-              lomo. Leggings occaecat craft beer farm-to-table, raw denim
-              aesthetic synth nesciunt you probably haven&apos;t heard of them
-              accusamus labore sustainable VHS.
+              If you need to reset your password the first step is to go to the home page and select the option that states "forgot password". When this is clicked it will route you to the password reset page which will then prompt you to enter your email associated with the account. This will send a hyperlink to the email submitted and when clicked it will prompt you to change your password and also confirm the change. After your password has been entered you may then login with the newly created password.
             </MDBCardBody>
           </MDBCollapse>
         </MDBCard>
