@@ -339,13 +339,20 @@ router.patch('/newpassword', (req, res) => {
             //send success message
             .then(password => {
                 password && password[0] > 0 ?
-                    res.status(202).json({success: 'password reset'})
+                //DESTROY TOKEN FROM RESETPASSWORD
+                    models.ResetPassword.destroy({
+                        where: {
+                            UserId: req.body.userId 
+                        }
+                    })
+                    .then(deletedToken => {
+                        deletedToken > 0 ? res.status(202).json({success: 'password reset'}) : res.status(404).json({error: 'token invalid'})
+                    })
                     :
                     res.status(404).json({
                         error: 'password could not be updated'
                     })
             })
-            //todo DESTROY TOKEN FROM RESETPASSWORD
             //else send error message
             .catch((error) => {
                 res.status(404).json({
