@@ -52,31 +52,42 @@ router.post('/', upload.single('profilePicture'), (req, res) => {
         res.status(400).json({
             error: 'Please complete all required fields'
         })
-        return;
+       
     }
 
     const { email, firstName, lastName, password } = req.body
-
-
-    bcrypt.hash(password, 10, (err, hash) => {
-        models.User.create({
-            email: email,
-            firstName: firstName,
-            lastName: lastName,
-            password: hash,
-            profilePicture: req.file && req.file.path ? req.file.path : '/uploads/default.png'
-
-        })
-            .then((result) => {
-                res.status(201).json(result)
-
-            })
-            .catch((error) => {
-                res.status(404).json({
-                    error: 'Email is not available'
-                })
-            })
+    models.User.findAll({
+        where:{
+            email
+        }
     })
+    .then(user=>{
+        if(user.length > 0){
+            res.status(400).json({error:"email is used"})
+        }else{
+            bcrypt.hash(password, 10, (err, hash) => {
+                models.User.create({
+                    email: email,
+                    firstName: firstName,
+                    lastName: lastName,
+                    password: hash,
+                    profilePicture: req.file && req.file.path ? req.file.path : '/uploads/default.png'
+        
+                })
+                    .then((result) => {
+                        res.status(201).json(result)
+        
+                    })
+                    .catch((error) => {
+                        res.status(404).json({
+                            error: 'Email is not available'
+                        })
+                    })
+            })
+        }
+
+    })
+    
 })
 
 //change password
@@ -339,13 +350,20 @@ router.patch('/newpassword', (req, res) => {
             //send success message
             .then(password => {
                 password && password[0] > 0 ?
-                    res.status(202).json({success: 'password reset'})
+                //DESTROY TOKEN FROM RESETPASSWORD
+                    models.ResetPassword.destroy({
+                        where: {
+                            UserId: req.body.userId 
+                        }
+                    })
+                    .then(deletedToken => {
+                        deletedToken > 0 ? res.status(202).json({success: 'password reset'}) : res.status(404).json({error: 'token invalid'})
+                    })
                     :
                     res.status(404).json({
                         error: 'password could not be updated'
                     })
             })
-            //todo DESTROY TOKEN FROM RESETPASSWORD
             //else send error message
             .catch((error) => {
                 res.status(404).json({

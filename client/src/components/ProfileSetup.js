@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {  MDBCard, MDBCardBody, MDBCol, MDBContainer, MDBIcon, MDBRow } from 'mdbreact';
+import {  MDBCard, MDBCardBody, MDBCol, MDBContainer, MDBIcon, MDBModal, MDBModalBody, MDBModalFooter, MDBModalHeader, MDBRow } from 'mdbreact';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
@@ -20,6 +20,7 @@ export default function ProfileSetup() {
     const dispatch = useDispatch();
     const history = useHistory();
     const pickedSkillsArray = useSelector(state => state.searchSkillsToAdd)
+    const [modal, setModal] = useState(false);
 
     useEffect(() => {
       dispatch(setSearchSkillArray(user.loginInfo.Skills))
@@ -51,7 +52,20 @@ export default function ProfileSetup() {
             }
         })
     }
+    const toggle = () => {
+      setModal(!modal);
+      }
 
+    const deleteAccount = () =>{
+      fetch(`/api/v1/hub/${user.loginInfo.id}`,{
+        method: "DELETE",
+    })
+    .then(res=>res.json())
+    .then(res=>{
+      let path = "/"
+      history.push(path)
+    })
+    }
     const handleSubmit = (e) => {
       e.preventDefault();
       setHeadline('');
@@ -128,7 +142,20 @@ export default function ProfileSetup() {
 
             <Button variant="success" type="submit" className="btn btn-lg btn-block mb-5">
             SUBMIT <MDBIcon far icon="paper-plane" />
+          </Button><Button variant="success" onClick={toggle} className="btn btn-lg btn-block mb-5">
+            DELETE ACCOUNT <MDBIcon far icon="paper-plane" />
           </Button>
+          <MDBModal isOpen={modal} toggle={toggle}>
+                                <MDBModalHeader toggle={toggle}>WARNING</MDBModalHeader>
+                                <MDBModalBody>
+                                <h4>Are you sure you want to delete your account?</h4>
+                                <h6>Deleting your account is permanent and will remove all content including comments, avatars and profile settings.</h6>
+                            </MDBModalBody>
+                            <MDBModalFooter>
+                                <button className='btn btn-primary' onClick={deleteAccount} form="edit">Yes</button>
+                                <button className='btn btn-primary' onClick={toggle}>No</button>
+                            </MDBModalFooter>
+                        </MDBModal>
           </form>
         </div>
 
