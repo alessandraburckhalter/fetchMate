@@ -135,6 +135,10 @@ export default function DashboardProjectCard(props) {
 
             <a href="#!" ><button className="card-link icon delete-card icon-width" onClick={ () => removeProject(id)}><MDBIcon icon="trash-restore-alt red-text" /><span>Delete</span> 
             </button></a>
+
+            <Link to={`/chat/${id}`} className="card-link icon">
+            <MDBIcon icon="comments blue-text" /><span>Chat w/ Team</span>
+          </Link>
       
               <Link to='#' className="card-link icon edit-card icon-width" onClick={handleOpen}><MDBIcon icon="edit" /><span>Edit</span> </Link>
               <MDBModal isOpen={modal} toggle={toggle}>

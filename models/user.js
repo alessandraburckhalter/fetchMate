@@ -18,6 +18,7 @@ module.exports = (sequelize, DataTypes) => {
       })
       User.hasMany(models.ResetPassword)
       User.hasMany(models.Comment)
+      User.hasMany(models.Chat)
     }
     //* tells what we want to return
     toJSON(){

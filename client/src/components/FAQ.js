@@ -1,26 +1,34 @@
-import { MDBCard, MDBCardBody, MDBCollapse, MDBContainer } from 'mdbreact';
+import { MDBCard, MDBCardBody, MDBCollapse, MDBContainer, MDBIcon } from 'mdbreact';
 import React, { useState } from 'react';
 import Navbar from './Navbar';
 import '../styles/faq.css';
 import Footer from './Footer'
 
-
 export default function FAQ() {
-    const [collapseID, setCollapseID] = useState("collapse10")
+    const [collapseID, setCollapseID] = useState(null)
 
-  const toggleCollapse = collapseID => () => setCollapseID(collapseID)
-//   const collapse = "collapse9"
+    const toggleCollapse = newCollapseID => () => {
+      if (collapseID === newCollapseID) {
+          setCollapseID(null)
+      } else {
+          setCollapseID(newCollapseID)
+      }
+    }
+
 
     return (
         <>
         <Navbar />
-        <div id="section1">
-
+        <div id="section1" className="background">
+            <div className="layer">
+            <h1 className="faq-title">FAQ</h1>
+            </div>
         </div>
-        <MDBContainer className="faq-container">
-      <MDBContainer className="mt-5">
-          <h1>Questions you may have</h1>
-        <MDBCard className="mt-3 card-faq">
+        <MDBContainer className="faq-container ">
+      <MDBContainer className="mb-5">
+          <h1 className="faq-container-title"><MDBIcon  icon="question-circle blue-text" /> Questions you may have</h1>
+          <h2 className="faq-subtitle">Click below for responses to frequently asked questions.</h2>
+        <MDBCard className=" card-faq">
           <button className="faq-button" onClick={toggleCollapse("collapse1")}>
              <i
               className={
@@ -45,6 +53,7 @@ export default function FAQ() {
             </MDBCardBody>
           </MDBCollapse>
         </MDBCard>
+        <hr className="hr-faq" />
 
         <MDBCard className="mt-3 card-faq">
           <button className="faq-button" onClick={toggleCollapse("collapse2")}>
@@ -71,6 +80,7 @@ export default function FAQ() {
             </MDBCardBody>
           </MDBCollapse>
         </MDBCard>
+        <hr className="hr-faq" />
 
         <MDBCard className="mt-3 card-faq">
           <button className="faq-button" onClick={toggleCollapse("collapse3")}>
@@ -88,6 +98,7 @@ export default function FAQ() {
             </MDBCardBody>
           </MDBCollapse>
         </MDBCard>
+        <hr className="hr-faq" />
 
         <MDBCard className="mt-3 card-faq">
           <button className="faq-button" onClick={toggleCollapse("collapse4")}>
@@ -114,6 +125,7 @@ export default function FAQ() {
             </MDBCardBody>
           </MDBCollapse>
         </MDBCard>
+        <hr className="hr-faq" />
 
         <MDBCard className="mt-3 card-faq">
           <button className="faq-button" onClick={toggleCollapse("collapse5")}>
@@ -140,6 +152,7 @@ export default function FAQ() {
             </MDBCardBody>
           </MDBCollapse>
         </MDBCard>
+        <hr className="hr-faq" />
 
         <MDBCard className="mt-3 card-faq">
           <button className="faq-button" onClick={toggleCollapse("collapse6")}>
@@ -166,6 +179,7 @@ export default function FAQ() {
             </MDBCardBody>
           </MDBCollapse>
         </MDBCard>
+        <hr className="hr-faq" />
 
         <MDBCard className="mt-3 card-faq">
           <button className="faq-button" onClick={toggleCollapse("collapse7")}>
@@ -192,6 +206,7 @@ export default function FAQ() {
             </MDBCardBody>
           </MDBCollapse>
         </MDBCard>
+        <hr className="hr-faq" />
 
         <MDBCard className="mt-3 card-faq">
           <button className="faq-button" onClick={toggleCollapse("collapse8")}>
@@ -218,6 +233,7 @@ export default function FAQ() {
             </MDBCardBody>
           </MDBCollapse>
         </MDBCard>
+        <hr className="hr-faq" />
 
         <MDBCard className="mt-3 card-faq">
           <button className="faq-button" onClick={toggleCollapse("collapse9")}>
@@ -225,7 +241,7 @@ export default function FAQ() {
               className={ 
                 collapseID === "collapse9"
                   ? "fa fa-angle-down "
-                  : "fa fa-angle-right"
+                  : "fa fa-angle-right "
               }
             />  How can I delete my account?
           </button>
@@ -244,7 +260,8 @@ export default function FAQ() {
             </MDBCardBody>
           </MDBCollapse>
         </MDBCard>
-
+        <hr className="hr-faq" />
+            <h3 className="faq-contact-us"><MDBIcon icon="info-circle " /> Couldn't find an answer to your question? Please contact us at <a href="mailto:fetchmate2020@gmail.com"><span className="email-faq">fetchmate2020@gmail.com</span></a>.</h3>
       </MDBContainer>
     </MDBContainer>
 

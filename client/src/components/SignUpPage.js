@@ -8,6 +8,7 @@ import Footer from './Footer';
 
 
 
+
 export default function SignUpPage() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -23,7 +24,6 @@ export default function SignUpPage() {
     
     const handleSubmit = (e)=>{
         
-        console.log(profilePicture)
         e.preventDefault()
         formData.append('firstName', firstName)
         formData.append('lastName', lastName)
@@ -41,24 +41,23 @@ export default function SignUpPage() {
             console.log(profilePicture)
             if(data.error){
                 alert(data.error)
-                // setError(data.error)
+                setEmail("")                
+                
             }else{
+                setLastName("")
+                setFirstName("")
+                setPassword("")
+                setEmail("")
                 console.log("register success") 
-                //email 
-                
-                
-
-            }
-            
-        })
-        .then(result=>{
-            Axios.post('http://localhost:3000/api/v1/email/welcome', {
+                Axios.post('http://localhost:3000/api/v1/email/welcome', {
                 email
             })
                     .then(res =>{
                         if(res.data.success){
                             setEmailSent(true)
                             alert("success")
+                            let path = "/"
+                            history.push(path)
                         }else{
                             setEmailSent(false)
                         }
@@ -66,14 +65,10 @@ export default function SignUpPage() {
                     .catch(err =>{
                         console.log("something wrong")
                     })
-                })
-            .then((result) =>{
-                let path = "/"
-                history.push(path)
+                }
             })
-                
-    
-    }
+        }
+
     
     return (
         <div>
@@ -129,6 +124,7 @@ export default function SignUpPage() {
                             </label>
                         <input
                             id="password"
+                            type="password"
                             value={password}
                             onChange={(e)=> {setPassword(e.target.value)}}
                         />

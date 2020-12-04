@@ -115,7 +115,7 @@ export default function About() {
                     Full-Stack Developer
                   </h6>
                   <p className='grey-text'>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eos id officiis hic tenetur.
+                  Task-driven problem solver with ability to work cross-functionally to ensure project success.
                   </p>
                   <a href='https://www.linkedin.com/in/song8179/' target='_blank' rel="noopener noreferrer">
                     <MDBIcon
