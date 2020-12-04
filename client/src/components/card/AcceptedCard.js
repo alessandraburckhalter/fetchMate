@@ -83,31 +83,34 @@ export default function AcceptedCard(props) {
             <h3 class="card-title">
             <MDBIcon icon="cogs grey-text" /> Technical Skills</h3> 
             {Object.keys(interestedUser).length > 0 && interestedUser.Skills.filter((userData)=>{
-          return (userData.category === "technical")
-          
-        }).map((name)=>{
-          return <span className="skills-dashboard">{name.name} </span> 
-        })}
+                return (userData.category === "technical")
+              }).length> 0 ? (interestedUser.Skills.filter((userData)=>{
+                return (userData.category === "technical")
+              }).map((name)=>{
+                return <span className="skills-dashboard">{name.name} </span> 
+              })): "No Skill"}
 
             <br/>
             <h3 class="card-title">
             <MDBIcon icon="hand-holding-heart pink-text" /> Soft Skills</h3> 
             {Object.keys(interestedUser).length > 0 && interestedUser.Skills.filter((userData)=>{
-          return (userData.category === "soft")
-          
-        }).map((name)=>{
-          return <span className="skills-dashboard">{name.name} </span> 
-        })}     
+                return (userData.category === "soft")
+              }).length> 0 ? (interestedUser.Skills.filter((userData)=>{
+                return (userData.category === "soft")
+              }).map((name)=>{
+                return <span className="skills-dashboard">{name.name} </span> 
+              })): "No Skill"}   
        
             <br/>
             <h3 class="card-title">
             <MDBIcon icon="language purple-text" /> Spoken languages </h3>
             {Object.keys(interestedUser).length > 0 && interestedUser.Skills.filter((userData)=>{
-          return (userData.category === "language")
-          
-        }).map((name)=>{
-          return <span className="skills-dashboard">{name.name} </span> 
-        })}
+                return (userData.category === "language")
+              }).length> 0 ? (interestedUser.Skills.filter((userData)=>{
+                return (userData.category === "language")
+              }).map((name)=>{
+                return <span className="skills-dashboard">{name.name} </span> 
+              })): "No language"}
              <br/>
             
              <button className="card-link btn remove-member" onClick={pendingMember}>Remove Member from this project

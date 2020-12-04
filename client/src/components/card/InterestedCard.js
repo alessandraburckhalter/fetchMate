@@ -1,6 +1,7 @@
 import Axios from 'axios'
 import { MDBCard, MDBCardBody, MDBCardTitle, MDBCol, MDBIcon } from 'mdbreact'
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 export default function InterestedCard(props) {
     const { UserId, ProjectId } = props.interestedUser
@@ -16,7 +17,7 @@ export default function InterestedCard(props) {
     const owner = ownerProject.email
     const projectTitle = project.title
     const ownerName = ownerProject.firstName + " " + ownerProject.lastName
-    console.log(props.project)
+    console.log(interestedUser)
     
 
     //decline onclick button
@@ -137,33 +138,37 @@ export default function InterestedCard(props) {
                         /> */}
             <hr />
             <h3 class="card-title">
+                {console.log(interestedUser)}
             <MDBIcon icon="cogs grey-text" /> Technical Skills</h3> 
             {Object.keys(interestedUser).length > 0 && interestedUser.Skills.filter((userData)=>{
-          return (userData.category === "technical")
-          
-        }).map((name)=>{
-          return <span className="skills-dashboard">{name.name} </span> 
-        })}
+                return (userData.category === "technical")
+              }).length> 0 ? (interestedUser.Skills.filter((userData)=>{
+                return (userData.category === "technical")
+              }).map((name)=>{
+                return <span className="skills-dashboard">{name.name} </span> 
+              })): "No Skill"}
 
             <br/>
             <h3 class="card-title">
             <MDBIcon icon="hand-holding-heart pink-text" /> Soft Skills</h3> 
             {Object.keys(interestedUser).length > 0 && interestedUser.Skills.filter((userData)=>{
-          return (userData.category === "soft")
-          
-        }).map((name)=>{
-          return <span className="skills-dashboard">{name.name} </span> 
-        })}     
+                return (userData.category === "soft")
+              }).length> 0 ? (interestedUser.Skills.filter((userData)=>{
+                return (userData.category === "soft")
+              }).map((name)=>{
+                return <span className="skills-dashboard">{name.name} </span> 
+              })): "No Skill"}
        
             <br/>
             <h3 class="card-title">
             <MDBIcon icon="language purple-text" /> Spoken languages </h3>
             {Object.keys(interestedUser).length > 0 && interestedUser.Skills.filter((userData)=>{
-          return (userData.category === "language")
-          
-        }).map((name)=>{
-          return <span className="skills-dashboard">{name.name} </span> 
-        })}
+                return (userData.category === "language")
+              }).length> 0 ? (interestedUser.Skills.filter((userData)=>{
+                return (userData.category === "language")
+              }).map((name)=>{
+                return <span className="skills-dashboard">{name.name} </span> 
+              })): "No language"}
              <br/>
             <button className="card-link btn accept" onClick={acceptMember}>Accept
              </button> 

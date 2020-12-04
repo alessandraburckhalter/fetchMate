@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import {  MDBCard, MDBCardBody, MDBCol, MDBContainer, MDBIcon, MDBModal, MDBModalBody, MDBModalFooter, MDBModalHeader, MDBRow } from 'mdbreact';
 import { useDispatch, useSelector } from 'react-redux';
-import { Button } from 'react-bootstrap';
+import { Button, Modal } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 import '../styles/profileSetup.css'
-import { clearSearchSkillArray, logout, setSearchSkillArray } from '../redux/actions';
+import { clearSearchSkillArray, login, logout, setSearchSkillArray } from '../redux/actions';
 import SkillSearchBar from './SkillSearchBar';
 import Axios from 'axios';
 import Footer from './Footer'
 import Navbar from '../components/Navbar'
+
 
 
 
@@ -19,39 +20,49 @@ export default function ProfileSetup() {
     const [headline, setHeadline] = useState(user.loginInfo.title);
     const dispatch = useDispatch();
     const history = useHistory();
+    const [profilePicture, setProfilePicture] = useState('')
+    const formData = new FormData()
     const pickedSkillsArray = useSelector(state => state.searchSkillsToAdd)
     const [modal, setModal] = useState(false);
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     useEffect(() => {
       dispatch(setSearchSkillArray(user.loginInfo.Skills))
     }, [])
-
-    const handleLogout = (e) => {
-        e.preventDefault();
-        fetch('/api/v1/user/logout',{
-            method: 'POST',
-            body: JSON.stringify({
-                password:password,
-                email: email
-            }),
-            headers: {
-                Accept:"application/json",
-                'Content-type': 'application/json'
-            }
+    const handlePhoto = (e) => {
+      e.preventDefault();
+      formData.append('profilePicture',profilePicture)
+      
+      fetch('/api/v1/hub', {
+        method: 'PATCH',
+        body:formData
+      })
+        .then(res => {
+          console.log(res)
         })
-        .then(res => res.json())
         .then(data => {
-            console.log(data)
-            if(data.error){
-                alert(data.error)
-            }else{
-                alert('Logged Out Successfully!')
-                dispatch(logout(data.user))
-                let path = "/"
-                history.push(path)
-            }
+          
+          // loadProject()
+          alert('Profile Updated!')
+          loadProject()
+          handleClose()
+          
         })
+        .catch(e => {
+          console.log(e)
+        })
+      
     }
+    const loadProject = () =>{
+    fetch('/api/v1/hub/current')
+    .then(res=>res.json())
+    .then(data=>{
+      dispatch(login(data))
+      
+    })
+  }
     const toggle = () => {
       setModal(!modal);
       }
@@ -76,6 +87,7 @@ export default function ProfileSetup() {
       })
         .then(res => {
           console.log(res)
+          history.push("/dashboard")
         })
         .catch(e => {
           console.log(e)
@@ -100,7 +112,36 @@ export default function ProfileSetup() {
               src={user.loginInfo.profilePicture} 
               alt='' className="rounded-circle hoverable border border-info profile-setup"  
             />
+            <button className="camera-button" onClick={handleShow}>
+          <MDBIcon icon="camera" />
+          </button>
           </div>
+
+          <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Update your profile picture</Modal.Title>
+        </Modal.Header>
+        <Modal.Body><form id="profilePic" onSubmit={(e) => {handlePhoto(e)}}>
+            <label htmlFor="defaultFormCardNameEx" className="labe-headline"><MDBIcon icon="share indigo-text" />  Profile Picture
+           </label>
+           
+            <input type="file" id="defaultFormCardNameEx" className="form-control" onChange={(e) => {setProfilePicture(e.target.files[0])}}/>
+            <br />
+
+            
+          </form>
+          </Modal.Body>
+        <Modal.Footer>
+        <Button form="profilePic" variant="success" type="submit" className="btn btn-lg btn-block mb-5">
+            SUBMIT <MDBIcon far icon="paper-plane" />
+          </Button>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          
+        </Modal.Footer>
+      </Modal>
+
           <MDBCardBody>
           <h4 className='card-title'> <MDBIcon icon="user indigo-text" /> {user.loginInfo.firstName} {user.loginInfo.lastName} </h4>
           <h4 className='card-title'> <MDBIcon icon="envelope orange-text" /> {user.loginInfo.email} </h4>

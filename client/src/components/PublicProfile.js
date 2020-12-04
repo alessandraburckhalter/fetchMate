@@ -14,15 +14,7 @@ export default function PublicProfile() {
   
 
   useEffect(() => {
-    fetch(`/api/v1/projects/${pendingId}`)
-      .then(res => res.json())
-      .then(result => {
-        setProject(result)
-      })
-      .catch(e => {
-        console.log(e)
-      })
-    fetch(`/api/v1/hub/user/${project.owner}`)
+    fetch(`/api/v1/hub/user/${pendingId}`)
       .then(res => res.json())
       .then(data => {
         setOwner(data)

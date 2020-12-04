@@ -59,7 +59,7 @@ export default function SkillSearchBar({category}) {
                         <MDBIcon className="text-white" icon="search" />
                     </span>
                 </div>
-                <input className="form-control my-0 py-1" type="text" value={currentSearch} onChange={(e) => {setCurrentSearch(e.target.value)}} placeholder="Start typing to see options" aria-label="Search" />
+                <input className="form-control my-0 py-1" type="text" value={currentSearch} onChange={(e) => {setCurrentSearch(e.target.value)}} placeholder="Start typing to see options" aria-label="Search"  />
             </div>
             <div>
                 {filteredForAlreadyPicked.map((option) => {

@@ -53,7 +53,7 @@ export default function DashboardPenProjectCard(props) {
     <Link to="/public" className="card-link">
       
     <MDBIcon icon="user black-text" />  
-      <Link to={`/dashboard/public/${id}`}> {projectOwner.firstName} {projectOwner.lastName}</Link>
+      <Link to={`/dashboard/public/${projectOwner.id}`}> {projectOwner.firstName} {projectOwner.lastName}</Link>
       </Link>
     </div>
     </aside>
