@@ -245,14 +245,12 @@ router.post('/resetpassword', function (req, res) {
                 })
             }
             models.ResetPassword.findOne({
-                where: { UserId: user.id, used: false },
+                where: { UserId: user.id },
             }).then(function (resetPassword) {
                 if (resetPassword)
-                    resetPassword.destroy({
-                        where: {
-                            id: resetPassword.id
-                        }
-                    })
+                    return resetPassword.destroy()
+            }).then(() =>{
+
                 token = crypto.randomBytes(32).toString('hex') // creates token to be sent to the forgot password
                 bcrypt.hash(token, 10, function (err, hash) {
                     models.ResetPassword.create({
@@ -305,7 +303,11 @@ router.post('/confirmtoken', function (req, res) {
         where: { UserId: req.body.userId }
     })
         .then(resetPassword => {
-            console.log(req.body.token)
+            if(!resetPassword){
+                return res.status(404).json({
+                    error:'Invalid token'
+                })
+            }
             //.then check token matches whats in DB
             //bcrypt compare code
             bcrypt.compare(req.body.token, resetPassword.token, (err, matched) => {
