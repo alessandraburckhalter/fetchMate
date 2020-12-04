@@ -64,12 +64,12 @@ export default function Projects() {
                   <a href="#!" className="card-link icon icon-all-projects-width">
                     <MDBIcon icon="cogs" onClick={sortBySkills}/><span>Sort by your skills</span>
                   </a>
-                  <a href="#!" className="card-link icon icon-all-projects-width">
-                    <MDBIcon icon="fire" onClick={sortByPopular}/> <span>Sort by popular projects</span> 
-                  </a>
                   {/* <a href="#!" className="card-link icon icon-all-projects-width">
-                    <MDBIcon icon="certificate" onClick={loadProject}/> <span>Sort by newest projects</span> 
+                    <MDBIcon icon="fire" onClick={sortByPopular}/> <span>Sort by popular projects</span> 
                   </a> */}
+                  <a href="#!" className="card-link icon icon-all-projects-width">
+                    <MDBIcon icon="certificate" onClick={loadProject}/> <span>Sort by newest projects</span> 
+                  </a>
                   <a href="#!" className="card-link icon icon-all-projects-width">
                     <MDBIcon icon="check-double" onClick={includeAllProjects}/> <span>Include completed projects</span> 
                   </a>
