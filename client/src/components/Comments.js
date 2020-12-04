@@ -5,19 +5,30 @@ import { MDBCard, MDBCardText, MDBCardTitle, MDBCol, MDBContainer, MDBIcon, MDBM
 import { Link, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import '../styles/comments.css'
+import CommentList from './card/CommentList';
 
-export default function Comments({ project }) {
+
+export default function Comments() {
     const { projectId } = useParams()
     const user = useSelector(state => state.user)
     const [comments, setComments] = useState([])
     const [content, setContent] = useState("")
-  
+    const [project, setProject] = useState("")
 
+    const [commentEdit, setCommentEdit] = useState("")
+
+  
+    
     const [modal, setModal] = useState(false);
      // Modal
      const toggle = () => {
         setModal(!modal);
     }
+    const [modalForComment, setModalForComment] = useState(false);
+    const toggleForComment = () => {
+        setModalForComment(!modalForComment);
+    }
+    
 
     const commentHandle = (e) =>{
         e.preventDefault()
@@ -35,15 +46,25 @@ export default function Comments({ project }) {
         })
     }
 
-  
-    useEffect(()=>{
-        
+
+    const loadComments = () =>{
+
 
         fetch(`/api/v1/projects/${projectId}/comments`)
             .then(res=>res.json())
             .then(data=>{
                 setComments(data)
             })
+            fetch(`/api/v1/projects/${projectId}`)
+            .then(res=>res.json())
+            .then(data=>{
+                setProject(data)
+            })
+
+    }
+    useEffect(()=>{
+        loadComments()
+
     },[projectId])
 
     return (
@@ -61,9 +82,9 @@ export default function Comments({ project }) {
                             </aside>
                             <MDBCard className="card-body card-body-all-projects2">
                             <aside>
-                            <MDBCardTitle className="project-title"><Link className="project-tilte" to="/interested"><MDBIcon icon="link" /> Project title </Link></MDBCardTitle>
+                            <MDBCardTitle className="project-title"><Link className="project-tilte" to="/interested"><MDBIcon icon="link" /> {project&& project.title} </Link></MDBCardTitle>
                             <MDBCardText>
-                                Project description<Link to="#" onClick={toggle}>Read More</Link> 
+                            {project&& project.description}<Link to="#" onClick={toggle}>Read More</Link> 
                                 <MDBModal isOpen={modal} toggle={toggle}>
                                 <MDBModalHeader toggle={toggle}>Privacy Measures</MDBModalHeader>
                                 <MDBModalBody>
@@ -77,29 +98,38 @@ export default function Comments({ project }) {
 
 
                             </MDBCardText>
-                            <MDBCardText>
-                                {/* <h1 className="all-prjects-skills-title">Desirable Technical Skills</h1> 
-                                {project.Skills.filter(skill => skill.category === 'technical').map((skill) => {
-                                    console.log(skill)
-                                    return <span className="all-projects-skills">{skill.name}</span>
-                                    
-                                })} */}
-                                <br/><br/>
-                                <h1 className="all-prjects-skills-title">Desirable Soft Skills</h1>
-                                {/* {project.Skills.filter(skill => skill.category === 'soft').map((skill) => {
-                                    console.log(skill)
-                                    return <span className="all-projects-skills">{skill.name}</span>
-                                    
-                                })} */}
-                                <br/><br/>
+                                        <MDBCardText>
+                                          
+                                            <br /><br />
+                                            <h1 className="all-prjects-skills-title">Desirable Soft Skills:
+                                {Object.keys(project).length > 0 && project.Skills.filter((userData) => {
+                                                return (userData.category === "soft")
+
+                                            }).map((name) => {
+                                                return name.name + " "
+                                            })}</h1>
+                                            
+                                            
                             </MDBCardText>
                             <MDBCardText>
-                            <h1 className="all-prjects-skills-title">Acceptable Spoken languages</h1>
-                                {/* {project.Skills.filter(skill => skill.category === 'language').map((skill) => {
-                                    console.log(skill)
-                                    return <span className="all-projects-skills">{skill.name}</span>
+                                <h1 className="all-prjects-skills-title">Desirable Technical Skills: 
+                                {Object.keys(project).length > 0 && project.Skills.filter((userData) => {
+                                                    return (userData.category === "technical")
+
+                                                }).map((name) => {
+                                                    return name.name + " "
+                                                })}</h1>
                                     
-                                })} */}
+                            </MDBCardText>
+                            <MDBCardText>
+                            <h1 className="all-prjects-skills-title">Acceptable Spoken languages: 
+                            {Object.keys(project).length > 0 && project.Skills.filter((userData) => {
+                                                return (userData.category === "language")
+
+                                            }).map((name) => {
+                                                return name.name + " "
+                                            })}</h1>
+                                
                             </MDBCardText>
                             <div className="flex-row ">
                                 <a href="#!" className="card-link icon icon-all-projects-width">
@@ -108,14 +138,14 @@ export default function Comments({ project }) {
                                  (<><MDBIcon icon="lock black-text" /> Unavailable</>)} <span>Project Status</span> */}
                                 </a>
                                 <a href="#!" className="card-link icon icon-all-projects-width"><MDBIcon icon="calendar-alt deep-purple-text" /> 
-                                {/* {Object.keys(project).length > 0 && project.publishedAt.slice(0, 10)} <span>Deadline</span> */}
+                                {Object.keys(project).length > 0 && project.publishedAt.slice(0, 10)} <span>Deadline</span>
                                 </a>
                                 {/* //todo GET PROJECT OWNER NAME ONTO CARD */}
                                 <a href="#!" className="card-link icon icon-all-projects-width"><MDBIcon icon="user-alt black-text" /> 
-                                {/* {project.User.firstName} {project.User.lastName} <span>Project owner</span> */}
+                                {Object.keys(project).length > 0 && project.User.firstName} {Object.keys(project).length > 0 && project.User.lastName} <span>Project owner</span>
                                 </a>
                                 <a href="#!" className="card-link icon icon-all-projects-width"><MDBIcon icon="users indigo-text" /> 
-                                {/* {project.memberLimit} <span>Member's limit</span>  */}
+                                {project.memberLimit} <span>Member's limit</span> 
                                 </a>
                             </div>
                             </aside>
@@ -143,9 +173,13 @@ export default function Comments({ project }) {
                         <h1>Comments</h1>
                                  <div>
                                  {comments.length > 0 ? (comments.map((comment)=>{
-                                return <h6>💬{comment.User.firstName} {comment.User.lastName}: {comment.content}</h6> 
+                                return <>
+                                    <CommentList key={comment.id} comment={comment} loadComments={loadComments}/>
+                                </> 
                                 })) : "No comments"} 
                                  </div>
+
+                                 
                                  
                     </div>
                     </MDBCol>

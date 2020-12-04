@@ -21,6 +21,7 @@ const projectsRouter = require('./routes/projects');
 const emailsRouter = require('./routes/email');
 const socketApi = require('./socketApi');
 const commentsRouter = require('./routes/comment');
+const chatRouter = require('./routes/chat');
 
 
 const app = express();
@@ -65,6 +66,7 @@ app.use('/api/v1/skills', skillsRouter);
 app.use('/api/v1/projects', projectsRouter);
 app.use('/api/v1/email', emailsRouter);
 app.use('/api/v1/comments', commentsRouter);
+app.use('/api/v1/chat', chatRouter);
 
 
 

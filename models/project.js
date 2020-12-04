@@ -18,6 +18,7 @@ module.exports = (sequelize, DataTypes) => {
         through: 'ProjectSkills',
       })
       Project.hasMany(models.Comment)
+      Project.hasMany(models.Chat)
     }
   };
   Project.init({

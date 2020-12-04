@@ -10,8 +10,9 @@ import Footer from './Footer'
 export default function Projects() {
   const [projects, setProjects] = useState([])
   const user = useSelector(state => state.user)
+  console.log(projects)
 
-  useEffect(() => {
+  const loadProject = () =>{
     fetch('/api/v1/projects')
       .then((res) => res.json())
       .then((data) => {
@@ -21,6 +22,9 @@ export default function Projects() {
         setProjects(data)
         console.log(data)
       })
+  }
+  useEffect(() => {
+    loadProject()
   }, [])
 
 
@@ -34,7 +38,7 @@ export default function Projects() {
           <h1 className="all-projects-title">Projects</h1>
             {user.loginInfo ? (projects.map((project) => {
         return (
-          <IndividualProject key={project.id} project={project} />
+          <IndividualProject key={project.id} project={project} loadProject={loadProject}/>
             
         );
       })) : (projects.map((project) => {
