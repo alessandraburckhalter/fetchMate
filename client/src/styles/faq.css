@@ -1,23 +1,85 @@
+/* conatiner */
 .faq-container {
-    margin-top: 180px;
+    min-height: 100vh;
+    margin-bottom: 180px;
 }
 
+/* card with the answers */
 .card-faq {
     background: transparent !important;
     box-shadow: none !important;
+    margin-top: 80px;
 }
 
+/* questions */
 button.faq-button {
     background: transparent !important;
     border: none !important;
     margin: 0 !important;
     text-align: left;
     outline: none !important;
+    font-size: 20px;
+    font-weight: 400;
 }
 
+/* to section */
 #section1 {
     height: 50vh;
+    background-size: cover ;
     background-image: url(../images/background-tt.jpg);
-    background-color: rgba(46, 138, 138, 0.4); 
-  color: rgba(46, 138, 138, 0.4);
+}
+
+/* title in the top section */
+.faq-title {
+    font-size: 80px;
+    color: white;
+    /* color: #0e49b5; */
+    padding-top: 160px;
+    text-align: center;
+    font-family: fontastique;
+    letter-spacing: 8px;
+}
+
+/* main title in the second section */
+.faq-container-title {
+    /* font-family: fontastique; */
+    text-transform: uppercase;
+    margin-top: 100px;
+    color: #065c6f;
+    font-size: 32px;
+    /* font-weight: lighter !important;
+    text-transform: capitalize; */
+}
+
+/* icons */
+.fa-angle-right, .fa-angle-down {
+    color: #0e49b5;
+    font-size: 22px;
+}
+
+/* subtitle in the second section */
+.faq-subtitle {
+    font-size: 17px;
+    margin-bottom: 40px !important;
+}
+
+/* hr */
+.hr-faq {
+    height: 1px;
+        background-color: #a3d8f4;
+        border: none;
+}
+
+/* last paragraph in second section */
+.faq-contact-us {
+    margin-top: 150px;
+    font-size: 21px;
+    font-weight: 300;
+}
+
+/* email in the last paragraph */
+.email-faq { 
+    color: #0e49b5;
+    font-weight: 400;
+    font-size: 18px;
 }

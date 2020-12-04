@@ -105,10 +105,11 @@ router.post('/contact', (req, res) => {
     sendGrid.setApiKey(process.env.SENDGRID_API)
     const msg = {
         to: "fetchmate.contact@gmail.com",
-        from: req.body.email,
+        from: "fetchmate.contact@gmail.com",
+        reply_to: req.body.email,
         subject: req.body.subject ,
         text: "You matched" ,
-        html: `<h4>Message from:${req.body.name} \n message:${req.body.message}</h4>`
+        html: `<h3>Message from:${req.body.name}(${req.body.email})</h3>` + `<br/>` +  `<h3>message:</h3>` + `<h3>${req.body.message}</h3>`
     }
 
     sendGrid.send(msg)
