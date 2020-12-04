@@ -1,6 +1,6 @@
 import { MDBCard, MDBCardBody, MDBCardText, MDBCardTitle, MDBCol, MDBContainer, MDBIcon, MDBRow } from 'mdbreact'
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import InterestedCard from './card/InterestedCard'
 import Navbar from './Navbar'
 import '../styles/interested.css'
@@ -94,9 +94,13 @@ export default function Interested() {
           
         </MDBCardText>
         <div className="flex-row ">
-          <a href="#!" className="card-link icon "><MDBIcon icon="calendar-alt deep-purple-text"/>  {Object.keys(project).length > 0 && project.deadline.slice(0,10)} <span>Deadline</span>
+          <a href="#!" className="card-link icon">
+            <MDBIcon icon="calendar-alt deep-purple-text"/> {Object.keys(project).length > 0 && project.deadline.slice(0,10)} <span>Deadline</span>
           </a>
           
+          <Link to={`/chat/${project.id}`} className="card-link icon">
+            <MDBIcon icon="comments blue-text" /><span>Chat w/ Team</span>
+          </Link>
         </div>
       </MDBCard>
       </MDBCol>

@@ -31,10 +31,11 @@ export default function DashboardConProjectCard(props) {
                 <div className="flex-row ">
                     <Link to={`/dashboard/contribute/${id}`} className="card-link">
 
-                <MDBIcon icon="user" /> {projectOwner.firstName} {projectOwner.lastName}  
+                <MDBIcon icon="user" className="icon"/> {projectOwner.firstName} {projectOwner.lastName}  
                     </Link>
-                    <a href="#!" className="card-link"> <MDBIcon icon="comments" />
-                    </a>
+                    <Link to={`/chat/${id}`} className="card-link">
+                        <MDBIcon icon="comments blue-text"/> Chat w/ Team
+                    </Link>
 
                 </div>
                 </aside>
