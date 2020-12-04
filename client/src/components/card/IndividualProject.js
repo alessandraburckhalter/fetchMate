@@ -20,7 +20,7 @@ export default function IndividualProject(props) {
     const [applied, setApplied] = useState(isApplied)
     const [comment, setComment] = useState([])
     const [modal, setModal] = useState(false);
-    console.log(project)
+    // console.log(project)
     const cancelApply = () =>{
         fetch(`/api/v1/projects/${project.id}/teamMember`, {
             method: 'DELETE',
