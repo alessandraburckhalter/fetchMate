@@ -1,5 +1,6 @@
+import Axios from 'axios'
 import { MDBCard, MDBCardBody, MDBCol, MDBContainer, MDBIcon, MDBInput, MDBRow } from 'mdbreact'
-import React from 'react'
+import React, { useState } from 'react'
 import Footer from './Footer'
 import Navbar from './Navbar'
 import  { MapContainer, Marker, TileLayer  }  from 'react-leaflet';
@@ -10,6 +11,36 @@ import '../styles/contact.css'
 
 
 export default function Contact() {
+  const [name, setName] = useState("")
+  const [fromEmail, setFromEmail] = useState("")
+  const [subject, setSubject] = useState("")
+  const [message, setMessage] = useState("")
+
+
+  const sendEmail = (e) => {
+    e.preventDefault()
+    Axios.post('/api/v1/email/contact',
+      {
+        email: fromEmail,
+        subject: subject,
+        name: name,
+        message: message
+      })
+      .then(res => {
+        if (res.data.success) {
+          setFromEmail("")
+          setSubject("")
+          setName("")
+          setMessage("")
+          alert("success sending Email")
+        } else {
+          alert("Fail sending Email")
+        }
+      })
+      .catch(err => {
+        console.log("something wrong")
+      })
+  }
 
   const mapIcon = Leaflet.icon({
     iconUrl: mapMarkerImg,
@@ -44,45 +75,56 @@ export default function Contact() {
               <p className="dark-grey-text">
               We'll get back to you shortly!
               </p>
-              <div className="md-form">
-                <MDBInput
-                  icon="user"
-                  label="Your name"
-                  iconClass="grey-text"
-                  type="text"
-                  id="form-name"
-                />
-              </div>
-              <div className="md-form">
-                <MDBInput
-                  icon="envelope"
-                  label="Your email"
-                  iconClass="grey-text"
-                  type="text"
-                  id="form-email"
-                />
-              </div>
-              <div className="md-form">
-                <MDBInput
-                  icon="tag"
-                  label="Subject"
-                  iconClass="grey-text"
-                  type="text"
-                  id="form-subject"
-                />
-              </div>
-              <div className="md-form">
-                <MDBInput
-                  icon="pencil-alt"
-                  label="Message"
-                  iconClass="grey-text"
-                  type="textarea"
-                  id="form-text"
-                />
-              </div>
-              <div className="text-center">
-                <button className="btn btn-primary">Submit</button>
-              </div>
+              <form onSubmit={sendEmail}>
+                <div className="md-form">
+                  <MDBInput
+                    icon="user"
+                    label="Your name"
+                    iconClass="grey-text"
+                    type="text"
+                    id="form-name"
+                    value = {name}
+                    onChange={(e)=> setName(e.target.value)}
+                  />
+                </div>
+                <div className="md-form">
+                  <MDBInput
+                    icon="envelope"
+                    label="Your email"
+                    iconClass="grey-text"
+                    type="text"
+                    id="form-email"
+                    value = {fromEmail}
+                    onChange={(e)=> setFromEmail(e.target.value)}
+                  />
+                </div>
+                <div className="md-form">
+                  <MDBInput
+                    icon="tag"
+                    label="Subject"
+                    iconClass="grey-text"
+                    type="text"
+                    id="form-subject"
+                    value = {subject}
+                    onChange={(e)=> setSubject(e.target.value)}
+                  />
+                </div>
+                <div className="md-form">
+                  <MDBInput
+                    icon="pencil-alt"
+                    label="Message"
+                    iconClass="grey-text"
+                    type="textarea"
+                    id="form-text"
+                    value = {message}
+                    onChange={(e)=> setMessage(e.target.value)}
+                  />
+                </div>
+                <div className="text-center">
+                  <button color="light-blue" type="submit">Submit</button>
+                </div>
+
+              </form>
             </MDBCardBody>
           </MDBCard>
         </MDBCol>

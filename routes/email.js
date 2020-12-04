@@ -74,8 +74,6 @@ router.post('/matched', (req, res) => {
 
 router.post('/declined', (req, res) => {
 
-    console.log(req.body);
-
     sendGrid.setApiKey(process.env.SENDGRID_API)
     const msg = {
         to: req.body.email,
@@ -83,6 +81,35 @@ router.post('/declined', (req, res) => {
         subject: 'You were declined. ' ,
         text: "You matched" ,
         html: `<h4>We are sorry😔  You were not accepted to work on project(${req.body.projectTitle}) Don't give up. LogIn again and apply for other projects.</h4>`
+    }
+
+    sendGrid.send(msg)
+        .then(result => {
+
+            res.status(200).json({
+                success: true
+            });
+
+        })
+        .catch(err => {
+
+            console.log('error: ', err);
+            res.status(401).json({
+                success: false
+            });
+
+        });
+});
+
+router.post('/contact', (req, res) => {
+    sendGrid.setApiKey(process.env.SENDGRID_API)
+    const msg = {
+        to: "fetchmate.contact@gmail.com",
+        from: "fetchmate.contact@gmail.com",
+        reply_to: req.body.email,
+        subject: req.body.subject ,
+        text: "You matched" ,
+        html: `<h3>Message from:${req.body.name}(${req.body.email})</h3>` + `<br/>` +  `<h3>message:</h3>` + `<h3>${req.body.message}</h3>`
     }
 
     sendGrid.send(msg)

@@ -41,7 +41,7 @@ export default function PublicProfile() {
         <MDBCard testimonial className="card-profile card-public-profile">
         <div gradient='aqua' backgroundColor="red"/>
           <div className=''>
-            {console.log(owner)}
+            
           <img
               src={owner.profilePicture} 
               alt='aaa' className="rounded-circle hoverable border border-info public-profile" 
