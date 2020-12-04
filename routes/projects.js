@@ -7,7 +7,10 @@ const db = require('../models');
 //* Will return in DESC order based on the publishedAt
 
 //* Query param if you want to get all completed
-//* project/?includeCompleted=true
+//* api/v1/projects?includeCompleted=true
+
+//* Returns projects with matched skills --> Stretch: In order
+//* api/v1/projects?orderBy=skills&order=asc||desc
 router.get('/', (req, res) => {
     const { includeCompleted } = req.query;
     console.log(includeCompleted === 'true' ? 'withCompleted' : 'defaultScope')
@@ -17,13 +20,42 @@ router.get('/', (req, res) => {
             model: db.User,
             through: db.TeamMember,
                 as: 'Members'
-        }, db.Skill]
+        }, db.Skill, db.Comment]
     })
         .then(projects => {
             res.json(projects);
         })
         .catch(e => {
             console.log(e);
+        })
+           
+})
+
+router.get('/special', (req, res) => {
+    const { includeCompleted, orderBy, order } = req.query;
+    console.log(includeCompleted === 'true' ? 'withCompleted' : 'defaultScope')
+    db.User.findOne({
+        where : {
+            id : req.session.user.id
+        }
+    })
+        .then(user => {
+            db.Project.scope(includeCompleted === 'true' ? 'withCompleted' : 'defaultScope').findAll({                
+                order: [[db.sequelize.fn("skillcount", db.sequelize.col('"Project"."id"'), user.id), 'DESC']],
+                include:[db.User,{
+                    model: db.User,
+                    through: db.TeamMember,
+                        as: 'Members'
+                }, db.Skill, db.Comment]
+            })
+                .then(projects => {
+                    res.json(projects);
+                })
+                .catch(e => {
+                    console.log(e);
+                })
+
+
         })
 })
 
