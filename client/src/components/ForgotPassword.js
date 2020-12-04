@@ -45,7 +45,7 @@ export default function ForgotPassword() {
                 alert(data.error)
                 // setError(data.error)
             }else{
-                console.log(data.message) 
+                alert(data.message)
                 //email 
             }
             

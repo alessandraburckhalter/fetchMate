@@ -140,7 +140,11 @@ export default function ResetPassword() {
             </aside>
 
                 ):(
+                    <>
                     <h3>Password reset token expired!</h3>
+                    <br></br>
+                    <h3>Please go back to login page</h3>
+                    </>
                 )}
             </div>
         </div>
