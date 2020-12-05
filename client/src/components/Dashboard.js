@@ -110,7 +110,7 @@ export default function Dashboard() {
       
           <MDBCardBody>
           <h4 className='card-title'> <MDBIcon icon="user indigo-text" /> {user.loginInfo.firstName} {user.loginInfo.lastName} </h4>
-          <h4 className='card-title'><MDBIcon far icon="newspaper" /> {user.loginInfo.title}</h4>
+          <h4 className='card-title'><MDBIcon far icon="newspaper" /> {user.loginInfo.title ? user.loginInfo.title : (<Link to='/hub'>No headline. Edit Your Profile Here.</Link>)}</h4>
           <h4 className='card-title'> <MDBIcon icon="envelope orange-text" /> {user.loginInfo.email} </h4> 
           <Link to="/hub"><button name="button" type="button" class="btn btn-block  edit-button">Edit profile</button></Link>
             <hr />
@@ -118,11 +118,18 @@ export default function Dashboard() {
             <h3 class="card-title">
             <MDBIcon icon="cogs grey-text" /> Technical Skills</h3>
             <h2>
-              {Object.keys(currentUserData).length > 0 && currentUserData.Skills.filter((userData)=>{
+            {Object.keys(currentUserData).length > 0 && currentUserData.Skills.filter((userData)=>{
                 return (userData.category === "technical")
+               
+                  
+              }).length> 0 ? (currentUserData.Skills.filter((userData)=>{
+                return (userData.category === "technical")
+               
+                  
               }).map((name)=>{
-                return <span className="skills-dashboard">{name.name} </span> 
-              })}
+                
+                  return <span className="skills-dashboard">{name.name} </span> 
+                })): (<Link to='/hub'>No Skills. Edit Your Profile Here.</Link>)}
             </h2>
             
             <br/>
@@ -132,11 +139,18 @@ export default function Dashboard() {
             <MDBIcon icon="hand-holding-heart pink-text" /> Soft Skills
             </h3>
             <h2>
-              {Object.keys(currentUserData).length > 0 && currentUserData.Skills.filter((userData)=>{
+            {Object.keys(currentUserData).length > 0 && currentUserData.Skills.filter((userData)=>{
                 return (userData.category === "soft")
+               
+                  
+              }).length> 0 ? (currentUserData.Skills.filter((userData)=>{
+                return (userData.category === "soft")
+               
+                  
               }).map((name)=>{
-                return <span className="skills-dashboard">{name.name}</span>
-              })}
+                
+                  return <span className="skills-dashboard">{name.name} </span> 
+                })): (<Link to='/hub'>No Skills. Edit Your Profile Here.</Link>)}
             </h2>
             <br/>
             <hr />
@@ -146,10 +160,16 @@ export default function Dashboard() {
               <h2>
               {Object.keys(currentUserData).length > 0 && currentUserData.Skills.filter((userData)=>{
                 return (userData.category === "language")
-                
+               
+                  
+              }).length> 0 ? (currentUserData.Skills.filter((userData)=>{
+                return (userData.category === "language")
+               
+                  
               }).map((name)=>{
-                return  <span className="skills-dashboard">{name.name}</span>
-              })}
+                
+                  return <span className="skills-dashboard">{name.name} </span> 
+                })): (<Link to='/hub'>No language. Edit Your Profile Here.</Link>)}
               </h2>
             
             <br/>
@@ -161,21 +181,26 @@ export default function Dashboard() {
     
       <MDBCol className="projects-col">
           <h1 className="title-cards">My Projects</h1>
-          {Object.keys(currentUserData).length > 0 && currentUserData.Projects.map((project, index)=>{
+
+             
+          {Object.keys(currentUserData).length > 0 && (Object.keys(currentUserData.Projects).length > 0 ? (currentUserData.Projects.map((project, index)=>{
             return <ProjectCard key={project.id} project={project} loadProject={loadProject}/>
-          })} 
+          })): "No projects") } 
           <Link to="/projectForm"><button className="btn btn-block mb-3 publish-button">
             Publish a new project
           </button></Link>
           <br />
 
           <h1 className="title-cards">Contributing Projects</h1>
+            {console.log(currentUserData)}
             {Object.keys(currentUserData).length > 0 && currentUserData.MemberProjects.map((project, index)=>{
             if(project.TeamMember.approved === "approved"){
               return <DashboardConProjectsCard key={project.id} project={project}/>
-
+            }else if(project.TeamMember.approved !== "approved" || !project.TeamMember ){
+              return "No participated project"
             }
           })}
+
       
 
           <h1 className="title-cards">Pending Projects</h1>
@@ -187,8 +212,10 @@ export default function Dashboard() {
             {Object.keys(currentUserData).length > 0 && currentUserData.MemberProjects.map((project, index)=>{
             if(project.TeamMember.approved === "pending"){
               return <DashboardPenProjectCard key={project.id} project={project}/>
-
+            }else if(project.TeamMember.approved !== "pending" || !project.TeamMember ){
+              return "No applied project"
             }
+
           })}
      
   </MDBCol>

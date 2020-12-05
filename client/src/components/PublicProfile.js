@@ -14,15 +14,7 @@ export default function PublicProfile() {
   
 
   useEffect(() => {
-    fetch(`/api/v1/projects/${pendingId}`)
-      .then(res => res.json())
-      .then(result => {
-        setProject(result)
-      })
-      .catch(e => {
-        console.log(e)
-      })
-    fetch(`/api/v1/hub/user/${project.owner}`)
+    fetch(`/api/v1/hub/user/${pendingId}`)
       .then(res => res.json())
       .then(data => {
         setOwner(data)
@@ -41,7 +33,7 @@ export default function PublicProfile() {
         <MDBCard testimonial className="card-profile card-public-profile">
         <div gradient='aqua' backgroundColor="red"/>
           <div className=''>
-            {console.log(owner)}
+            
           <img
               src={owner.profilePicture} 
               alt='aaa' className="rounded-circle hoverable border border-info public-profile" 

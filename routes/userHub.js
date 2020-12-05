@@ -244,4 +244,24 @@ router.delete('/userSkill', checkAuth, (req, res) => {
         })
 })
 
+router.delete('/:userId', (req, res) => {
+    db.User.destroy({
+        where:{
+          id: req.params.userId
+        }
+      })
+        .then(deleted=>{
+          if(deleted === 1){
+            res.status(202).json({
+              success: "Account deleted"
+            })
+          }else{
+            res.status(404).json({
+              error: "Account Not Found"
+            })
+          }
+          
+        })
+})
+
 module.exports = router

@@ -11,12 +11,11 @@ import RichTextEditor from './RichTextEditor';
 
 export default function Comments() {
     const { projectId } = useParams()
-    const user = useSelector(state => state.user)
+
     const [comments, setComments] = useState([])
     const [content, setContent] = useState("")
     const [project, setProject] = useState("")
 
-    const [commentEdit, setCommentEdit] = useState("")
 
   
     
@@ -25,10 +24,8 @@ export default function Comments() {
      const toggle = () => {
         setModal(!modal);
     }
-    const [modalForComment, setModalForComment] = useState(false);
-    const toggleForComment = () => {
-        setModalForComment(!modalForComment);
-    }
+
+   
     
 
     const commentHandle = (e) =>{

@@ -20,7 +20,7 @@ export default function IndividualProject(props) {
     const [applied, setApplied] = useState(isApplied)
     const [comment, setComment] = useState([])
     const [modal, setModal] = useState(false);
-    console.log(project)
+    // console.log(project)
     const cancelApply = () =>{
         fetch(`/api/v1/projects/${project.id}/teamMember`, {
             method: 'DELETE',
@@ -89,7 +89,7 @@ export default function IndividualProject(props) {
                             </aside>
                             <MDBCard className="card-body card-body-all-projects2">
                             <aside>
-                            <MDBCardTitle className="project-title"><Link className="project-tilte" to="/interested"><MDBIcon icon="link" /> {project.title} </Link></MDBCardTitle>
+                            <MDBCardTitle className="project-title"><Link className="project-tilte" to={isOwner ? `/dashboard/${project.id}` : `/projects`}><MDBIcon icon="link" /> {project.title} </Link></MDBCardTitle>
                             <MDBCardText>
                                 {project.description.slice(0, 90)}{(project.description.length > 90 && "...")} <Link to="#" onClick={toggle}>Read More</Link> 
                                 <MDBModal isOpen={modal} toggle={toggle}>
@@ -107,25 +107,31 @@ export default function IndividualProject(props) {
                             </MDBCardText>
                             <MDBCardText>
                                 <h1 className="all-prjects-skills-title">Desirable Technical Skills</h1> 
-                                {project.Skills.filter(skill => skill.category === 'technical').map((skill) => {
-                                    console.log(skill)
-                                    return <span className="all-projects-skills">{skill.name}</span>
-                                    
-                                })}<br/><br/>
+                                {Object.keys(project).length > 0 && project.Skills.filter((userData)=>{
+                                    return (userData.category === "technical")
+                                }).length> 0 ? (project.Skills.filter((userData)=>{
+                                    return (userData.category === "technical")
+                                }).map((name)=>{
+                                    return <span className="skills-dashboard">{name.name} </span> 
+                                })): "No required skill. "}<br/><br/>
                                 <h1 className="all-prjects-skills-title">Desirable Soft Skills</h1>
-                                {project.Skills.filter(skill => skill.category === 'soft').map((skill) => {
-                                    console.log(skill)
-                                    return <span className="all-projects-skills">{skill.name}</span>
-                                    
-                                })}<br/><br/>
+                                {Object.keys(project).length > 0 && project.Skills.filter((userData)=>{
+                                        return (userData.category === "soft")
+                                    }).length> 0 ? (project.Skills.filter((userData)=>{
+                                        return (userData.category === "soft")
+                                    }).map((name)=>{
+                                        return <span className="skills-dashboard">{name.name} </span> 
+                                    })): "No required skill."}<br/><br/>
                             </MDBCardText>
                             <MDBCardText>
                             <h1 className="all-prjects-skills-title">Acceptable Spoken languages</h1>
-                                {project.Skills.filter(skill => skill.category === 'language').map((skill) => {
-                                    console.log(skill)
-                                    return <span className="all-projects-skills">{skill.name}</span>
-                                    
-                                })}
+                            {Object.keys(project).length > 0 && project.Skills.filter((userData)=>{
+                                    return (userData.category === "language")
+                                }).length> 0 ? (project.Skills.filter((userData)=>{
+                                    return (userData.category === "language")
+                                }).map((name)=>{
+                                    return <span className="skills-dashboard">{name.name} </span> 
+                                })): "No required language."}
                             </MDBCardText>
                             <div className="flex-row ">
                                 <a href="#!" className="card-link icon icon-all-projects-width">
@@ -136,7 +142,7 @@ export default function IndividualProject(props) {
                                 <a href="#!" className="card-link icon icon-all-projects-width"><MDBIcon icon="calendar-alt deep-purple-text" /> {Object.keys(project).length > 0 && project.publishedAt.slice(0, 10)} <span>Deadline</span>
                                 </a>
                                 {/* //todo GET PROJECT OWNER NAME ONTO CARD */}
-                                <a href="#!" className="card-link icon icon-all-projects-width"><MDBIcon icon="user-alt black-text" /> {project.User.firstName} {project.User.lastName} <span>Project owner</span>
+                                <a href="#!" className="card-link icon icon-all-projects-width"><MDBIcon icon="user-alt black-text" /> <Link to={`/dashboard/public/${project.User.id}`}>{project.User.firstName} {project.User.lastName} <span>Project owner</span></Link>
                                 </a>
                                 <a href="#!" className="card-link icon icon-all-projects-width"><MDBIcon icon="users indigo-text" /> {project.memberLimit} <span>Member's limit</span> 
                                 </a>

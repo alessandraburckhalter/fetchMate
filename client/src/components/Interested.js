@@ -1,6 +1,6 @@
 import { MDBCard, MDBCardBody, MDBCardText, MDBCardTitle, MDBCol, MDBContainer, MDBIcon, MDBRow } from 'mdbreact'
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import InterestedCard from './card/InterestedCard'
 import Navbar from './Navbar'
 import '../styles/interested.css'
@@ -69,34 +69,55 @@ export default function Interested() {
 
         <MDBCardText>
           <h1 className="all-prjects-skills-title">
-            Desirable Technical Skills </h1>{Object.keys(project).length > 0 && project.Skills.filter((userData)=>{
+            Desirable Technical Skills </h1>
+            {Object.keys(project).length > 0 && project.Skills.filter((userData)=>{
                 return (userData.category === "technical")
+               
+                  
+              }).length> 0 ? (project.Skills.filter((userData)=>{
+                return (userData.category === "technical")
+               
+                  
               }).map((name)=>{
-                return <span className="all-projects-skills">{name.name}</span>
-              })}
+                
+                  return <span className="skills-dashboard">{name.name} </span> 
+                })): "No required skill. Edit Your Project at dashboard"}
 
           <h1 className="all-prjects-skills-title">
             Desirable Soft Skills </h1>
             {Object.keys(project).length > 0 && project.Skills.filter((userData)=>{
                 return (userData.category === "soft")
+              }).length> 0 ? (project.Skills.filter((userData)=>{
+                return (userData.category === "soft")
               }).map((name)=>{
-                return <span className="all-projects-skills">{name.name}</span>
-              })}
+                return <span className="skills-dashboard">{name.name} </span> 
+              })): "No required skill. Edit Your Project at dashboard"}
+               
+                  
+                
+               
+                  
 
           <h1 className="all-prjects-skills-title">
             Acceptable Spoken Languages </h1>
             {Object.keys(project).length > 0 && project.Skills.filter((userData)=>{
                 return (userData.category === "language")
+              }).length> 0 ? (project.Skills.filter((userData)=>{
+                return (userData.category === "language")
               }).map((name)=>{
-                return <span className="all-projects-skills">{name.name}</span>
-              })}
+                return <span className="skills-dashboard">{name.name} </span> 
+              })): "No required skill. Edit Your Project at dashboard"}
           
           
         </MDBCardText>
         <div className="flex-row ">
-          <a href="#!" className="card-link icon "><MDBIcon icon="calendar-alt deep-purple-text"/>  {Object.keys(project).length > 0 && project.deadline.slice(0,10)} <span>Deadline</span>
+          <a href="#!" className="card-link icon">
+            <MDBIcon icon="calendar-alt deep-purple-text"/> {Object.keys(project).length > 0 && project.deadline.slice(0,10)} <span>Deadline</span>
           </a>
           
+          <Link to={`/chat/${project.id}`} className="card-link icon">
+            <MDBIcon icon="comments blue-text" /><span>Chat w/ Team</span>
+          </Link>
         </div>
       </MDBCard>
       </MDBCol>
