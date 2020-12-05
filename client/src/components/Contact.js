@@ -94,9 +94,14 @@ export default function Contact() {
             style={{ height: "400px" }}
           >
           <MapContainer   
-                center={[33.753746,-84.386330]}
-                zoom={14}
+                // center={[33.753746,-84.386330]}
+                bounds={[
+                  [33.753746, -84.386330],
+                  [31.000000, -100.000000]
+                ]}
+                // zoom={14}
                 style={{ width: '100%', height: '100%' }}
+
           >
 
             {/* <TileLayer url="https://a.tile.openstreetmap.org/{z}/{x}/{y}.png" /> */}

@@ -6,6 +6,7 @@ import { Link, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import '../styles/comments.css'
 import CommentList from './card/CommentList';
+import RichTextEditor from './RichTextEditor';
 
 
 export default function Comments() {
@@ -70,21 +71,26 @@ export default function Comments() {
     return (
         <>
             <Navbar />
-        <div id="top">
+            <div id="section1" className="background">
+            <div className="layer">
+            <h1 className="faq-title">Discussion Forum</h1>
+            </div>
+        </div>
             <MDBContainer md="12" className="projects-container">
 
                 <MDBRow>
                     <MDBCol className="comments-col">
                     
-                        <MDBCard className="card-body card-body-all-projects1 mb-5" >
+                        {/* <MDBCard className="card-body card-body-all-projects1 mb-5" >
                         <aside>
     
-                            </aside>
-                            <MDBCard className="card-body card-body-all-projects2">
-                            <aside>
+                            </aside> */}
+                            <MDBCard className="card-body ">
+                            {/* <aside> */}
                             <MDBCardTitle className="project-title"><Link className="project-tilte" to="/interested"><MDBIcon icon="link" /> {project&& project.title} </Link></MDBCardTitle>
                             <MDBCardText>
-                            {project&& project.description}<Link to="#" onClick={toggle}>Read More</Link> 
+                            {project&& project.description.slice(0, 90)}
+                            {(project&& project.description.length > 90 && "...")}<Link to="#" onClick={toggle}>Read More</Link> 
                                 <MDBModal isOpen={modal} toggle={toggle}>
                                 <MDBModalHeader toggle={toggle}>Privacy Measures</MDBModalHeader>
                                 <MDBModalBody>
@@ -101,36 +107,37 @@ export default function Comments() {
                                         <MDBCardText>
                                           
                                             <br /><br />
-                                            <h1 className="all-prjects-skills-title">Desirable Soft Skills:
+                                            <h1 className="all-prjects-skills-title">Desirable Soft Skills</h1>
                                 {Object.keys(project).length > 0 && project.Skills.filter((userData) => {
                                                 return (userData.category === "soft")
 
                                             }).map((name) => {
-                                                return name.name + " "
-                                            })}</h1>
+                                                return <span className="all-projects-skills">{name.name}</span>
+                                            })}
                                             
                                             
                             </MDBCardText>
                             <MDBCardText>
-                                <h1 className="all-prjects-skills-title">Desirable Technical Skills: 
+                                <h1 className="all-prjects-skills-title">Desirable Technical Skills</h1> 
                                 {Object.keys(project).length > 0 && project.Skills.filter((userData) => {
                                                     return (userData.category === "technical")
 
                                                 }).map((name) => {
-                                                    return name.name + " "
-                                                })}</h1>
+                                                    return <span className="all-projects-skills">{name.name}</span>
+                                                })}
                                     
                             </MDBCardText>
                             <MDBCardText>
-                            <h1 className="all-prjects-skills-title">Acceptable Spoken languages: 
+                            <h1 className="all-prjects-skills-title">Acceptable Spoken languages</h1>
                             {Object.keys(project).length > 0 && project.Skills.filter((userData) => {
                                                 return (userData.category === "language")
 
                                             }).map((name) => {
-                                                return name.name + " "
-                                            })}</h1>
-                                
+                                                return <span className="all-projects-skills">{name.name}</span>
+                                            })}
                             </MDBCardText>
+
+                            <br/>
                             <div className="flex-row ">
                                 <a href="#!" className="card-link icon icon-all-projects-width">
                                  {/* {project.isCompleted === false ? 
@@ -148,40 +155,52 @@ export default function Comments() {
                                 {project.memberLimit} <span>Member's limit</span> 
                                 </a>
                             </div>
-                            </aside>
-                            </MDBCard>
+                            {/* </aside>
+                            </MDBCard> */}
                         </MDBCard>
-                        
 
-                        <form onSubmit={commentHandle}>
-                
-                        <label htmlFor="defaultFormCardNameEx" className="grey-text font-weight-light">
-                       Leave a comment
-                        </label>
-                        <input type="text-area" id="defaultFormCardNameEx" value={content} className="form-control" onChange={(e) => {setContent(e.target.value)}}/>
-                        <br />
-                    
-                        <div className="text-center py-4 mt-3">
-                        <button className="btn btn-outline-purple" type="submit">
-                            Send
-                            <MDBIcon far icon="paper-plane" className="ml-2" />
-                        </button>
-                        </div>
-                    </form>
-                    
-                    <div>
-                        <h1>Comments</h1>
-                                 <div>
+                        <MDBContainer className="mt-5">
+                        <h1 className="mb-5">Comments </h1>
+                       
+                                
                                  {comments.length > 0 ? (comments.map((comment)=>{
                                 return <>
                                     <CommentList key={comment.id} comment={comment} loadComments={loadComments}/>
                                 </> 
                                 })) : "No comments"} 
-                                 </div>
+                                
+                                  
+                                 </MDBContainer>
+                        
 
-                                 
-                                 
-                    </div>
+                        <form onSubmit={commentHandle}>
+                
+                        <label htmlFor="defaultFormCardNameEx" className="grey-text font-weight-light">
+                       Leave a comment about this project 
+                        </label>
+
+                        <div className="input-group">
+                            <div className="input-group-prepend">
+                                    <span className="input-group-text" id="basic-addon">
+                                    <i className="fas fa-pencil-alt prefix"></i>
+                                    </span>
+                                </div>
+                                <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" onChange={(e) => {setContent(e.target.value)}}></textarea>
+                            </div>
+                            
+                            <div className="text-center py-4 mt-3">
+                            <button className="btn btn-outline-purple" type="submit">
+                                Send
+                                <MDBIcon far icon="paper-plane" className="ml-2" />
+                            </button>
+                            </div>
+
+                    
+                    </form>
+
+                    {/* <RichTextEditor /> */}
+                    
+                   
                     </MDBCol>
                 </MDBRow>
           
@@ -189,7 +208,7 @@ export default function Comments() {
       
       </MDBContainer>
 
-        </div>
+       
 
         <Footer />
         </>

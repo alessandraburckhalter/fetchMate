@@ -1,3 +1,24 @@
 .comments-col {
     margin-top: 100px;
 }
+
+.user-name {
+    font-weight: bold;
+}
+
+.comment-time {
+    font-size: 11px;
+}
+
+button.comments-icon {
+    background-color: transparent !important;
+    border: none;
+    padding: 5px;
+    font-size: 12px;
+}
+
+.comment-content {
+    padding-top: 5px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}

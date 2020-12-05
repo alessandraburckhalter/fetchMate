@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import moment from 'moment';
-import { MDBModal, MDBModalBody, MDBModalFooter, MDBModalHeader } from 'mdbreact';
+import { MDBIcon, MDBModal, MDBModalBody, MDBModalFooter, MDBModalHeader, MDBRow } from 'mdbreact';
 import { useSelector } from 'react-redux';
+import '../../styles/comments.css'
 
 export default function CommentList(props) {
     const {comment} = props
@@ -57,8 +58,16 @@ export default function CommentList(props) {
             
     }
     return (
-        <div>
-            <h6>💬{comment.User.firstName} {comment.User.lastName}: {comment.content} ({moment(comment.createdAt).fromNow()}) <button onClick={ () => removeComment(comment)}>🚮</button><button onClick={()=>toggleForComment(comment)}>𝌡</button></h6>
+        <MDBRow>
+            <div className="md-12"><MDBIcon icon="user-circle" /> <span className="user-name">{comment.User.firstName} {comment.User.lastName}</span> . <span className="comment-time">{moment(comment.createdAt).fromNow()}</span> <br/>
+            
+            <span className="comment-content">{comment.content}</span>
+            
+            <br/>
+            
+            <button className="comments-icon icon" onClick={ () => removeComment(comment)}><MDBIcon icon="trash-alt red-text" /> Delete</button> 
+            
+            <button className="comments-icon indigo-text icon"  onClick={()=>toggleForComment(comment)}><MDBIcon icon="edit" />Edit</button><hr /></div> 
                                 <MDBModal isOpen={modalForComment} toggle={toggleForComment}>
                                 <MDBModalHeader toggle={()=>toggleForComment(comment)}>Privacy Measures</MDBModalHeader>
                                 <MDBModalBody>
@@ -72,6 +81,6 @@ export default function CommentList(props) {
                                 <button className='btn btn-primary' onClick={toggleForComment}>Close</button>
                             </MDBModalFooter>
                         </MDBModal>
-        </div>
+                    </MDBRow>
     )
 }
