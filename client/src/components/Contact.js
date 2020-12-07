@@ -140,7 +140,7 @@ export default function Contact() {
                 // center={[33.753746,-84.386330]}
                 bounds={[
                   [33.753746, -84.386330],
-                  [31.000000, -100.000000]
+                  [29.5003663, -95.6610555]
                 ]}
                 // zoom={14}
                 style={{ width: '100%', height: '100%' }}
@@ -158,7 +158,7 @@ export default function Contact() {
 
             <Marker 
                 icon={mapIcon1}
-                position={[31.000000, -100.000000]}
+                position={[29.5003663, -95.6610555]}
             ></Marker>
 
           </MapContainer>

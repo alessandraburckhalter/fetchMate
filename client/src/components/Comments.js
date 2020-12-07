@@ -6,7 +6,7 @@ import { Link, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import '../styles/comments.css'
 import CommentList from './card/CommentList';
-import RichTextEditor from './RichTextEditor';
+
 import userPic from '../images/user.jpg';
 
 
@@ -155,7 +155,7 @@ export default function Comments() {
                                 </a>
                                 {/* //todo GET PROJECT OWNER NAME ONTO CARD */}
                                 
-                                <a href="#!" className="card-link icon icon-all-projects-width"><MDBIcon icon="users indigo-text" /> {project.memberLimit} <span>Member's limit</span> 
+                                <a href="#!" className="card-link icon icon-all-projects-width"><MDBIcon icon="users indigo-text" /> {project.memberLimit} <span>Max members</span> 
                                 </a>
                             </div>
                             {/* </aside>
@@ -254,7 +254,6 @@ export default function Comments() {
           </MDBPageItem>
         </MDBPagination>
 
-                    {/* <RichTextEditor /> */}
                     
                     </MDBContainer>   
                     </MDBCol>

@@ -13,9 +13,13 @@
 }
 
 .contributing-title  {
-    font-family: fontastique;
-    font-size: 50px;
-    letter-spacing: 3px;
-    color: #065c6f !important;
+    font-size: 45px;
+    color: steelblue;
+    padding-top: 50px;
+    padding-bottom: 70px;
     text-align: center;
+    font-family: fontastique;
+    letter-spacing: 3px;
+    font-weight: revert;
+    text-transform: uppercase;
 }
