@@ -9,6 +9,8 @@ import Leaflet from 'leaflet';
 import mapMarkerImg from '../images/mapIcon.png';
 import mapMarkerImg1 from '../images/mapIcon1.svg';
 import '../styles/contact.css'
+import { useSelector } from 'react-redux'
+import NavbarPublic from './NavbarPublic'
 
 
 export default function Contact() {
@@ -16,6 +18,7 @@ export default function Contact() {
   const [fromEmail, setFromEmail] = useState("")
   const [subject, setSubject] = useState("")
   const [message, setMessage] = useState("")
+  const user = useSelector(state => state.user)
 
 
   const sendEmail = (e) => {
@@ -50,7 +53,12 @@ export default function Contact() {
 
     return (
         <>
-        <Navbar />
+        {user.loginInfo === null ? (
+              <NavbarPublic />
+            ) 
+            : (
+              <Navbar />
+            )}
         <div >
         {/* <div id="section1" className="background">
             <div className="layer">
@@ -140,7 +148,7 @@ export default function Contact() {
                 // center={[33.753746,-84.386330]}
                 bounds={[
                   [33.753746, -84.386330],
-                  [31.000000, -100.000000]
+                  [29.5003663, -95.6610555]
                 ]}
                 // zoom={14}
                 style={{ width: '100%', height: '100%' }}
@@ -158,7 +166,7 @@ export default function Contact() {
 
             <Marker 
                 icon={mapIcon1}
-                position={[31.000000, -100.000000]}
+                position={[29.5003663, -95.6610555]}
             ></Marker>
 
           </MapContainer>

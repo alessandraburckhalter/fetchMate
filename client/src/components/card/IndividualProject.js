@@ -154,7 +154,7 @@ export default function IndividualProject(props) {
                                 {/* //todo GET PROJECT OWNER NAME ONTO CARD */}
                                 {/* <a href="#!" className="card-link icon icon-all-projects-width"><MDBIcon icon="user-alt black-text" /> <Link to={`/dashboard/public/${project.User.id}`}>{project.User.firstName} {project.User.lastName} <span>Project owner</span></Link>
                                 </a> */}
-                                <a href="#!" className="card-link icon icon-all-projects-width"><MDBIcon icon="users indigo-text" /> {project.memberLimit} <span>Member's limit</span> 
+                                <a href="#!" className="card-link icon icon-all-projects-width"><MDBIcon icon="users indigo-text" /> {project.memberLimit} <span>Max members</span> 
                                 </a>
                                 <Link to={`/projects/${project.id}`} className="card-link icon icon-all-projects-width"><i class="fas fa-comment-dots"></i> {comment && comment.length} <span>Comments</span> 
                                 </Link>

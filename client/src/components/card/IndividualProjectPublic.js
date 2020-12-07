@@ -88,7 +88,7 @@ export default function IndividualProjectPublic({ project }) {
                                 {/* //todo GET PROJECT OWNER NAME ONTO CARD */}
                                 {/* <a href="#!" className="card-link icon icon-all-projects-width"><MDBIcon icon="user-alt black-text" />  {project.User.firstName} {project.User.lastName} <span>Project owner</span>
                                 </a> */}
-                                <a href="#!" className="card-link icon icon-all-projects-width"><MDBIcon icon="users indigo-text" /> {project.memberLimit} <span>Member's limit</span> 
+                                <a href="#!" className="card-link icon icon-all-projects-width"><MDBIcon icon="users indigo-text" /> {project.memberLimit} <span>Max members</span> 
                                 </a>
                                 <div>
 
