@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@sendgrid/mail": "^7.4.0",
+    "aws-sdk": "^2.804.0",
     "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
     "connect-session-sequelize": "^7.0.4",

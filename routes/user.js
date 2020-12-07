@@ -7,6 +7,8 @@ const multer = require('multer');
 const crypto = require('crypto')
 const moment = require('moment')
 const sendGrid = require("@sendgrid/mail");
+const uploadToS3 = require('../upload-to-S3');
+const { url } = require('inspector');
 
 
 // const defaultPicture = require('../defaultPhoto.jpeg')
@@ -46,6 +48,7 @@ const upload = multer({
 });
 
 
+
 // Create User Account
 router.post('/', upload.single('profilePicture'), (req, res) => {
     if (!req.body || !req.body.email || !req.body.password || !req.body.firstName || !req.body.lastName) {
@@ -54,6 +57,8 @@ router.post('/', upload.single('profilePicture'), (req, res) => {
         })
        
     }
+
+    
 
     const { email, firstName, lastName, password } = req.body
     models.User.findAll({
@@ -65,13 +70,15 @@ router.post('/', upload.single('profilePicture'), (req, res) => {
         if(user.length > 0){
             res.status(400).json({error:"email is used"})
         }else{
+            uploadToS3(req.file.path).then(url => {
+                console.log(url)
             bcrypt.hash(password, 10, (err, hash) => {
                 models.User.create({
                     email: email,
                     firstName: firstName,
                     lastName: lastName,
                     password: hash,
-                    profilePicture: req.file && req.file.path ? req.file.path : '/uploads/default.png'
+                    profilePicture: url ? url.Location : '/uploads/default.png'
         
                 })
                     .then((result) => {
@@ -84,9 +91,10 @@ router.post('/', upload.single('profilePicture'), (req, res) => {
                         })
                     })
             })
+        })
         }
 
-    })
+})
     
 })
 
