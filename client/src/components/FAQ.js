@@ -19,7 +19,7 @@ export default function FAQ() {
 
     return (
         <>
-        <Navbar />
+        <NavbarPublic />
         {/* <div id="section1" className="background">
             <div className="layer">
             </div>

@@ -89,20 +89,21 @@ export default function ResetPassword() {
     return (
 
         <div>
-        <div id="left-side">
-            <aside>
+        <MDBRow className="no-gutters">
+        <MDBCol md="5" className="no-gutters ">
+        <div className="leftside d-flex justify-content-center align-items-center">
                 <img src={logo} alt="logo" width="50%"/>
-                <h2>Create an account and start publishing or searching projects today!</h2>
+                <h2>Start publishing or searching projects today!</h2>
 
                 <Link to="/" className="back-home">
                 <MDBIcon icon="angle-double-left" size={30}  />
                 </Link>
-                
-            </aside>
+                </div>
+            </MDBCol>
 
-            <div id="right-side">
+            <MDBCol md="7" className="no-gutters md-6">
                 {showPage === true ?(
-                <aside>
+               <div className="rightside d-flex justify-content-center align-items-center"> 
                     <form className="signup-form" onSubmit={handleSubmit}>
 
                 <fieldset>
@@ -114,6 +115,7 @@ export default function ResetPassword() {
                             </label>
                         <input
                             icon="lock"
+                            type="password"
                             id="password"
                             value={password}
                             onChange={(e)=> {setPassword(e.target.value)}}
@@ -125,6 +127,7 @@ export default function ResetPassword() {
                             </label>
                         <input
                             icon="lock"
+                            type="password"
                             id="confirmPassword"
                             value={confirmPassword}
                             onChange={(e)=> {setConfirmPassword(e.target.value)}}
@@ -137,17 +140,20 @@ export default function ResetPassword() {
                     Submit  <MDBIcon far icon="paper-plane ml-1" />
                 </button>
             </form>
-            </aside>
+            </div>
 
                 ):(
-                    <>
-                    <h3>Password reset token expired!</h3>
+
+                    
+                    <div className="justify-content-center align-items-center rightside-reset">
+                    <h3>Your password reset token has expired 😕</h3>
                     <br></br>
-                    <h3>Please go back to login page</h3>
-                    </>
+                    <h3><Link to="/forgotpassword">Click here to request a new one.</Link></h3>
+                    </div>
+                    
                 )}
-            </div>
-        </div>
+            </MDBCol>
+        </MDBRow>
 
         </div>
     )

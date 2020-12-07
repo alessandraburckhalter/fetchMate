@@ -118,7 +118,7 @@ export default function Dashboard() {
       
           <MDBCardBody>
           <h4 className='card-title'> <MDBIcon icon="user indigo-text" /> {user.loginInfo.firstName} {user.loginInfo.lastName} </h4>
-          <h4 className='card-title'><MDBIcon far icon="newspaper" /> {user.loginInfo.title ? user.loginInfo.title : (<Link to='/hub'>No headline. Edit Your Profile Here.</Link>)}</h4>
+          <h4 className='card-title'><MDBIcon far icon="newspaper" /> {user.loginInfo.title ? user.loginInfo.title : (<Link className="add-skills" to='/hub'>Add headline</Link>)}</h4>
           <h4 className='card-title'> <MDBIcon icon="envelope orange-text" /> {user.loginInfo.email} </h4> 
           <Link to="/hub"><button name="button" type="button" class="btn btn-block  edit-button">Edit profile</button></Link>
             <hr />

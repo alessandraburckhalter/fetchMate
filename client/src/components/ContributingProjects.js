@@ -36,7 +36,7 @@ export default function ContributingProjects() {
 
         <div id="top">
       <MDBContainer className="contributing-container">
-        <h1 className="contributing-title ">Contribution project overview</h1>
+        <h1 className="contributing-title ">Your Contributions</h1>
       <MDBRow>
       <MDBCol md="3" lg="4" className="mt-5 ">
         <MDBCard testimonal className="card-body-contributing">
@@ -65,8 +65,7 @@ export default function ContributingProjects() {
     
       <MDBCol className="mt-5 contributing-col">
       <MDBCard className="card-body " >
-      <MDBCardTitle className="project-title"><i class="fas fa-bookmark amber-text"></i>
-          {project.title}</MDBCardTitle > 
+      <MDBCardTitle className="project-title"><i class="fas fa-bookmark amber-text"></i> {project.title}</MDBCardTitle > 
           <MDBCardText>
           {project.description} 
           </MDBCardText>
@@ -112,7 +111,7 @@ export default function ContributingProjects() {
                                 <a href="#!" className="card-link icon icon-all-projects-width"><MDBIcon icon="calendar-alt deep-purple-text" /> {Object.keys(project).length > 0 && project.deadline.slice(0, 10)} <span>Deadline</span>
                                 </a>
 
-                                <a href="#!" className="card-link icon icon-all-projects-width"><MDBIcon icon="users indigo-text" /> {project.memberLimit}<span>Member's limit</span> 
+                                <a href="#!" className="card-link icon icon-all-projects-width"><MDBIcon icon="users indigo-text" /> {project.memberLimit}<span>Max members</span> 
                                  </a>
           </div>
          
