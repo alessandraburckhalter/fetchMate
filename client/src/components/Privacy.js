@@ -1,17 +1,25 @@
 import { MDBContainer } from 'mdbreact'
 import React from 'react'
+import { useSelector } from 'react-redux'
 import '../styles/privacy.css'
 import Footer from './Footer'
 import Navbar from './Navbar'
+import NavbarPublic from './NavbarPublic'
 
 export default function Privacy() {
+    const user = useSelector(state => state.user);
     return (
         <div>
-            <Navbar />
+            {user.loginInfo === null ? (
+              <NavbarPublic />
+            ) 
+            : (
+              <Navbar />
+            )}
             {/* <div id="section1" className="background mb-5">
             <div className="layer">
-            </div>
-        </div> */}
+            </div> */}
+        {/* </div> */}
             <MDBContainer className="mt-5">
             <h1  className="faq-title">Privacy Policy <i class="fas fa-shield-alt"></i></h1>
             <h1 className="policy-title">fetchMate Privacy Statement</h1>

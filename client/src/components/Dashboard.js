@@ -62,7 +62,7 @@ export default function Dashboard() {
     loadProject()
     
   }, [dispatch, setCurrentUserData])
-  
+
     return (
     <>
       <Navbar />
@@ -200,31 +200,26 @@ export default function Dashboard() {
           <br />
 
           <h1 className="title-cards">Contributing Projects</h1>
-            {console.log(currentUserData)}
-            {Object.keys(currentUserData).length > 0 && currentUserData.MemberProjects.map((project, index)=>{
-            if(project.TeamMember.approved === "approved"){
+          {Object.keys(currentUserData).length > 0 && 
+            currentUserData.MemberProjects.filter(project => project.TeamMember.approved === "approved").map(project => {
               return <DashboardConProjectsCard key={project.id} project={project}/>
-            }else if(project.TeamMember.approved !== "approved" || !project.TeamMember ){
-              return "You are not contributing to any projects yet"
-            }
           })}
+          {Object.keys(currentUserData).length > 0 && 
+          currentUserData.MemberProjects.filter(project => project.TeamMember.approved === "approved").length === 0 && (
+            "You are not contributing to any projects yet"
+          )}
 
       
 
           <h1 className="title-cards">Pending Projects</h1>
-            {/* <MDBCard className="card-body card-body-pending1 " >
-        <aside>
-     
-          
-        </aside> */}
-            {Object.keys(currentUserData).length > 0 && currentUserData.MemberProjects.map((project, index)=>{
-            if(project.TeamMember.approved === "pending"){
+          {Object.keys(currentUserData).length > 0 && 
+            currentUserData.MemberProjects.filter(project => project.TeamMember.approved === "pending").map(project => {
               return <DashboardPenProjectCard key={project.id} project={project}/>
-            }else if(project.TeamMember.approved !== "pending" || !project.TeamMember ){
-              return "You haven't applied for any projects yet"
-            }
-
           })}
+          {Object.keys(currentUserData).length > 0 && 
+          currentUserData.MemberProjects.filter(project => project.TeamMember.approved === "pending").length === 0 && (
+            "You haven't applied for any projects yet"
+          )}
      
   </MDBCol>
     </MDBRow>

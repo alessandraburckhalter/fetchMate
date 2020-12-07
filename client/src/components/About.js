@@ -8,11 +8,19 @@ import Derek from '../images/Derek.png';
 import Pete from '../images/Pete.jpeg';
 import Heeyoung from '../images/Heeyoung.jpg';
 import Jacky from '../images/Jacky.jpg';
+import { useSelector } from 'react-redux';
+import NavbarPublic from './NavbarPublic';
 
 export default function About() {
+  const user = useSelector(state => state.user);
     return (
         <div>
-            <Navbar />
+            {user.loginInfo === null ? (
+              <NavbarPublic />
+            ) 
+            : (
+              <Navbar />
+            )}
             <MDBContainer className="about-container">
           
             <h1 className='text-center  about-title'>Meet the <span className="fetch">fetch</span><span className="mate">Mate</span> team</h1>
