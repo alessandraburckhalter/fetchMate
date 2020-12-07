@@ -14,18 +14,13 @@ export default function Chat() {
     const socketRef = useRef();
     const [messages, setMessages] = useState([]);
     const [newMessage, setNewMessage] = useState('');
-    const initialValue = "```javascript\nconst "
-    const middleValue = " = `"
-    const endingValue = "```"
-    const chatTime = `\` \/\/Sent @ ${moment().format("dddd, MMMM Do YYYY, h:mm a")}\n`
-    //todo eventually will come from prop
     const {projectId} = useParams();
 
     const sendMessage = (e) => {
         e.preventDefault();
-        const sandwich = initialValue + user.loginInfo.firstName + '_' + user.loginInfo.lastName + middleValue + newMessage + chatTime + endingValue;
+        const messageContent = `\`\`\`javascript\nconst ${user.loginInfo.firstName}_${user.loginInfo.lastName}= \`${newMessage}\` \/\/Sent @ ${moment().format("dddd, MMMM Do YYYY, h:mm a")}\n\`\`\``;
         const messagePayload = {
-            content: sandwich,
+            content: messageContent,
             projectId: projectId
         }
         setNewMessage('');

@@ -1,8 +1,9 @@
 .footer {
-    /* background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(147,230,241,1) 0%, rgba(145,192,241,1) 45.5% ); */
+    bottom: 0;
     background-color: rgba(145,192,241,1);
     background-image: url(../images/Frame3.svg);
     background-size: cover;
+  
   }
   
   .footer a {
@@ -49,6 +50,7 @@
   .col-sm-4 {
     width: auto !important;
   }
+  
 @media screen and (max-width: 767px){
 .img-footer {
   max-width: 25% !important;
