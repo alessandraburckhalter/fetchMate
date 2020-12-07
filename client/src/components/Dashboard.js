@@ -201,25 +201,23 @@ export default function Dashboard() {
 
           <h1 className="title-cards">Contributing Projects</h1>
           {Object.keys(currentUserData).length > 0 && 
-            currentUserData.MemberProjects.filter(project => project.TeamMember.approved === "approved").map(project => {
+            <>
+            {currentUserData.MemberProjects.filter(project => project.TeamMember.approved === "approved").map(project => {
               return <DashboardConProjectsCard key={project.id} project={project}/>
           })}
-          {Object.keys(currentUserData).length > 0 && 
-          currentUserData.MemberProjects.filter(project => project.TeamMember.approved === "approved").length === 0 && (
-            "You are not contributing to any projects yet"
-          )}
-
-      
-
-          <h1 className="title-cards">Pending Projects</h1>
-          {Object.keys(currentUserData).length > 0 && 
-            currentUserData.MemberProjects.filter(project => project.TeamMember.approved === "pending").map(project => {
+          {currentUserData.MemberProjects.filter(project => project.TeamMember.approved === "approved").length === 0 && (
+              "You are not contributing to any projects yet"
+            )}
+            <h1 className="title-cards">Pending Projects</h1>
+            {currentUserData.MemberProjects.filter(project => project.TeamMember.approved === "pending").map(project => {
               return <DashboardPenProjectCard key={project.id} project={project}/>
-          })}
-          {Object.keys(currentUserData).length > 0 && 
-          currentUserData.MemberProjects.filter(project => project.TeamMember.approved === "pending").length === 0 && (
+            })}
+            {currentUserData.MemberProjects.filter(project => project.TeamMember.approved === "pending").length === 0 && (
             "You haven't applied for any projects yet"
-          )}
+            )}
+            </>
+          }
+
      
   </MDBCol>
     </MDBRow>
