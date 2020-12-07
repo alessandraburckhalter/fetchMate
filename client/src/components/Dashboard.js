@@ -204,7 +204,7 @@ export default function Dashboard() {
             {Object.keys(currentUserData).length > 0 && currentUserData.MemberProjects.map((project, index)=>{
             if(project.TeamMember.approved === "approved"){
               return <DashboardConProjectsCard key={project.id} project={project}/>
-            }else if(project.TeamMember.approved !== "approved" || !project.TeamMember ){
+            }else if(!project.TeamMember.approved === "approved" || !project.TeamMember ){
               return "You are not contributing to any projects yet"
             }
           })}
@@ -220,7 +220,7 @@ export default function Dashboard() {
             {Object.keys(currentUserData).length > 0 && currentUserData.MemberProjects.map((project, index)=>{
             if(project.TeamMember.approved === "pending"){
               return <DashboardPenProjectCard key={project.id} project={project}/>
-            }else if(project.TeamMember.approved !== "pending" || !project.TeamMember ){
+            }else if(!project.TeamMember.approved === "pending" || !project.TeamMember ){
               return "You haven't applied for any projects yet"
             }
 
