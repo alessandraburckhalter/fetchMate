@@ -193,7 +193,7 @@ export default function Contact() {
               <h1 className="location-name mt-2">Houston, Texas</h1>
               <h1 className="location-name">United States</h1>
             </MDBCol>
-          </MDBRow>
+          </MDBRow> 
         </MDBCol>
       </MDBRow>
       </MDBContainer>
