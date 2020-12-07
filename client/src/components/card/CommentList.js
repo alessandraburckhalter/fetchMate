@@ -53,7 +53,7 @@ export default function CommentList(props) {
                 props.loadComments()
             })
         }else{
-           alert("this is not your comment")
+           alert("It's not your comment")
         }
             
                 

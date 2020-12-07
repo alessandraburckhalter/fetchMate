@@ -1,7 +1,7 @@
 import { MDBCollapse, MDBContainer, MDBDropdown, MDBDropdownItem, MDBDropdownMenu, MDBDropdownToggle, MDBIcon, MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavbarToggler, MDBNavItem
  } from 'mdbreact'
 import React, { useState } from 'react'
-import { NavLink, useHistory } from 'react-router-dom';
+import { Link, NavLink, useHistory } from 'react-router-dom';
 import '../styles/navbar.css'
 import logo from '../images/logo3.png';
 import { useDispatch } from 'react-redux';
@@ -60,26 +60,21 @@ export default function NavbarPublic() {
           <MDBNavbarNav left>
             
             <MDBNavItem active>
-              <NavLink className="d-none d-md-inline"
-               to="/" >Home</NavLink
-              >
-            </MDBNavItem>
-            <MDBNavItem>
-              <NavLink className="d-none d-md-inline"
-               to="/contact" >Contact</NavLink
-              >
+              <Link 
+               to="/" >
+                 <div className=" d-md-inline" onClick={handleToggle} >Home</div>
+               </Link>
             </MDBNavItem>
 
             <MDBNavItem>
-              <NavLink className="d-none d-md-inline"
-               to="/projects" >Projects</NavLink
-              >
+              <Link 
+               to="/projects" ><div className=" d-md-inline" onClick={handleToggle} >Projects</div></Link>
             </MDBNavItem>
             
             <MDBNavItem>
               <MDBDropdown>
-                <MDBDropdownToggle nav caret>
-                  <div className="d-none d-md-inline">About</div>
+                <MDBDropdownToggle nav >
+                <div className=" d-md-inline">About <MDBIcon icon="caret-down white-text" /></div>
                 </MDBDropdownToggle>
                 <MDBDropdownMenu className="dropdown-default">
                   <MDBDropdownItem href="/about">The Team</MDBDropdownItem>
@@ -88,6 +83,14 @@ export default function NavbarPublic() {
                 </MDBDropdownMenu>
               </MDBDropdown>
             </MDBNavItem>
+
+           
+            <MDBNavItem right>
+              <Link 
+               to="/register" ><div className=" d-md-inline" onClick={handleToggle} >Sign Up</div></Link>
+            </MDBNavItem>
+            
+            
           </MDBNavbarNav>
         </MDBCollapse>
         </MDBContainer>

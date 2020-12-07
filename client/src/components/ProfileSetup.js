@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {  MDBCard, MDBCardBody, MDBCol, MDBContainer, MDBIcon, MDBModal, MDBModalBody, MDBModalFooter, MDBModalHeader, MDBRow } from 'mdbreact';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, Modal } from 'react-bootstrap';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import '../styles/profileSetup.css'
 import { clearSearchSkillArray, login, logout, setSearchSkillArray } from '../redux/actions';
 import SkillSearchBar from './SkillSearchBar';
