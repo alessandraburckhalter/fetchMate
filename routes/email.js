@@ -50,7 +50,7 @@ router.post('/matched', (req, res) => {
         from: "fetchmate.contact@gmail.com",
         subject: 'You matched with ' + req.body.owner,
         text: "You matched" + req.body.ownerName,
-        html: `<h4>Congraturation! You were accepted. You can start working with ${req.body.ownerName}(${req.body.owner}) on project(${req.body.projectTitle})</h4>`
+        html: `<h4>Congratulation! You were accepted. You can start working with ${req.body.ownerName}(${req.body.owner}) on project(${req.body.projectTitle})</h4>`
     }
 
     sendGrid.send(msg)
