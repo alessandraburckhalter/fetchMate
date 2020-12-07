@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Navbar from './Navbar';
 import '../styles/faq.css';
 import Footer from './Footer'
+import NavbarPublic from './NavbarPublic';
 
 export default function FAQ() {
     const [collapseID, setCollapseID] = useState(null)
@@ -19,12 +20,12 @@ export default function FAQ() {
     return (
         <>
         <Navbar />
-        <div id="section1" className="background">
+        {/* <div id="section1" className="background">
             <div className="layer">
-            <h1 className="faq-title">FAQ</h1>
             </div>
-        </div>
+        </div> */}
         <MDBContainer className="faq-container ">
+            <h1 className="faq-title">Frequently <span className="green-color">asked</span> questions <i class="fas fa-comment-alt"></i></h1>
       <MDBContainer className="mb-5">
           <h1 className="faq-container-title"><MDBIcon  icon="question-circle blue-text" /> Questions you may have</h1>
           <h2 className="faq-subtitle">Click below for responses to frequently asked questions.</h2>

@@ -31,13 +31,15 @@ button.faq-button {
 
 /* title in the top section */
 .faq-title {
-    font-size: 80px;
-    color: white;
+    font-size: 45px;
+    color: steelblue;
     /* color: #0e49b5; */
     padding-top: 160px;
     text-align: center;
     font-family: fontastique;
-    letter-spacing: 8px;
+    letter-spacing: 3px;
+    font-weight: revert;
+    text-transform: uppercase;
 }
 
 /* main title in the second section */
@@ -82,4 +84,25 @@ button.faq-button {
     color: #0e49b5;
     font-weight: 400;
     font-size: 18px;
+}
+
+/* Media Query For Iphone */
+@media only screen 
+and (min-device-width : 375px) 
+and (max-device-width : 667px) { 
+    
+}
+
+/* Media Query For Tablet */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) {
+    .faq-container {
+        margin-bottom: 0;
+    }
+
+    .faq-contact-us {
+        margin-top: 100px;
+    }
+    
 }

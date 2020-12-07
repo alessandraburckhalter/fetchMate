@@ -20,6 +20,9 @@ button.accept {
     color: white;
     border-radius: 4px;
     padding: 13px;
+    outline: none;
+    margin-left: 55px;
+    border: 1px solid white;
 }
 
 button.decline {
@@ -27,6 +30,8 @@ button.decline {
     color: white;
     border-radius: 4px;
     padding: 13px;
+    outline: none;
+    border: 1px solid white;
 }
 
 button.remove-member {
@@ -34,10 +39,13 @@ button.remove-member {
     background-color: #ec0101;
     color: white;
     border-radius: 4px;
+    outline: none;
+    border: 1px solid white;
 }
 
 .team-members-container {
     margin-bottom: 150px;
+    margin-top: 50px;
 }
 
 /* main titles */
@@ -57,4 +65,31 @@ button.remove-member {
     font-size: 1.2em;
 }
 
+/* Media Query For Iphone */
+@media only screen 
+and (min-device-width : 375px) 
+and (max-device-width : 667px) { 
+    button.accept {
+        
+        margin-left: 85px !important;
+    }
 
+    button.remove-member {
+        margin-left: 30px;
+    }
+}
+
+/* Media Query For Tablet */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) {
+    button.decline {
+        padding: 8px;
+    }
+
+    button.accept {
+        padding: 8px;
+        margin-left: 0 !important;
+    }
+    
+}

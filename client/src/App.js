@@ -22,6 +22,8 @@ import SignUpPage from './components/SignUpPage';
 //import Test from './components/Test';
 import { checked, login } from './redux/actions'
 import ForgotPassword from './components/ForgotPassword';
+import Privacy from './components/Privacy';
+import Test from './components/Test';
 
 
 
@@ -62,8 +64,10 @@ function App() {
           <Route exact path="/projects" component={Projects}/>
           <Route exact path="/about" component={About}/>
           <Route exact path="/faq" component={FAQ}/>
+          <Route exact path="/privacy" component={Privacy}/>
           <Route path="/contact" component={Contact}/>
-          
+          <Route path="/test" component={Test}/>
+
           {user.loginInfo !== null && (
             <>
             <Route path="/hub" component={ProfileSetup}/>

@@ -1,14 +1,14 @@
 import { MDBCollapse, MDBContainer, MDBDropdown, MDBDropdownItem, MDBDropdownMenu, MDBDropdownToggle, MDBIcon, MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavbarToggler, MDBNavItem
  } from 'mdbreact'
 import React, { useState } from 'react'
-import { Link, NavLink, useHistory } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import '../styles/navbar.css'
 import logo from '../images/logo3.png';
 import { useDispatch } from 'react-redux';
 import { logout } from '../redux/actions';
 
 
-export default function Navbar() {
+export default function NavbarPublic() {
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -60,55 +60,31 @@ export default function Navbar() {
           <MDBNavbarNav left>
             
             <MDBNavItem active>
-              <Link 
-               to="/" >
-                 <div className=" d-md-inline" onClick={handleToggle} >Home</div>
-                 </Link>
+              <NavLink className="d-none d-md-inline"
+               to="/" >Home</NavLink
+              >
             </MDBNavItem>
             <MDBNavItem>
-              <Link 
-               to="/dashboard">
-                 <div className=" d-md-inline" onClick={handleToggle} >Dashboard</div>
-               </Link>
+              <NavLink className="d-none d-md-inline"
+               to="/contact" >Contact</NavLink
+              >
+            </MDBNavItem>
+
+            <MDBNavItem>
+              <NavLink className="d-none d-md-inline"
+               to="/projects" >Projects</NavLink
+              >
             </MDBNavItem>
             
             <MDBNavItem>
               <MDBDropdown>
-                <MDBDropdownToggle nav  >
-                  
-                  <div className=" d-md-inline">Projects <MDBIcon icon="caret-down white-text" /></div>
-                </MDBDropdownToggle>
-                <MDBDropdownMenu className="dropdown-default">
-                  <MDBDropdownItem href="/projectForm">Publish a project</MDBDropdownItem>
-                  <MDBDropdownItem href="/projects">See all projects</MDBDropdownItem>
-                </MDBDropdownMenu>
-              </MDBDropdown>
-            </MDBNavItem>
-            <MDBNavItem>
-              <MDBDropdown>
-                <MDBDropdownToggle nav >
-                  <div className=" d-md-inline">About <MDBIcon icon="caret-down white-text" /></div>
+                <MDBDropdownToggle nav caret>
+                  <div className="d-none d-md-inline">About</div>
                 </MDBDropdownToggle>
                 <MDBDropdownMenu className="dropdown-default">
                   <MDBDropdownItem href="/about">The Team</MDBDropdownItem>
                   <MDBDropdownItem href="/faq">FAQ</MDBDropdownItem>
                   <MDBDropdownItem href="/contact">Contact</MDBDropdownItem>
-                </MDBDropdownMenu>
-              </MDBDropdown>
-            </MDBNavItem>
-          </MDBNavbarNav>
-          <MDBNavbarNav right className="" >
-    
-            <MDBNavItem >
-              <MDBDropdown >
-                <MDBDropdownToggle nav >
-                  <MDBIcon icon="user" /> <MDBIcon icon="caret-down white-text" />
-                </MDBDropdownToggle>
-                <MDBDropdownMenu className="dropdown ">
-                <MDBDropdownItem href="/hub">Edit profile</MDBDropdownItem>
-                  <MDBDropdownItem href="/faq">Get help</MDBDropdownItem>
-                  <MDBDropdownItem onClick={handleLogout} href="#!">Logout</MDBDropdownItem>
-                  
                 </MDBDropdownMenu>
               </MDBDropdown>
             </MDBNavItem>

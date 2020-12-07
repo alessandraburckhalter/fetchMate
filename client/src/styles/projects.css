@@ -14,6 +14,7 @@
     display: flex;
 }
 
+/* I wanto be part of this project button */
 button.participate-button {
     margin-top: 15px;
     width: 100%;
@@ -21,7 +22,7 @@ button.participate-button {
     border: 0;
     border-radius: 4px;
     cursor: pointer;
-    background: #16a596;
+    /* background: #16a596; */
     /* border-radius: 20px; */
     color: #ffffff;
     text-transform: uppercase;
@@ -30,7 +31,14 @@ button.participate-button {
     align-items: center;
     transition: background-color 0.2s;
     font-size: 1.2em;
+    outline: none;
+    background: #56CCF2;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2F80ED, #56CCF2);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2F80ED, #56CCF2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 }
+
+/* you applied to this project button */
 button.inactive-applied{
     margin-top: 15px;
     width: 100%;
@@ -47,16 +55,20 @@ button.inactive-applied{
     align-items: center;
     transition: background-color 0.2s;
     font-size: 1.2em;
+    outline: none;
 }
 
-button.inactive-own{
+/* you are in this project button */
+button.inactive-in {
     margin-top: 15px;
     width: 100%;
     height: 50px;
     border: 0;
     border-radius: 4px;
     cursor: pointer;
-    background:#1f3c88;
+    background: #7F7FD5;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     color: #ffffff;
     text-transform: uppercase;
     display: flex;
@@ -64,15 +76,38 @@ button.inactive-own{
     align-items: center;
     transition: background-color 0.2s;
     font-size: 1.2em;
+    outline: none;
 }
 
+/* you own this project button */
+button.inactive-own{
+    margin-top: 15px;
+    width: 100%;
+    height: 50px;
+    border: 0;
+    border-radius: 4px;
+    cursor: pointer;
+    background: #0575E6;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #021B79, #0575E6);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #021B79, #0575E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: #ffffff;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.2s;
+    font-size: 1.2em;
+    outline: none;
+}
+
+/* cancel application button */
 button.cancel-application {
     float: right;
     border-radius: 4px;
     background-color: #a20a0a;
     color: white;
     padding: 7px !important;
-    
+    outline: none;
 }
 
 /* column projects */
@@ -91,13 +126,14 @@ button.cancel-application {
     padding: 4px;
     margin: 2px;
     display: -webkit-inline-box;
+    color: dimgray;
 }
 
 .all-prjects-skills-title {
     font-size: 15px;
     text-transform: uppercase;
     color: black;
-    font-weight: 300;
+    font-weight: 400;
 }
 
 /* icon in the card projects */
@@ -148,6 +184,7 @@ button.cancel-application {
 .card-body-all-projects1 {
     padding: 0 !important;
     background-color: #0e49b5!important;
+    /* background-image: url(../images/stripes.jpg); */
 }
 
 .card-body-all-projects2 {
@@ -157,22 +194,51 @@ button.cancel-application {
 
 /* page main title */
 .all-projects-title {
-    padding-top: 1.5em;
-    font-family: fontastique;
-    margin-bottom: 30px;
-    color: #065c6f !important;
-    font-size: 50px;
+    font-size: 45px;
+    color: steelblue !important;
     text-align: center;
+    font-family: fontastique !important;
+    letter-spacing: 3px;
+    font-weight: revert;
+    text-transform: uppercase;
+    padding-top: 160px;
 }
 
 /* project title */
 .project-title  {
     text-transform: capitalize;
-    font-weight: bold !important;
+    font-weight: 400 !important;
     font-size: 25px !important;
     color: black !important;
 }
 
 .project-title a {
     color: black !important;
+}
+
+/* Media Query For Iphone */
+@media only screen 
+and (min-device-width : 375px) 
+and (max-device-width : 667px) { 
+    .card-link+.card-link {
+        margin-left: 0.70rem !important;
+    }
+
+    .avatar-card {
+        text-align: left !important;
+    }
+
+    .chat-title {
+        padding-top: 120px;
+    }
+}
+
+/* Media Query For Tablet */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) {
+    .chat-title {
+        padding-top: 160px;
+    }
+    
 }

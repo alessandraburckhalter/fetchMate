@@ -32,7 +32,7 @@ export default function DashboardPenProjectCard(props) {
             </aside>
         <MDBCard className="card-body card-body-pending2">
         <aside>
-      <MDBCardTitle className="project-title"> <MDBIcon icon="link" /> {title}</MDBCardTitle>
+      <MDBCardTitle className="project-title"> <i class="fas fa-bookmark amber-text"></i> {title}</MDBCardTitle>
     <MDBCardText>
     {description.slice(0, 90)}{(description.length > 90 && "...")} <Link to="#" onClick={toggle}>Read More</Link>
     <MDBModal isOpen={modal} toggle={toggle}>

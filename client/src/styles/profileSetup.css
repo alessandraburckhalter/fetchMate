@@ -71,6 +71,7 @@ button.new-skill-button  {
     align-items: center;
     cursor: pointer;
     margin-bottom: 20px;
+    outline: none;
 }
 
 /* trash icon (remove skill) */
@@ -79,6 +80,7 @@ button.remove-skill-button{
     background: none;
     margin-left: 9px;
     cursor: pointer;
+    outline: none;
 }
 
 /* span skill + trash icon */
@@ -95,6 +97,7 @@ button.remove-skill-button{
     color: #6B6B6B;
     cursor: pointer;
     background-color: white;
+    outline: none;
 }
 
 /* skillbar label */
@@ -143,6 +146,7 @@ form {
     box-shadow: none !important;
     background-color: transparent !important;
     margin-top: 150px;
+   
 }
 
 /* name and email */
@@ -170,15 +174,13 @@ h4.card-title {
 /* profile image */
 img.rounded-circle.hoverable.border.border-info {
     border: 5px solid #33b5e5!important;
-    height: 210px !important;
-    width: 100% !important;
-    object-fit: cover !important;
+    width: max(100px, min(235px, 44vw));
+    height: max(100px, min(235px, 44vw));
 }
 
 img.rounded-circle {
-    height: 210px !important;
-    width: 100% !important;
-    object-fit: cover !important;
+    width: max(100px, min(235px, 44vw));
+    height: max(100px, min(235px, 44vw));
 }
 
 /* projectForm page datepicker input */
@@ -190,6 +192,11 @@ img.rounded-circle {
 
 .md-form.md-outline .form-control {
     border-radius: 4px;
+}
+
+/* form inside modal to update pic */
+.form-update-pic {
+    margin-bottom: 0 !important;
 }
 
 /* BLUE AND GREEN TRANSPARENT RGBA  */

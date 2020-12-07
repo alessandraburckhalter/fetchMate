@@ -55,7 +55,7 @@ export default function ContributingProjects() {
             <hr />
             <h4 className="card-title">
               <Link to={`/chat/${project.id}`}>
-                <MDBIcon icon="comments blue-text" /> Chat now with the Team
+                <MDBIcon icon="comments blue-text" /> Chat now with the team
               </Link>
             </h4> 
             <br/>
@@ -65,14 +65,14 @@ export default function ContributingProjects() {
     
       <MDBCol className="mt-5 contributing-col">
       <MDBCard className="card-body " >
-      <MDBCardTitle className="project-title"><MDBIcon icon="link" />
+      <MDBCardTitle className="project-title"><i class="fas fa-bookmark amber-text"></i>
           {project.title}</MDBCardTitle > 
           <MDBCardText>
           {project.description} 
           </MDBCardText>
          <MDBCardText>
         <h1 className="all-prjects-skills-title">
-            Desirable Technical Skills </h1>
+        <i class="fas fa-angle-right"></i> Desirable Technical Skills </h1>
 
             {Object.keys(project).length > 0 && project.Skills.filter((userData)=>{
                   return (userData.category === "technical")
@@ -81,7 +81,7 @@ export default function ContributingProjects() {
                 })}
 
         <h1 className="all-prjects-skills-title">
-            Desirable Soft Skills </h1>  
+        <i class="fas fa-angle-right"></i> Desirable Soft Skills </h1>  
             {Object.keys(project).length > 0 && project.Skills.filter((userData)=>{
                 return (userData.category === "soft")
               }).map((name)=>{
@@ -89,7 +89,7 @@ export default function ContributingProjects() {
               })}
 
         <h1 className="all-prjects-skills-title">
-            Acceptable Spoken Languages </h1>
+        <i class="fas fa-angle-right"></i> Acceptable Spoken Languages </h1>
 
           {Object.keys(project).length > 0 && project.Skills.filter((userData)=>{
                 return (userData.category === "language")

@@ -117,7 +117,7 @@ export default function InterestedCard(props) {
 
     return (
         
-        <MDBCol md="3" lg="4">
+        <MDBCol md="4" lg="4">
             
       <MDBCard personal className="my-5 ">
 
@@ -146,9 +146,9 @@ export default function InterestedCard(props) {
                 return (userData.category === "technical")
               }).map((name)=>{
                 return <span className="skills-dashboard">{name.name} </span> 
-              })): "No Skill"}
+              })): "No skills"}
 
-            <br/>
+            <br/><br/>
             <h3 class="card-title">
             <MDBIcon icon="hand-holding-heart pink-text" /> Soft Skills</h3> 
             {Object.keys(interestedUser).length > 0 && interestedUser.Skills.filter((userData)=>{
@@ -157,9 +157,9 @@ export default function InterestedCard(props) {
                 return (userData.category === "soft")
               }).map((name)=>{
                 return <span className="skills-dashboard">{name.name} </span> 
-              })): "No Skill"}
+              })): "No skills"}
        
-            <br/>
+            <br/><br/>
             <h3 class="card-title">
             <MDBIcon icon="language purple-text" /> Spoken languages </h3>
             {Object.keys(interestedUser).length > 0 && interestedUser.Skills.filter((userData)=>{
@@ -168,8 +168,8 @@ export default function InterestedCard(props) {
                 return (userData.category === "language")
               }).map((name)=>{
                 return <span className="skills-dashboard">{name.name} </span> 
-              })): "No language"}
-             <br/>
+              })): "No languages"}
+             <br/><br/>
             <button className="card-link btn accept" onClick={acceptMember}>Accept
              </button> 
              <button className="card-link btn decline" onClick={declineMember}>Decline

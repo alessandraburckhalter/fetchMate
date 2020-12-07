@@ -61,15 +61,14 @@ export default function AcceptedCard(props) {
         
 
     return (
-        <MDBCol md="3" lg="4">
+        <MDBCol md="4" lg="4">
         <MDBCard personal className="my-5">
           <MDBCardBody>
           <div className=''>
             <img src={interestedUser.profilePicture} alt="profilePicture" className="rounded-circle hoverable border border-info profile-setup"/>
             </div>
             <MDBCardTitle>
-            <h4 className='card-title mt-4'> <MDBIcon icon="user indigo-text" />
-              {interestedUser.firstName} {interestedUser.lastName}
+            <h4 className='card-title mt-4'> <MDBIcon icon="user indigo-text" />  {interestedUser.firstName} {interestedUser.lastName}
               </h4>
             </MDBCardTitle>
             {/* <input
@@ -88,9 +87,9 @@ export default function AcceptedCard(props) {
                 return (userData.category === "technical")
               }).map((name)=>{
                 return <span className="skills-dashboard">{name.name} </span> 
-              })): "No Skill"}
+              })): "No skills"}
 
-            <br/>
+            <br/> <br/>
             <h3 class="card-title">
             <MDBIcon icon="hand-holding-heart pink-text" /> Soft Skills</h3> 
             {Object.keys(interestedUser).length > 0 && interestedUser.Skills.filter((userData)=>{
@@ -99,9 +98,9 @@ export default function AcceptedCard(props) {
                 return (userData.category === "soft")
               }).map((name)=>{
                 return <span className="skills-dashboard">{name.name} </span> 
-              })): "No Skill"}   
+              })): "No skills"}   
        
-            <br/>
+            <br/> <br/>
             <h3 class="card-title">
             <MDBIcon icon="language purple-text" /> Spoken languages </h3>
             {Object.keys(interestedUser).length > 0 && interestedUser.Skills.filter((userData)=>{
@@ -110,8 +109,8 @@ export default function AcceptedCard(props) {
                 return (userData.category === "language")
               }).map((name)=>{
                 return <span className="skills-dashboard">{name.name} </span> 
-              })): "No language"}
-             <br/>
+              })): "No languages"}
+             <br/> <br/>
             
              <button className="card-link btn remove-member" onClick={pendingMember}>Remove Member from this project
              </button>

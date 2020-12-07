@@ -90,9 +90,6 @@ export default function DashboardProjectCard(props) {
         addAcceptedMember() 
     },[projectInfo])
 
-    const [dropdownOpen, setDropdownOpen] = useState(false);
-
-    const statusToggle = () => setDropdownOpen(prevState => !prevState);
         
     return (
       <div>
@@ -103,26 +100,15 @@ export default function DashboardProjectCard(props) {
             </aside>
             <MDBCard className="card-body card-body-projects2">
           <aside>
-          <MDBCardTitle className="project-title"> <Link className="project-title" to={`/dashboard/${id}`}><MDBIcon icon="link" /> {title}</Link> </MDBCardTitle>
+          <MDBCardTitle className="project-title"> <Link className="project-title" to={`/dashboard/${id}`}><i class="fas fa-bookmark amber-text"></i> {title}</Link> </MDBCardTitle>
           <MDBCardText>
             {description}
           </MDBCardText>
+          <br/>
           <div className="flex-row d-flex">
-          {/* <a href="#!" className="card-link icon">
-              Status: {isCompleted === false ? "Open" : "Closed"} <span>Project Status</span>
-            </a> */}
            
-            <Dropdown className="card-link icon dropdown-status" isOpen={dropdownOpen} toggle={statusToggle}>
-            <DropdownToggle caret className="dropdown-status">
-              Status
-              </DropdownToggle>
-            <DropdownMenu className="dropdown-status">
-              <DropdownItem>Open</DropdownItem>
-              <DropdownItem>Closed</DropdownItem>
-            </DropdownMenu>
-          </Dropdown>
-  
-            
+           <a href="#!" className="card-link icon icon-all-projects-width"> <MDBIcon icon="lock-open green-text" /> <span>Project Status</span></a>
+
             <a href="#!" className="card-link icon "><MDBIcon icon="calendar-alt deep-purple-text" />  {deadline.slice(0,10)} <span>Deadline</span>
             </a>
             <a href="#!" className="card-link icon icon-width"><MDBIcon icon="users indigo-text" /> {memberLimit} <span>Member's limit</span> 

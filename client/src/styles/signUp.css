@@ -1,54 +1,3 @@
-#left-side {
-  width: 100vw;
-  height: 120vh;
-  position: relative;
-  display: flex;
-}
-
-#left-side aside {
-  width: 50%;
-  background-image: url(../images/Frame3.svg);
-  background-color: rgba(145,192,241,1);
- /* background-image: linear-gradient(-225deg, #2CD8D5 0%,  56%, #FFBAC3 100%); */
-  background-size: cover;
-  background-repeat: no-repeat;
-  padding: 80px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-#left-side h1 {
-  color: white;
-  font-weight: bold;
-}
-
-#left-side h2 {
-  color: white;
-  text-align: center;
-  font-family: fontastique;
-  font-size: 2.1em;
-}
-
-#right-side {
-  width: 100vw;
-  height: 120vh;
-  position: relative;
-}
-
-#right-side aside {
-  width: 100%;
-  height: 120vh;
-  background-image: url(../images/working.jpeg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-
 form.signup-form {
     width: 500px;
     margin: auto;
@@ -170,7 +119,6 @@ form.signup-form button.confirm-button {
     border-radius: 5px;
     cursor: pointer;
     background: #36cf82;
-    /* border-radius: 20px; */
     color: #ffffff;
     font-weight: 800;
     display: flex;
@@ -178,10 +126,12 @@ form.signup-form button.confirm-button {
     align-items: center;
     transition: background-color 0.2s;
     font-size: 1em;
+    outline: none;
   }
   
   form.signup-form button.confirm-button:hover {
     background: #36cf82;
+    outline: none;
   }
 
 /* add profile pic input */
@@ -208,15 +158,17 @@ form.signup-form button.confirm-button {
   align-items: center;
 }
 
-.input-block .image-container {
-  /* display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-gap: 16px; */
-}
 
 .input-block img {
   width: 100%;
     height: 96px;
     object-fit: cover;
     border-radius: 20px;
+}
+
+@media (max-width: 992px) {
+  form.signup-form {
+    width: auto;
+    padding: 14px 70px;
+  }
 }

@@ -10,17 +10,113 @@ h4.card-title-public {
     font-weight: 500 !important;
 }
 
-img.public-profile {
+/* img.public-profile {
     height: 250px !important;
     width: 30% !important;
     object-fit: cover !important;
     display: block;
     margin-left: auto;
     margin-right: auto;
-}
-
-
+} */
 
 .card-public-profile {
     margin-bottom: 250px;
+    margin-top: 20px !important;
+    box-shadow: none !important;
+    background-color: transparent !important;
+}
+
+.container-pp {
+    display: flex;
+    flex-direction: column;
+  
+    max-height: 100%;
+    overflow-y: auto;
+  
+    scrollbar-width: none;
+  
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  
+    /* background-image: url(../images/background-tt.jpg); */
+    
+  }
+  
+  .banner {
+    flex-shrink: 0;
+    width: 100%;
+    /* height: min(33vw, 199px); */
+    height: min(60vw, 300px);
+  
+    background-image: url(../images/background-tt.jpg);
+    background-size: cover;
+    /* background-color: lightblue; */
+  
+    position: relative;
+  
+    box-shadow: none !important;
+    margin-bottom: 8rem !important;
+  }
+  
+  .jumbotron {
+  
+  }
+  
+  .avatar {
+    /* width: max(45px, min(135px, 22vw));
+    height: max(45px, min(135px, 22vw)); */
+  
+    width: max(100px, min(235px, 44vw));
+    height: max(100px, min(235px, 44vw));
+  
+    /* height: 260px;
+    width: 340px; */
+    
+  
+    border: 5px solid !important;
+     border: 5px solid #33b5e5!important;
+    background: grey;
+    border-radius: 50%;
+  
+    position: absolute;
+    /* bottom: max(-60px, -10vw); */
+    bottom: max(-100px, -10vw);
+    left: 42%;
+  }
+
+  /* Media Query For Iphone */
+@media only screen 
+and (min-device-width : 375px) 
+and (max-device-width : 667px) { 
+    .avatar {
+        left: 28%;
+    }
+
+    .card-profile {
+        margin-top: 40px;
+    }
+
+    .card-public-profile {
+        margin-top: 0 !important;
+    }
+}
+
+/* Media Query For Tablet */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) {
+    .avatar {
+        left: 34%;
+    }
+
+    .card-profile {
+        margin-top: 30px;
+    }
+
+    .card-public-profile {
+        margin-top: 0 !important;
+    }
+    
 }

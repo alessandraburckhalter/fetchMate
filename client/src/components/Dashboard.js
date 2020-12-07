@@ -70,7 +70,7 @@ export default function Dashboard() {
       <div id="top">
     <MDBContainer>
       <MDBRow>
-      <MDBCol md='3' className="mt-5">
+      <MDBCol md='3' sm="3" xs="3"  className="mt-5">
       <MDBCard testimonial className="card-profile" >
       <div gradient='aqua' backgroundColor="red"/>
           <div className='image-and-camera'>
@@ -85,24 +85,32 @@ export default function Dashboard() {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Update your profile picture</Modal.Title>
+          <Modal.Title> Update your profile picture</Modal.Title>
         </Modal.Header>
-        <Modal.Body><form id="profilePic" onSubmit={(e) => {handleSubmit(e)}}>
-            <label htmlFor="defaultFormCardNameEx" className="labe-headline"><MDBIcon icon="share indigo-text" />  Profile Picture
-           </label>
-           
-            <input type="file" id="defaultFormCardNameEx" className="form-control" onChange={(e) => {setProfilePicture(e.target.files[0])}}/>
-            <br />
+        <Modal.Body><form className="form-update-pic"  id="profilePic" onSubmit={(e) => {handleSubmit(e)}}>
 
-            
+        <div className="input-block-update">
+            <label htmlFor="newProfilePic" > Choose file 
+           </label>
+           <br/>
+
+           <label htmlFor="newProfilePic" className="new-profile-pic">
+           <MDBIcon far icon="plus-square indigo-text" size='2x'/>
+           </label> {profilePicture ? profilePicture.name : ''}
+
+
+            <input type="file" id="newProfilePic" className="form-control" onChange={(e) => {setProfilePicture(e.target.files[0])}}/>
+
+          </div>
           </form>
+
           </Modal.Body>
         <Modal.Footer>
-        <Button form="profilePic" variant="success" type="submit" className="btn btn-lg btn-block mb-5">
-            SUBMIT <MDBIcon far icon="paper-plane" />
-          </Button>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="primary" onClick={handleClose}>
             Close
+          </Button>
+        <Button form="profilePic" variant="success" type="submit" className=" ">
+            SAVE CHANGES
           </Button>
           
         </Modal.Footer>
@@ -129,7 +137,7 @@ export default function Dashboard() {
               }).map((name)=>{
                 
                   return <span className="skills-dashboard">{name.name} </span> 
-                })): (<Link to='/hub'>No Skills. Edit Your Profile Here.</Link>)}
+                })): (<Link className="add-skills" to='/hub'>Add skills to your profile</Link>)}
             </h2>
             
             <br/>
@@ -150,7 +158,7 @@ export default function Dashboard() {
               }).map((name)=>{
                 
                   return <span className="skills-dashboard">{name.name} </span> 
-                })): (<Link to='/hub'>No Skills. Edit Your Profile Here.</Link>)}
+                })): (<Link className="add-skills" to='/hub'>Add skills to your profile</Link>)}
             </h2>
             <br/>
             <hr />
@@ -169,7 +177,7 @@ export default function Dashboard() {
               }).map((name)=>{
                 
                   return <span className="skills-dashboard">{name.name} </span> 
-                })): (<Link to='/hub'>No language. Edit Your Profile Here.</Link>)}
+                })): (<Link className="add-skills" to='/hub'>Add languages to your profile</Link>)}
               </h2>
             
             <br/>
@@ -179,13 +187,13 @@ export default function Dashboard() {
       </MDBCol>
 
     
-      <MDBCol className="projects-col">
+      <MDBCol md='8' sm="3" xs="3" className="projects-col">
           <h1 className="title-cards">My Projects</h1>
 
              
           {Object.keys(currentUserData).length > 0 && (Object.keys(currentUserData.Projects).length > 0 ? (currentUserData.Projects.map((project, index)=>{
             return <ProjectCard key={project.id} project={project} loadProject={loadProject}/>
-          })): "No projects") } 
+          })): "You haven't published any projects yet") } 
           <Link to="/projectForm"><button className="btn btn-block mb-3 publish-button">
             Publish a new project
           </button></Link>
@@ -197,7 +205,7 @@ export default function Dashboard() {
             if(project.TeamMember.approved === "approved"){
               return <DashboardConProjectsCard key={project.id} project={project}/>
             }else if(project.TeamMember.approved !== "approved" || !project.TeamMember ){
-              return "No participated project"
+              return "You are not contributing to any projects yet"
             }
           })}
 
@@ -213,7 +221,7 @@ export default function Dashboard() {
             if(project.TeamMember.approved === "pending"){
               return <DashboardPenProjectCard key={project.id} project={project}/>
             }else if(project.TeamMember.approved !== "pending" || !project.TeamMember ){
-              return "No applied project"
+              return "You haven't applied for any projects yet"
             }
 
           })}

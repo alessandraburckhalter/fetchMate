@@ -10,7 +10,7 @@ export default function Footer() {
         <div>
             <MDBFooter className="font-large pt-5 mt-4 footer">
         <MDBContainer fluid className="text-center ">
-        <MDBRow>
+        <MDBRow className="d-flex justify-content-center">
 
           <MDBCol md="2" className="logo-footer">
           <img src={logo} alt="logo" className="img-footer" />
@@ -21,7 +21,7 @@ export default function Footer() {
             </p>
         </MDBCol>
 
-         <MDBCol md="3" className="text-justify d-flex justify-content-center">
+         <MDBCol md="3" sm="4" xs="4" className="text-justify d-flex justify-content-center">
             <ul >
             <h5 className="title ">Explore</h5> 
               <li className="list-unstyled">
@@ -37,22 +37,22 @@ export default function Footer() {
               <i class="fas fa-chevron-right"></i> <Link to="/about">The Team</Link>
               </li>
               <li className="list-unstyled">
-              <i class="fas fa-chevron-right"></i> <Link to="/contact">Get in touch</Link>
+              <i class="fas fa-chevron-right"></i> <Link to="/faq">FAQ</Link>
               </li>
               <li className="list-unstyled">
-              <i class="fas fa-chevron-right"></i> <Link to="/faq">FAQ</Link>
+              <i class="fas fa-chevron-right"></i> <Link to="/privacy">Privacy</Link>
               </li>
             </ul>
         </MDBCol>
 
-        <MDBCol md="3" className="text-justify d-flex justify-content-center">
+        <MDBCol md="3" sm="4" xs="4"  className="text-justify d-flex justify-content-center">
             <ul>
             <h5 className="title">Follow</h5>
               <li className="list-unstyled">
-              <i class="fab fa-twitter"></i> <a href="#!">Twitter</a>
+              <i class="fab fa-twitter"></i> <a href="https://mobile.twitter.com/fetchmate" target="_blank">Twitter</a>
               </li>
               <li className="list-unstyled">
-              <i class="fab fa-linkedin"></i> <a href="#!">LinkedIn</a>
+              <i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/company/fetchmate/" target="_blank" >LinkedIn</a>
               </li>
               <li className="list-unstyled">
               <i class="fab fa-discord"></i> <a href="#!">Discord</a>
@@ -60,14 +60,14 @@ export default function Footer() {
             </ul>
         </MDBCol>
 
-        <MDBCol md="3" className="text-justify d-flex justify-content-center">
+        <MDBCol md="3" sm="4" xs="4"    className="text-justify d-flex justify-content-center">
             <ul>
-            <h5 className="title">Contact</h5>
+            <h5 className="title"><Link to="/contact" >Contact</Link></h5>
               <li className="list-unstyled">
-              <i class="fas fa-envelope"></i> <a href="#!">Email</a>
+              <i class="fas fa-envelope"></i> <a href="mailto:fetchmate2020@gmail.com">Email</a>
               </li>
               <li className="list-unstyled">
-              <i class="fas fa-map-marker-alt"></i> <a href="#!">Atlanta</a><br /> <i class="fas fa-map-marker-alt"></i> <a href="#!">Texas</a>
+              <i class="fas fa-map-marker-alt"></i> <Link to="/contact">Atlanta</Link><br /> <i class="fas fa-map-marker-alt"></i> <Link to="/contact">Texas</Link>
               </li>
             </ul>
         </MDBCol>

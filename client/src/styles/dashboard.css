@@ -12,14 +12,14 @@
     display: flex;
 }
 
-#top h1 {
-    margin-top: 1em;
-}
+
 
 img.rounded-circle {
-    height: 210px !important;
+    /* height: 210px !important;
     width: 100% !important;
-    object-fit: cover !important;
+    object-fit: cover !important; */
+    width: max(100px, min(235px, 44vw));
+  height: max(100px, min(235px, 44vw));
 }
 
 h3.card-title {
@@ -44,10 +44,12 @@ button.edit-button {
     justify-content: center;
     color: #4285f4;
     font-weight: 500;
+    outline: none;
 }
 
 button.edit-button.btn {
     padding: 0.4em !important;
+    outline: none;
 }
 
 .card-body1 aside {
@@ -96,6 +98,7 @@ button.publish-button {
     color: white;
     font-weight: 500;
     margin-top: 0 !important;
+    outline: none;
 }
 
 .edit-card {
@@ -118,12 +121,13 @@ button.publish-button {
     padding-top: 1.5em;
     font-family: fontastique;
     margin-bottom: 15px;
-    color: #065c6f !important;
+    /* color: #065c6f !important; */
+    color: steelblue !important;
 }
 
 .project-title {
     text-transform: capitalize;
-    font-weight: bold !important;
+    font-weight: 400 !important;
     font-size: 20px !important;
     color: black !important;
 }
@@ -187,12 +191,13 @@ Link.project-title {
     display: -webkit-inline-box;
 }
 
-/* update profile picture camera button */
+/* update profile picture camera icon under the picture */
 button.camera-button {
     border: none;
     background: none;
     cursor: pointer;
     float: right;
+    outline: none !important;
 }
 
 /* wrapping camera icon and picture */
@@ -200,14 +205,60 @@ button.camera-button {
     display: inline-grid;
 }
 
-button.dropdown-status {
-    background: none !important;
+/* icon inside the modal */
+.input-block-update input[type=file] {
+    visibility: hidden;
+    display: none;
 }
 
-.btn-secondary.dropdown-toggle  {
-    background-color: white !important;
-    color: white;
-    padding: 1px;
-    margin: 0;
-    box-shadow: none;
+.input#newProfilePic {
+  visibility: visible;
+  display: contents;
+}
+
+.add-skills {
+    color: grey !important;
+    margin-top: 10px;
+    font-size: 13px;
+}
+
+
+/* Media Query For Iphone */
+@media only screen 
+and (min-device-width : 375px) 
+and (max-device-width : 667px) { 
+    .projects-col {
+        margin-left: 0px !important;
+        margin-top: 0px !important;
+    }
+
+    img.rounded-circle.hoverable.border.border-info {
+        margin-left: 100px !important;
+    }
+
+    button.edit-button {
+        width: 60%;
+    }
+
+   
+}
+
+/* Media Query For Tablet */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) {
+    img.rounded-circle.hoverable.border.border-info {
+        border: 5px solid #33b5e5!important;
+        width: max(40px, min(135px, 50vw)) !important ;
+        height: max(40px, min(135px, 50vw)) !important;
+    }
+
+    .projects-col {
+        margin-left: 20px !important;
+    }
+
+    .card-profile {
+        padding-top: 100px;
+    }
+    
 }

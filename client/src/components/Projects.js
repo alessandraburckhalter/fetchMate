@@ -1,4 +1,4 @@
-import { MDBCard, MDBCardText, MDBCardTitle, MDBCol, MDBContainer, MDBIcon, MDBRow } from 'mdbreact'
+import { MDBCard, MDBCardText, MDBCardTitle, MDBCol, MDBContainer, MDBIcon, MDBRow, MDBPageItem, MDBPagination, MDBPageNav  } from 'mdbreact'
 import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import '../styles/projects.css'
@@ -56,11 +56,16 @@ export default function Projects() {
 
   return (
     <>
-      <Navbar />  
+      <Navbar />
+      {/* <div id="section1" className="background">
+            <div className="layer">
+            </div>
+        </div> */}
         <div id="top">
           <MDBContainer className="projects-container">
-          <h1 className="all-projects-title">Projects</h1>
-              <MDBCard className="mb-2 pt-2 flex-row justify-content-around">
+            <h1 className="all-projects-title"><span className="green-color">All</span> Projects </h1>
+          {/* <h1 className="all-projects-title">Projects</h1> */}
+              <MDBCard className="mb-2 pt-2 mt-5 flex-row justify-content-around">
                   <a href="#!" className="card-link icon icon-all-projects-width">
                     <MDBIcon icon="cogs" onClick={sortBySkills}/><span>Sort by your skills</span>
                   </a>
@@ -85,6 +90,36 @@ export default function Projects() {
             
         );
       }))} 
+
+<MDBPagination className="d-flex justify-content-center mt-5">
+          <MDBPageItem disabled>
+            <MDBPageNav>
+              <span>First</span>
+            </MDBPageNav>
+          </MDBPageItem>
+          <MDBPageItem disabled>
+            <MDBPageNav aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+              <span className="sr-only">Previous</span>
+            </MDBPageNav>
+          </MDBPageItem>
+          <MDBPageItem active>
+            <MDBPageNav>
+              1 <span className="sr-only">(current)</span>
+            </MDBPageNav>
+          </MDBPageItem>
+          <MDBPageItem>
+            <MDBPageNav>
+              &raquo;
+            </MDBPageNav>
+          </MDBPageItem>
+          <MDBPageItem>
+            <MDBPageNav>
+              Last
+            </MDBPageNav>
+          </MDBPageItem>
+        </MDBPagination>
+
       
       </MDBContainer>
       </div>

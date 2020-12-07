@@ -1,6 +1,6 @@
 import React from 'react';
 //import '../styles/signUp.css'
-import '../styles/TestingPage.css'
+
 
 export default function TestingPage() {
     return (

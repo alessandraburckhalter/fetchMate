@@ -1,3 +1,44 @@
 .comments-col {
     margin-top: 100px;
 }
+
+
+/* post time */
+.comment-time {
+    font-size: 10px;
+    color: gray;
+}
+
+/* trash and edit icons */
+button.comments-icon {
+    background-color: transparent !important;
+    border: none;
+    padding: 5px;
+    font-size: 10px;
+    outline: none;
+    color: gray;
+    outline: none !important;
+}
+
+/* form inside the modal */
+.form-modal-comments {
+    margin-bottom: 0 !important;
+}
+
+/* user first name and last name */
+.full-name-comments {
+    color: steelblue;
+    cursor: pointer;
+}
+
+
+
+/* Media Query For Iphone */
+@media only screen 
+and (min-device-width : 375px) 
+and (max-device-width : 667px) { 
+    .image-plus-name {
+        display: flex !important;
+    }
+    
+}
