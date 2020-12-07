@@ -270,7 +270,7 @@ export default function FAQ() {
           </MDBCollapse>
         </MDBCard>
         <hr className="hr-faq" />
-            <h3 className="faq-contact-us"><MDBIcon icon="info-circle " /> Couldn't find an answer to your question? Please contact us at <a href="mailto:fetchmate2020@gmail.com"><span className="email-faq">fetchmate2020@gmail.com</span></a>.</h3>
+            <h3 className="faq-contact-us"><MDBIcon icon="info-circle " /> Couldn't find an answer to your question? Please contact us at <a href="mailto:fetchmate2020@gmail.com"><span className="email-faq">fetchmate.contact@gmail.com</span></a>.</h3>
       </MDBContainer>
     </MDBContainer>
 
