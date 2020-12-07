@@ -226,7 +226,7 @@ router.post('/', (req, res) => {
             })
             //do here
                 .then(project => {
-                    project.addMember(user, {through: {approved: 'approved'}})
+                    project.addMember(user, {through: {approved: 'owner'}})
                     return project
                 })
         })
