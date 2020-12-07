@@ -97,8 +97,8 @@ export default function Navbar() {
               </MDBDropdown>
             </MDBNavItem>
           </MDBNavbarNav>
+
           <MDBNavbarNav right className="" >
-    
             <MDBNavItem >
               <MDBDropdown >
                 <MDBDropdownToggle nav >
