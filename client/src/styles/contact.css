@@ -7,16 +7,22 @@
 
 /* page main title */
 .contact-title {
+    font-size: 45px;
+    color: steelblue !important;
+    text-align: center;
     font-family: fontastique !important;
-    font-size: 50px;
     letter-spacing: 3px;
-    color: #065c6f !important;
+    font-weight: revert;
+    text-transform: uppercase;
 }
 
 /* buttons under the map */
 button.button-location {
     border-radius: 50%;
-    padding: 15px;
+    padding: 18px;
+    outline: none;
+    background-color: #82b1ff !important;
+    border: 1px solid white;
 }
 
 /* icons under the map */
@@ -34,4 +40,17 @@ button.button-location {
 /* email under the map */
 .location-name a {
     color: #065c6f !important;
+}
+
+.form-contact {
+    padding: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.blue-color {
+    color: #0f8cd1;
+}
+
+.green-color {
+    color: #158467;
 }

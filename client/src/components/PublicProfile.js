@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { MDBCard, MDBCardBody, MDBCol, MDBContainer, MDBIcon, MDBRow } from 'mdbreact'
+import { MDBCard, MDBCardBody, MDBCol, MDBContainer, MDBIcon, MDBJumbotron, MDBRow } from 'mdbreact'
 import '../styles/publicProfile.css'
 import { useParams } from 'react-router-dom';
 import Navbar from './Navbar';
@@ -26,19 +26,15 @@ export default function PublicProfile() {
     return (
       <>
       <Navbar />
-        <div id="top">
+      <div className="container-pp">
+            <MDBJumbotron className="banner">
+              <img src={owner.profilePicture} alt="" className="avatar"/>
+            </MDBJumbotron>
+          </div>
             <MDBContainer>
               <MDBRow>
-            <MDBCol  className="mt-5">
-        <MDBCard testimonial className="card-profile card-public-profile">
-        <div gradient='aqua' backgroundColor="red"/>
-          <div className=''>
-            
-          <img
-              src={owner.profilePicture} 
-              alt='aaa' className="rounded-circle hoverable border border-info public-profile" 
-            />
-          </div><br/>
+            <MDBCol  className="">
+        <MDBCard testimonial className=" card-public-profile">
           
           <MDBCardBody>
           <h2 className='card-title-public'> <MDBIcon icon="user indigo-text" /> {owner.firstName} {owner.lastName} </h2> <br/>
@@ -77,7 +73,7 @@ export default function PublicProfile() {
      </MDBCol>
       </MDBRow>
       </MDBContainer>
-        </div>
+        
         <Footer />
       </>
     )

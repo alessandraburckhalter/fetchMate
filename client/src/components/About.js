@@ -39,19 +39,19 @@ export default function About() {
                   <a href='https://www.linkedin.com/in/alessandra-burckhalter/' target='_blank' rel="noopener noreferrer">
                     <MDBIcon
                       fab
-                      icon='linkedin'
+                      icon='linkedin linkedin-icon'
                       className='p-2 m-2 fa-lg fb-ic'
                     />
                   </a>
                   <a href='https://github.com/alessandraburckhalter' target='_blank' rel="noopener noreferrer">
                     <MDBIcon
                       fab
-                      icon='github black-text'
+                      icon='github github-icon black-text'
                       className='p-2 m-2 fa-lg git-ic'
                     />
                   </a>
                   <a href="mailto:ale.lptc@gmail.com" className="p-2 fa-lg email-ic">
-                <MDBIcon icon="envelope indigo-text" />
+                <MDBIcon icon="envelope envelope-icon envelope envelope-icon-icon indigo-text" />
                     </a>
                 </MDBCol>
               </MDBCol>
@@ -79,19 +79,19 @@ export default function About() {
                   <a href='https://www.linkedin.com/in/derek-james-40287610b/' target='_blank' rel="noopener noreferrer">
                     <MDBIcon
                       fab
-                      icon='linkedin'
+                      icon='linkedin linkedin-icon'
                       className='p-2 m-2 fa-lg li-ic'
                     />
                   </a>
                   <a href='https://github.com/Derekjames93' target='_blank' rel="noopener noreferrer">
                     <MDBIcon
                       fab
-                      icon='github black-text'
+                      icon='github github-icon black-text'
                       className='p-2 m-2 fa-lg git-ic'
                     />
                   </a>
                   <a href="mailto:derekjames4610@gmail.com" className="p-2 fa-lg email-ic">
-                <MDBIcon icon="envelope indigo-text" />
+                <MDBIcon icon="envelope envelope-icon envelope envelope-icon-icon indigo-text" />
                     </a>
                 </MDBCol>
               </MDBCol>
@@ -120,19 +120,19 @@ export default function About() {
                   <a href='https://www.linkedin.com/in/song8179/' target='_blank' rel="noopener noreferrer">
                     <MDBIcon
                       fab
-                      icon='linkedin'
+                      icon='linkedin linkedin-icon'
                       className='p-2 m-2 fa-lg li-ic'
                     />
                   </a>
                   <a href='https://github.com/young8179' target='_blank' rel="noopener noreferrer">
                     <MDBIcon
                       fab
-                      icon='github black-text'
+                      icon='github github-icon black-text'
                       className='p-2 m-2 fa-lg git-ic'
                     />
                   </a>
                   <a href="hsong8179@gmail.com" className="p-2 fa-lg email-ic">
-                <MDBIcon icon="envelope indigo-text" />
+                <MDBIcon icon="envelope envelope-icon envelope envelope-icon-icon indigo-text" />
                     </a>
                 </MDBCol>
               </MDBCol>
@@ -158,19 +158,19 @@ export default function About() {
                   <a href='https://www.linkedin.com/in/peter-looney-27b732166/' target='_blank' rel="noopener noreferrer">
                     <MDBIcon
                       fab
-                      icon='linkedin'
+                      icon='linkedin linkedin-icon'
                       className='p-2 m-2 fa-lg tw-ic'
                     />
                   </a>
                   <a href='https://github.com/plooney81' target='_blank' rel="noopener noreferrer">
                     <MDBIcon
                       fab
-                      icon='github black-text'
+                      icon='github github-icon black-text'
                       className='p-2 m-2 fa-lg li-ic'
                     />
                   </a >
                   <a href="mailto:petelooney81@gmail.com" className="p-2 fa-lg email-ic">
-                <MDBIcon icon="envelope indigo-text" />
+                <MDBIcon icon="envelope envelope-icon indigo-text" />
                     </a>
                 </MDBCol>
               </MDBCol>
@@ -191,27 +191,27 @@ export default function About() {
                     <strong>Jacky Cheung</strong>
                   </h4>
                   <h6 className='font-weight-bold grey-text mb-4'>
-                    Software Engineer
+                    Full-Stack Developer
                   </h6>
                   <p className='grey-text'>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eos id officiis hic tenetur.
+                  Passionate Full-Stack Web Developer.
                   </p>
                   <a href='https://www.linkedin.com/in/jacky-cheung-a69768195/' target='_blank' rel="noopener noreferrer">
                     <MDBIcon
                       fab
-                      icon='linkedin'
+                      icon='linkedin linkedin-icon'
                       className='p-2 m-2 fa-lg li-ic'
                     />
                   </a>
                   <a href='https://github.com/JC-2020' target='_blank' rel="noopener noreferrer">
                     <MDBIcon
                       fab
-                      icon='github black-text'
+                      icon='github black-text github-icon'
                       className='p-2 m-2 fa-lg git-ic'
                     />
                   </a>
                   <a href="mailto:jackycheung74@gmail.com" className="p-2 fa-lg email-ic">
-                <MDBIcon icon="envelope indigo-text " />
+                <MDBIcon icon="envelope envelope-icon indigo-text envelope envelope-icon-icon" />
                     </a>
                 </MDBCol>
               </MDBCol>

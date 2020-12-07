@@ -57,19 +57,19 @@ export default function Interested() {
       <div id="top">
 
         <MDBContainer className="project-overview-container">
-          <MDBRow>
+          <MDBRow md="12"  >
           <MDBCol className="interested-col">
             <h1 className="interested-titles mb-5 ">Project Overview</h1>
           <MDBCard className="card-body  mb-5" >
        
-        <MDBCardTitle className="project-title"><MDBIcon icon="link" /> {project.title}</MDBCardTitle >
+        <MDBCardTitle className="project-title"><i class="fas fa-bookmark amber-text"></i> {project.title}</MDBCardTitle >
         <MDBCardText>
           {project.description}
         </MDBCardText>
 
         <MDBCardText>
           <h1 className="all-prjects-skills-title">
-            Desirable Technical Skills </h1>
+          <i class="fas fa-angle-right"></i> Desirable Technical Skills </h1>
             {Object.keys(project).length > 0 && project.Skills.filter((userData)=>{
                 return (userData.category === "technical")
                
@@ -81,33 +81,34 @@ export default function Interested() {
               }).map((name)=>{
                 
                   return <span className="skills-dashboard">{name.name} </span> 
-                })): "No required skill. Edit Your Project at dashboard"}
+                })): "No technical skills required"}
+                 <br/> <br/>
 
           <h1 className="all-prjects-skills-title">
-            Desirable Soft Skills </h1>
+          <i class="fas fa-angle-right"></i> Desirable Soft Skills </h1>
             {Object.keys(project).length > 0 && project.Skills.filter((userData)=>{
                 return (userData.category === "soft")
               }).length> 0 ? (project.Skills.filter((userData)=>{
                 return (userData.category === "soft")
               }).map((name)=>{
                 return <span className="skills-dashboard">{name.name} </span> 
-              })): "No required skill. Edit Your Project at dashboard"}
-               
+              })): "No soft skills required"}
+                <br/> <br/>
                   
                 
                
                   
 
           <h1 className="all-prjects-skills-title">
-            Acceptable Spoken Languages </h1>
+          <i class="fas fa-angle-right"></i> Acceptable Spoken Languages </h1>
             {Object.keys(project).length > 0 && project.Skills.filter((userData)=>{
                 return (userData.category === "language")
               }).length> 0 ? (project.Skills.filter((userData)=>{
                 return (userData.category === "language")
               }).map((name)=>{
                 return <span className="skills-dashboard">{name.name} </span> 
-              })): "No required skill. Edit Your Project at dashboard"}
-          
+              })): "No languages required"}
+             <br/> <br/>
           
         </MDBCardText>
         <div className="flex-row ">
@@ -122,9 +123,9 @@ export default function Interested() {
       </MDBCard>
       </MDBCol>
 
-       <MDBContainer>     
+       <MDBContainer  >     
       <h1 className="interested-titles">Applications Received</h1>
-      <MDBRow>
+      <MDBRow >
       
       {interested.length > 0 ? (interested.map((interestedUser, index, project)=>{
             return <InterestedCard key={interestedUser.id} project={project[0]} interestedUser={interestedUser} displayInterest={displayInterest} displayAccepted={displayAccepted}/>

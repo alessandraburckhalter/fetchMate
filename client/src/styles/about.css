@@ -15,12 +15,13 @@
 
 /* main title */
 .about-title {
-    font-family: fontastique !important;
-    font-size: 50px;
-    letter-spacing: 3px;
-    color: #065c6f !important;
+    font-size: 45px;
+    color: steelblue !important;
     text-align: center;
-    padding-top: 50px;
+    font-family: fontastique !important;
+    letter-spacing: 3px;
+    font-weight: revert;
+    text-transform: uppercase;
 }
 
 .under-title {
@@ -29,8 +30,17 @@
 
 .fetch {
     color: #0f8cd1;
+    text-transform: lowercase;
 }
 
 .mate {
     color: #158467;
+    text-transform: capitalize;
+}
+
+.envelope-icon:hover,
+.github-icon:hover,
+.linkedin-icon:hover {
+    color: #0f8cd1;
+    transform: translateY(-2px);
 }

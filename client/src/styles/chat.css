@@ -1,4 +1,59 @@
+.container-page-chat {
+    margin-bottom: 180px;
+}
+
 .another-user pre{
     width: 100%;
     text-align: right!important;
+}
+
+.form-chat {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.input-message {
+    height: 60px !important;
+}
+
+/* title first section */
+.chat-title {
+    font-size: 45px;
+    /* color: white; */
+    color: steelblue;
+    padding-top: 50px;
+    padding-bottom: 70px;
+    text-align: center;
+    font-family: fontastique;
+    letter-spacing: 3px;
+    font-weight: revert;
+    text-transform: uppercase;
+}
+
+/* chat main title */
+.chat-main-title {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+/* Media Query For Iphone */
+@media only screen 
+and (min-device-width : 375px) 
+and (max-device-width : 667px) { 
+    .chat-title {
+        font-size: 25px;
+    }
+
+    .container-page-chat {
+        margin-bottom: 120px;
+        margin-top: 50px !important;
+    }
+}
+
+/* Media Query For Tablet */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) {
+    
+    
 }

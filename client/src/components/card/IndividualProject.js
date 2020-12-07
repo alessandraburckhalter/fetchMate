@@ -2,6 +2,7 @@ import { MDBCard, MDBCardText, MDBCardTitle, MDBCol, MDBIcon, MDBModal, MDBModal
 import React, {  useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import userPic from '../../images/user.jpg'
 
 
 export default function IndividualProject(props) {
@@ -84,12 +85,19 @@ export default function IndividualProject(props) {
                     <MDBCol className="individual-col">
                     
                         <MDBCard className="card-body card-body-all-projects1 mb-5" >
-                        <aside>
-    
-                            </aside>
                             <MDBCard className="card-body card-body-all-projects2">
+                        <div className="d-block d-md-flex mt-4">
+          <img className="card-img-64 d-flex  mb-3" src={userPic} alt="" />
+
+          <div body className="text-center text-md-left ml-md-3 ml-0 ">
+          <h5 className="font-weight-bold mt-0 full-name-comments avatar-card">
+          {project.User.firstName} {project.User.lastName} <br/> {project.User.title}
+            </h5>
+              </div>
+              </div>
+              <br />
                             <aside>
-                            <MDBCardTitle className="project-title"><Link className="project-tilte" to={isOwner ? `/dashboard/${project.id}` : `/projects`}><MDBIcon icon="link" /> {project.title} </Link></MDBCardTitle>
+                            <MDBCardTitle className="project-title"><Link className="project-tilte" to={isOwner ? `/dashboard/${project.id}` : `/projects`}><i class="fas fa-bookmark amber-text"></i>  {project.title} </Link></MDBCardTitle>
                             <MDBCardText>
                                 {project.description.slice(0, 90)}{(project.description.length > 90 && "...")} <Link to="#" onClick={toggle}>Read More</Link> 
                                 <MDBModal isOpen={modal} toggle={toggle}>
@@ -106,7 +114,7 @@ export default function IndividualProject(props) {
 
                             </MDBCardText>
                             <MDBCardText>
-                                <h1 className="all-prjects-skills-title">Desirable Technical Skills</h1> 
+                                <h1 className="all-prjects-skills-title"><i class="fas fa-angle-right"></i> Desirable Technical Skills</h1> 
                                 {Object.keys(project).length > 0 && project.Skills.filter((userData)=>{
                                     return (userData.category === "technical")
                                 }).length> 0 ? (project.Skills.filter((userData)=>{
@@ -114,7 +122,7 @@ export default function IndividualProject(props) {
                                 }).map((name)=>{
                                     return <span className="skills-dashboard">{name.name} </span> 
                                 })): "No required skill. "}<br/><br/>
-                                <h1 className="all-prjects-skills-title">Desirable Soft Skills</h1>
+                                <h1 className="all-prjects-skills-title"><i class="fas fa-angle-right"></i> Desirable Soft Skills</h1>
                                 {Object.keys(project).length > 0 && project.Skills.filter((userData)=>{
                                         return (userData.category === "soft")
                                     }).length> 0 ? (project.Skills.filter((userData)=>{
@@ -124,7 +132,7 @@ export default function IndividualProject(props) {
                                     })): "No required skill."}<br/><br/>
                             </MDBCardText>
                             <MDBCardText>
-                            <h1 className="all-prjects-skills-title">Acceptable Spoken languages</h1>
+                            <h1 className="all-prjects-skills-title"><i class="fas fa-angle-right"></i> Acceptable Spoken languages</h1>
                             {Object.keys(project).length > 0 && project.Skills.filter((userData)=>{
                                     return (userData.category === "language")
                                 }).length> 0 ? (project.Skills.filter((userData)=>{
@@ -133,6 +141,8 @@ export default function IndividualProject(props) {
                                     return <span className="skills-dashboard">{name.name} </span> 
                                 })): "No required language."}
                             </MDBCardText>
+                                <br />
+
                             <div className="flex-row ">
                                 <a href="#!" className="card-link icon icon-all-projects-width">
                                  {project.isCompleted === false ? 
@@ -142,8 +152,8 @@ export default function IndividualProject(props) {
                                 <a href="#!" className="card-link icon icon-all-projects-width"><MDBIcon icon="calendar-alt deep-purple-text" /> {Object.keys(project).length > 0 && project.publishedAt.slice(0, 10)} <span>Deadline</span>
                                 </a>
                                 {/* //todo GET PROJECT OWNER NAME ONTO CARD */}
-                                <a href="#!" className="card-link icon icon-all-projects-width"><MDBIcon icon="user-alt black-text" /> <Link to={`/dashboard/public/${project.User.id}`}>{project.User.firstName} {project.User.lastName} <span>Project owner</span></Link>
-                                </a>
+                                {/* <a href="#!" className="card-link icon icon-all-projects-width"><MDBIcon icon="user-alt black-text" /> <Link to={`/dashboard/public/${project.User.id}`}>{project.User.firstName} {project.User.lastName} <span>Project owner</span></Link>
+                                </a> */}
                                 <a href="#!" className="card-link icon icon-all-projects-width"><MDBIcon icon="users indigo-text" /> {project.memberLimit} <span>Member's limit</span> 
                                 </a>
                                 <Link to={`/projects/${project.id}`} className="card-link icon icon-all-projects-width"><i class="fas fa-comment-dots"></i> {comment && comment.length} <span>Comments</span> 
@@ -158,7 +168,7 @@ export default function IndividualProject(props) {
                                         :
                                         isAccepted ?
                                         <>                                
-                                            <button className="inactive-applied" disabled>
+                                            <button className="inactive-in" disabled>
                                                 You are in this project
                                             </button>
                                             

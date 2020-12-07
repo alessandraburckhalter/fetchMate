@@ -7,6 +7,7 @@ import  { MapContainer, Marker, TileLayer  }  from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import Leaflet from 'leaflet';
 import mapMarkerImg from '../images/mapIcon.png';
+import mapMarkerImg1 from '../images/mapIcon1.svg';
 import '../styles/contact.css'
 
 
@@ -42,8 +43,8 @@ export default function Contact() {
       })
   }
 
-  const mapIcon = Leaflet.icon({
-    iconUrl: mapMarkerImg,
+  const mapIcon1 = Leaflet.icon({
+    iconUrl: mapMarkerImg1,
     iconSize: [58, 68]
 })
 
@@ -58,7 +59,7 @@ export default function Contact() {
         </div> */}
         <MDBContainer className="my-5 contact-page-container">
       <h2 className="h1-responsive font-weight-bold text-center mt-5 contact-title">
-        Contact Us
+        Contact <span className="green-color">U</span><span className="green-color">s</span>
       </h2>
       <p className="text-center w-responsive mx-auto pb-5">
         Have any questions? We'd love to hear from you.
@@ -68,14 +69,14 @@ export default function Contact() {
           <MDBCard>
             <MDBCardBody>
               <div className="form-header blue accent-1">
-                <h3 className="mt-2 white-text">
+                <h3 className="mt-2 white-text pt-2 pb-2 ml-1">
                    Write to us:
                 </h3>
               </div>
               <p className="dark-grey-text">
               We'll get back to you shortly!
               </p>
-              <form onSubmit={sendEmail}>
+              <form className="form-contact" onSubmit={sendEmail}>
                 <div className="md-form">
                   <MDBInput
                     icon="user"
@@ -121,7 +122,7 @@ export default function Contact() {
                   />
                 </div>
                 <div className="text-center">
-                  <button color="light-blue" type="submit">Submit</button>
+                  <button className="btn btn-light-blue" color="light-blue" type="submit">Submit</button>
                 </div>
 
               </form>
@@ -151,12 +152,12 @@ export default function Contact() {
           <TileLayer url={`https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`} />
 
           <Marker 
-                icon={mapIcon}
+                icon={mapIcon1}
                 position={[33.753746, -84.386330]}
             ></Marker>
 
             <Marker 
-                icon={mapIcon}
+                icon={mapIcon1}
                 position={[31.000000, -100.000000]}
             ></Marker>
 

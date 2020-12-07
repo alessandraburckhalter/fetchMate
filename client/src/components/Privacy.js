@@ -10,7 +10,7 @@ export default function Privacy() {
             <Navbar />
             <div id="section1" className="background mb-5">
             <div className="layer">
-            <h1  className="faq-title">Privacy Policy</h1>
+            <h1  className="faq-title">Privacy Policy <i class="fas fa-shield-alt"></i></h1>
             </div>
         </div>
             <MDBContainer className="mt-5">

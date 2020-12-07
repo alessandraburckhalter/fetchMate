@@ -119,24 +119,32 @@ export default function ProfileSetup() {
 
           <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Update your profile picture</Modal.Title>
+          <Modal.Title> Update your profile picture</Modal.Title>
         </Modal.Header>
-        <Modal.Body><form id="profilePic" onSubmit={(e) => {handlePhoto(e)}}>
-            <label htmlFor="defaultFormCardNameEx" className="labe-headline"><MDBIcon icon="share indigo-text" />  Profile Picture
-           </label>
-           
-            <input type="file" id="defaultFormCardNameEx" className="form-control" onChange={(e) => {setProfilePicture(e.target.files[0])}}/>
-            <br />
+        <Modal.Body><form className="form-update-pic" id="profilePic" onSubmit={(e) => {handlePhoto(e)}}>
 
-            
+             <div className="input-block-update">
+            <label htmlFor="newProfilePic" >  Choose file 
+           </label>
+           <br/>
+
+           <label htmlFor="newProfilePic" className="new-profile-pic">
+           <MDBIcon far icon="plus-square indigo-text" size='2x'/>
+           </label> {profilePicture ? profilePicture.name : ''}
+
+
+            <input type="file" id="newProfilePic" className="form-control" onChange={(e) => {setProfilePicture(e.target.files[0])}}/>
+
+          </div>
           </form>
+
           </Modal.Body>
         <Modal.Footer>
-        <Button form="profilePic" variant="success" type="submit" className="btn btn-lg btn-block mb-5">
-            SUBMIT <MDBIcon far icon="paper-plane" />
-          </Button>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="primary" onClick={handleClose}>
             Close
+          </Button>
+        <Button form="profilePic" variant="success" type="submit" className=" ">
+            SAVE CHANGES
           </Button>
           
         </Modal.Footer>
@@ -146,6 +154,21 @@ export default function ProfileSetup() {
           <h4 className='card-title'> <MDBIcon icon="user indigo-text" /> {user.loginInfo.firstName} {user.loginInfo.lastName} </h4>
           <h4 className='card-title'> <MDBIcon icon="envelope orange-text" /> {user.loginInfo.email} </h4>
             <hr />
+
+            <Button onClick={toggle} className="btn btn-danger ">
+            DELETE ACCOUNT
+          </Button>
+          <MDBModal isOpen={modal} toggle={toggle}>
+                                <MDBModalHeader toggle={toggle}><i class="fas fa-exclamation-triangle amber-text"></i> WARNING <i class="fas fa-exclamation-triangle amber-text"></i></MDBModalHeader>
+                                <MDBModalBody>
+                                <h4>Are you sure you want to delete your account?</h4>
+                                <h6>Deleting your account is permanent and will remove all content including comments, avatars and profile settings.</h6>
+                            </MDBModalBody>
+                            <MDBModalFooter>
+                                <button className='btn btn-dark' onClick={deleteAccount} form="edit">Yes</button>
+                                <button className='btn btn-primary' onClick={toggle}>No</button>
+                            </MDBModalFooter>
+                        </MDBModal>
             
           {/* <p class="filled-profile">Filled profile (20%)</p> */}
          
@@ -183,11 +206,13 @@ export default function ProfileSetup() {
 
             <Button variant="success" type="submit" className="btn btn-lg btn-block mb-5">
             SUBMIT <MDBIcon far icon="paper-plane" />
-          </Button><Button variant="success" onClick={toggle} className="btn btn-lg btn-block mb-5">
+          </Button>
+          
+          {/* <Button variant="success" onClick={toggle} className="btn btn-lg btn-block mb-5">
             DELETE ACCOUNT <MDBIcon far icon="paper-plane" />
           </Button>
           <MDBModal isOpen={modal} toggle={toggle}>
-                                <MDBModalHeader toggle={toggle}>WARNING</MDBModalHeader>
+                                <MDBModalHeader toggle={toggle}><i class="fas fa-exclamation-triangle amber-text"></i> WARNING <i class="fas fa-exclamation-triangle amber-text"></i></MDBModalHeader>
                                 <MDBModalBody>
                                 <h4>Are you sure you want to delete your account?</h4>
                                 <h6>Deleting your account is permanent and will remove all content including comments, avatars and profile settings.</h6>
@@ -196,7 +221,7 @@ export default function ProfileSetup() {
                                 <button className='btn btn-primary' onClick={deleteAccount} form="edit">Yes</button>
                                 <button className='btn btn-primary' onClick={toggle}>No</button>
                             </MDBModalFooter>
-                        </MDBModal>
+                        </MDBModal> */}
           </form>
         </div>
 

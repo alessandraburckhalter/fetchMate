@@ -72,8 +72,9 @@ export default function SignUpPage() {
     
     return (
         <div>
-        <div id="left-side">
-            <aside>
+        <MDBRow className="no-gutters">
+        <MDBCol md="5" className="no-gutters ">
+            <div className="leftside d-flex justify-content-center align-items-center">
                 <img src={logo} alt="logo" width="50%"/>
                 <h2>Create an account and start publishing or searching projects today!</h2>
 
@@ -81,10 +82,11 @@ export default function SignUpPage() {
                 <MDBIcon icon="angle-double-left" size={30}  />
                 </Link>
                 
-            </aside>
+                </div>
+            </MDBCol>
 
-            <div id="right-side">
-                <aside>
+            <MDBCol md="7" className="no-gutters md-6">
+                <div className="rightside d-flex justify-content-center align-items-center"> 
                     <form className="signup-form" onSubmit={handleSubmit}>
 
                 <fieldset>
@@ -155,9 +157,9 @@ export default function SignUpPage() {
                     Submit  <MDBIcon far icon="paper-plane ml-1" />
                 </button>
             </form>
-            </aside>
             </div>
-        </div>
+            </MDBCol>
+        </MDBRow>
 
         </div>
     )

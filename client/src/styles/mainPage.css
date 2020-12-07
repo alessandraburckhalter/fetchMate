@@ -3,44 +3,38 @@ body {
   background-image: url(../images/Frame3.svg);
 }
 
-#first-section {
-  width: 100vw;
+/* top section left and right side */
+.leftside, .rightside {
   height: 100vh;
-  position: relative;
-  display: flex;
+  width: 100%;
 }
 
-#first-section aside {
-  width: 50%;
+/* top section left side */
+.leftside {
   background-image: url(../images/Frame3.svg);
   background-color: rgba(145,192,241,1);
- /* background-image: linear-gradient(-225deg, #2CD8D5 0%,  56%, #FFBAC3 100%); */
-  background-size: cover;
-  background-repeat: no-repeat;
   padding: 80px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column; 
 }
 
-#first-section h1 {
-  color: white;
-  font-weight: bold;
-}
-
-#first-section h2 {
+/* top section left side text */
+.leftside h2 {
   color: white;
   text-align: center;
-  /* font-weight: bold; */
   font-family: fontastique;
   font-size: 2.1em;
 }
 
+/* top section right side */
+.rightside {
+  background-image: url(../images/working.jpeg);
+  background-size: cover;
+}
+
+/* top section form login right side */
 form.login-form {
   width: 500px;
   margin: auto;
-  /* background: #ffffff; */
   border: 1px solid #d3e2e5;
   border-radius: 20px;
   padding: 64px 80px;
@@ -96,7 +90,6 @@ button.login-button {
   border-radius: 5px;
   cursor: pointer;
   background: #36cf82;
-  /* border-radius: 20px; */
   color: #ffffff;
   font-weight: 800;
   display: flex;
@@ -104,6 +97,8 @@ button.login-button {
   align-items: center;
   transition: background-color 0.2s;
   font-size: 1em;
+  outline: none !important;
+  
 }
 
 form.login-form .forgot-password {
@@ -131,40 +126,23 @@ button.newAccount-button {
   justify-content: center;
   align-items: center;
   transition: background-color 0.2s;
+  outline: none !important;
+ 
 }
 
-#first-section h1 {
-font-size: 40px;
-}
-
-#first-section-login {
-  width: 100vw;
-  height: 100vh;
-  position: relative;
-}
-
-#first-section-login aside {
-  width: 100%;
-  height: 100vh;
-  background-image: url(../images/working.jpeg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
+/* container second section */
 .second-section {
   width: 100vw;
-  min-height: 70vh;
+  min-height: 80vh;
   position: relative;
   display: block;
-  /* background-image: url(../images/Frame3.svg);
-  background-size: cover; */
 }
+
+/* main title second section */
 .second-section h1 {
   font-weight: bold;
   margin-top: 25em;
+  padding-top: 40px;
 }
 .second-section p {
   font-size: 18px;
@@ -172,4 +150,28 @@ font-size: 40px;
 .text-center {
   color: black;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* forgot password login form */
+.forgot-password {
+  background-color: transparent !important;
+  border: none !important;
+  outline: none !important;
+  padding: 0;
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+
+@media (max-width: 992px) {
+    form.login-form {
+      width: auto;
+    }
+}
+
+/* makes the top section 100vh on mobile */
+@media screen and (min-width:768px) {
+  .leftside, .rightside {
+    height: 100vh;
+  }
 }
