@@ -1,5 +1,27 @@
+html, body {
+    position: relative;
+   
+    
+    margin-bottom: auto;
+   
+    padding: 0;
+}
+
+html {
+    height: 100vh; /* to keep footer at the bottom */
+    
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+
 .container-page-chat {
-    margin-bottom: 180px;
+    /* margin-bottom: 180px; */
+    min-height: 100vh;
 }
 
 .another-user pre{

@@ -184,7 +184,7 @@ export default function Contact() {
               <button className="btn btn-primary button-location">
                 <MDBIcon icon="envelope" className="map-marker-icon" />
               </button>
-              <p className="location-name mt-3"><a href="mailto:fetchmate2020@gmail.com">fetchmate2020@gmail.com</a></p>
+              <p className="location-name mt-3"><a href="mailto:fetchmate2020@gmail.com">fetchmate.contact@gmail.com</a></p>
             </MDBCol>
             <MDBCol md="4">
               <button className="btn btn-primary button-location">
@@ -193,7 +193,7 @@ export default function Contact() {
               <h1 className="location-name mt-2">Houston, Texas</h1>
               <h1 className="location-name">United States</h1>
             </MDBCol>
-          </MDBRow>
+          </MDBRow> 
         </MDBCol>
       </MDBRow>
       </MDBContainer>
