@@ -201,7 +201,7 @@ export default function Dashboard() {
 
           <h1 className="title-cards">Contributing Projects</h1>
           {Object.keys(currentUserData).length > 0 && 
-            currentUserData.MemberProjects.filter(project => project.TeamMember.approved === "approved").map(project => {
+            currentUserData.MemberProjects.filter(project => project.TeamMember.approved === "approved" && project.owner !== user.loginInfo.id).map(project => {
               return <DashboardConProjectsCard key={project.id} project={project}/>
           })}
           {Object.keys(currentUserData).length > 0 && 
