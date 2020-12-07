@@ -6,7 +6,7 @@ import { Link, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import '../styles/comments.css'
 import CommentList from './card/CommentList';
-import RichTextEditor from './RichTextEditor';
+
 import userPic from '../images/user.jpg';
 
 
