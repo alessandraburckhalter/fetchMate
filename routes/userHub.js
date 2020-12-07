@@ -6,6 +6,7 @@ const session = require('express-session')
 const multer = require('multer');
 const checkAuth = require('../checkAuth');
 const db = require('../models');
+const uploadToS3 = require('../upload-to-S3');
 
 
 // multer storage
@@ -141,8 +142,14 @@ router.patch('/',upload.single('profilePicture'), checkAuth, (req,res) => {
     } 
 
     const { firstName, lastName, email, password, title, userSkillsArray } = req.body
-    const  profilePicture  = req.file && req.file.path ? "/" + req.file.path : null
+    let  profilePicture  = req.file && req.file.path ? "/" + req.file.path : null
     const params = { firstName, lastName, password, profilePicture, email, title }
+
+    uploadToS3(req.file.path).then(url => {
+        console.log(url)
+        if (url) {
+            profilePicture = url
+        }
     Object.keys(params).forEach(key => {params[key] ? updateObject[key] = params[key] : ''})
     models.User.update(updateObject, {
         where: {
@@ -186,6 +193,7 @@ router.patch('/',upload.single('profilePicture'), checkAuth, (req,res) => {
                 error: 'Database error occurred' + e
             })
         })
+    })
 })
 
 //* Add skill(s) to the currently logged in user --> send over as an array of the skillId's
