@@ -149,7 +149,7 @@ export default function IndividualProject(props) {
                                  (<><MDBIcon icon="lock-open green-text" /> Available</>) : 
                                  (<><MDBIcon icon="lock black-text" /> Unavailable</>)} <span>Project Status</span>
                                 </a>
-                                <a href="#!" className="card-link icon icon-all-projects-width"><MDBIcon icon="calendar-alt deep-purple-text" /> {Object.keys(project).length > 0 && project.publishedAt.slice(0, 10)} <span>Deadline</span>
+                                <a href="#!" className="card-link icon icon-all-projects-width"><MDBIcon icon="calendar-alt deep-purple-text" /> {Object.keys(project).length > 0 && project.createdAt.slice(0, 10)} <span>Created Date</span>
                                 </a>
                                 {/* //todo GET PROJECT OWNER NAME ONTO CARD */}
                                 {/* <a href="#!" className="card-link icon icon-all-projects-width"><MDBIcon icon="user-alt black-text" /> <Link to={`/dashboard/public/${project.User.id}`}>{project.User.firstName} {project.User.lastName} <span>Project owner</span></Link>
