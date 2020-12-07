@@ -34,6 +34,8 @@ io.on('connection', (socket) => {
                 console.log('\n\n\n\n\n' + found);
                 if(found){
                     socket.join(projectId)
+                }else{
+                    io.emit(`Not a member for project ${projectId}`)
                 }
             })
             .catch(e => {

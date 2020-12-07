@@ -224,7 +224,11 @@ router.post('/', (req, res) => {
                 deadline,
                 memberLimit
             })
-            
+            //do here
+                .then(project => {
+                    project.addMember(user, {through: {approved: 'approved'}})
+                    return project
+                })
         })
         .then(project => {
             //! Once we create the project:
