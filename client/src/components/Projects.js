@@ -6,6 +6,7 @@ import IndividualProject from './card/IndividualProject'
 import IndividualProjectPublic from './card/IndividualProjectPublic'
 import Navbar from './Navbar';
 import Footer from './Footer'
+import NavbarPublic from './NavbarPublic'
 
 export default function Projects() {
   const [projects, setProjects] = useState([])
@@ -44,19 +45,25 @@ export default function Projects() {
 
   //* Simply makes a query that will include all of the projects in the db...
   //* Both incomplete and complete 
-  const includeAllProjects = () => {
-    fetch('/api/v1/projects?includeCompleted=true')
-      .then((res) => res.json())
-      .then((data) => {
-        setProjects(data)
-      })
-  }
+  //TODO
+  // const includeAllProjects = () => {
+  //   fetch('/api/v1/projects?includeCompleted=true')
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setProjects(data)
+  //     })
+  // }
 
 
 
   return (
     <>
-      <Navbar />
+      {user.loginInfo === null ? (
+        <NavbarPublic />
+      ) 
+      : (
+        <Navbar />
+      )}
       {/* <div id="section1" className="background">
             <div className="layer">
             </div>
@@ -75,9 +82,9 @@ export default function Projects() {
                   <a href="#!" className="card-link icon icon-all-projects-width">
                     <MDBIcon icon="certificate" onClick={loadProject}/> <span>Sort by newest projects</span> 
                   </a>
-                  <a href="#!" className="card-link icon icon-all-projects-width">
+                  {/* <a href="#!" className="card-link icon icon-all-projects-width">
                     <MDBIcon icon="check-double" onClick={includeAllProjects}/> <span>Include completed projects</span> 
-                  </a>
+                  </a> */}
               </MDBCard>
             {user.loginInfo ? (projects.map((project) => {
         return (

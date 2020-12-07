@@ -9,8 +9,6 @@ import Navbar from './Navbar';
 import { MDBContainer } from 'mdbreact';
 import Footer from './Footer';
 
-const Demo_Test = 'Lets do this'; //Sent @ 9:35 pm
-
 export default function Chat() {
     const user = useSelector(state => state.user);
     const socketRef = useRef();
@@ -22,7 +20,7 @@ export default function Chat() {
     const chatTime = `\` \/\/Sent @ ${moment().format("dddd, MMMM Do YYYY, h:mm a")}\n`
     //todo eventually will come from prop
     const {projectId} = useParams();
-    // const projectId = 1;
+
     const sendMessage = (e) => {
         e.preventDefault();
         const sandwich = initialValue + user.loginInfo.firstName + '_' + user.loginInfo.lastName + middleValue + newMessage + chatTime + endingValue;
@@ -35,8 +33,7 @@ export default function Chat() {
     }
     
     useEffect(() => {
-        //todo we need to eventually add a fetch call to a backend route that retrieves all of the old messages for a project chat room
-        //todo this we be done using the projectId
+
         fetch(`/api/v1/chat/${projectId}`)
             .then(data => data.json())
             .then(chatMessages => {
@@ -58,10 +55,6 @@ export default function Chat() {
     return (
         <>
             <Navbar />
-            {/* <div id="section1" className="background">
-            <div className="layer">
-            </div>
-        </div> */}
             <MDBContainer 
             className="container-page-chat" style={{marginTop: '100px'}}>
             <h1 className="chat-title">Chat with the <span className="green-color">team</span> <i class="fas fa-comments "></i></h1>

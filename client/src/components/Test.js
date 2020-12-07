@@ -3,13 +3,22 @@ import { MDBContainer,   MDBIcon,  MDBBtn, MDBPageItem, MDBPagination, MDBPageNa
 import Navbar from './Navbar';
 import Footer from './Footer';
 import '../styles/TestingPage.css'
-import { Link } from 'react-router-dom';
+import { Link, StaticRouter } from 'react-router-dom';
 import logo from '../images/logo3.png';
+import { useSelector } from 'react-redux';
+import NavbarPublic from './NavbarPublic';
 
 export default function Test() {
+    const user = useSelector(state => state.user)
     return (
         <>
         {/* <Navbar /> */}
+        {user.loginInfo === null ? (
+              <NavbarPublic />
+            ) 
+            : (
+              <Navbar />
+            )}
         <MDBRow className="no-gutters">
         <MDBCol md="5" className="no-gutters md-6">
         <div className="leftside d-flex justify-content-center align-items-center">

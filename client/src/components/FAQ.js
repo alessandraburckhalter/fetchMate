@@ -4,6 +4,7 @@ import Navbar from './Navbar';
 import '../styles/faq.css';
 import Footer from './Footer'
 import NavbarPublic from './NavbarPublic';
+import { useSelector } from 'react-redux';
 
 export default function FAQ() {
     const [collapseID, setCollapseID] = useState(null)
@@ -16,10 +17,17 @@ export default function FAQ() {
       }
     }
 
+    const user = useSelector(state => state.user);
+
 
     return (
         <>
-        <NavbarPublic />
+        {user.loginInfo === null ? (
+            <NavbarPublic />
+          ) 
+          : (
+            <Navbar />
+        )}
         {/* <div id="section1" className="background">
             <div className="layer">
             </div>
