@@ -103,7 +103,7 @@ export default function FAQ() {
           </button>
           <MDBCollapse id="collapse3" isOpen={collapseID}>
             <MDBCardBody>
-              If you need to reset your password the first step is to go to the home page and select the option that states "forgot password". When this is clicked it will route you to the password reset page which will then prompt you to enter your email associated with the account. This will send a hyperlink to the email submitted and when clicked it will prompt you to change your password and also confirm the change. After your password has been entered you may then login with the newly created password.
+              If you need to reset your password the first step is to go to the home page and select the option that states "forgot password". When this is clicked it will route you to the password reset page which will then prompt you to enter your email associated with the account. This will send a hyperlink to the email submitted and when clicked it will prompt you to change your password and also confirm the change. After your password has been entered you may then login with the newly created password. If you do not receive the email please check your different mailboxes as the email may be in the spam folder. This token will expire in three hours before you need to request a new one.
             </MDBCardBody>
           </MDBCollapse>
         </MDBCard>
