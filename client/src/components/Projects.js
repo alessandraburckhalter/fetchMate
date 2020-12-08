@@ -7,6 +7,7 @@ import IndividualProjectPublic from './card/IndividualProjectPublic'
 import Navbar from './Navbar';
 import Footer from './Footer'
 import NavbarPublic from './NavbarPublic'
+import ScrollToTop from './ScrollToTop'
 
 export default function Projects() {
   const [projects, setProjects] = useState([])
@@ -58,6 +59,7 @@ export default function Projects() {
 
   return (
     <>
+    <ScrollToTop />
       {user.loginInfo === null ? (
         <NavbarPublic />
       ) 

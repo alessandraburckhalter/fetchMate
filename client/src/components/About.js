@@ -10,11 +10,13 @@ import Heeyoung from '../images/Heeyoung.jpg';
 import Jacky from '../images/Jacky.jpg';
 import { useSelector } from 'react-redux';
 import NavbarPublic from './NavbarPublic';
+import ScrollToTop from './ScrollToTop';
 
 export default function About() {
   const user = useSelector(state => state.user);
     return (
         <div>
+          <ScrollToTop />
             {user.loginInfo === null ? (
               <NavbarPublic />
             ) 

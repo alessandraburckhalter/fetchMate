@@ -6,6 +6,7 @@ import { login } from '../redux/actions';
 import {  MDBCol, MDBContainer, MDBIcon, MDBRow } from 'mdbreact';
 import logo from '../images/logo3.png';
 import Footer from './Footer';
+import ScrollToTop from './ScrollToTop';
 export default function MainPage() {
     const [password, setPassword] = useState('')
     const [email, setEmail] = useState('')
@@ -29,7 +30,7 @@ export default function MainPage() {
             if(data.error){
                 alert(data.error)
             }else{
-                alert('Logged In Successfully')
+                alert('Successfully logged in .')
                 dispatch(login(data.user))
                 // change path you want for test
                 let path = "/dashboard"
@@ -39,6 +40,7 @@ export default function MainPage() {
     }
     return (
         <div>
+            <ScrollToTop />
     <MDBRow className="no-gutters">
         <MDBCol md="5" className="no-gutters ">
         <div className="leftside d-flex justify-content-center align-items-center">

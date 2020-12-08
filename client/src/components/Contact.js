@@ -11,7 +11,7 @@ import mapMarkerImg1 from '../images/mapIcon1.svg';
 import '../styles/contact.css'
 import { useSelector } from 'react-redux'
 import NavbarPublic from './NavbarPublic'
-
+import ScrollToTop from './ScrollToTop';
 
 export default function Contact() {
   const [name, setName] = useState("")
@@ -36,9 +36,9 @@ export default function Contact() {
           setSubject("")
           setName("")
           setMessage("")
-          alert("success sending Email")
+          alert("Email successfully sent")
         } else {
-          alert("Fail sending Email")
+          alert("Email sending failed")
         }
       })
       .catch(err => {
@@ -53,6 +53,7 @@ export default function Contact() {
 
     return (
         <>
+        <ScrollToTop />
         {user.loginInfo === null ? (
               <NavbarPublic />
             ) 

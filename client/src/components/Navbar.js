@@ -40,7 +40,7 @@ export default function Navbar() {
         if(data.error){
             alert(data.error)
         } else {
-            alert('Logged Out Successfully!')
+            alert('Successfully logged out.')
             dispatch(logout(data.user))
             let path = "/"
             history.push(path)

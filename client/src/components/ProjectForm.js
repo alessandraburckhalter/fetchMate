@@ -11,6 +11,7 @@ import { clearSearchSkillArray } from '../redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import Footer from './Footer';
 import { useHistory } from 'react-router-dom';
+import ScrollToTop from './ScrollToTop';
 
 export default function ProjectForm() {
   const user = useSelector(state => state.user)
@@ -54,6 +55,7 @@ export default function ProjectForm() {
 
     return (
         <>
+        <ScrollToTop />
         <Navbar />
 
         <div id="top">

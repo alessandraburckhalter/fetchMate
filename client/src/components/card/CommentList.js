@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import moment from 'moment';
-import { MDBContainer, MDBIcon, MDBModal, MDBModalBody, MDBModalFooter, MDBModalHeader, MDBRow, MDBPageItem, MDBPagination, MDBPageNav  } from 'mdbreact';
+import { MDBContainer, MDBIcon, MDBModal, MDBModalBody, MDBModalFooter, MDBModalHeader } from 'mdbreact';
 import { useSelector } from 'react-redux';
 import '../../styles/comments.css'
 import userPic from '../../images/user.jpg'
@@ -15,7 +15,7 @@ export default function CommentList(props) {
         if(user.loginInfo.id === comment.UserId){
             setModalForComment(!modalForComment);
         }else{
-            alert("It's not your comments")
+            alert("It's not your comment.")
         }
 
     }
@@ -39,7 +39,7 @@ export default function CommentList(props) {
                 setModalForComment(false)
             })
         }else{
-           alert("It's not your comment")
+           alert("It's not your comment.")
         }
     }
 
@@ -53,7 +53,7 @@ export default function CommentList(props) {
                 props.loadComments()
             })
         }else{
-           alert("It's not your comment")
+           alert("It's not your comment.")
         }
             
                 

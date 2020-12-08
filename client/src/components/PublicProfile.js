@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer'
 import { useSelector } from 'react-redux';
+import ScrollToTop from './ScrollToTop';
 
 export default function PublicProfile() {
   const { pendingId } = useParams()
@@ -25,6 +26,7 @@ export default function PublicProfile() {
   
     return (
       <>
+      <ScrollToTop />
       <Navbar />
       <div className="container-pp">
             <MDBJumbotron className="banner">

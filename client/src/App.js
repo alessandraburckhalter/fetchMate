@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { Provider, useDispatch, useSelector } from 'react-redux';
-import { Redirect, Route, Switch, useHistory } from 'react-router-dom';
+import { Redirect, Route, Router, Switch, useHistory } from 'react-router-dom';
 import './App.css';
 import About from './components/About';
 import Chat from './components/Chat';
@@ -24,6 +24,7 @@ import { checked, login } from './redux/actions'
 import ForgotPassword from './components/ForgotPassword';
 import Privacy from './components/Privacy';
 import Test from './components/Test';
+import ScrollToTop from './components/ScrollToTop';
 
 
 
@@ -55,8 +56,9 @@ function App() {
     return 'Loading!'
   }
   return (
-    
-        <Switch>
+
+      
+    <Switch>
           <Route exact path="/" component={MainPage}/>
           <Route path="/register" component={SignUpPage}/>
           <Route path="/forgotpassword" component={ForgotPassword}/>
@@ -87,7 +89,6 @@ function App() {
             <Redirect to ='/' />
           </Route>
         </Switch>
-
   );
 }
 

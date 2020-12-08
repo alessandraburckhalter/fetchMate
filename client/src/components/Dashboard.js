@@ -11,6 +11,7 @@ import DashboardPenProjectCard from './card/DashboardPenProjectCard';
 import Navbar from '../components/Navbar'
 import { Link, useHistory } from 'react-router-dom';
 import { Button, Modal } from 'react-bootstrap';
+import ScrollToTop from './ScrollToTop';
 
 export default function Dashboard() {
   const [show, setShow] = useState(false);
@@ -37,7 +38,7 @@ export default function Dashboard() {
       .then(data => {
         console.log(data)
         loadProject()
-        alert('Profile Updated!')
+        alert('Yay! Profile picture updated.')
         handleClose()
         
       })
@@ -65,6 +66,7 @@ export default function Dashboard() {
 
     return (
     <>
+      <ScrollToTop />
       <Navbar />
 
       <div id="top">

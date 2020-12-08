@@ -50,10 +50,14 @@ button.remove-member {
 
 /* main titles */
 .interested-titles {
+    font-size: 45px;
+    color: steelblue;
+    padding-top: 20px;
+    text-align: center;
     font-family: fontastique;
-    font-size: 50px;
     letter-spacing: 3px;
-    color: #065c6f !important;
+    font-weight: revert;
+    text-transform: uppercase;
 }
 
 .project-overview-container {
