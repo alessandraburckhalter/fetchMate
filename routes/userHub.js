@@ -144,8 +144,8 @@ router.patch('/',upload.single('profilePicture'), checkAuth, (req,res) => {
     const { firstName, lastName, email, password, title, userSkillsArray } = req.body
     let  profilePicture  = req.file && req.file.path ? "/" + req.file.path : null
     const params = { firstName, lastName, password, profilePicture, email, title }
-    if(req.file){
-        uploadToS3(req.file.path).then(url => {
+   
+        uploadToS3(req.file && req.file.path).then(url => {
             console.log(url)
             if (url) {
                 profilePicture = url
@@ -194,51 +194,6 @@ router.patch('/',upload.single('profilePicture'), checkAuth, (req,res) => {
                 })
             })
         })
-    }else{
-        Object.keys(params).forEach(key => {params[key] ? updateObject[key] = params[key] : ''})
-    models.User.update(updateObject, {
-        where: {
-            id: req.session.user.id
-        }
-    })
-        .then((updated) => {
-            if(updated && updated[0] > 0){
-                return updated
-            }else{
-                res.status(404).json({
-                    error: 'Profile not found'
-                })
-            }
-        })
-        .then(updated => {
-            return db.User.findOne({
-                where: {
-                    id: req.session.user.id
-                }
-            })
-                .then(user => user)
-        })
-        .then(user => {
-            return db.Skill.findAll({
-                where: {id: userSkillsArray}
-            })
-                .then(skills => {
-                    if(!skills){
-                        res.status(404).json({error: 'A certain skill wasn\'t found'})
-                    }
-                    return user.setSkills(skills)
-                        .then(() => user)
-                })
-        })
-        .then(user => {
-            res.status(201).json({success: 'User updated'})
-        })
-        .catch((e) => {
-            res.status(500).json({
-                error: 'Database error occurred' + e
-            })
-        })
-    }
     
 })
 

@@ -179,7 +179,7 @@ export default function IndividualProject(props) {
                                             :
                                         isDeclined ?
                                         <>                                
-                                        <button className="inactive-applied" disabled>
+                                        <button className="inactive-declined" disabled>
                                             You were declined for this project 
                                         </button>
                                        

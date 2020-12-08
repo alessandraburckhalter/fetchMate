@@ -58,6 +58,27 @@ button.inactive-applied{
     outline: none;
 }
 
+/* you were declined for this project button */
+button.inactive-declined{
+    margin-top: 15px;
+    width: 100%;
+    height: 50px;
+    border: 0;
+    border-radius: 4px;
+    cursor: pointer;
+    background:#a20a0a;
+    /* border-radius: 20px; */
+    color: #ffffff;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.2s;
+    font-size: 1.2em;
+    outline: none;
+}
+
+
 /* you are in this project button */
 button.inactive-in {
     margin-top: 15px;
@@ -108,6 +129,11 @@ button.cancel-application {
     color: white;
     padding: 7px !important;
     outline: none;
+    border: 1px solid white;
+}
+
+button.cancel-application:hover {
+    color: skyblue;
 }
 
 /* column projects */
