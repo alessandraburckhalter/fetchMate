@@ -9,6 +9,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    cursor: pointer;
 }
 
 #top {
@@ -19,11 +20,6 @@
     display: flex;
 }
 
-
-
-
-/* 158467 logo */
-/* 3e978b */
 
 /* input form */
 .input-group.md-form.form-sm.form-1 input {
@@ -158,11 +154,13 @@ h4.card-title {
 
 /* complete your profile title */
 .form-title {
+    font-size: 40px;
+    color: steelblue;
     text-align: center;
     font-family: fontastique;
-    font-size: 20px;
     letter-spacing: 3px;
-    cursor: pointer;
+    font-weight: revert;
+    text-transform: uppercase;
 }
 
 /* profile image */
@@ -197,6 +195,28 @@ img.rounded-circle {
 /* form inside modal to update pic */
 .form-update-pic {
     margin-bottom: 0 !important;
+}
+
+
+/* Media Query For Iphone */
+@media only screen 
+and (min-device-width : 375px) 
+and (max-device-width : 667px) { 
+    .container-form {
+        margin-left: 0 !important;
+        margin-top: 0 !important;
+    }
+}
+
+/* Media Query For Tablet */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) {
+    .container-form {
+        margin-left: 0 !important;
+       
+    }
+    
 }
 
 /* BLUE AND GREEN TRANSPARENT RGBA  */
