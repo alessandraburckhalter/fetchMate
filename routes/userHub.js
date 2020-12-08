@@ -144,13 +144,15 @@ router.patch('/',upload.single('profilePicture'), checkAuth, (req,res) => {
     const { firstName, lastName, email, password, title, userSkillsArray } = req.body
     let  profilePicture  = req.file && req.file.path ? "/" + req.file.path : null
     const params = { firstName, lastName, password, profilePicture, email, title }
-   
-        uploadToS3(req.file && req.file.path).then(url => {
-            console.log(url)
-            if (url) {
-                profilePicture = url
-            }
+    
+    uploadToS3(req.file && req.file.path).then(url => {
+        console.log(url)
+        if (url) {
+            params.profilePicture = url.Location
+            
+        }
         Object.keys(params).forEach(key => {params[key] ? updateObject[key] = params[key] : ''})
+        console.log(params)
         models.User.update(updateObject, {
             where: {
                 id: req.session.user.id
