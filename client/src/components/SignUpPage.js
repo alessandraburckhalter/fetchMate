@@ -55,7 +55,7 @@ export default function SignUpPage() {
                     .then(res =>{
                         if(res.data.success){
                             setEmailSent(true)
-                            alert("success")
+                            alert("Success!")
                             let path = "/"
                             history.push(path)
                         }else{

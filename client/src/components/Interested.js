@@ -6,6 +6,7 @@ import Navbar from './Navbar'
 import '../styles/interested.css'
 import AcceptedCard from './card/AcceptedCard';
 import Footer from './Footer'
+import ScrollToTop from './ScrollToTop'
 
 export default function Interested() {
     const { projectId } = useParams()
@@ -52,7 +53,7 @@ export default function Interested() {
 
     return (
       <>
-
+      <ScrollToTop />
       <Navbar />  
       <div id="top">
 

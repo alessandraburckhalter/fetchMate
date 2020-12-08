@@ -52,7 +52,7 @@ export default function DashboardPenProjectCard(props) {
     <div className="flex-row ">
     <Link to="/public" className="card-link">
       
-    <MDBIcon icon="user black-text" />  
+    <MDBIcon icon="user indigo-text" />  
       <Link to={`/dashboard/public/${projectOwner.id}`}> {projectOwner.firstName} {projectOwner.lastName}</Link>
       </Link>
     </div>

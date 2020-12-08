@@ -222,6 +222,11 @@ button.camera-button {
     font-size: 13px;
 }
 
+/* form inside modal to update project */
+form.form-update-project {
+    margin-bottom: 0 !important;
+}
+
 
 /* Media Query For Iphone */
 @media only screen 

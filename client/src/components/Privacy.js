@@ -5,11 +5,13 @@ import '../styles/privacy.css'
 import Footer from './Footer'
 import Navbar from './Navbar'
 import NavbarPublic from './NavbarPublic'
+import ScrollToTop from './ScrollToTop'
 
 export default function Privacy() {
     const user = useSelector(state => state.user);
     return (
         <div>
+            <ScrollToTop />
             {user.loginInfo === null ? (
               <NavbarPublic />
             ) 

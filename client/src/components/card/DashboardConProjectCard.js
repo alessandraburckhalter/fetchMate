@@ -24,14 +24,14 @@ export default function DashboardConProjectCard(props) {
             </aside>
             <MDBCard className="card-body card-body-contributing2">
                 <aside>
-                <MDBCardTitle className="project-title"><Link to={`/dashboard/contribute/${id}`}>{title}</Link></MDBCardTitle>
+                <MDBCardTitle className="project-title"><Link to={`/dashboard/contribute/${id}`}><i class="fas fa-bookmark amber-text"></i> {title}</Link></MDBCardTitle>
                 <MDBCardText>
                     {description}
                 </MDBCardText>
                 <div className="flex-row ">
                     <Link to={`/dashboard/contribute/${id}`} className="card-link">
 
-                <MDBIcon icon="user" className="icon"/> {projectOwner.firstName} {projectOwner.lastName}  
+                <MDBIcon icon="user indigo-text" className="icon"/> {projectOwner.firstName} {projectOwner.lastName}  
                     </Link>
                     <Link to={`/chat/${id}`} className="card-link">
                         <MDBIcon icon="comments blue-text"/> Chat w/ Team

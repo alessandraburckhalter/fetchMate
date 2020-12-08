@@ -41,9 +41,9 @@ export default function InterestedCard(props) {
             Axios.post('/api/v1/email/declined',{email, projectTitle})
                     .then(res =>{
                         if(res.data.success){
-                            alert("success sending Email")
+                            alert("Email successfully sent")
                         }else{
-                            alert("Fail sending Email")
+                            alert("Email sending failed")
                         }
                     })
                     .catch(err =>{
@@ -73,10 +73,10 @@ export default function InterestedCard(props) {
             Axios.post('/api/v1/email/matched',{email, owner, projectTitle, ownerName})
                     .then(res =>{
                         if(res.data.success){
-                            alert("success sending Email")
+                            alert("Email successfully sent")
                             props.displayAccepted()
                         }else{
-                            alert("Fail sending Email")
+                            alert("Email sending failed")
                         }
                     })
                     .catch(err =>{

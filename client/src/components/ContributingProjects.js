@@ -4,6 +4,7 @@ import { Link, useParams } from 'react-router-dom'
 import Footer from './Footer'
 import Navbar from './Navbar';
 import '../styles/contributing.css'
+import ScrollToTop from './ScrollToTop';
 
 export default function ContributingProjects() {
     const { contributeId } = useParams()
@@ -32,13 +33,14 @@ export default function ContributingProjects() {
 
     return (
       <>
+      <ScrollToTop />
       <Navbar />
 
         <div id="top">
       <MDBContainer className="contributing-container">
         <h1 className="contributing-title ">Your Contributions</h1>
       <MDBRow>
-      <MDBCol md="3" lg="4" className="mt-5 ">
+      <MDBCol md="3" lg="4" className=" ">
         <MDBCard testimonal className="card-body-contributing">
           
           <MDBCardBody>
@@ -79,7 +81,7 @@ export default function ContributingProjects() {
                 return (userData.category === "technical")
               }).map((name)=>{
                 return <span className="skills-dashboard">{name.name} </span> 
-              })): "No technical skills required"}
+              })): "No technical skills required"} <br /> <br />
 
         <h1 className="all-prjects-skills-title">
         <i class="fas fa-angle-right"></i> Desirable Soft Skills </h1>  
@@ -89,7 +91,7 @@ export default function ContributingProjects() {
                 return (userData.category === "soft")
               }).map((name)=>{
                 return <span className="skills-dashboard">{name.name} </span> 
-              })): "No soft skills required"}
+              })): "No soft skills required"} <br /> <br />
 
         <h1 className="all-prjects-skills-title">
         <i class="fas fa-angle-right"></i> Acceptable Spoken Languages </h1>
@@ -100,7 +102,8 @@ export default function ContributingProjects() {
                 return (userData.category === "language")
               }).map((name)=>{
                 return <span className="skills-dashboard">{name.name} </span> 
-              })): "No language skills required"}
+              })): "No languages required"} <br /> <br />
+
         </MDBCardText>
             <div className="flex-row ">
             <a href="#!" className="card-link icon icon-all-projects-width">

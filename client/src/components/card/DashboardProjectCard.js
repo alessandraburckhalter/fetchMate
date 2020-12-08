@@ -130,7 +130,8 @@ export default function DashboardProjectCard(props) {
               <MDBModal isOpen={modal} toggle={toggle}>
                 <MDBModalHeader toggle={toggle}>{title}</MDBModalHeader>
                 <MDBModalBody>
-                <form>
+
+                <form className="form-update-project">
                     <label htmlFor="defaultFormCardNameEx" className="labe-headline"><MDBIcon icon="share indigo-text" /> Describe your project</label>
                     <MDBInput type="textarea" label="Brief description of your project" outline value={descriptionEdit} onChange={(e) => { setDescriptionEdit(e.target.value) }} />
 
@@ -158,10 +159,10 @@ export default function DashboardProjectCard(props) {
                     <DatePicker selected={deadlineEdit} onChange={date => setDeadlineEdit(date)} /> <br /> <br />
 
 
-                    <label htmlFor="defaultFormCardNameEx" className="labe-headline">
+                    {/* <label htmlFor="defaultFormCardNameEx" className="labe-headline">
                       When would you like to publish this project?
                     </label>
-                    <DatePicker selected={publishedAtEdit} onChange={date => setPublishedAtEdit(date)} /><br /> <br />
+                    <DatePicker selected={publishedAtEdit} onChange={date => setPublishedAtEdit(date)} /><br /> <br /> */}
                   </form>
                 </MDBModalBody>
                 <MDBModalFooter>

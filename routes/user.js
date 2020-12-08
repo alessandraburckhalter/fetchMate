@@ -68,7 +68,7 @@ router.post('/', upload.single('profilePicture'), (req, res) => {
     })
     .then(user=>{
         if(user.length > 0){
-            res.status(400).json({error:"email is used"})
+            res.status(400).json({error:"Email is already being used."})
         }else{
             uploadToS3(req.file.path).then(url => {
                 console.log(url)
@@ -87,7 +87,7 @@ router.post('/', upload.single('profilePicture'), (req, res) => {
                     })
                     .catch((error) => {
                         res.status(404).json({
-                            error: 'Email is not available'
+                            error: 'Email is not available.'
                         })
                     })
             })
@@ -154,7 +154,7 @@ router.post('/login', (req, res) => {
         .then((user) => {
             if (!user) {
                 res.status(404).json({
-                    error: 'No user with that email'
+                    error: 'No user with that email.'
                 })
                 return;
             }
@@ -164,12 +164,12 @@ router.post('/login', (req, res) => {
                     // console.log(req.session.user)
                     req.session.user = user
                     res.status(201).json({
-                        success: 'Logged In',
+                        success: 'Yay! You are logged in.',
                         user
                     })
                 } else {
                     res.status(404).json({
-                        error: 'Incorrect password'
+                        error: 'Incorrect password :('
                     })
                 }
             })
@@ -249,7 +249,7 @@ router.post('/resetpassword', function (req, res) {
         .then(function (user) {
             if (!user) {
                 return res.status(404).json({
-                    error: 'Failed to find user'
+                    error: 'Failed to find user :('
                 })
             }
             models.ResetPassword.findOne({

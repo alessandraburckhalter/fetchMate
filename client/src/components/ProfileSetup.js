@@ -9,6 +9,7 @@ import SkillSearchBar from './SkillSearchBar';
 import Axios from 'axios';
 import Footer from './Footer'
 import Navbar from '../components/Navbar'
+import ScrollToTop from './ScrollToTop';
 
 
 
@@ -45,7 +46,7 @@ export default function ProfileSetup() {
         .then(data => {
           
           // loadProject()
-          alert('Profile Updated!')
+          alert('Yay! Profile picture updated.')
           loadProject()
           handleClose()
           
@@ -97,7 +98,7 @@ export default function ProfileSetup() {
 
     return (
       <>
-  
+    <ScrollToTop/>
   <Navbar />
          
 
