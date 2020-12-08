@@ -203,7 +203,7 @@ export default function Comments() {
                     <div body className="text-center text-md-left ml-md-3 ml-0">
                     <div className="form-group mt-4">
                     <label htmlFor="quickReplyFormComment">Your comment</label>
-                    <textarea className="form-control" id="quickReplyFormComment" rows="5" onChange={(e) => {setContent(e.target.value)}}></textarea>
+                    <textarea className="form-control" id="quickReplyFormComment" value={content} rows="5" onChange={(e) => {setContent(e.target.value)}}></textarea>
                     <div className="text-center my-4">
                       <button className="btn btn-primary" size="sm" >Post</button>
 

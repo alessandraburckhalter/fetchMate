@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import moment from 'moment';
-import { MDBContainer, MDBIcon, MDBModal, MDBModalBody, MDBModalFooter, MDBModalHeader, MDBRow, MDBPageItem, MDBPagination, MDBPageNav  } from 'mdbreact';
+import { MDBContainer, MDBIcon, MDBModal, MDBModalBody, MDBModalFooter, MDBModalHeader } from 'mdbreact';
 import { useSelector } from 'react-redux';
 import '../../styles/comments.css'
 import userPic from '../../images/user.jpg'

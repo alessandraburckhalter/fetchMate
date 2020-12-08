@@ -49,7 +49,7 @@ export default function SignUpPage() {
                 setPassword("")
                 setEmail("")
                 console.log("register success") 
-                Axios.post('http://localhost:3000/api/v1/email/welcome', {
+                Axios.post('/api/v1/email/welcome', {
                 email
             })
                     .then(res =>{
