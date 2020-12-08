@@ -15,6 +15,9 @@ export default function IndividualProject(props) {
     const isAccepted = !!(user.loginInfo.MemberProjects.find(memProject => {
         return memProject.TeamMember.ProjectId === project.id && memProject.TeamMember.approved === "approved"
     }))
+    const isDeclined = !!(user.loginInfo.MemberProjects.find(memProject => {
+        return memProject.TeamMember.ProjectId === project.id && memProject.TeamMember.approved === "declined"
+    }))
     const isOwner = project.User.id === user.loginInfo.id
     
     const [accepted, setAccepted] = useState(isAccepted)
@@ -149,7 +152,7 @@ export default function IndividualProject(props) {
                                  (<><MDBIcon icon="lock-open green-text" /> Available</>) : 
                                  (<><MDBIcon icon="lock black-text" /> Unavailable</>)} <span>Project Status</span>
                                 </a>
-                                <a href="#!" className="card-link icon icon-all-projects-width"><MDBIcon icon="calendar-alt deep-purple-text" /> {Object.keys(project).length > 0 && project.createdAt.slice(0, 10)} <span>Created Date</span>
+                                <a href="#!" className="card-link icon icon-all-projects-width"><MDBIcon icon="calendar-alt deep-purple-text" /> {Object.keys(project).length > 0 && project.publishedAt.slice(0, 10)} <span>Deadline</span>
                                 </a>
                                 {/* //todo GET PROJECT OWNER NAME ONTO CARD */}
                                 {/* <a href="#!" className="card-link icon icon-all-projects-width"><MDBIcon icon="user-alt black-text" /> <Link to={`/dashboard/public/${project.User.id}`}>{project.User.firstName} {project.User.lastName} <span>Project owner</span></Link>
@@ -174,6 +177,15 @@ export default function IndividualProject(props) {
                                             
                                         </>    
                                             :
+                                        isDeclined ?
+                                        <>                                
+                                        <button className="inactive-applied" disabled>
+                                            You were declined for this project 
+                                        </button>
+                                       
+                                    </> 
+                                    :
+
                                         isApplied ?
                                             <>                                
                                             <button className="inactive-applied" disabled>
