@@ -19,23 +19,24 @@ io.on('connection', (socket) => {
         console.log('\n\n\n\n\n\n' + projectId)
         db.Project.findOne({
             where: {id: projectId}, 
-            include: [{
+            include: [db.User, {
                 model: db.User,
                 through: db.TeamMember,
                     as: 'Members'
             }]
         })
-        //! For lachlan: if the user doesn't belong to the project, then how do I send back a message to the user
-        //! Saying they don't belong to the project?
-        //* you can send a response, but it would be an emit
-        //* would have to emit a whole new type of action
+        //* To send a response it would need to be an emit of a new type of action
+        //* would need to have front end listen for that event as well.
             .then(project => {
-                let found = project.Members.find(members => members.dataValues.id === socket.handshake.session.user.id)
-                console.log('\n\n\n\n\n' + found);
-                if(found){
+                let foundMember = project.Members.find(members => members.dataValues.id === socket.handshake.session.user.id);
+                //* now we also double check if the user is the owner of the project as well
+                let foundOwner = project.User.id === socket.handshake.session.user.id ? true : false
+                // console.log('\n\n\n\n\n' + foundMember + foundOwner);
+                if(foundMember || foundOwner){
+                    io.emit('join room response', `Accepted to room`)
                     socket.join(projectId)
                 }else{
-                    io.emit(`Not a member for project ${projectId}`)
+                    io.emit('join room response', `Not a member for project id ${projectId}`)
                 }
             })
             .catch(e => {

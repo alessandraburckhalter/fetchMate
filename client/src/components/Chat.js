@@ -41,7 +41,7 @@ export default function Chat() {
         //* Then it will join them to that group, if not, then they cannot see those chat messages
         socketRef.current.emit("join project room", projectId)
         socketRef.current.on('project message', payload => {
-            console.log('Message recieved')
+            // console.log('Message recieved')
             //gets the latest messages and passes it through so they are updated
             setMessages(messages => messages.concat([payload]));
         })
