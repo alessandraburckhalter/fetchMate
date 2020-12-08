@@ -170,15 +170,17 @@ h4.card-title {
 }
 
 /* profile image */
-img.rounded-circle.hoverable.border.border-info {
+img.rounded-circle.hoverable.border.border-info.interested-image {
     border: 5px solid #33b5e5!important;
     width: max(100px, min(235px, 44vw));
     height: max(100px, min(235px, 44vw));
+    margin-left: 20px;
 }
 
-img.rounded-circle {
+img.rounded-circle.interested-image  {
     width: max(100px, min(235px, 44vw));
     height: max(100px, min(235px, 44vw));
+    margin-left: 20px;
 }
 
 /* projectForm page datepicker input */

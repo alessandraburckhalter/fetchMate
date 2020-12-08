@@ -21,7 +21,7 @@ button.accept {
     border-radius: 4px;
     padding: 13px;
     outline: none;
-    margin-left: 55px;
+    margin-left: 45px;
     border: 1px solid white;
 }
 
@@ -67,6 +67,13 @@ button.remove-member {
 /* first and last name */
 .card-title-interested {
     font-size: 1.2em;
+}
+
+img.rounded-circle.hoverable.border.border-info {
+    border: 5px solid #33b5e5!important;
+    width: max(100px, min(235px, 44vw));
+    height: max(100px, min(235px, 44vw));
+    margin-left: 30px;
 }
 
 /* Media Query For Iphone */

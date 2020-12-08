@@ -123,7 +123,7 @@ export default function InterestedCard(props) {
 
           <MDBCardBody>
           <div className=''>
-            <img src={interestedUser.profilePicture} alt="profilePicture" className="rounded-circle hoverable border border-info profile-setup" />
+            <img src={interestedUser.profilePicture} alt="profilePicture" className="rounded-circle hoverable border border-info interested-image " />
             </div>
             <MDBCardTitle>
             <h4 className='card-title-interested mt-4'> <MDBIcon icon="user indigo-text" /> {interestedUser.firstName} {interestedUser.lastName}
