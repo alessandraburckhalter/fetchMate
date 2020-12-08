@@ -15,13 +15,13 @@ export default function SkillSearchBar({category}) {
         //* This is the fetch request to get all available skills from backend
         //* We then dispatch an action to save the skills into the possibleSkills global
         //* state variable
-        Axios.get('http://localhost:3000/api/v1/skills')
+        Axios.get('/api/v1/skills')
             .then(res =>{
                 dispatch(setAllPossibleSkills(res.data))
                 setSearchOptions(res.data)
             })
             .catch(err =>{
-                console.log("Something happened getting the skills")
+                console.log("Error getting the skills: " + err)
             })
 
     }, [dispatch])
@@ -80,19 +80,6 @@ export default function SkillSearchBar({category}) {
                     ) 
                 })}
             </div>
-            {/* <MDBContainer>
-                <button onClick={() => {setShowNewSkillModal(!showNewSkillModal)}}>Modal</button>
-                <MDBModal isOpen={showNewSkillModal} toggle={() => {setShowNewSkillModal(!showNewSkillModal)}}>
-                    <MDBModalHeader toggle={() => {setShowNewSkillModal(!showNewSkillModal)}}>MDBModal title</MDBModalHeader>
-                    <MDBModalBody>
-                    (...)
-                    </MDBModalBody>
-                    <MDBModalFooter>
-                    <MDBBtn color="secondary" onClick={() => {setShowNewSkillModal(!showNewSkillModal)}}>Close</MDBBtn>
-                    <MDBBtn color="primary">Save changes</MDBBtn>
-                    </MDBModalFooter>
-                </MDBModal>
-            </MDBContainer> */}
 
         </>
     )
