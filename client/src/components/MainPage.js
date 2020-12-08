@@ -3,7 +3,7 @@ import {Link, useHistory} from 'react-router-dom'
 import '../styles/mainPage.css'
 import { useDispatch } from 'react-redux'
 import { login } from '../redux/actions';
-import {  MDBCol, MDBContainer, MDBIcon, MDBRow } from 'mdbreact';
+import {  MDBCol, MDBContainer, MDBIcon, MDBModal, MDBModalBody, MDBModalFooter, MDBModalHeader, MDBRow } from 'mdbreact';
 import logo from '../images/logo3.png';
 import Footer from './Footer';
 import ScrollToTop from './ScrollToTop';
@@ -38,6 +38,14 @@ export default function MainPage() {
             }
         }) 
     }
+
+    // Modal
+    const [modal, setModal] = useState(false);
+     const toggle = () => {
+        setModal(!modal);
+    }
+
+
     return (
         <div>
             <ScrollToTop />
@@ -82,6 +90,18 @@ export default function MainPage() {
                 <button className="newAccount-button" >
                             Create New Account <MDBIcon icon="user-plus ml-1" />
                 </button></Link>
+
+
+                <Link to=""><h1 className="white-text visitor" onClick={toggle}>visitor</h1></Link>
+                <MDBModal isOpen={modal} toggle={toggle} className="modal-visitor">
+                                <MDBModalHeader toggle={toggle}>Login shortcut 😉</MDBModalHeader>
+                                <MDBModalBody>
+                            Thank you for your visit. <br/><br/> If you don’t feel like creating an account, but still want to see the features, please use the login information below. <br /><br/> E-mail: <br/> Password: <br/><br/> We hope you enjoy your visit.
+                            </MDBModalBody>
+                            <MDBModalFooter>
+                                <button className='btn btn-primary' onClick={toggle}>Close</button>
+                            </MDBModalFooter>
+                        </MDBModal>
             </form>
             </div>
         </MDBCol>

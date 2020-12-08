@@ -220,6 +220,7 @@ button.camera-button {
     color: grey !important;
     margin-top: 10px;
     font-size: 13px;
+    cursor: pointer;
 }
 
 /* form inside modal to update project */

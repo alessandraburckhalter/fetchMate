@@ -8,6 +8,7 @@ import '../styles/comments.css'
 import CommentList from './card/CommentList';
 
 import userPic from '../images/user.jpg';
+import ScrollToTop from './ScrollToTop';
 
 
 export default function Comments() {
@@ -68,6 +69,7 @@ export default function Comments() {
 
     return (
         <>
+            <ScrollToTop />
             <Navbar />
             {/* <div id="section1" className="background">
             <div className="layer">
@@ -155,7 +157,7 @@ export default function Comments() {
                                 </a>
                                 {/* //todo GET PROJECT OWNER NAME ONTO CARD */}
                                 
-                                <a href="#!" className="card-link icon icon-all-projects-width"><MDBIcon icon="users indigo-text" /> {project.memberLimit} <span>Max members</span> 
+                                <a href="#!" className="card-link icon icon-all-projects-width"><MDBIcon icon="users indigo-text" /> {project.memberLimit} <span>Max. members</span> 
                                 </a>
                             </div>
                             {/* </aside>
