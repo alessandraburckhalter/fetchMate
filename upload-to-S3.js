@@ -8,6 +8,9 @@ const s3bucket = new AWS.S3({
   secretAccessKey: IAM_USER_SECRET
 });
 function uploadToS3(fileName) {
+  if (!fileName) {
+      return Promise.resolve(null)
+  }
   const readStream = fs.createReadStream(fileName);
   const params = {
     Bucket: BUCKET_NAME,
@@ -15,9 +18,6 @@ function uploadToS3(fileName) {
     Body: readStream
   };
   return new Promise((resolve, reject) => {
-      if (!fileName) {
-          return resolve(null)
-      }
     s3bucket.upload(params, function(err, data) {
       readStream.destroy();
       if (err) {

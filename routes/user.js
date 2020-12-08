@@ -70,8 +70,7 @@ router.post('/', upload.single('profilePicture'), (req, res) => {
         if(user.length > 0){
             res.status(400).json({error:"Email is already being used."})
         }else{
-            uploadToS3(req.file.path).then(url => {
-                console.log(url)
+            uploadToS3(req.file && req.file.path).then(url => {
             bcrypt.hash(password, 10, (err, hash) => {
                 models.User.create({
                     email: email,
