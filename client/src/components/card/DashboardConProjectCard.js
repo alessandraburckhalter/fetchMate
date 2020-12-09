@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import '../../styles/dashboard.css'
 
 export default function DashboardConProjectCard(props) {
-    const { id, owner, description, title, isCompleted, publishedAt, deadline, memberLimit } = props.project
+    const { id, owner, description, title } = props.project
     const [projectOwner, setProjectOwner] = useState([])
     
       useEffect(()=>{

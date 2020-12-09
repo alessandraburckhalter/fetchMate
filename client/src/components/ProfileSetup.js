@@ -16,7 +16,7 @@ import ScrollToTop from './ScrollToTop';
 
 export default function ProfileSetup() {
   const user = useSelector(state => state.user)
-  const [headline, setHeadline] = useState(user.loginInfo.title);
+  const [headline, setHeadline] = useState(user.loginInfo.title || '');
   const dispatch = useDispatch();
   const history = useHistory();
   const [profilePicture, setProfilePicture] = useState('')
@@ -30,7 +30,7 @@ export default function ProfileSetup() {
   useEffect(() => {
     dispatch(setSearchSkillArray(user.loginInfo.Skills))
   }, [dispatch, user.loginInfo.Skills])
-  
+
   const handlePhoto = (e) => {
     e.preventDefault();
     formData.append('profilePicture',profilePicture)

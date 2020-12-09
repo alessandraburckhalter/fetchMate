@@ -2,12 +2,8 @@ import React, {useState} from 'react';
 import '../styles/signUp.css'
 import {Link, useHistory} from 'react-router-dom'
 import Axios from 'axios';
-import { MDBCol, MDBContainer, MDBFooter, MDBIcon, MDBRow } from 'mdbreact';
+import { MDBCol, MDBIcon, MDBRow } from 'mdbreact';
 import logo from '../images/logo3.png'
-import Footer from './Footer';
-
-
-
 
 export default function SignUpPage() {
     const [email, setEmail] = useState('');
@@ -15,8 +11,6 @@ export default function SignUpPage() {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState('');
     const [profilePicture, setProfilePicture] = useState('');
-    const [title, setTitle] = useState('')
-    const [emailSent, setEmailSent ] = useState(false);
     const formData = new FormData();
     const history = useHistory();
 
@@ -52,12 +46,11 @@ export default function SignUpPage() {
             })
                     .then(res =>{
                         if(res.data.success){
-                            setEmailSent(true)
                             alert("Success!")
                             let path = "/"
                             history.push(path)
                         }else{
-                            setEmailSent(false)
+                            alert("Email Send Failure")
                         }
                     })
                     .catch(err =>{
@@ -77,7 +70,7 @@ export default function SignUpPage() {
                 <h2>Create an account and start publishing or searching projects today!</h2>
 
                 <Link to="/" className="back-home">
-                <MDBIcon icon="angle-double-left" size={30}  />
+                <MDBIcon icon="angle-double-left"/>
                 </Link>
                 
                 </div>
