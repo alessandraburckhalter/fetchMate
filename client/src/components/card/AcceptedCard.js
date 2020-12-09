@@ -5,10 +5,6 @@ import React, { useEffect, useState } from 'react'
 export default function AcceptedCard(props) {
     const { UserId, ProjectId } = props.acceptedMember
     const [interestedUser, setInterestedUser] = useState("")
-    const [project, setProject] = useState("")
-    
-    // for email
-    const id = props.project.ProjectId 
 
     //decline onclick button
     const pendingMember = () =>{
@@ -35,12 +31,7 @@ export default function AcceptedCard(props) {
         .then(data => {
           setInterestedUser(data)
         })
-        fetch(`/api/v1/projects/${id}`)
-        .then(res =>res.json())
-        .then(data =>{
-          setProject(data)
-        })
-    }, [UserId, id])
+    }, [UserId])
 
     return (
         <MDBCol md="4" lg="4">
