@@ -30,7 +30,6 @@ export default function Projects() {
     fetch('/api/v1/projects/special')
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
       setProjects(data)
     })
   }

@@ -32,7 +32,6 @@ export default function InterestedCard(props) {
         .then(res=>res.json())
         .then(data=>{
             props.displayInterest()
-            // console.log(data)
         })
         .then(result=>{
             Axios.post('/api/v1/email/declined',{email, projectTitle})
@@ -64,7 +63,6 @@ export default function InterestedCard(props) {
         .then(res=>res.json())
         .then(data=>{
             props.displayInterest()
-            // console.log(data)
         })
         .then(result=>{
             Axios.post('/api/v1/email/matched',{email, owner, projectTitle, ownerName})
@@ -95,7 +93,6 @@ export default function InterestedCard(props) {
         .then(res => res.json())
         .then(data => {
             setOwnerProject(data)
-            // console.log(ownerProject)
         
     }) 
         fetch(`/api/v1/projects/${id}`)

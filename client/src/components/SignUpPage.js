@@ -38,7 +38,6 @@ export default function SignUpPage() {
         .then(res => res.json())
             
         .then(data =>{
-            // console.log(profilePicture)
             if(data.error){
                 alert(data.error)
                 setEmail("")                
@@ -48,7 +47,6 @@ export default function SignUpPage() {
                 setFirstName("")
                 setPassword("")
                 setEmail("")
-                console.log("register success") 
                 Axios.post('/api/v1/email/welcome', {
                 email
             })

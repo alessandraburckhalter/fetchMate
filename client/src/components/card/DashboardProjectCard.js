@@ -47,7 +47,6 @@ export default function DashboardProjectCard(props) {
       projectSkillsArray
     })
       .then(res => {
-        console.log(res)
         dispatch(clearSearchSkillArray());
         props.loadProject()
       })

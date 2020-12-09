@@ -28,11 +28,9 @@ const fileFilter = (req, file, cb) => {
 
     if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
         // accept a file
-        console.log('file accepted')
         cb(null, true)
     } else {
         // reject a file
-        console.log('file denied')
         cb(null, false)
     }
 
@@ -160,7 +158,6 @@ router.post('/login', (req, res) => {
 
             bcrypt.compare(req.body.password, user.password, (err, matched) => {
                 if (matched) {
-                    // console.log(req.session.user)
                     req.session.user = user
                     res.status(201).json({
                         success: 'Yay! You are logged in.',

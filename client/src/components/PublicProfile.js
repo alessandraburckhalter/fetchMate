@@ -19,7 +19,6 @@ export default function PublicProfile() {
       .then(res => res.json())
       .then(data => {
         setOwner(data)
-        console.log(data)
       })
     
   }, [project.owner, pendingId])

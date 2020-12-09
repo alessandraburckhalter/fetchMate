@@ -30,18 +30,15 @@ export default function Dashboard() {
       method: 'PATCH',
       body:formData
     })
-      .then(res => {
-        console.log(res)
-      })
+      .then(res => res.json())
       .then(data => {
-        console.log(data)
-        loadProject()
-        alert('Yay! Profile picture updated.')
-        handleClose()
-        
-      })
-      .catch(e => {
-        console.log(e)
+        if(!data.error){
+          loadProject()
+          alert('Yay! Profile picture updated.')
+          handleClose()
+        }else{
+          alert('Error loading picture')
+        }
       })
     
   }

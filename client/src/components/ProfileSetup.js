@@ -30,29 +30,26 @@ export default function ProfileSetup() {
   useEffect(() => {
     dispatch(setSearchSkillArray(user.loginInfo.Skills))
   }, [dispatch, user.loginInfo.Skills])
+  
   const handlePhoto = (e) => {
     e.preventDefault();
-    formData.append('profilePicture', profilePicture)
-
+    formData.append('profilePicture',profilePicture)
+    
     fetch('/api/v1/hub', {
       method: 'PATCH',
-      body: formData
+      body:formData
     })
-      .then(res => {
-        console.log(res)
-      })
+      .then(res => res.json())
       .then(data => {
-
-        // loadProject()
-        alert('Yay! Profile picture updated.')
-        loadProject()
-        handleClose()
-
+        if(!data.error){
+          loadProject()
+          alert('Yay! Profile picture updated.')
+          handleClose()
+        }else{
+          alert('Error loading picture')
+        }
       })
-      .catch(e => {
-        console.log(e)
-      })
-
+    
   }
   const loadProject = () => {
     fetch('/api/v1/hub/current')
@@ -165,12 +162,6 @@ export default function ProfileSetup() {
                       <button className='btn btn-primary' onClick={toggle}>No</button>
                     </MDBModalFooter>
                   </MDBModal>
-
-                  {/* <p className="filled-profile">Filled profile (20%)</p> */}
-
-                  {/* <div >
-            <MDBProgress value={20} className="my-2" />
-            </div> */}
                 </MDBCardBody>
               </MDBCard>
             </MDBCol>

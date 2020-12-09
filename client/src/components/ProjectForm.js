@@ -43,8 +43,6 @@ export default function ProjectForm() {
       projectSkillsArray
     })
       .then(res => {
-        console.log(res)
-        // dispatch(clearSearchSkillArray());
         let path = '/dashboard'
         history.push(path)
       })

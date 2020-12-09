@@ -23,7 +23,6 @@ export default function IndividualProject(props) {
     const [comment, setComment] = useState([])
     const [modal, setModal] = useState(false);
     const [modalDetail, setModalDetail] = useState(false);
-    // console.log(project)
     const cancelApply = () => {
         fetch(`/api/v1/projects/${project.id}/teamMember`, {
             method: 'DELETE',
@@ -41,7 +40,6 @@ export default function IndividualProject(props) {
             })
     }
     const applyProject = (e) => {
-        console.log(user)
         fetch(`/api/v1/projects/${project.id}/teamMember`, {
             method: 'POST',
             body: JSON.stringify({

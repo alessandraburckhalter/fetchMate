@@ -46,7 +46,6 @@ router.post('/', (req, res) => {
         }
     })
         .then(skillsFound => {
-            console.log(skillsFound)
             if(skillsFound.length === 0){
                 db.Skill.create({
                     name,

@@ -30,7 +30,6 @@ io.on('connection', (socket) => {
                 let foundMember = project.Members.find(members => members.dataValues.id === socket.handshake.session.user.id);
                 //* now we also double check if the user is the owner of the project as well
                 let foundOwner = project.User.id === socket.handshake.session.user.id ? true : false
-                // console.log('\n\n\n\n\n' + foundMember + foundOwner);
                 if(foundMember || foundOwner){
                     io.emit('join room response', `Accepted to room`)
                     socket.join(projectId)
