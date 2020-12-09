@@ -80,7 +80,7 @@ form.signup-form .input-block + .input-block {
     font-weight: bold;
   }
   
-  form.signup-form .input-block input,
+form.signup-form .input-block input,
   form.signup-form .input-block textarea {
     width: 100%;
     background-color: rgba(46, 138, 138, 0.1);
@@ -88,7 +88,7 @@ form.signup-form .input-block + .input-block {
     border-radius: 0;
     outline: none;
     color: white;
-  }
+}
   
 form.signup-form .input-block input {
     height: 40px;
@@ -132,6 +132,8 @@ form.signup-form button.confirm-button {
   form.signup-form button.confirm-button:hover {
     background: #36cf82;
     outline: none;
+    -webkit-box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 5px 5px 15px 5px rgba(255,254,250,0); 
+    box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 5px 5px 15px 5px rgba(255,254,250,0);
   }
 
 /* add profile pic input */

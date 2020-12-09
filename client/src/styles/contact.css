@@ -34,7 +34,7 @@ button.button-location {
 .location-name {
     color: #065c6f !important;
     font-size: 15px;
-    font-weight: bold !important;
+    font-weight: 400 !important;
 }
 
 /* email under the map */

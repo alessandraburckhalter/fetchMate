@@ -175,12 +175,14 @@ img.rounded-circle.hoverable.border.border-info.interested-image {
     width: max(100px, min(235px, 44vw));
     height: max(100px, min(235px, 44vw));
     margin-left: 20px;
+    object-fit: cover;
 }
 
 img.rounded-circle.interested-image  {
     width: max(100px, min(235px, 44vw));
     height: max(100px, min(235px, 44vw));
     margin-left: 20px;
+    object-fit: cover;
 }
 
 /* projectForm page datepicker input */

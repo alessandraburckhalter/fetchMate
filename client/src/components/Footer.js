@@ -13,7 +13,7 @@ export default function Footer() {
         <MDBRow className="d-flex justify-content-center">
 
           <MDBCol md="2" className="logo-footer">
-          <img src={logo} alt="logo" className="img-footer" />
+          <Link to="/"><img src={logo} alt="logo" className="img-footer" /></Link>
          
 
             <p>
@@ -55,7 +55,7 @@ export default function Footer() {
               <i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/company/fetchmate/" target="_blank" >LinkedIn</a>
               </li>
               <li className="list-unstyled">
-              <i class="fab fa-discord"></i> <a href="#!">Discord</a>
+              <i class="fab fa-discord"></i> <a href="https://discord.gg/NNVdMcDr" target="_blank">Discord</a>
               </li>
             </ul>
         </MDBCol>
