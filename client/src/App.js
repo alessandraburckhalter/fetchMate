@@ -5,10 +5,8 @@ import './App.css';
 import About from './components/About';
 import Chat from './components/Chat';
 import Comments from './components/Comments';
-
 import ContributingProjects from './components/ContributingProjects';
 import Contact from './components/Contact';
-
 import Dashboard from './components/Dashboard';
 import FAQ from './components/FAQ';
 import Interested from './components/Interested';

@@ -5,7 +5,6 @@ import React, { useEffect, useState } from 'react'
 export default function AcceptedCard(props) {
     const { UserId, ProjectId } = props.acceptedMember
     const [interestedUser, setInterestedUser] = useState("")
-
     //decline onclick button
     const pendingMember = () =>{
         fetch(`/api/v1/projects/${ProjectId}/teamMember`,{
@@ -79,11 +78,9 @@ export default function AcceptedCard(props) {
             
              <button className="card-link btn remove-member" onClick={pendingMember}>Remove Member from this project
              </button>
+
           </MDBCardBody>
         </MDBCard>
-        
-      
-        
       </MDBCol>
     )
 }

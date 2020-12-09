@@ -22,7 +22,6 @@ export default function ForgotPassword() {
                 Accept: "application/json",
                 'Content-type': 'application/json'
             }
-
         })
             .then(res => res.json())
 
