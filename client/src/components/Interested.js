@@ -63,14 +63,14 @@ export default function Interested() {
             <h1 className="interested-titles mb-5 ">Project Overview</h1>
           <MDBCard className="card-body  mb-5" >
        
-        <MDBCardTitle className="project-title"><i class="fas fa-bookmark amber-text"></i> {project.title}</MDBCardTitle >
+        <MDBCardTitle className="project-title"><i className="fas fa-bookmark amber-text"></i> {project.title}</MDBCardTitle >
         <MDBCardText>
           {project.description}
         </MDBCardText>
 
         <MDBCardText>
           <h1 className="all-prjects-skills-title">
-          <i class="fas fa-angle-right"></i> Desirable Technical Skills </h1>
+          <i className="fas fa-angle-right"></i> Desirable Technical Skills </h1>
             {Object.keys(project).length > 0 && project.Skills.filter((userData)=>{
                 return (userData.category === "technical")
                
@@ -86,7 +86,7 @@ export default function Interested() {
                  <br/> <br/>
 
           <h1 className="all-prjects-skills-title">
-          <i class="fas fa-angle-right"></i> Desirable Soft Skills </h1>
+          <i className="fas fa-angle-right"></i> Desirable Soft Skills </h1>
             {Object.keys(project).length > 0 && project.Skills.filter((userData)=>{
                 return (userData.category === "soft")
               }).length> 0 ? (project.Skills.filter((userData)=>{
@@ -101,7 +101,7 @@ export default function Interested() {
                   
 
           <h1 className="all-prjects-skills-title">
-          <i class="fas fa-angle-right"></i> Acceptable Spoken Languages </h1>
+          <i className="fas fa-angle-right"></i> Acceptable Spoken Languages </h1>
             {Object.keys(project).length > 0 && project.Skills.filter((userData)=>{
                 return (userData.category === "language")
               }).length> 0 ? (project.Skills.filter((userData)=>{

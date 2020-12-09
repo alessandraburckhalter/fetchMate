@@ -67,13 +67,13 @@ export default function ContributingProjects() {
     
       <MDBCol className="mt-5 contributing-col">
       <MDBCard className="card-body " >
-      <MDBCardTitle className="project-title"><i class="fas fa-bookmark amber-text"></i> {project.title}</MDBCardTitle > 
+      <MDBCardTitle className="project-title"><i className="fas fa-bookmark amber-text"></i> {project.title}</MDBCardTitle > 
           <MDBCardText>
           {project.description} 
           </MDBCardText>
          <MDBCardText>
         <h1 className="all-prjects-skills-title">
-        <i class="fas fa-angle-right"></i> Desirable Technical Skills </h1>
+        <i className="fas fa-angle-right"></i> Desirable Technical Skills </h1>
 
         {Object.keys(project).length > 0 && project.Skills.filter((userData)=>{
                 return (userData.category === "technical")
@@ -84,7 +84,7 @@ export default function ContributingProjects() {
               })): "No technical skills required"} <br /> <br />
 
         <h1 className="all-prjects-skills-title">
-        <i class="fas fa-angle-right"></i> Desirable Soft Skills </h1>  
+        <i className="fas fa-angle-right"></i> Desirable Soft Skills </h1>  
         {Object.keys(project).length > 0 && project.Skills.filter((userData)=>{
                 return (userData.category === "soft")
               }).length> 0 ? (project.Skills.filter((userData)=>{
@@ -94,7 +94,7 @@ export default function ContributingProjects() {
               })): "No soft skills required"} <br /> <br />
 
         <h1 className="all-prjects-skills-title">
-        <i class="fas fa-angle-right"></i> Acceptable Spoken Languages </h1>
+        <i className="fas fa-angle-right"></i> Acceptable Spoken Languages </h1>
 
         {Object.keys(project).length > 0 && project.Skills.filter((userData)=>{
                 return (userData.category === "language")

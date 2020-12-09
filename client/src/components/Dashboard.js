@@ -4,12 +4,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../redux/actions';
 import '../styles/dashboard.css'
 import ProjectCard from './card/DashboardProjectCard';
-import ContributeProjectCard from "./card/DashboardConProjectCard";
 import Footer from './Footer';
 import DashboardConProjectsCard from "./card/DashboardConProjectCard"
 import DashboardPenProjectCard from './card/DashboardPenProjectCard';
 import Navbar from '../components/Navbar'
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Button, Modal } from 'react-bootstrap';
 import ScrollToTop from './ScrollToTop';
 
@@ -19,7 +18,6 @@ export default function Dashboard() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [currentUserData, setCurrentUserData] = useState([])
-  const history = useHistory()
   const user = useSelector(state => state.user);
   const dispatch = useDispatch()
   const formData = new FormData()
@@ -55,14 +53,15 @@ export default function Dashboard() {
     .then(data=>{
       setCurrentUserData(data)
       dispatch(login(data))
-      
     })
   }
       
   useEffect(()=>{
     loadProject()
-    
-  }, [dispatch, setCurrentUserData])
+    //? Dependency doesn't depend on loadProject because we simply want to run the load projects when the component is rendered
+    //? And we end up passing the loadProject function as a prop to be used elsewhere.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
     return (
     <>
@@ -74,7 +73,7 @@ export default function Dashboard() {
       <MDBRow>
       <MDBCol md='3' sm="3" xs="3"  className="mt-5">
       <MDBCard testimonial className="card-profile" >
-      <div gradient='aqua' backgroundColor="red"/>
+      <div />
           <div className='image-and-camera'>
           <img
               src={user.loginInfo.profilePicture} 
@@ -122,10 +121,10 @@ export default function Dashboard() {
           <h4 className='card-title'> <MDBIcon icon="user indigo-text" /> {user.loginInfo.firstName} {user.loginInfo.lastName} </h4>
           <h4 className='card-title'><MDBIcon far icon="newspaper" /> {user.loginInfo.title ? user.loginInfo.title : (<Link className="add-skills" to='/hub'>Add headline</Link>)}</h4>
           <h4 className='card-title'> <MDBIcon icon="envelope orange-text" /> {user.loginInfo.email} </h4> 
-          <Link to="/hub"><button name="button" type="button" class="btn btn-block  edit-button">Edit profile</button></Link>
+          <Link to="/hub"><button name="button" type="button" className="btn btn-block  edit-button">Edit profile</button></Link>
             <hr />
 
-            <h3 class="card-title">
+            <h3 className="card-title">
             <MDBIcon icon="cogs grey-text" /> Technical Skills</h3>
             <h2>
             {Object.keys(currentUserData).length > 0 && currentUserData.Skills.filter((userData)=>{
@@ -136,16 +135,15 @@ export default function Dashboard() {
                 return (userData.category === "technical")
                
                   
-              }).map((name)=>{
-                
-                  return <span className="skills-dashboard">{name.name} </span> 
+              }).map((name, index)=>{
+                  return <span className="skills-dashboard" key={index}>{name.name} </span> 
                 })): (<Link className="add-skills" to='/hub'>Add skills to your profile</Link>)}
             </h2>
             
             <br/>
             <hr />
 
-            <h3 class="card-title">
+            <h3 className="card-title">
             <MDBIcon icon="hand-holding-heart pink-text" /> Soft Skills
             </h3>
             <h2>
@@ -157,31 +155,25 @@ export default function Dashboard() {
                 return (userData.category === "soft")
                
                   
-              }).map((name)=>{
+              }).map((name, index)=>{
                 
-                  return <span className="skills-dashboard">{name.name} </span> 
+                  return <span className="skills-dashboard" key={index}>{name.name} </span> 
                 })): (<Link className="add-skills" to='/hub'>Add skills to your profile</Link>)}
             </h2>
             <br/>
             <hr />
 
-            <h3 class="card-title">
+            <h3 className="card-title">
             <MDBIcon icon="language purple-text" /> Spoken languages </h3>
               <h2>
               {Object.keys(currentUserData).length > 0 && currentUserData.Skills.filter((userData)=>{
-                return (userData.category === "language")
-               
-                  
+                return (userData.category === "language")  
               }).length> 0 ? (currentUserData.Skills.filter((userData)=>{
-                return (userData.category === "language")
-               
-                  
-              }).map((name)=>{
-                
-                  return <span className="skills-dashboard">{name.name} </span> 
+                return (userData.category === "language")  
+              }).map((name, index)=>{
+                  return <span className="skills-dashboard" key={index}>{name.name} </span> 
                 })): (<Link className="add-skills" to='/hub'>Add languages to your profile</Link>)}
               </h2>
-            
             <br/>
             <hr />
           </MDBCardBody>
@@ -203,27 +195,23 @@ export default function Dashboard() {
 
           <h1 className="title-cards">Contributing Projects</h1>
           {Object.keys(currentUserData).length > 0 && 
-
             <>
-            {currentUserData.MemberProjects.filter(project => project.TeamMember.approved === "approved").map(project => {
-
-              return <DashboardConProjectsCard key={project.id} project={project}/>
-          })}
-          {currentUserData.MemberProjects.filter(project => project.TeamMember.approved === "approved").length === 0 && (
-              "You are not contributing to any projects yet"
-            )}
-            <h1 className="title-cards">Pending Projects</h1>
-            {currentUserData.MemberProjects.filter(project => project.TeamMember.approved === "pending").map(project => {
-              return <DashboardPenProjectCard key={project.id} project={project}/>
-            })}
-            {currentUserData.MemberProjects.filter(project => project.TeamMember.approved === "pending").length === 0 && (
-            "You haven't applied for any projects yet"
-            )}
+              {currentUserData.MemberProjects.filter(project => project.TeamMember.approved === "approved").map(project => {
+                return <DashboardConProjectsCard key={project.id} project={project}/>
+              })}
+              {currentUserData.MemberProjects.filter(project => project.TeamMember.approved === "approved").length === 0 && (
+                "You are not contributing to any projects yet"
+              )}
+              <h1 className="title-cards">Pending Projects</h1>
+              {currentUserData.MemberProjects.filter(project => project.TeamMember.approved === "pending").map(project => {
+                return <DashboardPenProjectCard key={project.id} project={project}/>
+              })}
+              {currentUserData.MemberProjects.filter(project => project.TeamMember.approved === "pending").length === 0 && (
+              "You haven't applied for any projects yet"
+              )}
             </>
           }
-
-     
-  </MDBCol>
+      </MDBCol>
     </MDBRow>
     </MDBContainer>
         </div>

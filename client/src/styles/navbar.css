@@ -38,8 +38,8 @@
 
 /* Media Query For Iphone */
 @media only screen 
-and (min-device-width : 375px) 
-and (max-device-width : 667px) { 
+and (min-device-width : 0px) 
+and (max-device-width : 767px) { 
     .navbar .nav-item .nav-link {
         color: steelblue;
         background-color: rgba(145,192,241,1);

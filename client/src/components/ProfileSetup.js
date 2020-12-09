@@ -160,7 +160,7 @@ export default function ProfileSetup() {
             DELETE ACCOUNT
           </Button>
           <MDBModal isOpen={modal} toggle={toggle}>
-                                <MDBModalHeader toggle={toggle}><i class="fas fa-exclamation-triangle amber-text"></i> WARNING <i class="fas fa-exclamation-triangle amber-text"></i></MDBModalHeader>
+                                <MDBModalHeader toggle={toggle}><i className="fas fa-exclamation-triangle amber-text"></i> WARNING <i className="fas fa-exclamation-triangle amber-text"></i></MDBModalHeader>
                                 <MDBModalBody>
                                 <h4>Are you sure you want to delete your account?</h4>
                                 <h6>Deleting your account is permanent and will remove all content including comments, avatars and profile settings.</h6>
@@ -171,7 +171,7 @@ export default function ProfileSetup() {
                             </MDBModalFooter>
                         </MDBModal>
             
-          {/* <p class="filled-profile">Filled profile (20%)</p> */}
+          {/* <p className="filled-profile">Filled profile (20%)</p> */}
          
             {/* <div >
             <MDBProgress value={20} className="my-2" />
@@ -213,7 +213,7 @@ export default function ProfileSetup() {
             DELETE ACCOUNT <MDBIcon far icon="paper-plane" />
           </Button>
           <MDBModal isOpen={modal} toggle={toggle}>
-                                <MDBModalHeader toggle={toggle}><i class="fas fa-exclamation-triangle amber-text"></i> WARNING <i class="fas fa-exclamation-triangle amber-text"></i></MDBModalHeader>
+                                <MDBModalHeader toggle={toggle}><i className="fas fa-exclamation-triangle amber-text"></i> WARNING <i className="fas fa-exclamation-triangle amber-text"></i></MDBModalHeader>
                                 <MDBModalBody>
                                 <h4>Are you sure you want to delete your account?</h4>
                                 <h6>Deleting your account is permanent and will remove all content including comments, avatars and profile settings.</h6>

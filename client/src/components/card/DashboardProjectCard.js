@@ -100,7 +100,7 @@ export default function DashboardProjectCard(props) {
             </aside>
             <MDBCard className="card-body card-body-projects2">
           <aside>
-          <MDBCardTitle className="project-title"> <Link className="project-title" to={`/dashboard/${id}`}><i class="fas fa-bookmark amber-text"></i> {title}</Link> </MDBCardTitle>
+          <MDBCardTitle className="project-title"> <Link className="project-title" to={`/dashboard/${id}`}><i className="fas fa-bookmark amber-text"></i> {title}</Link> </MDBCardTitle>
           <MDBCardText>
             {description}
           </MDBCardText>

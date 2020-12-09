@@ -24,7 +24,7 @@ export default function DashboardConProjectCard(props) {
             </aside>
             <MDBCard className="card-body card-body-contributing2">
                 <aside>
-                <MDBCardTitle className="project-title"><Link to={`/dashboard/contribute/${id}`}><i class="fas fa-bookmark amber-text"></i> {title}</Link></MDBCardTitle>
+                <MDBCardTitle className="project-title"><Link to={`/dashboard/contribute/${id}`}><i className="fas fa-bookmark amber-text"></i> {title}</Link></MDBCardTitle>
                 <MDBCardText>
                     {description}
                 </MDBCardText>

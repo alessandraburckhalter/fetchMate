@@ -65,7 +65,7 @@ export default function CommentList(props) {
 
         <div className="d-md-flex mt-4 image-plus-name">
           <img className="card-img-64 d-flex  mb-3" src={userPic} alt="" />
-          <div body className="text-md-left ml-md-3 ml-2">
+          <div className="text-md-left ml-md-3 ml-2">
 
           <h5 className="font-weight-bold mt-0 full-name-comments">
           {comment.User.firstName} {comment.User.lastName}<MDBIcon icon="reply" className="pull-right ml-2" />

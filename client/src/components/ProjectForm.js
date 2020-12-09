@@ -75,7 +75,7 @@ export default function ProjectForm() {
           <h4 className='card-title'> <MDBIcon icon="envelope orange-text" /> {user.loginInfo.email} </h4>
             <hr />
             
-          {/* <p class="filled-profile">Filled profile (20%)</p> */}
+          {/* <p className="filled-profile">Filled profile (20%)</p> */}
          
             {/* <div >
             <MDBProgress value={20} className="my-2" />

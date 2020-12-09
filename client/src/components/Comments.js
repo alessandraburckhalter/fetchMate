@@ -76,14 +76,14 @@ export default function Comments() {
                             <MDBCard className="card-body card-comments">
                             <div className="d-block d-md-flex mt-4">
                             <img className="card-img-64 d-flex  mb-3" src={userPic} alt="" />
-                            <div body className="text-center text-md-left ml-md-3 ml-0">
+                            <div className="text-center text-md-left ml-md-3 ml-0">
                             <h5 className="font-weight-bold mt-0 full-name-comments">
                             {Object.keys(project).length > 0 && project.User.firstName} {Object.keys(project).length > 0 && project.User.lastName}  <br/> {Object.keys(project).length > 0 && project.User.title}
                                 </h5>
                                 </div>
                                 </div>
                                 <br />
-                            <MDBCardTitle className="project-title"><Link className="project-tilte" to="/interested"><i class="fas fa-bookmark amber-text"></i>  {project&& project.title} </Link></MDBCardTitle>
+                            <MDBCardTitle className="project-title"><Link className="project-tilte" to="/interested"><i className="fas fa-bookmark amber-text"></i>  {project&& project.title} </Link></MDBCardTitle>
                             <MDBCardText>
                             {project&& project.description.slice(0, 90)}
                             {(project&& project.description.length > 90 && "...")}<Link to="#" onClick={toggle}>Read More</Link> 
@@ -99,19 +99,19 @@ export default function Comments() {
                             </MDBCardText>
                                         <MDBCardText>                                         
                                         <br /><br />
-                                        <h1 className="all-prjects-skills-title"><i class="fas fa-angle-right"></i> Desirable Soft Skills</h1>
+                                        <h1 className="all-prjects-skills-title"><i className="fas fa-angle-right"></i> Desirable Soft Skills</h1>
                                         {Object.keys(project).length > 0 && project.Skills.filter((userData) => (userData.category === "soft")).map((name) => {
                                             return <span className="all-projects-skills">{name.name}</span>
                                         })}
                             </MDBCardText>
                             <MDBCardText>
-                                <h1 className="all-prjects-skills-title"><i class="fas fa-angle-right"></i> Desirable Technical Skills</h1> 
+                                <h1 className="all-prjects-skills-title"><i className="fas fa-angle-right"></i> Desirable Technical Skills</h1> 
                                 {Object.keys(project).length > 0 && project.Skills.filter((userData) => (userData.category === "technical")).map((name) => {
                                     return <span className="all-projects-skills">{name.name}</span>
                                 })}
                             </MDBCardText>
                             <MDBCardText>
-                            <h1 className="all-prjects-skills-title"><i class="fas fa-angle-right"></i> Acceptable Spoken languages</h1>
+                            <h1 className="all-prjects-skills-title"><i className="fas fa-angle-right"></i> Acceptable Spoken languages</h1>
                             {Object.keys(project).length > 0 && project.Skills.filter((userData) => (userData.category === "language")).map((name) => {
                                 return <span className="all-projects-skills">{name.name}</span>
                             })}
@@ -141,7 +141,7 @@ export default function Comments() {
                         <form onSubmit={commentHandle}>
                             <MDBContainer>
                                 <div className="d-block  mt-4">
-                                    <div body className="text-center text-md-left ml-md-3 ml-0">
+                                    <div className="text-center text-md-left ml-md-3 ml-0">
                                         <div className="form-group mt-4">
                                             <label htmlFor="quickReplyFormComment">Your comment</label>
                                             <textarea className="form-control" id="quickReplyFormComment" value={content} rows="5" onChange={(e) => {setContent(e.target.value)}}></textarea>
@@ -150,7 +150,7 @@ export default function Comments() {
                                             </div>
                                         </div>
                                         <div className="d-block  mt-4">
-                                            <div body className="text-center text-md-left ml-md-3 ml-0">
+                                            <div className="text-center text-md-left ml-md-3 ml-0">
                                             </div>
                                         </div>
                                     </div>

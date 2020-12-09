@@ -25,22 +25,22 @@ export default function Footer() {
             <ul >
             <h5 className="title ">Explore</h5> 
               <li className="list-unstyled">
-              <i class="fas fa-chevron-right "></i> <Link to="/">Login</Link>
+              <i className="fas fa-chevron-right "></i> <Link to="/">Login</Link>
               </li>
               <li className="list-unstyled">
-              <i class="fas fa-chevron-right"></i> <Link to="/register">Sign Up</Link>
+              <i className="fas fa-chevron-right"></i> <Link to="/register">Sign Up</Link>
               </li>
               <li className="list-unstyled">
-              <i class="fas fa-chevron-right"></i> <Link to="/projects">Projects</Link>
+              <i className="fas fa-chevron-right"></i> <Link to="/projects">Projects</Link>
               </li>
               <li className="list-unstyled">
-              <i class="fas fa-chevron-right"></i> <Link to="/about">The Team</Link>
+              <i className="fas fa-chevron-right"></i> <Link to="/about">The Team</Link>
               </li>
               <li className="list-unstyled">
-              <i class="fas fa-chevron-right"></i> <Link to="/faq">FAQ</Link>
+              <i className="fas fa-chevron-right"></i> <Link to="/faq">FAQ</Link>
               </li>
               <li className="list-unstyled">
-              <i class="fas fa-chevron-right"></i> <Link to="/privacy">Privacy</Link>
+              <i className="fas fa-chevron-right"></i> <Link to="/privacy">Privacy</Link>
               </li>
             </ul>
         </MDBCol>
@@ -49,13 +49,13 @@ export default function Footer() {
             <ul>
             <h5 className="title">Follow</h5>
               <li className="list-unstyled">
-              <i class="fab fa-twitter"></i> <a href="https://mobile.twitter.com/fetchmate" target="_blank">Twitter</a>
+              <i className="fab fa-twitter"></i> <a href="https://mobile.twitter.com/fetchmate" target="_blank">Twitter</a>
               </li>
               <li className="list-unstyled">
-              <i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/company/fetchmate/" target="_blank" >LinkedIn</a>
+              <i className="fab fa-linkedin"></i> <a href="https://www.linkedin.com/company/fetchmate/" target="_blank" >LinkedIn</a>
               </li>
               <li className="list-unstyled">
-              <i class="fab fa-discord"></i> <a href="https://discord.gg/NNVdMcDr" target="_blank">Discord</a>
+              <i className="fab fa-discord"></i> <a href="https://discord.gg/NNVdMcDr" target="_blank">Discord</a>
               </li>
             </ul>
         </MDBCol>
@@ -64,10 +64,10 @@ export default function Footer() {
             <ul>
             <h5 className="title"><Link to="/contact" >Contact</Link></h5>
               <li className="list-unstyled">
-              <i class="fas fa-envelope"></i> <a href="mailto:fetchmate2020@gmail.com">Email</a>
+              <i className="fas fa-envelope"></i> <a href="mailto:fetchmate2020@gmail.com">Email</a>
               </li>
               <li className="list-unstyled">
-              <i class="fas fa-map-marker-alt"></i> <Link to="/contact">Atlanta</Link><br /> <i class="fas fa-map-marker-alt"></i> <Link to="/contact">Texas</Link>
+              <i className="fas fa-map-marker-alt"></i> <Link to="/contact">Atlanta</Link><br /> <i className="fas fa-map-marker-alt"></i> <Link to="/contact">Texas</Link>
               </li>
             </ul>
         </MDBCol>

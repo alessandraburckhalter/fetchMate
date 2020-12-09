@@ -79,7 +79,7 @@ export default function AcceptedCard(props) {
                            
                         /> */}
             <hr />
-            <h3 class="card-title">
+            <h3 className="card-title">
             <MDBIcon icon="cogs grey-text" /> Technical Skills</h3> 
             {Object.keys(interestedUser).length > 0 && interestedUser.Skills.filter((userData)=>{
                 return (userData.category === "technical")
@@ -90,7 +90,7 @@ export default function AcceptedCard(props) {
               })): "No skills"}
 
             <br/> <br/>
-            <h3 class="card-title">
+            <h3 className="card-title">
             <MDBIcon icon="hand-holding-heart pink-text" /> Soft Skills</h3> 
             {Object.keys(interestedUser).length > 0 && interestedUser.Skills.filter((userData)=>{
                 return (userData.category === "soft")
@@ -101,7 +101,7 @@ export default function AcceptedCard(props) {
               })): "No skills"}   
        
             <br/> <br/>
-            <h3 class="card-title">
+            <h3 className="card-title">
             <MDBIcon icon="language purple-text" /> Spoken languages </h3>
             {Object.keys(interestedUser).length > 0 && interestedUser.Skills.filter((userData)=>{
                 return (userData.category === "language")
