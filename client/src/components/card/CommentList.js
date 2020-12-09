@@ -55,55 +55,52 @@ export default function CommentList(props) {
         }else{
            alert("It's not your comment.")
         }
-            
-                
-
+        
             
     }
     return (
         <MDBContainer>
 
-        <div className="d-md-flex mt-4 image-plus-name">
-          <img className="card-img-64 d-flex  mb-3" src={userPic} alt="" />
-          <div body className="text-md-left ml-md-3 ml-2">
+            <div className="d-md-flex mt-4 image-plus-name">
+                <img className="card-img-64 d-flex  mb-3" src={userPic} alt="" />
+                <div body className="text-md-left ml-md-3 ml-2">
 
-          <h5 className="font-weight-bold mt-0 full-name-comments">
-          {comment.User.firstName} {comment.User.lastName}<MDBIcon icon="reply" className="pull-right ml-2" />
-            </h5>
-            {comment.content}
+                    <h5 className="font-weight-bold mt-0 full-name-comments">
+                        {comment.User.firstName} {comment.User.lastName}<MDBIcon icon="reply" className="pull-right ml-2" />
+                    </h5>
+                    {comment.content}
 
-            <div className="delete-edit"><span className="comment-time">{moment(comment.createdAt).fromNow()}</span> . 
-            
-            <button className="comments-icon icon" onClick={ () => removeComment(comment)}><MDBIcon icon="trash-alt red-text" /> delete</button>  
-            
-            <button className="comments-icon icon"  onClick={()=>toggleForComment(comment)}><MDBIcon icon="edit indigo-text" /> edit</button></div>
-            <MDBModal isOpen={modalForComment} toggle={toggleForComment}>
+                    <div className="delete-edit"><span className="comment-time">{moment(comment.createdAt).fromNow()}</span> .
 
-                                <MDBModalHeader toggle={()=>toggleForComment(comment)}>Edit your comment</MDBModalHeader>
-                                <MDBModalBody>
-                                <form className="form-modal-comments">
-                                <div className="input-group">
-            <div className="input-group-prepend">
-                <span className="input-group-text" id="basic-addon">
-                <i className="fas fa-pencil-alt prefix"></i>
-                </span>
-            </div>
-            <textarea className="form-control" id="edit" rows="5" value={commentEdit} onChange={(e) => {setCommentEdit(e.target.value)}}></textarea>
-        </div>
+                        <button className="comments-icon icon" onClick={() => removeComment(comment)}><MDBIcon icon="trash-alt red-text" /> delete</button>
 
-                                </form>
-                            </MDBModalBody>
-                            <MDBModalFooter>
-                                <button className='btn btn-primary' onClick={toggleClose}>Close</button>
-                                <button className="btn btn-success"  onClick={ () => editComment(comment)} form="edit">Save changes</button>
-                            </MDBModalFooter>
-                        </MDBModal>
-
-                          </div>
-
+                        <button className="comments-icon icon" onClick={() => toggleForComment(comment)}><MDBIcon icon="edit indigo-text" /> edit</button>
                     </div>
-                <hr />
-        
+
+                    <MDBModal isOpen={modalForComment} toggle={toggleForComment}>
+                        <MDBModalHeader toggle={() => toggleForComment(comment)}>Edit your comment</MDBModalHeader>
+
+                        <MDBModalBody>
+                            <form className="form-modal-comments">
+                                <div className="input-group">
+                                    <div className="input-group-prepend">
+                                        <span className="input-group-text" id="basic-addon">
+                                            <i className="fas fa-pencil-alt prefix"></i>
+                                        </span>
+                                    </div>
+                                    <textarea className="form-control" id="edit" rows="5" value={commentEdit} onChange={(e) => { setCommentEdit(e.target.value) }}></textarea>
+                                </div>
+                            </form>
+                        </MDBModalBody>
+
+                        <MDBModalFooter>
+                            <button className='btn btn-primary' onClick={toggleClose}>Close</button>
+                            <button className="btn btn-success" onClick={() => editComment(comment)} form="edit">Save changes</button>
+                        </MDBModalFooter>
+                    </MDBModal>
+                </div>
+            </div>
+            <hr />
         </MDBContainer>
     )
 }

@@ -19,14 +19,10 @@ import ProjectForm from './components/ProjectForm';
 import Projects from './components/Projects';
 import PublicProfile from './components/PublicProfile';
 import SignUpPage from './components/SignUpPage';
-//import Test from './components/Test';
 import { checked, login } from './redux/actions'
 import ForgotPassword from './components/ForgotPassword';
 import Privacy from './components/Privacy';
 import Test from './components/Test';
-import ScrollToTop from './components/ScrollToTop';
-
-
 
 function App() {
   const user = useSelector(state => state.user)

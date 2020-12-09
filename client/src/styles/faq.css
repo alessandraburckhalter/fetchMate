@@ -1,4 +1,4 @@
-/* conatiner */
+/* page conatiner */
 .faq-container {
     min-height: 100vh;
     margin-bottom: 180px;
@@ -22,18 +22,10 @@ button.faq-button {
     font-weight: 400;
 }
 
-/* to section */
-#section1 {
-    height: 50vh;
-    background-size: cover ;
-    background-image: url(../images/background-tt.jpg);
-}
-
 /* title in the top section */
 .faq-title {
     font-size: 45px;
     color: steelblue;
-    /* color: #0e49b5; */
     padding-top: 160px;
     text-align: center;
     font-family: fontastique;
@@ -44,16 +36,13 @@ button.faq-button {
 
 /* main title in the second section */
 .faq-container-title {
-    /* font-family: fontastique; */
     text-transform: uppercase;
     margin-top: 100px;
     color: #065c6f;
     font-size: 32px;
-    /* font-weight: lighter !important;
-    text-transform: capitalize; */
 }
 
-/* icons */
+/* angle icons */
 .fa-angle-right, .fa-angle-down {
     color: #0e49b5;
     font-size: 22px;

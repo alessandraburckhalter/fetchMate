@@ -3,6 +3,7 @@
     src: url(../styles/font/fontastique.ttf);
 }
 
+/* page container */
 .about-container {
     margin-top: 150px;
     margin-bottom: 180px;
@@ -24,20 +25,24 @@
     text-transform: uppercase;
 }
 
+/* under main title */
 .under-title {
     padding-bottom: 40px !important;
 }
 
+/* "fetch" on fetchMate name */
 .fetch {
     color: #0f8cd1;
     text-transform: lowercase;
 }
 
+/* "mate" on fetchMate name */
 .mate {
     color: #158467;
     text-transform: capitalize;
 }
 
+/* icons under the description */
 .envelope-icon:hover,
 .github-icon:hover,
 .linkedin-icon:hover {
