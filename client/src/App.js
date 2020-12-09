@@ -25,6 +25,7 @@ import ForgotPassword from './components/ForgotPassword';
 import Privacy from './components/Privacy';
 import Test from './components/Test';
 import ScrollToTop from './components/ScrollToTop';
+import { MDBContainer } from 'mdbreact';
 
 
 
@@ -53,8 +54,34 @@ function App() {
   }, [dispatch])
 
   if (!user.checked) {
-    return 'Loading!'
+    return <>
+    <h3 className="loading">Loading....</h3>
+    <MDBContainer className="justify-content-center d-flex">
+      <div className="spinner-grow text-primary " role="status">
+      <span className="sr-only">Loading...</span>
+      </div>
+      <div className="spinner-grow text-success" role="status">
+      <span className="sr-only">Loading...</span>
+      </div>
+      <div className="spinner-grow text-danger" role="status">
+      <span className="sr-only">Loading...</span>
+      </div>
+      <div className="spinner-grow text-warning" role="status">
+      <span className="sr-only">Loading...</span>
+      </div>
+      <div className="spinner-grow text-info" role="status">
+      <span className="sr-only">Loading...</span>
+      </div>
+
+    </MDBContainer>
+ 
+ 
+    </>
   }
+
+
+
+  
   return (
 
       
