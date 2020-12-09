@@ -82,6 +82,10 @@ img.rounded-circle.hoverable.border.border-info {
     margin-left: 30px;
 }
 
+.commentForEmpty{
+    text-align: center; 
+}
+
 /* Media Query For Iphone */
 @media only screen 
 and (min-device-width : 375px) 

@@ -130,7 +130,7 @@ export default function Interested() {
       
       {interested.length > 0 ? (interested.map((interestedUser, index, project)=>{
             return <InterestedCard key={interestedUser.id} project={project[0]} interestedUser={interestedUser} displayInterest={displayInterest} displayAccepted={displayAccepted}/>
-          })) : "No applications yet"} 
+          })) : <MDBCol md="6" className="offset-md-3 commentForEmpty">No applications yet</MDBCol>} 
 
       </MDBRow>
       </MDBContainer>  
@@ -140,7 +140,7 @@ export default function Interested() {
       <MDBRow>
       {accepted.length > 0 ? (accepted.map((acceptedMember, index, project)=>{
             return <AcceptedCard key={acceptedMember.id} project={project[0]} acceptedMember={acceptedMember} displayAccepted={displayAccepted} displayInterest={displayInterest}/>
-          })) : "No team members yet"} 
+          })) : <MDBCol md="6" className="offset-md-3 commentForEmpty">No team member yet</MDBCol>} 
          
         </MDBRow>
       </MDBContainer>
