@@ -49,7 +49,7 @@ h4.card-title-public {
 .avatar {
     /* width: max(45px, min(135px, 22vw));
     height: max(45px, min(135px, 22vw)); */
-  
+    object-fit: cover;
     width: max(100px, min(235px, 44vw));
     height: max(100px, min(235px, 44vw));
     border: 5px solid !important;

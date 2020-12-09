@@ -77,7 +77,7 @@ export default function Dashboard() {
           <div className='image-and-camera'>
           <img
               src={user.loginInfo.profilePicture} 
-              alt='' className="rounded-circle hoverable border border-info" 
+              alt='' className="rounded-circle hoverable border border-info dashboard-image" 
             />
           <button className="camera-button" onClick={handleShow}>
           <MDBIcon icon="camera" />

@@ -75,12 +75,22 @@ button.remove-member {
     font-size: 1.2em;
 }
 
-img.rounded-circle.hoverable.border.border-info {
+/* profile picture interested/profile overview page*/
+img.rounded-circle.interested-image  {
     border: 5px solid #33b5e5!important;
     width: max(100px, min(235px, 44vw));
     height: max(100px, min(235px, 44vw));
-    margin-left: 30px;
+    object-fit: cover;
+} 
+
+/* profile picture cpntributions page*/
+img.rounded-circle.contributing-image  {
+    border: 5px solid #33b5e5!important;
+    width: max(100px, min(235px, 44vw));
+    height: max(100px, min(235px, 44vw));
+    object-fit: cover;
 }
+
 
 /* Media Query For Iphone */
 @media only screen 
@@ -95,9 +105,9 @@ and (max-device-width : 667px) {
         margin-left: 30px;
     }
 
-    img.rounded-circle.hoverable.border.border-info.interested-image {
+    /* img.rounded-circle.hoverable.border.border-info.interested-image {
         margin-left: 20px !important;
-    }
+    } */
 
     .interested-titles {
         font-size: 35px !important;

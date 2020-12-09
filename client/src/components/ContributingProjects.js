@@ -45,7 +45,7 @@ export default function ContributingProjects() {
           
           <MDBCardBody>
           <div className=''>
-            <img src={owner.profilePicture}alt="profilePicture" className="rounded-circle hoverable border border-info profile-setup"  />
+            <img src={owner.profilePicture}alt="profilePicture" className="rounded-circle hoverable border border-info contributing-image"  />
           </div>
             <MDBCardTitle>
             <h4 className='card-title-interested mt-4'> <MDBIcon icon="user indigo-text" /> {owner.firstName} {owner.lastName}

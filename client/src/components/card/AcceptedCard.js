@@ -60,7 +60,7 @@ export default function AcceptedCard(props) {
         <MDBCard personal className="my-5">
           <MDBCardBody>
           <div className=''>
-            <img src={interestedUser.profilePicture} alt="profilePicture" className="rounded-circle hoverable border border-info profile-setup"/>
+            <img src={interestedUser.profilePicture} alt="profilePicture" className="rounded-circle hoverable border border-info interested-image"/>
             </div>
             <MDBCardTitle>
             <h4 className='card-title mt-4'> <MDBIcon icon="user indigo-text" />  {interestedUser.firstName} {interestedUser.lastName}

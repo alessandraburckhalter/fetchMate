@@ -169,20 +169,14 @@ h4.card-title {
 }
 
 /* profile image */
-img.rounded-circle.hoverable.border.border-info.interested-image {
+img.rounded-circle.hoverable.border.border-info.profile-setup {
     border: 5px solid #33b5e5!important;
     width: max(100px, min(235px, 44vw));
     height: max(100px, min(235px, 44vw));
-    margin-left: 20px;
     object-fit: cover;
 }
 
-img.rounded-circle.interested-image  {
-    width: max(100px, min(235px, 44vw));
-    height: max(100px, min(235px, 44vw));
-    margin-left: 20px;
-    object-fit: cover;
-}
+
 
 /* projectForm page datepicker input */
 .react-datepicker__input-container input {

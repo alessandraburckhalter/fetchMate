@@ -11,7 +11,13 @@
     display: flex;
 }
 
-
+img.rounded-circle.hoverable.border.border-info.dashboard-image {
+    border: 5px solid #33b5e5!important;
+    width: max(100px, min(235px, 44vw));
+    height: max(100px, min(235px, 44vw));
+    margin-left: 0px;
+    object-fit: cover;
+}
 
 /* img.rounded-circle {
     width: max(100px, min(235px, 44vw));
@@ -202,7 +208,7 @@ button.camera-button {
     cursor: pointer;
     float: right;
     outline: none !important;
-    margin-left: 25px;
+    margin-left: 0px;
 }
 
 /* wrapping camera icon and picture */
@@ -245,9 +251,9 @@ and (max-device-width : 667px) {
         margin-top: 0px !important;
     }
 
-    img.rounded-circle.hoverable.border.border-info {
+    /* img.rounded-circle.hoverable.border.border-info {
         margin-left: 100px !important;
-    }
+    } */
 
     button.edit-button {
         width: 60%;
@@ -266,12 +272,12 @@ and (max-device-width : 667px) {
     }
 
     /* project form profile pic */
-    img.rounded-circle.hoverable.border.border-info.project-form-image {
+    /* img.rounded-circle.hoverable.border.border-info.project-form-image {
         border: 5px solid #33b5e5!important;
         width: max(100px, min(235px, 44vw));
         height: max(100px, min(235px, 44vw));
         margin-left: 0px !important;
-    }
+    } */
 }
 
 /* Media Query For Tablet */
@@ -279,11 +285,11 @@ and (max-device-width : 667px) {
 and (min-device-width : 768px) 
 and (max-device-width : 1024px) {
 
-    img.rounded-circle.hoverable.border.border-info {
+    /* img.rounded-circle.hoverable.border.border-info {
         border: 5px solid #33b5e5!important;
         width: max(40px, min(135px, 50vw)) !important ;
         height: max(40px, min(135px, 50vw)) !important;
-    }
+    } */
 
     .projects-col {
         margin-left: 20px !important;
