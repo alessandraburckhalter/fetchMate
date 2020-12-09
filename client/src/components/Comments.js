@@ -21,7 +21,6 @@ export default function Comments() {
   
     
     const [modal, setModal] = useState(false);
-     // Modal
      const toggle = () => {
         setModal(!modal);
     }
@@ -47,8 +46,6 @@ export default function Comments() {
 
 
     const loadComments = () =>{
-
-
         fetch(`/api/v1/projects/${projectId}/comments`)
             .then(res=>res.json())
             .then(data=>{
@@ -59,11 +56,13 @@ export default function Comments() {
             .then(data=>{
                 setProject(data)
             })
-
     }
     useEffect(()=>{
         loadComments()
-    },[projectId])
+        //? Dependency doesn't depend on loadComments because we simply want to run the load comments when the component is rendered
+        //? And we end up passing the loadComments function as a prop to be used elsewhere.
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[])
 
     return (
         <>
