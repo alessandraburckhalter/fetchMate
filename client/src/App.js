@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
-import { Provider, useDispatch, useSelector } from 'react-redux';
-import { Redirect, Route, Router, Switch, useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import './App.css';
 import About from './components/About';
 import Chat from './components/Chat';
@@ -19,12 +19,10 @@ import ProjectForm from './components/ProjectForm';
 import Projects from './components/Projects';
 import PublicProfile from './components/PublicProfile';
 import SignUpPage from './components/SignUpPage';
-//import Test from './components/Test';
 import { checked, login } from './redux/actions'
 import ForgotPassword from './components/ForgotPassword';
 import Privacy from './components/Privacy';
 import Test from './components/Test';
-import ScrollToTop from './components/ScrollToTop';
 
 
 
@@ -37,12 +35,9 @@ function App() {
     fetch('/api/v1/user/current/')
       .then(res => res.json())
       .then(data => {
-        // console.log(data)
         if (data.error) {
-          console.log('no user')
           dispatch(checked())
         } else {
-          // For any consistent state put into this fetch
           fetch('/api/v1/hub/current')
             .then(res => res.json())
             .then(data => {
