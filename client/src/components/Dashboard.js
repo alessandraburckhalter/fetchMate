@@ -36,7 +36,6 @@ export default function Dashboard() {
         console.log(res)
       })
       .then(data => {
-        console.log(data)
         loadProject()
         alert('Yay! Profile picture updated.')
         handleClose()

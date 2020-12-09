@@ -5,10 +5,8 @@ import './App.css';
 import About from './components/About';
 import Chat from './components/Chat';
 import Comments from './components/Comments';
-
 import ContributingProjects from './components/ContributingProjects';
 import Contact from './components/Contact';
-
 import Dashboard from './components/Dashboard';
 import FAQ from './components/FAQ';
 import Interested from './components/Interested';
@@ -22,7 +20,9 @@ import SignUpPage from './components/SignUpPage';
 import { checked, login } from './redux/actions'
 import ForgotPassword from './components/ForgotPassword';
 import Privacy from './components/Privacy';
-import Test from './components/Test';
+import { MDBContainer } from 'mdbreact';
+
+
 
 function App() {
   const user = useSelector(state => state.user)
@@ -49,8 +49,34 @@ function App() {
   }, [dispatch])
 
   if (!user.checked) {
-    return 'Loading!'
+    return <>
+    <h3 className="loading">Loading....</h3>
+    <MDBContainer className="justify-content-center d-flex">
+      <div className="spinner-grow text-primary " role="status">
+      <span className="sr-only">Loading...</span>
+      </div>
+      <div className="spinner-grow text-success" role="status">
+      <span className="sr-only">Loading...</span>
+      </div>
+      <div className="spinner-grow text-danger" role="status">
+      <span className="sr-only">Loading...</span>
+      </div>
+      <div className="spinner-grow text-warning" role="status">
+      <span className="sr-only">Loading...</span>
+      </div>
+      <div className="spinner-grow text-info" role="status">
+      <span className="sr-only">Loading...</span>
+      </div>
+
+    </MDBContainer>
+ 
+ 
+    </>
   }
+
+
+
+  
   return (
 
       
@@ -64,7 +90,6 @@ function App() {
           <Route exact path="/faq" component={FAQ}/>
           <Route exact path="/privacy" component={Privacy}/>
           <Route path="/contact" component={Contact}/>
-          <Route path="/test" component={Test}/>
 
           {user.loginInfo !== null && (
             <>

@@ -13,7 +13,6 @@ export default function ApplyProject() {
     fetch(`/api/v1/projects/${projectId}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data)
         setProjects(data)
       })
   }, [])

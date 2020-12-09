@@ -22,8 +22,6 @@ export default function ForgotPassword() {
     
     
     const handleSubmit = (e)=>{
-        
-        console.log(profilePicture)
         e.preventDefault()
         
         fetch("/api/v1/user/resetpassword", {
@@ -40,7 +38,6 @@ export default function ForgotPassword() {
         .then(res => res.json())
             
         .then(data =>{
-            console.log(formData)
             if(data.error){
                 alert(data.error)
                 // setError(data.error)
