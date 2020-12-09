@@ -1,7 +1,6 @@
 import Axios from 'axios'
 import { MDBCard, MDBCardBody, MDBCardTitle, MDBCol, MDBIcon } from 'mdbreact'
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
 
 export default function InterestedCard(props) {
     const { UserId, ProjectId } = props.interestedUser
@@ -17,8 +16,6 @@ export default function InterestedCard(props) {
     const owner = ownerProject.email
     const projectTitle = project.title
     const ownerName = ownerProject.firstName + " " + ownerProject.lastName
-    console.log(interestedUser)
-    
 
     //decline onclick button
     const declineMember = () =>{
@@ -107,11 +104,7 @@ export default function InterestedCard(props) {
             setProject(data)
     })
     
-        
-    
-      
-      
-    }, [UserId, userIdForProjectOwner])
+    }, [UserId, userIdForProjectOwner, id])
       
         
 
@@ -125,27 +118,19 @@ export default function InterestedCard(props) {
           <div className=''>
             <img src={interestedUser.profilePicture} alt="profilePicture" className="rounded-circle hoverable border border-info interested-image " />
             </div>
-            <MDBCardTitle>
-            <h4 className='card-title-interested mt-4'> <MDBIcon icon="user indigo-text" /> {interestedUser.firstName} {interestedUser.lastName}
-              </h4>
+            <MDBCardTitle className='card-title-interested mt-4'>
+                <MDBIcon icon="user indigo-text" /> 
+                {interestedUser.firstName} {interestedUser.lastName}
             </MDBCardTitle>
-            {/* <input
-                            icon="lock"
-                            type="hidden"
-                            id="email"
-                            value={interestedUser.email}
-                           
-                        /> */}
             <hr />
             <h3 className="card-title">
-                {console.log(interestedUser)}
             <MDBIcon icon="cogs grey-text" /> Technical Skills</h3> 
             {Object.keys(interestedUser).length > 0 && interestedUser.Skills.filter((userData)=>{
                 return (userData.category === "technical")
               }).length> 0 ? (interestedUser.Skills.filter((userData)=>{
                 return (userData.category === "technical")
-              }).map((name)=>{
-                return <span className="skills-dashboard">{name.name} </span> 
+              }).map((name, index)=>{
+                return <span className="skills-dashboard" key={index}>{name.name} </span> 
               })): "No skills"}
 
             <br/><br/>
@@ -155,8 +140,8 @@ export default function InterestedCard(props) {
                 return (userData.category === "soft")
               }).length> 0 ? (interestedUser.Skills.filter((userData)=>{
                 return (userData.category === "soft")
-              }).map((name)=>{
-                return <span className="skills-dashboard">{name.name} </span> 
+              }).map((name, index)=>{
+                return <span className="skills-dashboard" key={index}>{name.name} </span> 
               })): "No skills"}
        
             <br/><br/>
@@ -166,8 +151,8 @@ export default function InterestedCard(props) {
                 return (userData.category === "language")
               }).length> 0 ? (interestedUser.Skills.filter((userData)=>{
                 return (userData.category === "language")
-              }).map((name)=>{
-                return <span className="skills-dashboard">{name.name} </span> 
+              }).map((name, index)=>{
+                return <span className="skills-dashboard" key={index}>{name.name} </span> 
               })): "No languages"}
              <br/><br/>
             <button className="card-link btn accept" onClick={acceptMember}>Accept

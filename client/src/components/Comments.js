@@ -100,20 +100,20 @@ export default function Comments() {
                             <br /><br />
                             <h3 className="all-prjects-skills-title"><i className="fas fa-angle-right"></i> Desirable Soft Skills</h3>
                             <MDBCardText>                                         
-                            {Object.keys(project).length > 0 && project.Skills.filter((userData) => (userData.category === "soft")).map((name) => {
-                                return <span className="all-projects-skills">{name.name}</span>
+                            {Object.keys(project).length > 0 && project.Skills.filter((userData) => (userData.category === "soft")).map((name, index) => {
+                                return <span className="all-projects-skills" key={index}>{name.name}</span>
                             })}
                             </MDBCardText>
                             <h3 className="all-prjects-skills-title"><i className="fas fa-angle-right"></i> Desirable Technical Skills</h3> 
                             <MDBCardText>
-                                {Object.keys(project).length > 0 && project.Skills.filter((userData) => (userData.category === "technical")).map((name) => {
-                                    return <span className="all-projects-skills">{name.name}</span>
+                                {Object.keys(project).length > 0 && project.Skills.filter((userData) => (userData.category === "technical")).map((name, index) => {
+                                    return <span className="all-projects-skills" key={index}>{name.name}</span>
                                 })}
                             </MDBCardText>
                             <h3 className="all-prjects-skills-title"><i className="fas fa-angle-right"></i> Acceptable Spoken languages</h3>
                             <MDBCardText>
-                            {Object.keys(project).length > 0 && project.Skills.filter((userData) => (userData.category === "language")).map((name) => {
-                                return <span className="all-projects-skills">{name.name}</span>
+                            {Object.keys(project).length > 0 && project.Skills.filter((userData) => (userData.category === "language")).map((name, index) => {
+                                return <span className="all-projects-skills" key={index}>{name.name}</span>
                             })}
                             </MDBCardText>
                             <br/>

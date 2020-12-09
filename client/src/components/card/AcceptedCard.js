@@ -9,9 +9,6 @@ export default function AcceptedCard(props) {
     
     // for email
     const id = props.project.ProjectId 
-    
-
-    
 
     //decline onclick button
     const pendingMember = () =>{
@@ -29,36 +26,21 @@ export default function AcceptedCard(props) {
         .then(data=>{
             props.displayAccepted()
             props.displayInterest()
-            // console.log(data)
-        })
-        
-            }
+        }) 
+    }
 
-    // accept button onclick
-    
-        
-            
-            
     useEffect(()=>{
         fetch(`/api/v1/hub/user/${UserId}`)
         .then(res => res.json())
         .then(data => {
           setInterestedUser(data)
-          
-    })  
-        
+        })
         fetch(`/api/v1/projects/${id}`)
         .then(res =>res.json())
         .then(data =>{
-            setProject(data)
-        // console.log(project)
-    
-})
-      
-      
-    }, [UserId])
-      
-        
+          setProject(data)
+        })
+    }, [UserId, id])
 
     return (
         <MDBCol md="4" lg="4">
@@ -67,17 +49,9 @@ export default function AcceptedCard(props) {
           <div className=''>
             <img src={interestedUser.profilePicture} alt="profilePicture" className="rounded-circle hoverable border border-info profile-setup"/>
             </div>
-            <MDBCardTitle>
-            <h4 className='card-title mt-4'> <MDBIcon icon="user indigo-text" />  {interestedUser.firstName} {interestedUser.lastName}
-              </h4>
+            <MDBCardTitle className='card-title mt-4'>
+              <MDBIcon icon="user indigo-text" />  {interestedUser.firstName} {interestedUser.lastName}
             </MDBCardTitle>
-            {/* <input
-                            icon="lock"
-                            type="hidden"
-                            id="email"
-                            value={interestedUser.email}
-                           
-                        /> */}
             <hr />
             <h3 className="card-title">
             <MDBIcon icon="cogs grey-text" /> Technical Skills</h3> 
@@ -85,8 +59,8 @@ export default function AcceptedCard(props) {
                 return (userData.category === "technical")
               }).length> 0 ? (interestedUser.Skills.filter((userData)=>{
                 return (userData.category === "technical")
-              }).map((name)=>{
-                return <span className="skills-dashboard">{name.name} </span> 
+              }).map((name, index)=>{
+                return <span className="skills-dashboard" key={index}>{name.name} </span> 
               })): "No skills"}
 
             <br/> <br/>
@@ -96,8 +70,8 @@ export default function AcceptedCard(props) {
                 return (userData.category === "soft")
               }).length> 0 ? (interestedUser.Skills.filter((userData)=>{
                 return (userData.category === "soft")
-              }).map((name)=>{
-                return <span className="skills-dashboard">{name.name} </span> 
+              }).map((name, index)=>{
+                return <span className="skills-dashboard" key={index}>{name.name} </span> 
               })): "No skills"}   
        
             <br/> <br/>
@@ -107,8 +81,8 @@ export default function AcceptedCard(props) {
                 return (userData.category === "language")
               }).length> 0 ? (interestedUser.Skills.filter((userData)=>{
                 return (userData.category === "language")
-              }).map((name)=>{
-                return <span className="skills-dashboard">{name.name} </span> 
+              }).map((name, index)=>{
+                return <span className="skills-dashboard" key={index}>{name.name} </span> 
               })): "No languages"}
              <br/> <br/>
             

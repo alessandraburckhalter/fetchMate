@@ -1,4 +1,4 @@
-import { MDBCard, MDBCardBody, MDBCardText, MDBCardTitle, MDBCol, MDBContainer, MDBIcon, MDBRow } from 'mdbreact'
+import { MDBCard, MDBCardText, MDBCardTitle, MDBCol, MDBContainer, MDBIcon, MDBRow } from 'mdbreact'
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import InterestedCard from './card/InterestedCard'
@@ -14,15 +14,12 @@ export default function Interested() {
     const [interested, setInterested] = useState([])
     const [accepted, setAccepted] = useState([])
     
-    // const publish = project.publishedAt
-    console.log(project)
+
     const displayInterest = () =>{
       fetch(`/api/v1/projects/${projectId}/teamMember?status=pending`)
           .then(res =>res.json())
           .then(result =>{
             setInterested(result)
-            console.log(result)
-            
           })
     }
 
@@ -31,8 +28,6 @@ export default function Interested() {
           .then(res =>res.json())
           .then(result =>{
             setAccepted(result)
-            
-            
           })
     }
     useEffect(()=>{
@@ -41,16 +36,14 @@ export default function Interested() {
           .then(res =>res.json())
           .then(data =>{
             setProject(data)
-            
           })
           displayInterest()
           displayAccepted()
-          
-        
-        
+        //? Dependency doesn't depend on displayInterest or displayAccepted because we simply want to run these functions at the beginning when the component is rendered
+        //? And we end up passing the displayInterest or displayAccepted function as a prop to be used elsewhere.
+        // eslint-disable-next-line react-hooks/exhaustive-deps
       }, [projectId, setProject, setInterested, setAccepted])
   
-
     return (
       <>
       <ScrollToTop />
@@ -79,9 +72,9 @@ export default function Interested() {
                 return (userData.category === "technical")
                
                   
-              }).map((name)=>{
+              }).map((name, index)=>{
                 
-                  return <span className="skills-dashboard">{name.name} </span> 
+                  return <span className="skills-dashboard" key={index}>{name.name} </span> 
                 })): "No technical skills required"}
                  <br/> <br/>
           </MDBCardText>
@@ -92,8 +85,8 @@ export default function Interested() {
                 return (userData.category === "soft")
               }).length> 0 ? (project.Skills.filter((userData)=>{
                 return (userData.category === "soft")
-              }).map((name)=>{
-                return <span className="skills-dashboard">{name.name} </span> 
+              }).map((name, index)=>{
+                return <span className="skills-dashboard" key={index}>{name.name} </span> 
               })): "No soft skills required"}
                 <br/> <br/>
                   
@@ -106,8 +99,8 @@ export default function Interested() {
                 return (userData.category === "language")
               }).length> 0 ? (project.Skills.filter((userData)=>{
                 return (userData.category === "language")
-              }).map((name)=>{
-                return <span className="skills-dashboard">{name.name} </span> 
+              }).map((name, index)=>{
+                return <span className="skills-dashboard" key={index}>{name.name} </span> 
               })): "No languages required"}
              <br/> <br/>
         </MDBCardText>
@@ -128,9 +121,8 @@ export default function Interested() {
       <MDBRow >
       
       {interested.length > 0 ? (interested.map((interestedUser, index, project)=>{
-            return <InterestedCard key={interestedUser.id} project={project[0]} interestedUser={interestedUser} displayInterest={displayInterest} displayAccepted={displayAccepted}/>
+            return <InterestedCard key={`${interestedUser.id}${index}${project[0].projectId}`} project={project[0]} interestedUser={interestedUser} displayInterest={displayInterest} displayAccepted={displayAccepted}/>
           })) : "No applications yet"} 
-
       </MDBRow>
       </MDBContainer>  
 
@@ -138,9 +130,8 @@ export default function Interested() {
       <h1 className="interested-titles">Team Members</h1>
       <MDBRow>
       {accepted.length > 0 ? (accepted.map((acceptedMember, index, project)=>{
-            return <AcceptedCard key={acceptedMember.id} project={project[0]} acceptedMember={acceptedMember} displayAccepted={displayAccepted} displayInterest={displayInterest}/>
+            return <AcceptedCard key={`${acceptedMember.id}${index}${project[0].projectId}`} project={project[0]} acceptedMember={acceptedMember} displayAccepted={displayAccepted} displayInterest={displayInterest}/>
           })) : "No team members yet"} 
-         
         </MDBRow>
       </MDBContainer>
 
