@@ -198,6 +198,7 @@ button.camera-button {
     cursor: pointer;
     float: right;
     outline: none !important;
+    margin-left: 25px;
 }
 
 /* wrapping camera icon and picture */

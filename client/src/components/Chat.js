@@ -8,6 +8,7 @@ import { useParams } from 'react-router-dom';
 import Navbar from './Navbar';
 import { MDBContainer } from 'mdbreact';
 import Footer from './Footer';
+import ScrollToTop from './ScrollToTop'
 
 export default function Chat() {
     const user = useSelector(state => state.user);
@@ -50,6 +51,7 @@ export default function Chat() {
     return (
         <>
             <Navbar />
+            <ScrollToTop />
             <MDBContainer 
             className="container-page-chat" style={{marginTop: '100px'}}>
             <h1 className="chat-title">Chat with the <span className="green-color">team</span> <i class="fas fa-comments "></i></h1>

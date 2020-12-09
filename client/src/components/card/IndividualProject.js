@@ -24,6 +24,7 @@ export default function IndividualProject(props) {
     const [applied, setApplied] = useState(isApplied)
     const [comment, setComment] = useState([])
     const [modal, setModal] = useState(false);
+    const [modalDetail, setModalDetail] = useState(false);
     // console.log(project)
     const cancelApply = () =>{
         fetch(`/api/v1/projects/${project.id}/teamMember`, {
@@ -80,6 +81,10 @@ export default function IndividualProject(props) {
         setModal(!modal);
     }
 
+    const toggleDetail = () => {
+        setModalDetail(!modalDetail);
+    }
+
     return (
         <div>
             <div key={project.id}>
@@ -102,7 +107,7 @@ export default function IndividualProject(props) {
                             <aside>
                             <MDBCardTitle className="project-title"><Link className="project-tilte" to={isOwner ? `/dashboard/${project.id}` : `/projects`}><i class="fas fa-bookmark amber-text"></i>  {project.title} </Link></MDBCardTitle>
                             <MDBCardText>
-                                {project.description.slice(0, 90)}{(project.description.length > 90 && "...")} <Link to="#" onClick={toggle}>Read More</Link> 
+                                {project.description.slice(0, 90)}{(project.description.length > 90 && "...")} <Link to="#" onClick={isOwner || isAccepted ? toggleDetail : toggle}>Read More</Link> 
                                 <MDBModal isOpen={modal} toggle={toggle}>
                                 <MDBModalHeader toggle={toggle}>Privacy Measures</MDBModalHeader>
                                 <MDBModalBody>
@@ -110,6 +115,16 @@ export default function IndividualProject(props) {
                             </MDBModalBody>
                             <MDBModalFooter>
                                 <button className='btn btn-primary' onClick={toggle}>Close</button>
+                            </MDBModalFooter>
+                        </MDBModal>
+
+                        <MDBModal isOpen={modalDetail} toggle={toggleDetail}>
+                                <MDBModalHeader toggle={toggleDetail}>Project Description</MDBModalHeader>
+                                <MDBModalBody>
+                                    {project.description}
+                            </MDBModalBody>
+                            <MDBModalFooter>
+                                <button className='btn btn-primary' onClick={toggleDetail}>Close</button>
                             </MDBModalFooter>
                         </MDBModal>
 
@@ -179,7 +194,7 @@ export default function IndividualProject(props) {
                                             :
                                         isDeclined ?
                                         <>                                
-                                        <button className="inactive-applied" disabled>
+                                        <button className="inactive-declined" disabled>
                                             You were declined for this project 
                                         </button>
                                        

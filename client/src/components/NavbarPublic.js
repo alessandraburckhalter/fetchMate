@@ -53,7 +53,7 @@ export default function NavbarPublic() {
       <MDBNavbar  dark expand="md" scrolling fixed="top" className="mb-5">
       <MDBContainer>
         <MDBNavbarBrand>
-          <img src={logo} alt="logo" className="d-inline-block align-top" height="50"></img>
+        <Link to="/"><img src={logo} alt="logo" className="d-inline-block align-top" height="50"></img></Link>
         </MDBNavbarBrand>
         <MDBNavbarToggler onClick={handleToggle} />
         <MDBCollapse id="navbarCollapse3" isOpen={isOpen} navbar>

@@ -6,6 +6,7 @@ import Footer from './Footer'
 import NavbarPublic from './NavbarPublic';
 import { useSelector } from 'react-redux';
 import ScrollToTop from './ScrollToTop';
+import { Link } from 'react-router-dom';
 
 export default function FAQ() {
     const [collapseID, setCollapseID] = useState(null)
@@ -39,7 +40,7 @@ export default function FAQ() {
       <MDBContainer className="mb-5">
           <h1 className="faq-container-title"><MDBIcon  icon="question-circle blue-text" /> Questions you may have</h1>
           <h2 className="faq-subtitle">Click below for responses to frequently asked questions.</h2>
-        <MDBCard className=" card-faq">
+          <MDBCard className=" card-faq">
           <button className="faq-button" onClick={toggleCollapse("collapse1")}>
              <i
               className={
@@ -47,20 +48,29 @@ export default function FAQ() {
                   ? "fa fa-angle-down "
                   : "fa fa-angle-right"
               }
-            /> How do I create a fetchMate account?
+            /> What is fetchMate?
           </button>
           <MDBCollapse className="" id="collapse1" isOpen={collapseID}>
             <MDBCardBody className="">
-              Pariatur cliche reprehenderit, enim eiusmod high life accusamus
-              terry richardson ad squid. 3 wolf moon officia aute, non cupidatat
-              skateboard dolor brunch. Food truck quinoa nesciunt laborum
-              eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it
-              squid single-origin coffee nulla assumenda shoreditch et. Nihil
-              anim keffiyeh helvetica, craft beer labore wes anderson cred
-              nesciunt sapiente ea proident. Ad vegan excepteur butcher vice
-              lomo. Leggings occaecat craft beer farm-to-table, raw denim
-              aesthetic synth nesciunt you probably haven&apos;t heard of them
-              accusamus labore sustainable VHS.
+            fetchMate is a project hosting application built to help programmers find team members with specific development skills. Users can host a new project, join current projects, chat with team members, and even comment on different projects. It was built by developers for developers.
+            </MDBCardBody>
+          </MDBCollapse>
+        </MDBCard>
+        <hr className="hr-faq" />
+
+        <MDBCard className="mt-3 card-faq">
+          <button className="faq-button" onClick={toggleCollapse("collapse10")}>
+             <i
+              className={
+                collapseID === "collapse10"
+                  ? "fa fa-angle-down "
+                  : "fa fa-angle-right"
+              }
+            /> How do I create a fetchMate account?
+          </button>
+          <MDBCollapse className="" id="collapse10" isOpen={collapseID}>
+            <MDBCardBody className="">
+            Creating a fetchMate account is very easy. On our main page, just click on “create an account” button and fill out the form with the requested information. After that, just login. Easy, right? Then, let's go! Click <Link to="/register">here</Link> to create your fetchMate account.
             </MDBCardBody>
           </MDBCollapse>
         </MDBCard>
@@ -78,16 +88,7 @@ export default function FAQ() {
           </button>
           <MDBCollapse id="collapse2" isOpen={collapseID}>
             <MDBCardBody>
-              Anim pariatur cliche reprehenderit, enim eiusmod high life
-              accusamus terry richardson ad squid. 3 wolf moon officia aute, non
-              cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
-              laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
-              on it squid single-origin coffee nulla assumenda shoreditch et.
-              Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred
-              nesciunt sapiente ea proident. Ad vegan excepteur butcher vice
-              lomo. Leggings occaecat craft beer farm-to-table, raw denim
-              aesthetic synth nesciunt you probably haven&apos;t heard of them
-              accusamus labore sustainable VHS.
+            To login to your fetchMate account, just access our main page and fill in the login form with the registered email and password.
             </MDBCardBody>
           </MDBCollapse>
         </MDBCard>
@@ -123,16 +124,7 @@ export default function FAQ() {
           </button>
           <MDBCollapse id="collapse4" isOpen={collapseID}>
             <MDBCardBody>
-              Anim pariatur cliche reprehenderit, enim eiusmod high life
-              accusamus terry richardson ad squid. 3 wolf moon officia aute, non
-              cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
-              laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
-              on it squid single-origin coffee nulla assumenda shoreditch et.
-              Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred
-              nesciunt sapiente ea proident. Ad vegan excepteur butcher vice
-              lomo. Leggings occaecat craft beer farm-to-table, raw denim
-              aesthetic synth nesciunt you probably haven&apos;t heard of them
-              accusamus labore sustainable VHS.
+            To publish a project just click on the option "publish a new project" available on your dashboard or through the navigation bar under "projects" choose the option "publish a project". After that, you will be redirected to fill out a form with your project information. When you click on "publish project" it will became visible on your dashboard and also on the "see all projects" page for everyone on the platform to see it.
             </MDBCardBody>
           </MDBCollapse>
         </MDBCard>
@@ -150,16 +142,7 @@ export default function FAQ() {
           </button>
           <MDBCollapse id="collapse5" isOpen={collapseID}>
             <MDBCardBody>
-              Anim pariatur cliche reprehenderit, enim eiusmod high life
-              accusamus terry richardson ad squid. 3 wolf moon officia aute, non
-              cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
-              laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
-              on it squid single-origin coffee nulla assumenda shoreditch et.
-              Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred
-              nesciunt sapiente ea proident. Ad vegan excepteur butcher vice
-              lomo. Leggings occaecat craft beer farm-to-table, raw denim
-              aesthetic synth nesciunt you probably haven&apos;t heard of them
-              accusamus labore sustainable VHS.
+            You can search for projects on the "see all projects" page. If you want, you can sort your search for your skills or for the most recently published projects. 
             </MDBCardBody>
           </MDBCollapse>
         </MDBCard>
@@ -177,16 +160,7 @@ export default function FAQ() {
           </button>
           <MDBCollapse id="collapse6" isOpen={collapseID}>
             <MDBCardBody>
-              Anim pariatur cliche reprehenderit, enim eiusmod high life
-              accusamus terry richardson ad squid. 3 wolf moon officia aute, non
-              cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
-              laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
-              on it squid single-origin coffee nulla assumenda shoreditch et.
-              Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred
-              nesciunt sapiente ea proident. Ad vegan excepteur butcher vice
-              lomo. Leggings occaecat craft beer farm-to-table, raw denim
-              aesthetic synth nesciunt you probably haven&apos;t heard of them
-              accusamus labore sustainable VHS.
+            If you saw a project that piqued your interest, just click on the option "I want to be part of this project". Your application will be sent to the project owner for evaluation. You can also check all the projects you have applied for in your dashboard in the "pending projects" section.
             </MDBCardBody>
           </MDBCollapse>
         </MDBCard>
@@ -204,16 +178,7 @@ export default function FAQ() {
           </button>
           <MDBCollapse id="collapse7" isOpen={collapseID}>
             <MDBCardBody>
-              Anim pariatur cliche reprehenderit, enim eiusmod high life
-              accusamus terry richardson ad squid. 3 wolf moon officia aute, non
-              cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
-              laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
-              on it squid single-origin coffee nulla assumenda shoreditch et.
-              Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred
-              nesciunt sapiente ea proident. Ad vegan excepteur butcher vice
-              lomo. Leggings occaecat craft beer farm-to-table, raw denim
-              aesthetic synth nesciunt you probably haven&apos;t heard of them
-              accusamus labore sustainable VHS.
+            To update your information just click on the "edit profile" option on your dashboard or in the navigation bar on the user icon. Your profile photo can be changed either on the dashboard or via the "edit profile" page, just click on the camera icon under your current profile photo.
             </MDBCardBody>
           </MDBCollapse>
         </MDBCard>
@@ -231,16 +196,7 @@ export default function FAQ() {
           </button>
           <MDBCollapse id="collapse8" isOpen={collapseID}>
             <MDBCardBody>
-              Anim pariatur cliche reprehenderit, enim eiusmod high life
-              accusamus terry richardson ad squid. 3 wolf moon officia aute, non
-              cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
-              laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
-              on it squid single-origin coffee nulla assumenda shoreditch et.
-              Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred
-              nesciunt sapiente ea proident. Ad vegan excepteur butcher vice
-              lomo. Leggings occaecat craft beer farm-to-table, raw denim
-              aesthetic synth nesciunt you probably haven&apos;t heard of them
-              accusamus labore sustainable VHS.
+            You can view all the projects you have applied for in your dashboard in the "pending projects" section. You can also see the projects you’ve published and are contributing to.
             </MDBCardBody>
           </MDBCollapse>
         </MDBCard>
@@ -258,16 +214,7 @@ export default function FAQ() {
           </button>
           <MDBCollapse id="collapse9" isOpen={collapseID}>
             <MDBCardBody>
-              Anim pariatur cliche reprehenderit, enim eiusmod high life
-              accusamus terry richardson ad squid. 3 wolf moon officia aute, non
-              cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
-              laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
-              on it squid single-origin coffee nulla assumenda shoreditch et.
-              Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred
-              nesciunt sapiente ea proident. Ad vegan excepteur butcher vice
-              lomo. Leggings occaecat craft beer farm-to-table, raw denim
-              aesthetic synth nesciunt you probably haven&apos;t heard of them
-              accusamus labore sustainable VHS.
+              You can delete your account on the "edit profile" page.
             </MDBCardBody>
           </MDBCollapse>
         </MDBCard>

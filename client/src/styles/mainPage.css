@@ -83,6 +83,7 @@ form.login-form .input-block label {
   font-weight: bold;
 }
 
+/* log in button */
 button.login-button {
   margin-top: 44px;
   width: 100%;
@@ -99,9 +100,14 @@ button.login-button {
   transition: background-color 0.2s;
   font-size: 1em;
   outline: none !important;
-  
 }
 
+button.login-button:hover {
+  -webkit-box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 5px 5px 15px 5px rgba(255,254,250,0); 
+  box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 5px 5px 15px 5px rgba(255,254,250,0);
+}
+
+/* forgot password question in the login form */
 form.login-form .forgot-password {
   color: white;
   font-size: 1em;
@@ -112,6 +118,12 @@ form.login-form .forgot-password {
   padding-bottom: 25px;
 }
 
+form.login-form .forgot-password:hover {
+  color: greenyellow;
+  
+}
+
+/* create new account button */
 button.newAccount-button {
   font-size: 1em;
   margin-top: 44px;
@@ -131,6 +143,11 @@ button.newAccount-button {
  
 }
 
+button.newAccount-button:hover {
+  -webkit-box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 5px 5px 15px 5px rgba(255,254,250,0); 
+  box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 5px 5px 15px 5px rgba(255,254,250,0);
+}
+
 /* container second section */
 .second-section {
   width: 100vw;
@@ -145,9 +162,11 @@ button.newAccount-button {
   margin-top: 25em;
   padding-top: 40px;
 }
+
 .second-section p {
   font-size: 18px;
 }
+
 .text-center {
   color: black;
   font-family: Arial, Helvetica, sans-serif;
@@ -163,12 +182,17 @@ button.newAccount-button {
   padding-bottom: 0 !important;
 }
 
+/* visitor link */
 .visitor {
   font-size: 12px;
   font-weight: 400;
   text-align: right;
   padding-top: 20px;
   cursor: pointer;
+}
+
+.visitor:hover {
+  color: greenyellow !important;
 }
 
 .modal-visitor {
