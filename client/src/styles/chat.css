@@ -1,47 +1,28 @@
-html, body {
-    position: relative;
-   
-    
-    margin-bottom: auto;
-   
-    padding: 0;
-}
-
-html {
-    height: 100vh; /* to keep footer at the bottom */
-    
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-}
-
-
+/* page container */
 .container-page-chat {
-    /* margin-bottom: 180px; */
-    min-height: 100vh;
+    min-height: 100vh; /* to keep footer on the bottom */
 }
 
+/* make the other user message display on the right side */
 .another-user pre{
     width: 100%;
-    text-align: right!important;
+    text-align: right !important;
 }
 
+/* type a message box */
 .form-chat {
     padding: 0 !important;
     margin: 0 !important;
 }
 
+/* inside the box */
 .input-message {
     height: 60px !important;
 }
 
-/* title first section */
+/* page main title */
 .chat-title {
     font-size: 45px;
-    /* color: white; */
     color: steelblue;
     padding-top: 50px;
     padding-bottom: 70px;
@@ -52,11 +33,6 @@ body {
     text-transform: uppercase;
 }
 
-/* chat main title */
-.chat-main-title {
-    font-size: 18px;
-    font-weight: 500;
-}
 
 /* Media Query For Iphone */
 @media only screen 
@@ -70,12 +46,4 @@ and (max-device-width : 667px) {
         margin-bottom: 120px;
         margin-top: 50px !important;
     }
-}
-
-/* Media Query For Tablet */
-@media only screen 
-and (min-device-width : 768px) 
-and (max-device-width : 1024px) {
-    
-    
 }

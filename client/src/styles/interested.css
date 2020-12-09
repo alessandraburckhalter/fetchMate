@@ -11,10 +11,12 @@
     display: flex;
 }
 
+/* page column */
 .interested-col {
     margin-top: 80px;
 }
 
+/* accept button */
 button.accept {
     background-color: green;
     color: white;
@@ -25,6 +27,7 @@ button.accept {
     border: 1px solid white;
 }
 
+/* decline button */
 button.decline {
     background-color: #ec0101;
     color: white;
@@ -34,6 +37,7 @@ button.decline {
     border: 1px solid white;
 }
 
+/* remove member button */
 button.remove-member {
     padding: 20px;
     background-color: #ec0101;
@@ -43,12 +47,13 @@ button.remove-member {
     border: 1px solid white;
 }
 
+/* team members container */
 .team-members-container {
     margin-bottom: 150px;
     margin-top: 50px;
 }
 
-/* main titles */
+/* page main titles */
 .interested-titles {
     font-size: 45px;
     color: steelblue;
@@ -60,6 +65,7 @@ button.remove-member {
     text-transform: uppercase;
 }
 
+/* project overview container */
 .project-overview-container {
     margin-top: 80px;
 }
@@ -87,6 +93,14 @@ and (max-device-width : 667px) {
 
     button.remove-member {
         margin-left: 30px;
+    }
+
+    img.rounded-circle.hoverable.border.border-info.interested-image {
+        margin-left: 20px !important;
+    }
+
+    .interested-titles {
+        font-size: 35px !important;
     }
 }
 

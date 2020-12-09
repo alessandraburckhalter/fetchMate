@@ -15,7 +15,6 @@
 #top {
     width: 100vw;
     min-height: 100vh;
-    /* background-image: url(../images/Frame3.svg); */
     position: relative;
     display: flex;
 }
@@ -222,9 +221,3 @@ and (max-device-width : 1024px) {
     }
     
 }
-
-/* BLUE AND GREEN TRANSPARENT RGBA  */
-/* background-color: rgba(46, 138, 237, 0.2); 
-color: rgba(46, 138, 237, 0.5); */
-/* background-color: rgba(46, 138, 138, 0.2); 
-  color: rgba(46, 138, 138, 0.4); */

@@ -10,9 +10,6 @@ export default function AcceptedCard(props) {
     // for email
     const id = props.project.ProjectId 
     
-
-    
-
     //decline onclick button
     const pendingMember = () =>{
         fetch(`/api/v1/projects/${ProjectId}/teamMember`,{
@@ -37,8 +34,6 @@ export default function AcceptedCard(props) {
     // accept button onclick
     
         
-            
-            
     useEffect(()=>{
         fetch(`/api/v1/hub/user/${UserId}`)
         .then(res => res.json())
@@ -71,13 +66,7 @@ export default function AcceptedCard(props) {
             <h4 className='card-title mt-4'> <MDBIcon icon="user indigo-text" />  {interestedUser.firstName} {interestedUser.lastName}
               </h4>
             </MDBCardTitle>
-            {/* <input
-                            icon="lock"
-                            type="hidden"
-                            id="email"
-                            value={interestedUser.email}
-                           
-                        /> */}
+    
             <hr />
             <h3 class="card-title">
             <MDBIcon icon="cogs grey-text" /> Technical Skills</h3> 
@@ -114,11 +103,9 @@ export default function AcceptedCard(props) {
             
              <button className="card-link btn remove-member" onClick={pendingMember}>Remove Member from this project
              </button>
+
           </MDBCardBody>
         </MDBCard>
-        
-      
-        
       </MDBCol>
     )
 }

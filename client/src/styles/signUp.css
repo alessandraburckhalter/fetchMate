@@ -1,31 +1,16 @@
+/* sign up form */
 form.signup-form {
     width: 500px;
     margin: auto;
-    /* background: #ffffff; */
     border: 1px solid #d3e2e5;
     border-radius: 20px;
-    padding: 44px 80px;
-    /* overflow: hidden; */
     background-color: rgba(46, 138, 138, 0.4); 
     color: rgba(46, 138, 138, 0.4);
-    
 }
 
-form.signup-form h1 {
-  color: #5c8599;
-  font-size: 32px;
-  width: 100%;
-  line-height: 40px;
-  font-weight: 700px;
-  margin-bottom: 40px;
-  padding-bottom: 24px;
-  border-bottom: 1px solid #d3e2e5;
-  
-}
-
+/* back to home page */
 .back-home {
   font-size: 26px;
-  /* position: absolute; */
   width: 80px;
   height: 80px;
   margin-top: 30px;
@@ -36,6 +21,7 @@ form.signup-form h1 {
   justify-content: center;
 }
 
+/* sign up form main title */
 form.signup-form .signup-legend {
   border: none;
   margin-bottom: 0;
@@ -45,32 +31,9 @@ form.signup-form .signup-legend {
   text-align: center;
   font-weight: 400;
 }
-
-form.signup-form fieldset {
-    border: 0;
-}
-
-form.signup-form fieldset + fieldset {
-    margin-top: 80px;
-}
-
-form.signup-form fieldset legend {
-  border: none;
-  margin-bottom: 0;
-  color: white;
-  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-  font-size: 18px;
-  text-align: center;
-  font-weight: 800;
-}
-
-form.signup-form .input-block + .input-block {
-    margin-top: 24px;
-    color: white;
-    font-weight: bold;
-  }
   
-  form.signup-form .input-block label {
+/* labels inside the form */
+form.signup-form .input-block label {
     display: flex;
     color: white;
     margin-bottom: 8px;
@@ -78,39 +41,23 @@ form.signup-form .input-block + .input-block {
     font-size: 18px;
     margin-top: 18px;
     font-weight: bold;
-  }
-  
+}
+
+/* input fields */
 form.signup-form .input-block input,
-  form.signup-form .input-block textarea {
+form.signup-form .input-block textarea {
     width: 100%;
     background-color: rgba(46, 138, 138, 0.1);
     border: 1px solid #d3e2e5;
     border-radius: 0;
     outline: none;
     color: white;
-}
-  
-form.signup-form .input-block input {
     height: 40px;
     padding: 0 16px;
     border-radius: 5px;
 }
   
-form.signup-form .input-block textarea {
-    min-height: 120px;
-    max-height: 240px;
-    resize: vertical;
-    padding: 16px;
-    line-height: 28px;
-}
-
-
-#profilePicture {
-    border: none;
-    background: none;
-}
-
-   
+/* submit button */
 form.signup-form button.confirm-button {
     margin-top: 44px;
     width: 100%;
@@ -127,14 +74,20 @@ form.signup-form button.confirm-button {
     transition: background-color 0.2s;
     font-size: 1em;
     outline: none;
-  }
+}
   
-  form.signup-form button.confirm-button:hover {
+form.signup-form button.confirm-button:hover {
     background: #36cf82;
     outline: none;
     -webkit-box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 5px 5px 15px 5px rgba(255,254,250,0); 
     box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 5px 5px 15px 5px rgba(255,254,250,0);
-  }
+}
+
+/* removing the styling from the button generated from type=file */
+#profilePicture {
+  border: none;
+  background: none;
+}
 
 /* add profile pic input */
 .input-block input[type=file] {
@@ -163,9 +116,16 @@ form.signup-form button.confirm-button {
 
 .input-block img {
   width: 100%;
-    height: 96px;
-    object-fit: cover;
-    border-radius: 20px;
+  height: 96px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+/* picture uploaded name */
+form.signup-form .input-block + .input-block {
+  margin-top: 24px;
+  color: white;
+  font-weight: bold;
 }
 
 /* reset password message on reset password page */

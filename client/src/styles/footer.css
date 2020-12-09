@@ -4,56 +4,57 @@
     background-image: url(../images/Frame3.svg);
     background-size: cover;
   
-  }
+}
 
-  .footer a:hover {
+.footer a:hover {
     color: #0056b3;
-  }
+}
   
-  .footer a {
+.footer a {
     font-size: 17px;
-  }
+}
   
-  .fa-twitter {
+/* icons */
+.fa-twitter {
     color: #1DA1F2;
-  }
+}
   
-  .fa-linkedin {
+.fa-linkedin {
     color: #0072b1;
-  }
+}
   
-  .fa-discord {
+.fa-discord {
     color: #7289d9;
-  }
+}
   
-  .fa-map-marker-alt {
+.fa-map-marker-alt {
     color: red;
-  }
+}
   
-  .fa-envelope {
+.fa-envelope {
     color: white;
-  }
+}
   
-  .fa-chevron-right {
+.fa-chevron-right {
     color: teal;
-  }
+}
   
-  .list-unstyled {
+.list-unstyled {
     font-weight: 300;
-  }
+}
   
-  .footer .title {
+.footer .title {
     color: white;
     font-weight: bold;
-  }
+}
   
-  .footer  p {
+.footer  p {
     color: white;
-  }
+}
 
-  .col-sm-4 {
+.col-sm-4 {
     width: auto !important;
-  }
+}
   
 @media screen and (max-width: 767px){
 .img-footer {

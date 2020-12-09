@@ -1,17 +1,10 @@
+/* page container */
 .contributing-container {
     margin-top: 180px;
     margin-bottom: 150px;
 }
 
-.contributing-col {
-    margin-top: 80px;
-}
-
-.card-body-contributing {
-    box-shadow: none !important;
-    background-color: transparent !important;
-}
-
+/* page main title */
 .contributing-title  {
     font-size: 45px;
     color: steelblue;
@@ -21,4 +14,15 @@
     letter-spacing: 3px;
     font-weight: revert;
     text-transform: uppercase;
+}
+
+/* column with the project card */
+.contributing-col {
+    margin-top: 80px;
+}
+
+/* card with profile pic and user info */
+.card-body-contributing {
+    box-shadow: none !important;
+    background-color: transparent !important;
 }

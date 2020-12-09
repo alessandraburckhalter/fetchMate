@@ -1,4 +1,4 @@
-/* conatiner */
+/* page container */
 .contact-page-container {
     min-height: 100vh;
    padding-bottom: 150px !important;
@@ -14,6 +14,16 @@
     letter-spacing: 3px;
     font-weight: revert;
     text-transform: uppercase;
+}
+
+/* blue part of the page main title */
+.blue-color {
+    color: #0f8cd1;
+}
+
+/* green part of the page main title */
+.green-color {
+    color: #158467;
 }
 
 /* buttons under the map */
@@ -42,15 +52,8 @@ button.button-location {
     color: #065c6f !important;
 }
 
+/* contact form */
 .form-contact {
     padding: 0 !important;
     margin-bottom: 0 !important;
-}
-
-.blue-color {
-    color: #0f8cd1;
-}
-
-.green-color {
-    color: #158467;
 }

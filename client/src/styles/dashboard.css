@@ -7,21 +7,18 @@
 #top {
     width: 100vw;
     min-height: 100vh;
-    
     position: relative;
     display: flex;
 }
 
 
 
-img.rounded-circle {
-    /* height: 210px !important;
-    width: 100% !important;
-    object-fit: cover !important; */
+/* img.rounded-circle {
     width: max(100px, min(235px, 44vw));
-  height: max(100px, min(235px, 44vw));
-}
+    height: max(100px, min(235px, 44vw));
+} */
 
+/* skills main title under the user profile pic */
 h3.card-title {
     font-size: 1em;
     cursor: pointer;
@@ -29,11 +26,7 @@ h3.card-title {
     font-weight: 500 !important;
 }
 
-.card-body h2 {
-    font-size: 15px;
-    
-}
-
+/* edit profile button */
 button.edit-button {
     border-radius: 5px;
     background-color: white;
@@ -47,47 +40,55 @@ button.edit-button {
     outline: none;
 }
 
+/* edit profile button */
 button.edit-button.btn {
     padding: 0.4em !important;
     outline: none;
 }
 
-.card-body1 aside {
-    z-index: 0;
-}
 
+/* .card-body1 aside {
+    z-index: 0;
+} */
+
+/* red background pending projects card */
 .card-body-pending1 {
     padding: 0 !important;
     background-color: red !important;
     margin-bottom: 20em;
 }
 
+/* pending project card */
 .card-body-pending2 {
     padding: 15px !important;
     width: 97%;
-    
 }
 
+/* green background my projects card */
 .card-body-projects1 {
     padding: 0 !important;
     background-color: #61b15a !important;
 }
 
+/* my projects card */
 .card-body-projects2 {
     padding: 15px !important;
     width: 97%;
 }
 
+/* yellow background contributing projects card */
 .card-body-contributing1 {
     padding: 0 !important;
     background-color: #fecd1a !important;
 }
 
+/* contributing projects card */
 .card-body-contributing2 {
     padding: 15px !important;
     width: 97%;
 }
 
+/* publish a new project button */
 button.publish-button {
     width: auto;
     display: flex;
@@ -101,30 +102,34 @@ button.publish-button {
     outline: none;
 }
 
+/* edit icon */
 .edit-card {
     border: none;
     background: none;
 }
 
+/* trash icon */
 .delete-card {
     border: none;
     background: none;
 }
 
+/* column with the projects card */
 .projects-col {
     margin-left: 50px;
     margin-top: 150px;
     margin-bottom: 150px;
 }
 
+/* projects section title */
 .title-cards {
     padding-top: 1.5em;
     font-family: fontastique;
     margin-bottom: 15px;
-    /* color: #065c6f !important; */
     color: steelblue !important;
 }
 
+/* project title inside the card */
 .project-title {
     text-transform: capitalize;
     font-weight: 400 !important;
@@ -132,10 +137,7 @@ button.publish-button {
     color: black !important;
 }
 
-Link.project-title {
-    color: black !important;
-}
-
+/* all icons inside the card */
 .icon {
     position: relative;
     display: inline-block;
@@ -144,14 +146,14 @@ Link.project-title {
     text-align: center;
 }
 
+/* all icons inside the card */
 .icon-width {
     width: 56px !important;
 }
 
-
+/* span all icons inside the card */
 .icon span {
     position: relative;
-    /* width: 10px; */
     color: #4285f4;
     text-align: center;
     display: block;
@@ -164,10 +166,9 @@ Link.project-title {
     padding: 0 !important;
 }
 
+/* icons legend */
 .icon span:before {
     content: '';
-    /* width: 10px; */
-    /* height: 10px; */
     position: absolute;
     top: -6px;
     z-index: -1;
@@ -175,10 +176,12 @@ Link.project-title {
     transform: translate(-50%) rotate(45deg);
 }
 
+/* icons legend on hover */
 .icon:hover > span {
     opacity: 1;
 }
 
+/* skills under the user profile pic */
 .skills-dashboard {
     border: 1px solid #30B0F8;
     border-top-right-radius: 0.25rem;
@@ -189,6 +192,7 @@ Link.project-title {
     font-weight: 400;
     margin: 2px;
     display: -webkit-inline-box;
+    font-size: 15px;    
 }
 
 /* update profile picture camera icon under the picture */
@@ -206,17 +210,19 @@ button.camera-button {
     display: inline-grid;
 }
 
+/* type=file upload picture */
+.input#newProfilePic {
+  visibility: visible;
+  display: contents;
+}
+
 /* icon inside the modal */
 .input-block-update input[type=file] {
     visibility: hidden;
     display: none;
 }
 
-.input#newProfilePic {
-  visibility: visible;
-  display: contents;
-}
-
+/*  sentence under the skills title when there is no skill */
 .add-skills {
     color: grey !important;
     margin-top: 10px;
@@ -247,13 +253,32 @@ and (max-device-width : 667px) {
         width: 60%;
     }
 
+    button.camera-button {
+        margin-left: 2px;
+    }
+
+    .icon span {
+        width: 20px !important;
+    }
    
+    .form-title {
+        font-size: 28px !important;
+    }
+
+    /* project form profile pic */
+    img.rounded-circle.hoverable.border.border-info.project-form-image {
+        border: 5px solid #33b5e5!important;
+        width: max(100px, min(235px, 44vw));
+        height: max(100px, min(235px, 44vw));
+        margin-left: 0px !important;
+    }
 }
 
 /* Media Query For Tablet */
 @media only screen 
 and (min-device-width : 768px) 
 and (max-device-width : 1024px) {
+
     img.rounded-circle.hoverable.border.border-info {
         border: 5px solid #33b5e5!important;
         width: max(40px, min(135px, 50vw)) !important ;

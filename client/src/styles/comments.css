@@ -1,9 +1,9 @@
+/* column with project card */
 .comments-col {
-    margin-top: 100px;
+    margin-top: 30px;
 }
 
-
-/* post time */
+/* time when the comment was made  */
 .comment-time {
     font-size: 10px;
     color: gray;
@@ -30,7 +30,6 @@ button.comments-icon {
     color: steelblue;
     cursor: pointer;
 }
-
 
 
 /* Media Query For Iphone */

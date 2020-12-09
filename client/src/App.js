@@ -5,10 +5,8 @@ import './App.css';
 import About from './components/About';
 import Chat from './components/Chat';
 import Comments from './components/Comments';
-
 import ContributingProjects from './components/ContributingProjects';
 import Contact from './components/Contact';
-
 import Dashboard from './components/Dashboard';
 import FAQ from './components/FAQ';
 import Interested from './components/Interested';
@@ -19,12 +17,9 @@ import ProjectForm from './components/ProjectForm';
 import Projects from './components/Projects';
 import PublicProfile from './components/PublicProfile';
 import SignUpPage from './components/SignUpPage';
-//import Test from './components/Test';
 import { checked, login } from './redux/actions'
 import ForgotPassword from './components/ForgotPassword';
 import Privacy from './components/Privacy';
-import Test from './components/Test';
-import ScrollToTop from './components/ScrollToTop';
 import { MDBContainer } from 'mdbreact';
 
 
@@ -95,7 +90,6 @@ function App() {
           <Route exact path="/faq" component={FAQ}/>
           <Route exact path="/privacy" component={Privacy}/>
           <Route path="/contact" component={Contact}/>
-          <Route path="/test" component={Test}/>
 
           {user.loginInfo !== null && (
             <>
