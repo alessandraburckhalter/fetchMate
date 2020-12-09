@@ -97,21 +97,21 @@ export default function Comments() {
                             </MDBModalFooter>
                         </MDBModal>
                             </MDBCardText>
-                                        <MDBCardText>                                         
-                                        <br /><br />
-                                        <h1 className="all-prjects-skills-title"><i className="fas fa-angle-right"></i> Desirable Soft Skills</h1>
-                                        {Object.keys(project).length > 0 && project.Skills.filter((userData) => (userData.category === "soft")).map((name) => {
-                                            return <span className="all-projects-skills">{name.name}</span>
-                                        })}
+                            <MDBCardText>                                         
+                            <br /><br />
+                            <p className="all-prjects-skills-title"><i className="fas fa-angle-right"></i> Desirable Soft Skills</p>
+                            {Object.keys(project).length > 0 && project.Skills.filter((userData) => (userData.category === "soft")).map((name) => {
+                                return <span className="all-projects-skills">{name.name}</span>
+                            })}
                             </MDBCardText>
                             <MDBCardText>
-                                <h1 className="all-prjects-skills-title"><i className="fas fa-angle-right"></i> Desirable Technical Skills</h1> 
+                                <p className="all-prjects-skills-title"><i className="fas fa-angle-right"></i> Desirable Technical Skills</p> 
                                 {Object.keys(project).length > 0 && project.Skills.filter((userData) => (userData.category === "technical")).map((name) => {
                                     return <span className="all-projects-skills">{name.name}</span>
                                 })}
                             </MDBCardText>
                             <MDBCardText>
-                            <h1 className="all-prjects-skills-title"><i className="fas fa-angle-right"></i> Acceptable Spoken languages</h1>
+                            <p className="all-prjects-skills-title"><i className="fas fa-angle-right"></i> Acceptable Spoken languages</p>
                             {Object.keys(project).length > 0 && project.Skills.filter((userData) => (userData.category === "language")).map((name) => {
                                 return <span className="all-projects-skills">{name.name}</span>
                             })}
