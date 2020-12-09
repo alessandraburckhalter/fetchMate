@@ -17,11 +17,9 @@
     outline: none !important;
 }
 
-/* .nav-link {
-    padding: 0 !important;
-    padding-left: 15px !important;
-    outline: none !important;
-} */
+.navbar-nav a:hover {
+    color: #0056b3 !important;
+}
 
 .navbar .dropdown-menu a:not(.active) {
     color: steelblue !important;
