@@ -68,9 +68,9 @@ export default function Interested() {
           {project.description}
         </MDBCardText>
 
+          <h3 className="all-prjects-skills-title">
+          <i className="fas fa-angle-right"></i> Desirable Technical Skills </h3>
         <MDBCardText>
-          <p className="all-prjects-skills-title">
-          <i className="fas fa-angle-right"></i> Desirable Technical Skills </p>
             {Object.keys(project).length > 0 && project.Skills.filter((userData)=>{
                 return (userData.category === "technical")
                
@@ -84,9 +84,10 @@ export default function Interested() {
                   return <span className="skills-dashboard">{name.name} </span> 
                 })): "No technical skills required"}
                  <br/> <br/>
-
-          <p className="all-prjects-skills-title">
-          <i className="fas fa-angle-right"></i> Desirable Soft Skills </p>
+          </MDBCardText>
+          <h3 className="all-prjects-skills-title">
+          <i className="fas fa-angle-right"></i> Desirable Soft Skills </h3>
+          <MDBCardText>
             {Object.keys(project).length > 0 && project.Skills.filter((userData)=>{
                 return (userData.category === "soft")
               }).length> 0 ? (project.Skills.filter((userData)=>{
@@ -97,11 +98,10 @@ export default function Interested() {
                 <br/> <br/>
                   
                 
-               
-                  
-
-          <p className="all-prjects-skills-title">
-          <i className="fas fa-angle-right"></i> Acceptable Spoken Languages </p>
+          </MDBCardText>
+          <h3 className="all-prjects-skills-title">
+          <i className="fas fa-angle-right"></i> Acceptable Spoken Languages </h3>
+          <MDBCardText>
             {Object.keys(project).length > 0 && project.Skills.filter((userData)=>{
                 return (userData.category === "language")
               }).length> 0 ? (project.Skills.filter((userData)=>{
@@ -110,7 +110,6 @@ export default function Interested() {
                 return <span className="skills-dashboard">{name.name} </span> 
               })): "No languages required"}
              <br/> <br/>
-          
         </MDBCardText>
         <div className="flex-row ">
           <a href="#!" className="card-link icon">

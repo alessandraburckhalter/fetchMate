@@ -49,18 +49,20 @@ export default function IndividualProjectPublic({ project }) {
 
 
                                     </MDBCardText>
+                                    <h3 className="all-prjects-skills-title"><i className="fas fa-angle-right"></i> Desirable Technical Skills</h3>
                                     <MDBCardText>
-                                        <h1 className="all-prjects-skills-title"><i className="fas fa-angle-right"></i> Desirable Technical Skills</h1>
                                         {project.Skills.filter(skill => skill.category === 'technical').map((skill, index) => {
                                             return <span className="all-projects-skills" key={index}>{skill.name}</span>
                                         })}<br /><br />
-                                        <h1 className="all-prjects-skills-title"><i className="fas fa-angle-right"></i> Desirable Soft Skills</h1>
+                                    </MDBCardText>
+                                    <h3 className="all-prjects-skills-title"><i className="fas fa-angle-right"></i> Desirable Soft Skills</h3>
+                                    <MDBCardText>
                                         {project.Skills.filter(skill => skill.category === 'soft').map((skill, index) => {
                                             return <span className="all-projects-skills" key={index}>{skill.name}</span>
                                         })}<br /><br />
                                     </MDBCardText>
+                                    <h3 className="all-prjects-skills-title"><i className="fas fa-angle-right"></i> Acceptable Spoken languages</h3>
                                     <MDBCardText>
-                                        <h1 className="all-prjects-skills-title"><i className="fas fa-angle-right"></i> Acceptable Spoken languages</h1>
                                         {project.Skills.filter(skill => skill.category === 'language').map((skill, index) => {
                                             return <span className="all-projects-skills" key={index}>{skill.name}</span>
                                         })}

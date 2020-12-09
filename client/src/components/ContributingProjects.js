@@ -71,9 +71,9 @@ export default function ContributingProjects() {
           <MDBCardText>
           {project.description} 
           </MDBCardText>
+        <h3 className="all-prjects-skills-title">
+        <i className="fas fa-angle-right"></i> Desirable Technical Skills </h3>
          <MDBCardText>
-        <p className="all-prjects-skills-title">
-        <i className="fas fa-angle-right"></i> Desirable Technical Skills </p>
 
         {Object.keys(project).length > 0 && project.Skills.filter((userData)=>{
                 return (userData.category === "technical")
@@ -82,9 +82,11 @@ export default function ContributingProjects() {
               }).map((name)=>{
                 return <span className="skills-dashboard">{name.name} </span> 
               })): "No technical skills required"} <br /> <br />
+        </MDBCardText>
 
-        <p className="all-prjects-skills-title">
-        <i className="fas fa-angle-right"></i> Desirable Soft Skills </p>  
+        <h3 className="all-prjects-skills-title">
+        <i className="fas fa-angle-right"></i> Desirable Soft Skills </h3>  
+        <MDBCardText>
         {Object.keys(project).length > 0 && project.Skills.filter((userData)=>{
                 return (userData.category === "soft")
               }).length> 0 ? (project.Skills.filter((userData)=>{
@@ -92,9 +94,12 @@ export default function ContributingProjects() {
               }).map((name)=>{
                 return <span className="skills-dashboard">{name.name} </span> 
               })): "No soft skills required"} <br /> <br />
+        </MDBCardText>
 
-        <p className="all-prjects-skills-title">
-        <i className="fas fa-angle-right"></i> Acceptable Spoken Languages </p>
+
+        <h3 className="all-prjects-skills-title">
+        <i className="fas fa-angle-right"></i> Acceptable Spoken Languages </h3>
+        <MDBCardText>
 
         {Object.keys(project).length > 0 && project.Skills.filter((userData)=>{
                 return (userData.category === "language")

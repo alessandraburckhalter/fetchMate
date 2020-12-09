@@ -114,8 +114,8 @@ export default function IndividualProject(props) {
                                             </MDBModalFooter>
                                         </MDBModal>
                                     </MDBCardText>
+                                    <h3 className="all-prjects-skills-title"><i className="fas fa-angle-right"></i> Desirable Technical Skills</h3>
                                     <MDBCardText>
-                                        <h1 className="all-prjects-skills-title"><i className="fas fa-angle-right"></i> Desirable Technical Skills</h1>
                                         {Object.keys(project).length > 0 && project.Skills.filter((userData) => {
                                             return (userData.category === "technical")
                                         }).length > 0 ? (project.Skills.filter((userData) => {
@@ -123,7 +123,9 @@ export default function IndividualProject(props) {
                                         }).map((name, index) => {
                                             return <span className="skills-dashboard" key={index}>{name.name} </span>
                                         })) : "No required skill. "}<br /><br />
-                                        <h1 className="all-prjects-skills-title"><i className="fas fa-angle-right"></i> Desirable Soft Skills</h1>
+                                    </MDBCardText>
+                                    <h3 className="all-prjects-skills-title"><i className="fas fa-angle-right"></i> Desirable Soft Skills</h3>
+                                    <MDBCardText>
                                         {Object.keys(project).length > 0 && project.Skills.filter((userData) => {
                                             return (userData.category === "soft")
                                         }).length > 0 ? (project.Skills.filter((userData) => {
@@ -132,8 +134,8 @@ export default function IndividualProject(props) {
                                             return <span className="skills-dashboard" key={index}>{name.name} </span>
                                         })) : "No required skill."}<br /><br />
                                     </MDBCardText>
+                                    <h3 className="all-prjects-skills-title"><i className="fas fa-angle-right"></i> Acceptable Spoken languages</h3>
                                     <MDBCardText>
-                                        <h1 className="all-prjects-skills-title"><i className="fas fa-angle-right"></i> Acceptable Spoken languages</h1>
                                         {Object.keys(project).length > 0 && project.Skills.filter((userData) => {
                                             return (userData.category === "language")
                                         }).length > 0 ? (project.Skills.filter((userData) => {
