@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
-import { Provider, useDispatch, useSelector } from 'react-redux';
-import { Redirect, Route, Router, Switch, useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import './App.css';
 import About from './components/About';
 import Chat from './components/Chat';
@@ -20,12 +20,12 @@ import SignUpPage from './components/SignUpPage';
 import { checked, login } from './redux/actions'
 import ForgotPassword from './components/ForgotPassword';
 import Privacy from './components/Privacy';
-import { MDBContainer } from 'mdbreact';
+import ProtectedRoute from './components/ProtectedRoute';
+
 
 
 
 function App() {
-  const user = useSelector(state => state.user)
   const dispatch = useDispatch()
 
 
@@ -33,12 +33,9 @@ function App() {
     fetch('/api/v1/user/current/')
       .then(res => res.json())
       .then(data => {
-        // console.log(data)
         if (data.error) {
-          console.log('no user')
           dispatch(checked())
         } else {
-          // For any consistent state put into this fetch
           fetch('/api/v1/hub/current')
             .then(res => res.json())
             .then(data => {
@@ -48,38 +45,8 @@ function App() {
       })
   }, [dispatch])
 
-  if (!user.checked) {
-    return <>
-    <h3 className="loading">Loading....</h3>
-    <MDBContainer className="justify-content-center d-flex">
-      <div className="spinner-grow text-primary " role="status">
-      <span className="sr-only">Loading...</span>
-      </div>
-      <div className="spinner-grow text-success" role="status">
-      <span className="sr-only">Loading...</span>
-      </div>
-      <div className="spinner-grow text-danger" role="status">
-      <span className="sr-only">Loading...</span>
-      </div>
-      <div className="spinner-grow text-warning" role="status">
-      <span className="sr-only">Loading...</span>
-      </div>
-      <div className="spinner-grow text-info" role="status">
-      <span className="sr-only">Loading...</span>
-      </div>
 
-    </MDBContainer>
- 
- 
-    </>
-  }
-
-
-
-  
   return (
-
-      
     <Switch>
           <Route exact path="/" component={MainPage}/>
           <Route path="/register" component={SignUpPage}/>
@@ -90,22 +57,14 @@ function App() {
           <Route exact path="/faq" component={FAQ}/>
           <Route exact path="/privacy" component={Privacy}/>
           <Route path="/contact" component={Contact}/>
-
-          {user.loginInfo !== null && (
-            <>
-            <Route path="/hub" component={ProfileSetup}/>
-            <Route path="/projectForm" component={ProjectForm}/>
-            <Route exact path="/dashboard" component={Dashboard}/>
-
-            <Route exact path="/dashboard/:projectId" component={Interested}/>
-            <Route exact path="/dashboard/public/:pendingId" component={PublicProfile}/>
-            <Route path="/dashboard/contribute/:contributeId" component={ContributingProjects}/>
-
-            <Route path="/projects/:projectId" component={Comments}/>
-            <Route path="/chat/:projectId" component={Chat}/>
-
-            </>
-          )}
+            <ProtectedRoute path="/hub" component={ProfileSetup}/>
+            <ProtectedRoute path="/projectForm" component={ProjectForm}/>
+            <ProtectedRoute exact path="/dashboard" component={Dashboard}/>
+            <ProtectedRoute exact path="/dashboard/:projectId" component={Interested}/>
+            <ProtectedRoute exact path="/dashboard/public/:pendingId" component={PublicProfile}/>
+            <ProtectedRoute path="/dashboard/contribute/:contributeId" component={ContributingProjects}/>
+            <ProtectedRoute path="/projects/:projectId" component={Comments}/>
+            <ProtectedRoute path="/chat/:projectId" component={Chat}/>
           <Route>
             <Redirect to ='/' />
           </Route>

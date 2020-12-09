@@ -1,52 +1,18 @@
 import { MDBCollapse, MDBContainer, MDBDropdown, MDBDropdownItem, MDBDropdownMenu, MDBDropdownToggle, MDBIcon, MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavbarToggler, MDBNavItem
  } from 'mdbreact'
 import React, { useState } from 'react'
-import { Link, NavLink, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import '../styles/navbar.css'
 import logo from '../images/logo3.png';
-import { useDispatch } from 'react-redux';
-import { logout } from '../redux/actions';
 
 
 export default function NavbarPublic() {
-
-  const dispatch = useDispatch();
-  const history = useHistory();
-  const [password, setPassword] = useState('')
-  const [email, setEmail] = useState('')
   const [isOpen, setIsOpen] = useState(false)
 
   const handleToggle = () => {
     setIsOpen(!isOpen)
   }
 
-
-  const handleLogout = (e) => {
-    e.preventDefault();
-    fetch('/api/v1/user/logout',{
-        method: 'POST',
-        body: JSON.stringify({
-            password:password,
-            email: email
-        }),
-        headers: {
-            Accept:"application/json",
-            'Content-type': 'application/json'
-        }
-    })
-    .then(res => res.json())
-    .then(data => {
-        console.log(data)
-        if(data.error){
-            alert(data.error)
-        } else {
-            alert('Successfully logged out.')
-            dispatch(logout(data.user))
-            let path = "/"
-            history.push(path)
-        }
-    })
-}
     return (
         <>
        
@@ -85,7 +51,7 @@ export default function NavbarPublic() {
             </MDBNavItem>
 
            
-            <MDBNavItem right>
+            <MDBNavItem >
               <Link 
                to="/register" ><div className=" d-md-inline" onClick={handleToggle} >Sign Up</div></Link>
             </MDBNavItem>

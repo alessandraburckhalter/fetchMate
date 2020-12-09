@@ -36,7 +36,7 @@ export default function FAQ() {
             </div>
         </div> */}
         <MDBContainer className="faq-container ">
-            <h1 className="faq-title">Frequently <span className="green-color">asked</span> questions <i class="fas fa-comment-alt"></i></h1>
+            <h1 className="faq-title">Frequently <span className="green-color">asked</span> questions <i className="fas fa-comment-alt"></i></h1>
       <MDBContainer className="mb-5">
           <h1 className="faq-container-title"><MDBIcon  icon="question-circle blue-text" /> Questions you may have</h1>
           <h2 className="faq-subtitle">Click below for responses to frequently asked questions.</h2>

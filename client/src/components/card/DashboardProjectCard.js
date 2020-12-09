@@ -1,16 +1,15 @@
 
 import React, { useEffect, useState } from 'react'
-import { MDBCard, MDBCardText, MDBCardTitle, MDBContainer, MDBDropdown, MDBDropdownItem, MDBDropdownMenu, MDBDropdownToggle, MDBIcon, MDBInput, MDBModal, MDBModalBody, MDBModalFooter, MDBModalHeader } from 'mdbreact'
+import { MDBCard, MDBCardText, MDBCardTitle, MDBIcon, MDBInput, MDBModal, MDBModalBody, MDBModalFooter, MDBModalHeader } from 'mdbreact'
 import DatePicker from "react-datepicker";
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import SkillSearchBar from '../SkillSearchBar';
 import Axios from 'axios';
 import { clearSearchSkillArray, setSearchSkillArray } from '../../redux/actions';
-import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
 export default function DashboardProjectCard(props) {
-  const { id, owner, description, title, isCompleted, publishedAt, deadline, memberLimit, Skills} = props.project
+  const { id, description, title, publishedAt, deadline, memberLimit, Skills} = props.project
   const [projectInfo, setProjectInfo] = useState([])
   const [acceptedMember, setAcceptedMember] = useState([])
   //edit project
@@ -47,7 +46,6 @@ export default function DashboardProjectCard(props) {
       projectSkillsArray
     })
       .then(res => {
-        console.log(res)
         dispatch(clearSearchSkillArray());
         props.loadProject()
       })
@@ -55,13 +53,6 @@ export default function DashboardProjectCard(props) {
         console.log(e)
       })
   }
-
-    const addAcceptedMember = () =>{
-      const acceptMember = projectInfo.Members && projectInfo.Members.filter((acceptedMember)=>{
-        return acceptedMember.TeamMember.approved === "approved"
-      })
-          return setAcceptedMember(acceptMember)  
-    }
       
     const removeProject = (projectId) =>{
       fetch(`/api/v1/projects/${id}`,{
@@ -87,7 +78,10 @@ export default function DashboardProjectCard(props) {
     }
 
     useEffect(()=>{
-        addAcceptedMember() 
+      const acceptMember = projectInfo.Members && projectInfo.Members.filter((acceptedMember)=>{
+        return acceptedMember.TeamMember.approved === "approved"
+      })
+        setAcceptedMember(acceptMember)  
     },[projectInfo])
 
         
@@ -100,7 +94,7 @@ export default function DashboardProjectCard(props) {
             </aside>
             <MDBCard className="card-body card-body-projects2">
           <aside>
-          <MDBCardTitle className="project-title"> <Link className="project-title" to={`/dashboard/${id}`}><i class="fas fa-bookmark amber-text"></i> {title}</Link> </MDBCardTitle>
+          <MDBCardTitle className="project-title"> <Link className="project-title" to={`/dashboard/${id}`}><i className="fas fa-bookmark amber-text"></i> {title}</Link> </MDBCardTitle>
           <MDBCardText>
             {description}
           </MDBCardText>
@@ -158,11 +152,6 @@ export default function DashboardProjectCard(props) {
                     </label>
                     <DatePicker selected={deadlineEdit} onChange={date => setDeadlineEdit(date)} /> <br /> <br />
 
-
-                    {/* <label htmlFor="defaultFormCardNameEx" className="labe-headline">
-                      When would you like to publish this project?
-                    </label>
-                    <DatePicker selected={publishedAtEdit} onChange={date => setPublishedAtEdit(date)} /><br /> <br /> */}
                   </form>
                 </MDBModalBody>
                 <MDBModalFooter>

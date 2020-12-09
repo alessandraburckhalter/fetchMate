@@ -6,7 +6,6 @@ import Navbar from './Navbar'
 import  { MapContainer, Marker, TileLayer  }  from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import Leaflet from 'leaflet';
-import mapMarkerImg from '../images/mapIcon.png';
 import mapMarkerImg1 from '../images/mapIcon1.svg';
 import '../styles/contact.css'
 import { useSelector } from 'react-redux'
@@ -61,11 +60,6 @@ export default function Contact() {
               <Navbar />
             )}
         <div >
-        {/* <div id="section1" className="background">
-            <div className="layer">
-            <h1 className="faq-title">CONTACT US</h1>
-            </div>
-        </div> */}
         <MDBContainer className="my-5 contact-page-container">
       <h2 className="h1-responsive font-weight-bold text-center mt-5 contact-title">
         Contact <span className="green-color">U</span><span className="green-color">s</span>
@@ -146,18 +140,13 @@ export default function Contact() {
             style={{ height: "400px" }}
           >
           <MapContainer   
-                // center={[33.753746,-84.386330]}
                 bounds={[
                   [33.753746, -84.386330],
                   [29.5003663, -95.6610555]
                 ]}
-                // zoom={14}
                 style={{ width: '100%', height: '100%' }}
 
           >
-
-            {/* <TileLayer url="https://a.tile.openstreetmap.org/{z}/{x}/{y}.png" /> */}
-
           <TileLayer url={`https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`} />
 
           <Marker 

@@ -1,4 +1,4 @@
-import { MDBCard, MDBCardBody, MDBCol, MDBContainer, MDBIcon, MDBRow } from 'mdbreact';
+import { MDBCol, MDBContainer, MDBIcon, MDBRow } from 'mdbreact';
 import React from 'react';
 import '../styles/about.css'
 import Footer from './Footer';

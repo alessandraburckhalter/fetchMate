@@ -23,7 +23,7 @@ export default function Privacy() {
             </div> */}
         {/* </div> */}
             <MDBContainer className="mt-5">
-            <h1  className="faq-title">Privacy Policy <i class="fas fa-shield-alt"></i></h1>
+            <h1  className="faq-title">Privacy Policy <i className="fas fa-shield-alt"></i></h1>
             <h1 className="policy-title">fetchMate Privacy Statement</h1>
             <h2 className="policy-date">Effective date: December 08, 2020</h2><br />
                 <p className="p">This Privacy Policy applies when you use our Services (described below). We offer our users choices about the data we collect, use and share as described in this Privacy Policy.</p><br/>

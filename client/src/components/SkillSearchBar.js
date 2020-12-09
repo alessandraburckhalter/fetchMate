@@ -3,7 +3,7 @@ import Axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { addSkillToSearchArray, removeSkillFromSearchArray, setAllPossibleSkills } from '../redux/actions';
 import SkillSearchOption from './SkillSearchOption';
-import { MDBBtn, MDBContainer, MDBIcon, MDBModal, MDBModalBody, MDBModalFooter, MDBModalHeader } from 'mdbreact';
+import { MDBIcon } from 'mdbreact';
 
 export default function SkillSearchBar({category}) {
     const dispatch = useDispatch();
@@ -32,7 +32,6 @@ export default function SkillSearchBar({category}) {
             category: category
         })
             .then(res => {
-                console.log(res)
                 dispatch(addSkillToSearchArray(res.data))
             })
             .catch(e => {
@@ -73,7 +72,7 @@ export default function SkillSearchBar({category}) {
             <div className="form-group">
                 {pickedSkillsArray.filter(skill => skill.category === category).map(addedSkill => {
                     return (   
-                        <span className="skill-remove-button">
+                        <span className="skill-remove-button" key={addedSkill.id}>
                             {addedSkill.name}
                             <button className="remove-skill-button" type="button" onClick={() => {dispatch(removeSkillFromSearchArray(addedSkill.id))}}><MDBIcon far icon="trash-alt red-text" /></button>
                         </span>

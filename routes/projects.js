@@ -13,7 +13,6 @@ const db = require('../models');
 //* api/v1/projects?orderBy=skills&order=asc||desc
 router.get('/', (req, res) => {
     const { includeCompleted } = req.query;
-    console.log(includeCompleted === 'true' ? 'withCompleted' : 'defaultScope')
     db.Project.scope(includeCompleted === 'true' ? 'withCompleted' : 'defaultScope').findAll({
         order: [['id', 'DESC']],
         include:[db.User,{
@@ -33,7 +32,6 @@ router.get('/', (req, res) => {
 
 router.get('/special', (req, res) => {
     const { includeCompleted, orderBy, order } = req.query;
-    console.log(includeCompleted === 'true' ? 'withCompleted' : 'defaultScope')
     db.User.findOne({
         where : {
             id : req.session.user.id
@@ -318,7 +316,7 @@ router.delete('/:projectId/skills', (req, res) => {
 router.post('/:projectId/teamMember', (req, res) => {
     const { projectId } = req.params;
     const { memberIdArray } = req.body;
-    console.log(memberIdArray)
+
     db.Project.findOne({
         where:{
             id: projectId
@@ -354,7 +352,6 @@ router.post('/:projectId/teamMember', (req, res) => {
 router.delete('/:projectId/teamMember', (req, res) => {
     const { projectId } = req.params;
     const { memberIdArray } = req.body;
-    console.log(memberIdArray)
     db.Project.findOne({
         where:{
             id: projectId
@@ -404,7 +401,6 @@ router.patch('/:projectId/teamMember', (req, res) => {
             }
             return member.update({approved: approvedStatus})
                 .then(updatedMember => {
-                    console.log(updatedMember);
                 if(updatedMember) {
                     res.status(202).json({success : 'Member status updated'})
                 } 
