@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../models');
+const { Op } = require("sequelize");
 
 // const { Op } = require('sequelize');
 
@@ -30,7 +31,6 @@ router.get('/:category', (req, res) => {
 })
 
 //* Create a new skill and return the newly created skill back as JSON
-//TODO: Will need to make sure the front end uses the same names when sending data
 router.post('/', (req, res) => {
     if(!req.body || !req.body.name || !req.body.category){
         res.status(400).json({
@@ -38,22 +38,38 @@ router.post('/', (req, res) => {
         })
     }
     const { name, category } = req.body;
-    db.Skill.create({
-        name,
-        category
+    db.Skill.findAll({
+        where:{
+            name: {
+                [Op.iLike]: name
+            }
+        }
     })
-        .then(skill => {
-            res.status(201).json(skill)
+        .then(skillsFound => {
+            console.log(skillsFound)
+            if(skillsFound.length === 0){
+                db.Skill.create({
+                    name,
+                    category
+                })
+                    .then(skill => {
+                        res.status(201).json(skill)
+                    })
+            }else{
+                res.status(400).json({
+                    error : 'Skill already exists:'
+                })
+            }
         })
         .catch(e => {
             res.status(500).json({
                 error : 'Database error occurred: ' + e
             })
         })
+
 })
 
 //* Update a skills information based on the id of the skill
-//TODO: Will need to make sure the front end uses the same names when sending data
 router.patch('/:id', (req, res) => {
     const { id } = req.params;
     const updateObject = {};
