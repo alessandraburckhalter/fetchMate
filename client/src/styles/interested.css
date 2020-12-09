@@ -91,6 +91,9 @@ img.rounded-circle.contributing-image  {
     object-fit: cover;
 }
 
+.commentForEmpty{
+    text-align: center; 
+}
 
 /* Media Query For Iphone */
 @media only screen 

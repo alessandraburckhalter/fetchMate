@@ -19,7 +19,7 @@ export default function Chat() {
 
     const sendMessage = (e) => {
         e.preventDefault();
-        const messageContent = `\`\`\`javascript\nconst ${user.loginInfo.firstName}_${user.loginInfo.lastName}= \`${newMessage}\` \/\/Sent @ ${moment().format("dddd, MMMM Do YYYY, h:mm a")}\n\`\`\``;
+        const messageContent = `\`\`\`javascript\nconst ${user.loginInfo.firstName}_${user.loginInfo.lastName}= \`${newMessage}\` //Sent @ ${moment().format("dddd, MMMM Do YYYY, h:mm a")}\n\`\`\``;
         const messagePayload = {
             content: messageContent,
             projectId: projectId
@@ -42,11 +42,10 @@ export default function Chat() {
         //* Then it will join them to that group, if not, then they cannot see those chat messages
         socketRef.current.emit("join project room", projectId)
         socketRef.current.on('project message', payload => {
-            // console.log('Message recieved')
             //gets the latest messages and passes it through so they are updated
             setMessages(messages => messages.concat([payload]));
         })
-    }, [])
+    }, [projectId])
 
     return (
         <>
@@ -54,8 +53,7 @@ export default function Chat() {
             <ScrollToTop />
             <MDBContainer 
             className="container-page-chat" style={{marginTop: '100px'}}>
-            <h1 className="chat-title">Chat with the <span className="green-color">team</span> <i class="fas fa-comments "></i></h1>
-                {/* <h1 className="chat-main-title">Chat</h1> */}
+            <h1 className="chat-title">Chat with the <span className="green-color">team</span> <i className="fas fa-comments "></i></h1>
                 <div className="chat-box">
                     <div className="messages">
                         {messages.length > 0 && messages.map( (message, index) => {
@@ -65,17 +63,14 @@ export default function Chat() {
                         })}
                     </div>
                     <form className="form-chat" onSubmit={sendMessage}>
-                        {/* <input type='text'  value={newMessage} onChange={(e) => {setNewMessage(e.target.value)}} />
-                        <button type="submit">Send</button> */}
-            <div class="text-muted white pt-1 pb-2 ">
-          <input type="text" value={newMessage} onChange={(e) => {setNewMessage(e.target.value)}} id="exampleForm2" class="form-control input-message" placeholder="Type a message..."/>
+            <div className="text-muted white pt-1 pb-2 ">
+          <input type="text" value={newMessage} onChange={(e) => {setNewMessage(e.target.value)}} id="exampleForm2" className="form-control input-message" placeholder="Type a message..."/>
           <div>
-            {/* <a><i class="far fa-file-image mr-2"></i></a> */}
-            <><i class="fas fa-thumbs-up mr-2 blue-text"></i></>
-            <><i class="far fa-laugh mr-2 amber-text"></i></>
-            <><i class="fas fa-gamepad mr-2 purple-text"></i></>
-            <><i class="fas fa-paperclip mr-2 black-text"></i></>
-            <><i class="fas fa-camera mr-2"></i></>
+            <><i className="fas fa-thumbs-up mr-2 blue-text"></i></>
+            <><i className="far fa-laugh mr-2 amber-text"></i></>
+            <><i className="fas fa-gamepad mr-2 purple-text"></i></>
+            <><i className="fas fa-paperclip mr-2 black-text"></i></>
+            <><i className="fas fa-camera mr-2"></i></>
             <button className="float-right btn btn-info btn-rounded btn-sm waves-effect waves-light" type="submit">Send</button>
           </div>
         </div>

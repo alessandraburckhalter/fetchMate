@@ -19,7 +19,6 @@ export default function PublicProfile() {
       .then(res => res.json())
       .then(data => {
         setOwner(data)
-        console.log(data)
       })
     
   }, [project.owner, pendingId])
@@ -46,7 +45,7 @@ export default function PublicProfile() {
           <hr />    
           <br/>
 
-            <h4 class="card-title-public">
+            <h4 className="card-title-public">
             <MDBIcon icon="cogs grey-text" /> Technical Skills <br/> {Object.keys(owner).length > 0 && owner.Skills.filter((userData)=>{
                 return (userData.category === "technical")
                 
@@ -54,7 +53,7 @@ export default function PublicProfile() {
                 return <span className="skills-dashboard">{name.name}</span>
               })}</h4><br/><br/>
 
-          <h4 class="card-title-public">
+          <h4 className="card-title-public">
             <MDBIcon icon="hand-holding-heart pink-text"/> Soft Skills <br/> {Object.keys(owner).length > 0 && owner.Skills.filter((userData)=>{
                 return (userData.category === "soft")
                 
@@ -63,7 +62,7 @@ export default function PublicProfile() {
               })}</h4> <br/><br/>
 
 
-          <h4 class="card-title-public">
+          <h4 className="card-title-public">
             <MDBIcon icon="language purple-text" /> Spoken languages <br/> {Object.keys(owner).length > 0 && owner.Skills.filter((userData)=>{
                 return (userData.category === "language")
                 

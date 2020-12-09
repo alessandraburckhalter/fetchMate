@@ -20,7 +20,6 @@ export default function ResetPassword() {
     const query = new URLSearchParams(location.search)
     
     useEffect(() =>{
-        console.log(query)
         //Get user.id and token from query param
         //Use token and id to send fetch request to server
         fetch(`/api/v1/user/confirmtoken`, {
@@ -76,7 +75,6 @@ export default function ResetPassword() {
                 alert(data.error)
                 // setError(data.error)
             }else{
-                console.log(data.success) 
                 let path = "/"
                 history.push(path)
             }

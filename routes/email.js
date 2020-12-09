@@ -19,7 +19,6 @@ router.post('/welcome', (req, res) => {
         text: "Hello from fetchMate",
         html: '<h4>Hi there, <br/> Welcome to fetchMate! <br/> Thanks for creating an accout. We are so happy to see you here. <br/>Now, log in and start publishing and/or searching projects!<br/><br/> Have an awesome day,<br> fetchMate team</h4>'
     }
-    // console.log(req.body.email)
     sendGrid.send(msg)
         .then(result => {
             
@@ -29,8 +28,6 @@ router.post('/welcome', (req, res) => {
 
         })
         .catch(err => {
-
-            // console.log('error: ', err);
             res.status(401).json({
                 success: false
             });
@@ -41,8 +38,6 @@ router.post('/welcome', (req, res) => {
 
 // matching email 
 router.post('/matched', (req, res) => {
-
-    console.log(req.body);
 
     sendGrid.setApiKey(process.env.SENDGRID_API)
     const msg = {

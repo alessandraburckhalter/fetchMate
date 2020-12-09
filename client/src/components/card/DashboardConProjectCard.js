@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import '../../styles/dashboard.css'
 
 export default function DashboardConProjectCard(props) {
-    const { id, owner, description, title, isCompleted, publishedAt, deadline, memberLimit } = props.project
+    const { id, owner, description, title } = props.project
     const [projectOwner, setProjectOwner] = useState([])
     
       useEffect(()=>{
@@ -24,7 +24,7 @@ export default function DashboardConProjectCard(props) {
             </aside>
             <MDBCard className="card-body card-body-contributing2">
                 <aside>
-                <MDBCardTitle className="project-title"><Link to={`/dashboard/contribute/${id}`}><i class="fas fa-bookmark amber-text"></i> {title}</Link></MDBCardTitle>
+                <MDBCardTitle className="project-title"><Link to={`/dashboard/contribute/${id}`}><i className="fas fa-bookmark amber-text"></i> {title}</Link></MDBCardTitle>
                 <MDBCardText>
                     {description}
                 </MDBCardText>

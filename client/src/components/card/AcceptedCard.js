@@ -5,11 +5,6 @@ import React, { useEffect, useState } from 'react'
 export default function AcceptedCard(props) {
     const { UserId, ProjectId } = props.acceptedMember
     const [interestedUser, setInterestedUser] = useState("")
-    const [project, setProject] = useState("")
-    
-    // for email
-    const id = props.project.ProjectId 
-    
     //decline onclick button
     const pendingMember = () =>{
         fetch(`/api/v1/projects/${ProjectId}/teamMember`,{
@@ -26,34 +21,16 @@ export default function AcceptedCard(props) {
         .then(data=>{
             props.displayAccepted()
             props.displayInterest()
-            // console.log(data)
-        })
-        
-            }
+        }) 
+    }
 
-    // accept button onclick
-    
-        
     useEffect(()=>{
         fetch(`/api/v1/hub/user/${UserId}`)
         .then(res => res.json())
         .then(data => {
           setInterestedUser(data)
-          
-    })  
-        
-        fetch(`/api/v1/projects/${id}`)
-        .then(res =>res.json())
-        .then(data =>{
-            setProject(data)
-        // console.log(project)
-    
-})
-      
-      
+        })
     }, [UserId])
-      
-        
 
     return (
         <MDBCol md="4" lg="4">
@@ -62,42 +39,40 @@ export default function AcceptedCard(props) {
           <div className=''>
             <img src={interestedUser.profilePicture} alt="profilePicture" className="rounded-circle hoverable border border-info interested-image"/>
             </div>
-            <MDBCardTitle>
-            <h4 className='card-title mt-4'> <MDBIcon icon="user indigo-text" />  {interestedUser.firstName} {interestedUser.lastName}
-              </h4>
+            <MDBCardTitle className='card-title mt-4'>
+              <MDBIcon icon="user indigo-text" />  {interestedUser.firstName} {interestedUser.lastName}
             </MDBCardTitle>
-    
             <hr />
-            <h3 class="card-title">
+            <h3 className="card-title">
             <MDBIcon icon="cogs grey-text" /> Technical Skills</h3> 
             {Object.keys(interestedUser).length > 0 && interestedUser.Skills.filter((userData)=>{
                 return (userData.category === "technical")
               }).length> 0 ? (interestedUser.Skills.filter((userData)=>{
                 return (userData.category === "technical")
-              }).map((name)=>{
-                return <span className="skills-dashboard">{name.name} </span> 
+              }).map((name, index)=>{
+                return <span className="skills-dashboard" key={index}>{name.name} </span> 
               })): "No skills"}
 
             <br/> <br/>
-            <h3 class="card-title">
+            <h3 className="card-title">
             <MDBIcon icon="hand-holding-heart pink-text" /> Soft Skills</h3> 
             {Object.keys(interestedUser).length > 0 && interestedUser.Skills.filter((userData)=>{
                 return (userData.category === "soft")
               }).length> 0 ? (interestedUser.Skills.filter((userData)=>{
                 return (userData.category === "soft")
-              }).map((name)=>{
-                return <span className="skills-dashboard">{name.name} </span> 
+              }).map((name, index)=>{
+                return <span className="skills-dashboard" key={index}>{name.name} </span> 
               })): "No skills"}   
        
             <br/> <br/>
-            <h3 class="card-title">
+            <h3 className="card-title">
             <MDBIcon icon="language purple-text" /> Spoken languages </h3>
             {Object.keys(interestedUser).length > 0 && interestedUser.Skills.filter((userData)=>{
                 return (userData.category === "language")
               }).length> 0 ? (interestedUser.Skills.filter((userData)=>{
                 return (userData.category === "language")
-              }).map((name)=>{
-                return <span className="skills-dashboard">{name.name} </span> 
+              }).map((name, index)=>{
+                return <span className="skills-dashboard" key={index}>{name.name} </span> 
               })): "No languages"}
              <br/> <br/>
             

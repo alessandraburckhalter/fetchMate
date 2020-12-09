@@ -24,11 +24,9 @@ const fileFilter = (req,file,cb) => {
     
     if(file.mimetype === 'image/jpeg' || file.mimetype === 'image/png'){
         // accept a file
-        console.log('file accepted')
         cb(null, true)
     }else{
         // reject a file
-        console.log('file denied')
         cb(null, false)
     }
     
@@ -111,25 +109,6 @@ router.get('/user/:id', checkAuth, (req,res) => {
     })
 })
 
-//update profile PUT
-// router.put('/', checkAuth, (req,res) => {
-//     models.User.findOne({
-//         where: {
-//             id: req.session.user.id
-//         }
-//     })
-        
-//     .then((user)=>{
-//         user.update({
-//             firstName: req.body.firstName,
-//             lastName: req.body.lastName
-//         })
-
-//         .then((result) => {
-//             res.status(201).json(result)
-//         })
-//     })
-// })
 
 //update profile
 router.patch('/',upload.single('profilePicture'), checkAuth, (req,res) => {
@@ -146,13 +125,11 @@ router.patch('/',upload.single('profilePicture'), checkAuth, (req,res) => {
     const params = { firstName, lastName, password, profilePicture, email, title }
     
     uploadToS3(req.file && req.file.path).then(url => {
-        console.log(url)
         if (url) {
             params.profilePicture = url.Location
             
         }
         Object.keys(params).forEach(key => {params[key] ? updateObject[key] = params[key] : ''})
-        console.log(params)
         models.User.update(updateObject, {
             where: {
                 id: req.session.user.id

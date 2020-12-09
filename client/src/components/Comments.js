@@ -3,7 +3,6 @@ import Navbar from './Navbar'
 import Footer from './Footer'
 import { MDBCard, MDBCardText, MDBCardTitle, MDBCol, MDBContainer, MDBIcon, MDBModal, MDBModalBody, MDBModalFooter, MDBModalHeader, MDBRow, MDBPageItem, MDBPagination, MDBPageNav  } from 'mdbreact';
 import { Link, useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import '../styles/comments.css'
 import CommentList from './card/CommentList';
 
@@ -22,7 +21,6 @@ export default function Comments() {
   
     
     const [modal, setModal] = useState(false);
-     // Modal
      const toggle = () => {
         setModal(!modal);
     }
@@ -48,8 +46,6 @@ export default function Comments() {
 
 
     const loadComments = () =>{
-
-
         fetch(`/api/v1/projects/${projectId}/comments`)
             .then(res=>res.json())
             .then(data=>{
@@ -60,43 +56,34 @@ export default function Comments() {
             .then(data=>{
                 setProject(data)
             })
-
     }
     useEffect(()=>{
         loadComments()
-
-    },[projectId])
+        //? Dependency doesn't depend on loadComments because we simply want to run the load comments when the component is rendered
+        //? And we end up passing the loadComments function as a prop to be used elsewhere.
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[])
 
     return (
         <>
             <ScrollToTop />
             <Navbar />
-            {/* <div id="section1" className="background">
-            <div className="layer">
-            </div>
-        </div> */}
             <MDBContainer md="12" className="projects-container">
             <h1 className="faq-title">Discussion <span className="green-color">Forum</span></h1>
 
                 <MDBRow>
                     <MDBCol className="comments-col">
-                    
-                        {/* <MDBCard className="card-body card-body-all-projects1 mb-5" >
-                        <aside>
-    
-                            </aside> */}
                             <MDBCard className="card-body card-comments">
                             <div className="d-block d-md-flex mt-4">
-          <img className="card-img-64 d-flex  mb-3" src={userPic} alt="" />
-          <div body className="text-center text-md-left ml-md-3 ml-0">
-          <h5 className="font-weight-bold mt-0 full-name-comments">
-          {Object.keys(project).length > 0 && project.User.firstName} {Object.keys(project).length > 0 && project.User.lastName}  <br/> {Object.keys(project).length > 0 && project.User.title}
-            </h5>
-              </div>
-              </div>
-              <br />
-                            {/* <aside> */}
-                            <MDBCardTitle className="project-title"><Link className="project-tilte" to="/interested"><i class="fas fa-bookmark amber-text"></i>  {project&& project.title} </Link></MDBCardTitle>
+                            <img className="card-img-64 d-flex  mb-3" src={userPic} alt="" />
+                            <div className="text-center text-md-left ml-md-3 ml-0">
+                            <h5 className="font-weight-bold mt-0 full-name-comments">
+                            {Object.keys(project).length > 0 && project.User.firstName} {Object.keys(project).length > 0 && project.User.lastName}  <br/> {Object.keys(project).length > 0 && project.User.title}
+                                </h5>
+                                </div>
+                                </div>
+                                <br />
+                            <MDBCardTitle className="project-title"><Link className="project-tilte" to="/interested"><i className="fas fa-bookmark amber-text"></i>  {project&& project.title} </Link></MDBCardTitle>
                             <MDBCardText>
                             {project&& project.description.slice(0, 90)}
                             {(project&& project.description.length > 90 && "...")}<Link to="#" onClick={toggle}>Read More</Link> 
@@ -109,164 +96,100 @@ export default function Comments() {
                                 <button className='btn btn-primary' onClick={toggle}>Close</button>
                             </MDBModalFooter>
                         </MDBModal>
-
-
-
                             </MDBCardText>
-                                        <MDBCardText>
-                                          
-                                            <br /><br />
-                                            <h1 className="all-prjects-skills-title"><i class="fas fa-angle-right"></i> Desirable Soft Skills</h1>
-                                {Object.keys(project).length > 0 && project.Skills.filter((userData) => {
-                                                return (userData.category === "soft")
-
-                                            }).map((name) => {
-                                                return <span className="all-projects-skills">{name.name}</span>
-                                            })}
-                                            
-                                            
+                            <br /><br />
+                            <h3 className="all-prjects-skills-title"><i className="fas fa-angle-right"></i> Desirable Soft Skills</h3>
+                            <MDBCardText>                                         
+                            {Object.keys(project).length > 0 && project.Skills.filter((userData) => (userData.category === "soft")).map((name, index) => {
+                                return <span className="all-projects-skills" key={index}>{name.name}</span>
+                            })}
                             </MDBCardText>
+                            <h3 className="all-prjects-skills-title"><i className="fas fa-angle-right"></i> Desirable Technical Skills</h3> 
                             <MDBCardText>
-                                <h1 className="all-prjects-skills-title"><i class="fas fa-angle-right"></i> Desirable Technical Skills</h1> 
-                                {Object.keys(project).length > 0 && project.Skills.filter((userData) => {
-                                                    return (userData.category === "technical")
-
-                                                }).map((name) => {
-                                                    return <span className="all-projects-skills">{name.name}</span>
-                                                })}
-                                    
+                                {Object.keys(project).length > 0 && project.Skills.filter((userData) => (userData.category === "technical")).map((name, index) => {
+                                    return <span className="all-projects-skills" key={index}>{name.name}</span>
+                                })}
                             </MDBCardText>
+                            <h3 className="all-prjects-skills-title"><i className="fas fa-angle-right"></i> Acceptable Spoken languages</h3>
                             <MDBCardText>
-                            <h1 className="all-prjects-skills-title"><i class="fas fa-angle-right"></i> Acceptable Spoken languages</h1>
-                            {Object.keys(project).length > 0 && project.Skills.filter((userData) => {
-                                                return (userData.category === "language")
-
-                                            }).map((name) => {
-                                                return <span className="all-projects-skills">{name.name}</span>
-                                            })}
+                            {Object.keys(project).length > 0 && project.Skills.filter((userData) => (userData.category === "language")).map((name, index) => {
+                                return <span className="all-projects-skills" key={index}>{name.name}</span>
+                            })}
                             </MDBCardText>
-
                             <br/>
                             <div className="flex-row ">
                                 <a href="#!" className="card-link icon icon-all-projects-width">
-                                 {/* {project.isCompleted === false ? 
-                                 (<><MDBIcon icon="lock-open green-text" /> Available</>) : 
-                                 (<><MDBIcon icon="lock black-text" /> Unavailable</>)} <span>Project Status</span> */}
                                 </a>
                                 <a href="#!" className="card-link icon icon-all-projects-width"><MDBIcon icon="calendar-alt deep-purple-text" /> {Object.keys(project).length > 0 && project.publishedAt.slice(0, 10)}     <span>Deadline</span>
-                                </a>
-                                {/* //todo GET PROJECT OWNER NAME ONTO CARD */}
-                                
+                                </a>                              
                                 <a href="#!" className="card-link icon icon-all-projects-width"><MDBIcon icon="users indigo-text" /> {project.memberLimit} <span>Max. members</span> 
                                 </a>
                             </div>
-                            {/* </aside>
-                            </MDBCard> */}
                         </MDBCard>
 
                         <MDBContainer className="mt-5">
-                        <div className="border-0 font-weight-bold">
-                         <p className="mr-4 mb-0">Comments</p>
-                        </div>
-                       
-                                
-                                 {comments.length > 0 ? (comments.map((comment)=>{
+                            <div className="border-0 font-weight-bold">
+                            <p className="mr-4 mb-0">Comments</p>
+                            </div>
+                            {comments.length > 0 ? (comments.map((comment)=>{
                                 return <>
                                     <CommentList key={comment.id} comment={comment} loadComments={loadComments}/>
                                 </> 
-                                })) : "No comments"} 
-                                
-                                  
-                                 </MDBContainer>
-                        
+                            })) : "No comments"} 
+                        </MDBContainer>
                     <MDBContainer>
                         <form onSubmit={commentHandle}>
-                
-                        
+                            <MDBContainer>
+                                <div className="d-block  mt-4">
+                                    <div className="text-center text-md-left ml-md-3 ml-0">
+                                        <div className="form-group mt-4">
+                                            <label htmlFor="quickReplyFormComment">Your comment</label>
+                                            <textarea className="form-control" id="quickReplyFormComment" value={content} rows="5" onChange={(e) => {setContent(e.target.value)}}></textarea>
+                                            <div className="text-center my-4">
+                                                <button className="btn btn-primary" size="sm" >Post</button>
+                                            </div>
+                                        </div>
+                                        <div className="d-block  mt-4">
+                                            <div className="text-center text-md-left ml-md-3 ml-0">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>            
+                            </MDBContainer>
+                        </form>
 
-                        {/* <div className="input-group">
-                            <div className="input-group-prepend">
-                                    <span className="input-group-text" id="basic-addon">
-                                    <i className="fas fa-pencil-alt prefix"></i>
-                                    </span>
-                                </div>
-                                <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" onChange={(e) => {setContent(e.target.value)}}></textarea>
-                            </div>
-                            
-                            <div className="text-center py-4 mt-3">
-                            <button className="btn btn-outline-purple" type="submit">
-                                Send
-                                <MDBIcon far icon="paper-plane" className="ml-2" />
-                            </button>
-                            </div> */}
-
-                    <MDBContainer>
-                    <div className="d-block  mt-4">
-                    <div body className="text-center text-md-left ml-md-3 ml-0">
-                    <div className="form-group mt-4">
-                    <label htmlFor="quickReplyFormComment">Your comment</label>
-                    <textarea className="form-control" id="quickReplyFormComment" value={content} rows="5" onChange={(e) => {setContent(e.target.value)}}></textarea>
-                    <div className="text-center my-4">
-                      <button className="btn btn-primary" size="sm" >Post</button>
-
-            </div>
-            </div>
-            <div className="d-block  mt-4">
-            <div body className="text-center text-md-left ml-md-3 ml-0">
-
-
-                </div>
-            </div>
-
-                </div>
-
-            </div>            
-                      </MDBContainer>
-
-
-                    
-                    </form>
-
-                    <MDBPagination className="d-flex justify-content-center mt-5">
-          <MDBPageItem disabled>
-            <MDBPageNav>
-              <span>First</span>
-            </MDBPageNav>
-          </MDBPageItem>
-          <MDBPageItem disabled>
-            <MDBPageNav aria-label="Previous">
-              <span aria-hidden="true">&laquo;</span>
-              <span className="sr-only">Previous</span>
-            </MDBPageNav>
-          </MDBPageItem>
-          <MDBPageItem active>
-            <MDBPageNav>
-              1 <span className="sr-only">(current)</span>
-            </MDBPageNav>
-          </MDBPageItem>
-          <MDBPageItem>
-            <MDBPageNav>
-              &raquo;
-            </MDBPageNav>
-          </MDBPageItem>
-          <MDBPageItem>
-            <MDBPageNav>
-              Last
-            </MDBPageNav>
-          </MDBPageItem>
-        </MDBPagination>
-
-                    
+                        <MDBPagination className="d-flex justify-content-center mt-5">
+                        <MDBPageItem disabled>
+                            <MDBPageNav>
+                            <span>First</span>
+                            </MDBPageNav>
+                        </MDBPageItem>
+                        <MDBPageItem disabled>
+                            <MDBPageNav aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                            <span className="sr-only">Previous</span>
+                            </MDBPageNav>
+                        </MDBPageItem>
+                        <MDBPageItem active>
+                            <MDBPageNav>
+                            1 <span className="sr-only">(current)</span>
+                            </MDBPageNav>
+                        </MDBPageItem>
+                        <MDBPageItem>
+                            <MDBPageNav>
+                            &raquo;
+                            </MDBPageNav>
+                        </MDBPageItem>
+                        <MDBPageItem>
+                            <MDBPageNav>
+                            Last
+                            </MDBPageNav>
+                        </MDBPageItem>
+                        </MDBPagination>
                     </MDBContainer>   
                     </MDBCol>
                 </MDBRow>
-          
-             
-      
-      </MDBContainer>
-
-       
-
+        </MDBContainer>
         <Footer />
         </>
     )
