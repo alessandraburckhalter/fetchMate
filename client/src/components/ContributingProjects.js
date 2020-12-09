@@ -7,11 +7,11 @@ import '../styles/contributing.css'
 import ScrollToTop from './ScrollToTop';
 
 export default function ContributingProjects() {
-    const { contributeId } = useParams()
-    const [project, setProject] = useState([])
-    const [owner, setOwner] = useState([])
+  const { contributeId } = useParams()
+  const [project, setProject] = useState([])
+  const [owner, setOwner] = useState([])
 
-    
+
   useEffect(() => {
     fetch(`/api/v1/projects/${contributeId}`)
       .then(res => res.json())
@@ -26,112 +26,112 @@ export default function ContributingProjects() {
       .then(data => {
         setOwner(data)
       })
-    
-  }, [project.owner, contributeId])
-        
-        
 
-    return (
-      <>
+  }, [project.owner, contributeId])
+
+
+
+  return (
+    <>
       <ScrollToTop />
       <Navbar />
 
-        <div id="top">
-      <MDBContainer className="contributing-container">
-        <h1 className="contributing-title ">Your Contributions</h1>
-      <MDBRow>
-      <MDBCol md="3" lg="4" className=" ">
-        <MDBCard testimonal className="card-body-contributing">
-          
-          <MDBCardBody>
-          <div className=''>
-            <img src={owner.profilePicture}alt="profilePicture" className="rounded-circle hoverable border border-info profile-setup"  />
-          </div>
-            <MDBCardTitle>
-            <h4 className='card-title-interested mt-4'> <MDBIcon icon="user indigo-text" /> {owner.firstName} {owner.lastName}
-              </h4>
-              <h4 className='card-title'><MDBIcon far icon="newspaper" /> {owner.title}
-              </h4>
-            </MDBCardTitle>
-            
-            <hr />
-            <h4 className="card-title">
-              <Link to={`/chat/${project.id}`}>
-                <MDBIcon icon="comments blue-text" /> Chat now with the team
+      <div id="top">
+        <MDBContainer className="contributing-container">
+          <h1 className="contributing-title ">Your Contributions</h1>
+          <MDBRow>
+            <MDBCol md="3" lg="4" className=" ">
+              <MDBCard testimonial className="card-body-contributing">
+
+                <MDBCardBody>
+                  <div className=''>
+                    <img src={owner.profilePicture} alt="profilePicture" className="rounded-circle hoverable border border-info profile-setup" />
+                  </div>
+                  <MDBCardTitle>
+                    <span className='card-title-interested mt-4'> <MDBIcon icon="user indigo-text" /> {owner.firstName} {owner.lastName}
+                    </span>
+                    <span className='card-title'><MDBIcon far icon="newspaper" /> {owner.title}
+                    </span>
+                  </MDBCardTitle>
+
+                  <hr />
+                  <h4 className="card-title">
+                    <Link to={`/chat/${project.id}`}>
+                      <MDBIcon icon="comments blue-text" /> Chat now with the team
               </Link>
-            </h4> 
-            <br/>
-          </MDBCardBody>
-        </MDBCard>
-      </MDBCol>
-    
-      <MDBCol className="mt-5 contributing-col">
-      <MDBCard className="card-body " >
-      <MDBCardTitle className="project-title"><i className="fas fa-bookmark amber-text"></i> {project.title}</MDBCardTitle > 
-          <MDBCardText>
-          {project.description} 
-          </MDBCardText>
-        <h3 className="all-prjects-skills-title">
-        <i className="fas fa-angle-right"></i> Desirable Technical Skills </h3>
-         <MDBCardText>
+                  </h4>
+                  <br />
+                </MDBCardBody>
+              </MDBCard>
+            </MDBCol>
 
-        {Object.keys(project).length > 0 && project.Skills.filter((userData)=>{
-                return (userData.category === "technical")
-              }).length> 0 ? (project.Skills.filter((userData)=>{
-                return (userData.category === "technical")
-              }).map((name)=>{
-                return <span className="skills-dashboard">{name.name} </span> 
-              })): "No technical skills required"} <br /> <br />
-        </MDBCardText>
+            <MDBCol className="mt-5 contributing-col">
+              <MDBCard className="card-body " >
+                <MDBCardTitle className="project-title"><i className="fas fa-bookmark amber-text"></i> {project.title}</MDBCardTitle >
+                <MDBCardText>
+                  {project.description}
+                </MDBCardText>
+                <h3 className="all-prjects-skills-title">
+                  <i className="fas fa-angle-right"></i> Desirable Technical Skills </h3>
+                <MDBCardText>
 
-        <h3 className="all-prjects-skills-title">
-        <i className="fas fa-angle-right"></i> Desirable Soft Skills </h3>  
-        <MDBCardText>
-        {Object.keys(project).length > 0 && project.Skills.filter((userData)=>{
-                return (userData.category === "soft")
-              }).length> 0 ? (project.Skills.filter((userData)=>{
-                return (userData.category === "soft")
-              }).map((name)=>{
-                return <span className="skills-dashboard">{name.name} </span> 
-              })): "No soft skills required"} <br /> <br />
-        </MDBCardText>
+                  {Object.keys(project).length > 0 && project.Skills.filter((userData) => {
+                    return (userData.category === "technical")
+                  }).length > 0 ? (project.Skills.filter((userData) => {
+                    return (userData.category === "technical")
+                  }).map((name, index) => {
+                    return <span className="skills-dashboard" key={index}>{name.name} </span>
+                  })) : "No technical skills required"} <br /> <br />
+                </MDBCardText>
+
+                <h3 className="all-prjects-skills-title">
+                  <i className="fas fa-angle-right"></i> Desirable Soft Skills </h3>
+                <MDBCardText>
+                  {Object.keys(project).length > 0 && project.Skills.filter((userData) => {
+                    return (userData.category === "soft")
+                  }).length > 0 ? (project.Skills.filter((userData) => {
+                    return (userData.category === "soft")
+                  }).map((name, index) => {
+                    return <span className="skills-dashboard" key={index}>{name.name} </span>
+                  })) : "No soft skills required"} <br /> <br />
+                </MDBCardText>
 
 
-        <h3 className="all-prjects-skills-title">
-        <i className="fas fa-angle-right"></i> Acceptable Spoken Languages </h3>
-        <MDBCardText>
+                <h3 className="all-prjects-skills-title">
+                  <i className="fas fa-angle-right"></i> Acceptable Spoken Languages </h3>
+                <MDBCardText>
 
-        {Object.keys(project).length > 0 && project.Skills.filter((userData)=>{
-                return (userData.category === "language")
-              }).length> 0 ? (project.Skills.filter((userData)=>{
-                return (userData.category === "language")
-              }).map((name)=>{
-                return <span className="skills-dashboard">{name.name} </span> 
-              })): "No languages required"} <br /> <br />
+                  {Object.keys(project).length > 0 && project.Skills.filter((userData) => {
+                    return (userData.category === "language")
+                  }).length > 0 ? (project.Skills.filter((userData) => {
+                    return (userData.category === "language")
+                  }).map((name, index) => {
+                    return <span className="skills-dashboard" key={index}>{name.name} </span>
+                  })) : "No languages required"} <br /> <br />
 
-        </MDBCardText>
-            <div className="flex-row ">
-            <a href="#!" className="card-link icon icon-all-projects-width">
-                                 {project.isCompleted === false ? 
-                                 (<><MDBIcon icon="lock-open green-text" /> Available</>) : 
-                                 (<><MDBIcon icon="lock black-text" /> Unavailable</>)} <span>Project Status</span>
-                                </a>
-                                <a href="#!" className="card-link icon icon-all-projects-width"><MDBIcon icon="calendar-alt deep-purple-text" /> {Object.keys(project).length > 0 && project.deadline.slice(0, 10)} <span>Deadline</span>
-                                </a>
+                </MDBCardText>
+                <div className="flex-row ">
+                  <a href="#!" className="card-link icon icon-all-projects-width">
+                    {project.isCompleted === false ?
+                      (<><MDBIcon icon="lock-open green-text" /> Available</>) :
+                      (<><MDBIcon icon="lock black-text" /> Unavailable</>)} <span>Project Status</span>
+                  </a>
+                  <a href="#!" className="card-link icon icon-all-projects-width"><MDBIcon icon="calendar-alt deep-purple-text" /> {Object.keys(project).length > 0 && project.deadline.slice(0, 10)} <span>Deadline</span>
+                  </a>
 
-                                <a href="#!" className="card-link icon icon-all-projects-width"><MDBIcon icon="users indigo-text" /> {project.memberLimit}<span>Max. members</span> 
-                                 </a>
-          </div>
-         
-          
-          
-  </MDBCard>  
-  </MDBCol>
-    </MDBRow>
-    </MDBContainer>
-            
-        </div>
-        <Footer/>
+                  <a href="#!" className="card-link icon icon-all-projects-width"><MDBIcon icon="users indigo-text" /> {project.memberLimit}<span>Max. members</span>
+                  </a>
+                </div>
+
+
+
+              </MDBCard>
+            </MDBCol>
+          </MDBRow>
+        </MDBContainer>
+
+      </div>
+      <Footer />
     </>
-    )
+  )
 }

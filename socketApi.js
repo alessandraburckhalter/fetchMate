@@ -16,7 +16,6 @@ io.on('connection', (socket) => {
     //* Here we check if the userId belongs as a teamMember of the project id
     //? If they do belong, then we Socket.join(projectId) group, else then they join no group
     socket.on('join project room', (projectId) => {
-        console.log('\n\n\n\n\n\n' + projectId)
         db.Project.findOne({
             where: {id: projectId}, 
             include: [db.User, {

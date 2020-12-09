@@ -31,6 +31,7 @@ export default function DashboardPenProjectCard(props) {
             <MDBCardTitle className="project-title"> <i className="fas fa-bookmark amber-text"></i> {title}</MDBCardTitle>
             <MDBCardText>
               {description.slice(0, 90)}{(description.length > 90 && "...")} <Link to="#" onClick={toggle}>Read More</Link>
+            </MDBCardText>
               <MDBModal isOpen={modal} toggle={toggle}>
                 <MDBModalHeader toggle={toggle}>Privacy Measures</MDBModalHeader>
                 <MDBModalBody>
@@ -40,7 +41,6 @@ export default function DashboardPenProjectCard(props) {
                   <button className='btn btn-primary' onClick={toggle}>Close</button>
                 </MDBModalFooter>
               </MDBModal>
-            </MDBCardText>
             <div className="flex-row ">
               <MDBIcon icon="user indigo-text" />
               <Link to={`/dashboard/public/${projectOwner.id}`}> {projectOwner.firstName} {projectOwner.lastName}</Link>
