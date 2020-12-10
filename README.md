@@ -27,7 +27,7 @@
 <br>
 <br>
 
-## :computer: **Front-end Used Technologies**
+## :computer: **Front-end Technologies**
 * [React](https://reactjs.org/)
 * [Redux](https://redux.js.org/)
 * [MDBootstrap](https://mdbootstrap.com/)
@@ -35,7 +35,7 @@
 <br>
 <br>
 
-## :hammer_and_wrench: **Back-end Used Technologies**
+## :hammer_and_wrench: **Back-end Technologies**
 * [Node.js](https://nodejs.org/en/)
 * [Express](https://expressjs.com/)
 * [PostgreSQL](https://www.postgresql.org/)
@@ -45,6 +45,7 @@
 
 ## :chart_with_downwards_trend: **Database Structure**
 ![database](https://user-images.githubusercontent.com/68092946/101784136-1cbe4080-3ac9-11eb-8985-176a27d30b44.png)
+<br>
 <br>
 <br>
 
@@ -72,22 +73,29 @@ Run ```npm start``` or ```yarn start``` in your terminal.
 The application will be available at http://localhost:3001.
 <br>
 <br>
-### fetchMate is also deployed on Heroku. You can see a demo by clicking [here](https://), it might take 15 to 30 seconds for the application to start running.
+## fetchMate is also deployed on Heroku. You can see a demo by clicking [here](https://fetchmate.herokuapp.com/), it can take 15 to 30 seconds for the application to start running.
 <br>
 <br>
 
 ## :heavy_exclamation_mark: Challenges
+* Adding the feature that allows the user to reset their password.
+* Creating the query that allows the user to filter the projects by skills.
+* Being able to fulfill our main and stretch goals for this application on time.
+* Having only two weeks to develop the entire projects.
 <br>
 <br>
 
 ## :green_book: **Lessons Learned**
+* We have improved our project management skills using the Trello tool.
+* We learned how to keep and post our API keys safely.
+* We learned how to complement Heroku's deployment services with AWS to handle file uploading.
 <br>
 <br>
 
 ## :soon: Next Steps
 * Give the user the ability to change the project status on dashboard.
 * Add more filtering features to the projects page.
-* Implement a % matching feature.
+* Implement a percentage matching feature.
 * Implement notifications.
 <br>
 <br>
