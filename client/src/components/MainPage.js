@@ -96,7 +96,7 @@ export default function MainPage() {
                 <MDBModal isOpen={modal} toggle={toggle} className="modal-visitor">
                                 <MDBModalHeader toggle={toggle}>Login shortcut 😉</MDBModalHeader>
                                 <MDBModalBody>
-                            Thank you for your visit. <br/><br/> If you don’t feel like creating an account, but still want to see the features, please use the login information below. <br /><br/> E-mail: visitor@fetchmate.com <br/> Password: 12345 <br/><br/> If you would like to check the source code on GitHub, click <a href ="https://github.com/alessandraburckhalter/fetchMate" target="_blank">here</a>.<br/><br/> We hope you enjoy your visit.
+                            Thank you for your visit. <br/><br/> If you don’t feel like creating an account, but still want to see the features, please use the login information below. <br /><br/> E-mail: visitor@fetchmate.com <br/> Password: 12345 <br/><br/> If you would like to check the source code on GitHub, click <a href ="https://github.com/alessandraburckhalter/fetchMate" target="_blank" rel="noreferrer">here</a>.<br/><br/> We hope you enjoy your visit.
                             </MDBModalBody>
                             <MDBModalFooter>
                                 <button className='btn btn-primary' onClick={toggle}>Close</button>

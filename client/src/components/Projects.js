@@ -47,11 +47,11 @@ export default function Projects() {
         <MDBContainer className="projects-container">
           <h1 className="all-projects-title"><span className="green-color">All</span> Projects </h1>
             <MDBCard className="mb-2 pt-2 mt-5 flex-row justify-content-around">
-                <a href="#!" className="card-link icon icon-all-projects-width">
-                  <MDBIcon icon="cogs" onClick={sortBySkills}/><span>Sort by your skills</span>
+                <a href="#!" className="card-link icons icon-all-projects-width">
+                  <MDBIcon icon="cogs" onClick={sortBySkills}/><span className="sort-icons">Sort by your skills</span>
                 </a>
-                <a href="#!" className="card-link icon icon-all-projects-width">
-                  <MDBIcon icon="certificate" onClick={loadProject}/> <span>Sort by newest projects</span> 
+                <a href="#!" className="card-link icons icon-all-projects-width">
+                  <MDBIcon icon="certificate" onClick={loadProject}/> <span className="sort-icons">Sort by newest projects</span> 
                 </a>
             </MDBCard>
           {user.loginInfo ? (projects.map((project) => {
