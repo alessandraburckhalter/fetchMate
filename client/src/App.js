@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import './App.css';
 import About from './components/About';
@@ -21,11 +21,12 @@ import { checked, login } from './redux/actions'
 import ForgotPassword from './components/ForgotPassword';
 import Privacy from './components/Privacy';
 import ProtectedRoute from './components/ProtectedRoute';
-
+import { MDBContainer } from 'mdbreact';
 
 
 
 function App() {
+  const user = useSelector(state => state.user)
   const dispatch = useDispatch()
 
 
@@ -44,6 +45,31 @@ function App() {
         }
       })
   }, [dispatch])
+
+  if (!user.checked) {
+    return <>
+    <h3 className="loading">Loading....</h3>
+    <MDBContainer className="justify-content-center d-flex">
+      <div className="spinner-grow text-primary " role="status">
+      <span className="sr-only">Loading...</span>
+      </div>
+      <div className="spinner-grow text-success" role="status">
+      <span className="sr-only">Loading...</span>
+      </div>
+      <div className="spinner-grow text-danger" role="status">
+      <span className="sr-only">Loading...</span>
+      </div>
+      <div className="spinner-grow text-warning" role="status">
+      <span className="sr-only">Loading...</span>
+      </div>
+      <div className="spinner-grow text-info" role="status">
+      <span className="sr-only">Loading...</span>
+      </div>
+
+    </MDBContainer>
+
+    </>
+  }
 
 
   return (

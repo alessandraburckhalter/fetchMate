@@ -67,7 +67,7 @@ export default function IndividualProjectPublic({ project }) {
                                             return <span className="all-projects-skills" key={index}>{skill.name}</span>
                                         })}
                                     </MDBCardText>
-                                    <div className="flex-row ">
+                                    <div className="flex-row d-flex">
                                         <a href="#!" className="card-link icon icon-all-projects-width">
                                             {project.isCompleted === false ?
                                                 (<><MDBIcon icon="lock-open green-text" /> Available</>) :
@@ -78,7 +78,7 @@ export default function IndividualProjectPublic({ project }) {
                                         <a href="#!" className="card-link icon icon-all-projects-width"><MDBIcon icon="users indigo-text" /> {project.memberLimit} <span>Max. members</span>
                                         </a>
                                         <div>
-
+                                    </div>
 
 
                                             <button className="participate-button" onClick={toggle}>
@@ -94,7 +94,6 @@ export default function IndividualProjectPublic({ project }) {
                                             </MDBModal>
 
                                         </div>
-                                    </div>
                                 </aside>
                             </MDBCard>
                         </MDBCard>

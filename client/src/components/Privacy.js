@@ -18,14 +18,11 @@ export default function Privacy() {
             : (
               <Navbar />
             )}
-            {/* <div id="section1" className="background mb-5">
-            <div className="layer">
-            </div> */}
-        {/* </div> */}
+           
             <MDBContainer className="mt-5">
             <h1  className="faq-title">Privacy Policy <i className="fas fa-shield-alt"></i></h1>
             <h1 className="policy-title">fetchMate Privacy Statement</h1>
-            <h2 className="policy-date">Effective date: December 08, 2020</h2><br />
+            <h2 className="policy-date">Effective date: December 10, 2020</h2><br />
                 <p className="p">This Privacy Policy applies when you use our Services (described below). We offer our users choices about the data we collect, use and share as described in this Privacy Policy.</p><br/>
 
                 <h2 className="h2">I. What kind of information do we collect?</h2>

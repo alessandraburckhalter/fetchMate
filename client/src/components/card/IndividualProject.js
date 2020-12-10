@@ -144,7 +144,7 @@ export default function IndividualProject(props) {
                                     </MDBCardText>
                                     <br />
 
-                                    <div className="flex-row ">
+                                    <div className="flex-row d-flex">
                                         <a href="#!" className="card-link icon icon-all-projects-width">
                                             {project.isCompleted === false ?
                                                 (<><MDBIcon icon="lock-open green-text" /> Available</>) :
@@ -156,7 +156,8 @@ export default function IndividualProject(props) {
                                         </a>
                                         <Link to={`/projects/${project.id}`} className="card-link icon icon-all-projects-width"><i className="fas fa-comment-dots"></i> {comment && comment.length} <span>Comments</span>
                                         </Link>
-
+                                    </div>
+                                    
                                         <div>
                                             {
                                                 isOwner ?
@@ -195,7 +196,6 @@ export default function IndividualProject(props) {
 
                                             }
                                         </div>
-                                    </div>
                                 </aside>
                             </MDBCard>
                         </MDBCard>

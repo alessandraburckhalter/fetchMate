@@ -61,10 +61,10 @@ export default function ProjectForm() {
             <MDBCol md='3' className="mt-5">
               <MDBCard testimonial className="card-profile" >
                 <div />
-                <div className='mx-auto white'>
+                <div className='d-flex justify-content-center'>
                   <img
                     src={user.loginInfo.profilePicture}
-                    alt='' className="rounded-circle hoverable border border-info"
+                    alt='' className="rounded-circle hoverable border border-info project-form-image"
                   />
                 </div>
                 <MDBCardBody>
@@ -76,10 +76,10 @@ export default function ProjectForm() {
               </MDBCard>
             </MDBCol>
 
-            <MDBCol md="7" className=" container-form">
+            <MDBCol md="9" className=" container-form">
               <MDBCard className="card-complete-profile" testimonial>
                 <div className="form-title">
-                  TELL US ABOUT YOUR PROJECT <MDBIcon icon="file-signature indigo-text" />
+                  TELL US ABOUT<br/> YOUR PROJECT <MDBIcon icon="file-signature indigo-text" />
                 </div>
                 <div >
                   <form onSubmit={e => handleSubmit(e)}>

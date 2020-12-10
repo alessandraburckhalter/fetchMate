@@ -42,7 +42,6 @@
 
 /* form input border */
 .form-control {
-    /* background: #f5f8fa !important; */
     border-color: #4285f4 !important;
 }
 
@@ -124,7 +123,6 @@ form {
 
 /* complete your profile container */
 .container-form {
-    margin-left: 80px;
     box-shadow: none !important;
     margin-top: 160px;
 }
@@ -141,7 +139,6 @@ form {
     box-shadow: none !important;
     background-color: transparent !important;
     margin-top: 150px;
-   
 }
 
 /* name and email */
@@ -153,7 +150,7 @@ h4.card-title {
 
 /* complete your profile title */
 .form-title {
-    font-size: 40px;
+    font-size: 30px;
     color: steelblue;
     text-align: center;
     font-family: fontastique;
@@ -169,19 +166,13 @@ h4.card-title {
 }
 
 /* profile image */
-img.rounded-circle.hoverable.border.border-info.interested-image {
+img.rounded-circle.hoverable.border.border-info.profile-setup {
     border: 5px solid #33b5e5!important;
     width: max(100px, min(235px, 44vw));
     height: max(100px, min(235px, 44vw));
-    margin-left: 20px;
     object-fit: cover;
-}
-
-img.rounded-circle.interested-image  {
-    width: max(100px, min(235px, 44vw));
-    height: max(100px, min(235px, 44vw));
-    margin-left: 20px;
-    object-fit: cover;
+    display: flex;
+    justify-self: center;
 }
 
 /* projectForm page datepicker input */

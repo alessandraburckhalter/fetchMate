@@ -23,7 +23,6 @@ button.accept {
     border-radius: 4px;
     padding: 13px;
     outline: none;
-    margin-left: 45px;
     border: 1px solid white;
 }
 
@@ -39,13 +38,15 @@ button.decline {
 
 /* remove member button */
 button.remove-member {
-    padding: 20px;
     background-color: #ec0101;
     color: white;
     border-radius: 4px;
     outline: none;
     border: 1px solid white;
+    width: 100%;
+    text-align: center;
 }
+
 
 /* team members container */
 .team-members-container {
@@ -75,12 +76,15 @@ button.remove-member {
     font-size: 1.2em;
 }
 
-img.rounded-circle.hoverable.border.border-info {
+/* profile picture interested/profile overview page*/
+img.rounded-circle.interested-image  {
     border: 5px solid #33b5e5!important;
     width: max(100px, min(235px, 44vw));
     height: max(100px, min(235px, 44vw));
-    margin-left: 30px;
-}
+    object-fit: cover;
+    display: flex;
+    justify-self: center;
+} 
 
 .commentForEmpty{
     text-align: center; 
@@ -88,21 +92,9 @@ img.rounded-circle.hoverable.border.border-info {
 
 /* Media Query For Iphone */
 @media only screen 
-and (min-device-width : 375px) 
+and (min-device-width : 0px) 
 and (max-device-width : 667px) { 
-    button.accept {
-        
-        margin-left: 85px !important;
-    }
-
-    button.remove-member {
-        margin-left: 30px;
-    }
-
-    img.rounded-circle.hoverable.border.border-info.interested-image {
-        margin-left: 20px !important;
-    }
-
+   
     .interested-titles {
         font-size: 35px !important;
     }
@@ -118,7 +110,6 @@ and (max-device-width : 1024px) {
 
     button.accept {
         padding: 8px;
-        margin-left: 0 !important;
     }
     
 }

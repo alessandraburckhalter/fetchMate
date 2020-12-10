@@ -149,7 +149,6 @@ button.newAccount-button:hover {
 /* container second section */
 .second-section {
   width: 100vw;
-  min-height: 80vh;
   position: relative;
   display: block;
 }
@@ -158,7 +157,7 @@ button.newAccount-button:hover {
 .second-section h1 {
   font-weight: bold;
   margin-top: 25em;
-  padding-top: 40px;
+  padding-top: 20px;
 }
 
 .second-section p {

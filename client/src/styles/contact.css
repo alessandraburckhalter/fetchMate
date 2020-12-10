@@ -52,6 +52,11 @@ button.button-location {
     color: #065c6f !important;
 }
 
+.location-email {
+    text-align: center;
+    font-size: 13px;
+}
+
 /* contact form */
 .form-contact {
     padding: 0 !important;
