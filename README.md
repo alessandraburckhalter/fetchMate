@@ -28,16 +28,18 @@
 <br>
 
 ## :computer: **Front-end Used Technologies**
-*
-*
-*
+* [React](https://reactjs.org/)
+* [Redux](https://redux.js.org/)
+* [MDBootstrap](https://mdbootstrap.com/)
+* [Leaflet](https://leafletjs.com/) & [Mapbox](https://docs.mapbox.com/)
 <br>
 <br>
 
 ## :hammer_and_wrench: **Back-end Used Technologies**
-*
-*
-*
+* Node.js
+* PostgreSQL
+* Sequelize ORM
+* 
 <br>
 <br>
 
