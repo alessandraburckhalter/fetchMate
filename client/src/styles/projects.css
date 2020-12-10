@@ -153,7 +153,7 @@ button.cancel-application:hover {
 }
 
 /* icon in the card projects */
-.icon {
+.icons {
     position: relative;
     display: inline-block;
     margin-right: 0 !important ;
@@ -166,7 +166,7 @@ button.cancel-application:hover {
 }
 
 
-.icon span {
+.icons span {
     position: relative;
     color: #4285f4;
     text-align: center;
@@ -180,7 +180,7 @@ button.cancel-application:hover {
     padding: 0 !important;
 }
 
-.icon span:before {
+.icons span:before {
     content: '';
     position: absolute;
     top: -6px;
@@ -189,7 +189,7 @@ button.cancel-application:hover {
     transform: translate(-50%) rotate(45deg);
 }
 
-.icon:hover > span {
+.icons:hover > span {
     opacity: 1;
 }
 
@@ -252,6 +252,10 @@ and (max-device-width : 667px) {
 
     .chat-title {
         padding-top: 120px;
+    }
+
+    .icon.sort-icons {
+        width: 0 !important;
     }
 }
 
