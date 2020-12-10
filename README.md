@@ -23,7 +23,20 @@
 <br>
   
 ## :book: **About this project**
-* Main goals and requirements 
+* Main goals and requirements:
+  * fetchMate is the culmination of our four-month-long, immersive web-development Bootcamp taught by DigitalCrafts. It served as our capstone project for the course and was built to showcase our aptitude for the numerous technologies and frameworks we learned throughout the program. This five-person development team is incredibly proud of the hard work and long hours that went into making fetchMate, and we are honored to present it to you today.
+* Specifically our requirements were as follows:
+
+- [X] Complete a fullstack application either in a group, or solo, in two weeks
+- [X] It must use a UI of some kind
+- [X] It must be responsive
+- [X] It must utilize any backend technology/database engine of our choosing
+- [X] We must use a project planning software of our choosing
+- [X] We must utilize proper git practices
+  
+  
+* General description:
+  * fetchMate is a project hosting application built to help programmers find team members with specific development skills. Users can host a new project, join current projects, chat with team members, and even comment on different projects. fetchMate utilizes the following cutting edge technologies/libraries/frameworks: React, Redux, Node.js, PostgreSQL, Sequelize ORM, Material Design for Bootstrap, and Socket.io.
 <br>
 <br>
 
@@ -40,6 +53,7 @@
 * [Express](https://expressjs.com/)
 * [PostgreSQL](https://www.postgresql.org/)
 * [Sequelize ORM](https://sequelize.org/master/)
+* [Socket.io](https://socket.io/)
 <br>
 <br>
 
