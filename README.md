@@ -46,7 +46,9 @@
 <br>
 <br>
 
-## 🖥 Preview
+## 🖥 Watch the preview on YouTube
+[![Watch the video on YouTube](https://user-images.githubusercontent.com/68092946/101800485-51d38e80-3adb-11eb-9285-ada3f8de1ac1.png)](https://www.youtube.com/watch?v=_UZSZSn-B5c)
+
 <br>
 <br>
 
@@ -58,15 +60,17 @@
 After cloning the repository, use your favorite code editor to open the folder. We recommend [Visual Studio Code](https://code.visualstudio.com/).
 ### 3. Enter in the directory
 Type ```cd client``` in your terminal.
-### 4. Install the dependencies
+### 4. Install the required packages
+You will need to install [Postgres](https://code.visualstudio.com/) and [Node.js](https://nodejs.org/en/) to run the back-end piece.
+### 5. Install the dependencies
 Run ```npm install``` or ```yarn install``` in your terminal.
-### 5. Execute the application
+### 6. Execute the application
 Run ```npm start``` or ```yarn start``` in your terminal.
-### 6. Open in your browser
+### 7. Open in your browser
 The application will be available at http://localhost:3001.
 <br>
 <br>
-### fetchMate is also deployed on Heroku. You can see a demo by clicking [HERE](https://).
+### fetchMate is also deployed on Heroku. You can see a demo by clicking [here](https://), it might take 15 to 30 seconds for the application to start running.
 <br>
 <br>
 
@@ -79,6 +83,10 @@ The application will be available at http://localhost:3001.
 <br>
 
 ## :soon: Next Steps
+* Give the user the ability to change the project status on dashboard.
+* Add more filtering features to the projects page.
+* Implement a % matching feature.
+* Implement notifications.
 <br>
 <br>
 
