@@ -56,7 +56,7 @@ After cloning the repository, use your favorite code editor to open the folder. 
 ### 5.
 <br>
 <br>
-Parently is also deployed on Heroku. You can see a demo by clicking [HERE](https://).
+fetchMate is also deployed on Heroku. You can see a demo by clicking [HERE](https://).
 <br>
 <br>
 
