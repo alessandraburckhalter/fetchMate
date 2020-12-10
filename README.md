@@ -36,10 +36,10 @@
 <br>
 
 ## :hammer_and_wrench: **Back-end Used Technologies**
-* Node.js
-* PostgreSQL
-* Sequelize ORM
-* 
+* [Node.js](https://nodejs.org/en/)
+* [Express](https://expressjs.com/)
+* [PostgreSQL](https://www.postgresql.org/)
+* [Sequelize ORM](https://sequelize.org/master/)
 <br>
 <br>
 
