@@ -167,10 +167,10 @@ export default function ProfileSetup() {
             </MDBCol>
 
 
-            <MDBCol md="7" className=" container-form">
-              <MDBCard className="card-complete-profile" testimonial>
-                <div className="form-title">
-                  COMPLETE YOUR PROFILE <MDBIcon icon="edit indigo-text" />
+            <MDBCol md="9" className=" container-form ">
+              <MDBCard className="card-complete-profile " testimonial>
+                <div className="form-title ml-5">
+                  COMPLETE <br/>YOUR PROFILE <MDBIcon icon="edit indigo-text" />
                 </div>
                 <div >
                   <form onSubmit={(e) => { handleSubmit(e) }}>
@@ -194,21 +194,6 @@ export default function ProfileSetup() {
                     <Button variant="success" type="submit" className="btn btn-lg btn-block mb-5">
                       SUBMIT <MDBIcon far icon="paper-plane" />
                     </Button>
-
-                    {/* <Button variant="success" onClick={toggle} className="btn btn-lg btn-block mb-5">
-            DELETE ACCOUNT <MDBIcon far icon="paper-plane" />
-          </Button>
-          <MDBModal isOpen={modal} toggle={toggle}>
-                                <MDBModalHeader toggle={toggle}><i className="fas fa-exclamation-triangle amber-text"></i> WARNING <i className="fas fa-exclamation-triangle amber-text"></i></MDBModalHeader>
-                                <MDBModalBody>
-                                <h4>Are you sure you want to delete your account?</h4>
-                                <h6>Deleting your account is permanent and will remove all content including comments, avatars and profile settings.</h6>
-                            </MDBModalBody>
-                            <MDBModalFooter>
-                                <button className='btn btn-primary' onClick={deleteAccount} form="edit">Yes</button>
-                                <button className='btn btn-primary' onClick={toggle}>No</button>
-                            </MDBModalFooter>
-                        </MDBModal> */}
                   </form>
                 </div>
 

@@ -68,7 +68,7 @@ export default function Dashboard() {
       <div id="top">
     <MDBContainer>
       <MDBRow>
-      <MDBCol md='3' sm="3" xs="3"  className="mt-5">
+      <MDBCol md='3' sm="12" xs="3"  className="mt-5">
       <MDBCard testimonial className="card-profile" >
       <div />
           <div className='image-and-camera'>
@@ -178,7 +178,7 @@ export default function Dashboard() {
       </MDBCol>
 
     
-      <MDBCol md='8' sm="3" xs="3" className="projects-col">
+      <MDBCol md='8'  className="projects-col pl-5">
           <h1 className="title-cards">My Projects</h1>
 
              

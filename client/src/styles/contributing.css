@@ -26,3 +26,18 @@
     box-shadow: none !important;
     background-color: transparent !important;
 }
+
+/* profile picture contributions page*/
+img.rounded-circle.contributing-image  {
+    border: 5px solid #33b5e5!important;
+    width: max(100px, min(235px, 44vw));
+    height: max(100px, min(235px, 44vw));
+    object-fit: cover;
+    display: flex;
+    justify-self: center;
+}
+
+/* headline + chat */
+.headline-contibuting, .chat-contributing a {
+    font-size: 17px;
+}

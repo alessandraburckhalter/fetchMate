@@ -33,10 +33,10 @@ export default function AcceptedCard(props) {
     }, [UserId])
 
     return (
-        <MDBCol md="4" lg="4">
+        <MDBCol md="6" lg="4">
         <MDBCard personal className="my-5">
           <MDBCardBody>
-          <div className=''>
+          <div className='d-flex justify-content-center'>
             <img src={interestedUser.profilePicture} alt="profilePicture" className="rounded-circle hoverable border border-info interested-image"/>
             </div>
             <MDBCardTitle className='card-title mt-4'>
@@ -76,7 +76,7 @@ export default function AcceptedCard(props) {
               })): "No languages"}
              <br/> <br/>
             
-             <button className="card-link btn remove-member" onClick={pendingMember}>Remove Member from this project
+             <button className="card-link btn remove-member d-flex justify-content-center" onClick={pendingMember}>Remove Member from this project
              </button>
 
           </MDBCardBody>

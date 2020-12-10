@@ -77,7 +77,7 @@ export default function Comments() {
                             <div className="d-block d-md-flex mt-4">
                             <img className="card-img-64 d-flex  mb-3" src={userPic} alt="" />
                             <div className="text-center text-md-left ml-md-3 ml-0">
-                            <h5 className="font-weight-bold mt-0 full-name-comments">
+                            <h5 className="font-weight-bold mt-0 text-left full-name-comments">
                             {Object.keys(project).length > 0 && project.User.firstName} {Object.keys(project).length > 0 && project.User.lastName}  <br/> {Object.keys(project).length > 0 && project.User.title}
                                 </h5>
                                 </div>
@@ -117,7 +117,7 @@ export default function Comments() {
                             })}
                             </MDBCardText>
                             <br/>
-                            <div className="flex-row ">
+                            <div className="flex-row d-flex">
                                 <a href="#!" className="card-link icon icon-all-projects-width">
                                 </a>
                                 <a href="#!" className="card-link icon icon-all-projects-width"><MDBIcon icon="calendar-alt deep-purple-text" /> {Object.keys(project).length > 0 && project.publishedAt.slice(0, 10)}     <span>Deadline</span>

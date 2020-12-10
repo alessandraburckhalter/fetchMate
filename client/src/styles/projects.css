@@ -228,6 +228,16 @@ button.cancel-application:hover {
     color: black !important;
 }
 
+/* project form profile pic */
+img.rounded-circle.hoverable.border.border-info.project-form-image {
+    border: 5px solid #33b5e5!important;
+    width: max(100px, min(235px, 44vw));
+    height: max(100px, min(235px, 44vw));
+    object-fit: cover;
+    display: flex;
+    justify-self: center;
+}
+
 /* Media Query For Iphone */
 @media only screen 
 and (min-device-width : 375px) 

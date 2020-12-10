@@ -107,13 +107,13 @@ export default function InterestedCard(props) {
 
     return (
         
-        <MDBCol md="4" lg="4">
+        <MDBCol md="6" lg="4">
             
-      <MDBCard personal className="my-5 ">
+            <MDBCard testimonal className="my-5 ">
 
           <MDBCardBody>
-          <div className=''>
-            {/* <img src={interestedUser.profilePicture} alt="profilePicture" className="rounded-circle hoverable border border-info interested-image " /> */}
+          <div className='d-flex justify-content-center'>
+            <img src={interestedUser.profilePicture} alt="profilePicture" className="rounded-circle hoverable border border-info interested-image " />
             </div>
             <MDBCardTitle className='card-title-interested mt-4'>
                 <MDBIcon icon="user indigo-text" /> 
@@ -152,10 +152,13 @@ export default function InterestedCard(props) {
                 return <span className="skills-dashboard" key={index}>{name.name} </span> 
               })): "No languages"}
              <br/><br/>
+
+            <div className="buttons-div d-flex justify-content-center">
             <button className="card-link btn accept" onClick={acceptMember}>Accept
              </button> 
              <button className="card-link btn decline" onClick={declineMember}>Decline
              </button>
+             </div>
           </MDBCardBody>
         </MDBCard>
         

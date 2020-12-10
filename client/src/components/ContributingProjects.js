@@ -44,18 +44,18 @@ export default function ContributingProjects() {
               <MDBCard testimonial className="card-body-contributing">
 
                 <MDBCardBody>
-                  <div className=''>
+                  <div className='d-flex justify-content-center mb-5'>
                     <img src={owner.profilePicture} alt="profilePicture" className="rounded-circle hoverable border border-info contributing-image" />
                   </div>
                   <MDBCardTitle>
-                    <span className='card-title-interested mt-4'> <MDBIcon icon="user indigo-text" /> {owner.firstName} {owner.lastName}
-                    </span>
-                    <span className='card-title'><MDBIcon far icon="newspaper" /> {owner.title}
+                    <span className='card-title-interested '> <MDBIcon icon="user indigo-text" /> {owner.firstName} {owner.lastName}
+                    </span> <br/><br/>
+                    <span className='card-title headline-contibuting mt'><MDBIcon far icon="newspaper" /> {owner.title}
                     </span>
                   </MDBCardTitle>
 
                   <hr />
-                  <h4 className="card-title">
+                  <h4 className="card-title chat-contributing">
                     <Link to={`/chat/${project.id}`}>
                       <MDBIcon icon="comments blue-text" /> Chat now with the team
               </Link>
@@ -65,7 +65,7 @@ export default function ContributingProjects() {
               </MDBCard>
             </MDBCol>
 
-            <MDBCol className="mt-5 contributing-col">
+            <MDBCol className="mt-5 contributing-col ml-5">
               <MDBCard className="card-body " >
                 <MDBCardTitle className="project-title"><i className="fas fa-bookmark amber-text"></i> {project.title}</MDBCardTitle >
                 <MDBCardText>
@@ -110,7 +110,7 @@ export default function ContributingProjects() {
                   })) : "No languages required"} <br /> <br />
 
                 </MDBCardText>
-                <div className="flex-row ">
+                <div className="flex-row d-flex">
                   <a href="#!" className="card-link icon icon-all-projects-width">
                     {project.isCompleted === false ?
                       (<><MDBIcon icon="lock-open green-text" /> Available</>) :
