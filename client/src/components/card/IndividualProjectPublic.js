@@ -67,6 +67,7 @@ export default function IndividualProjectPublic({ project }) {
                                             return <span className="all-projects-skills" key={index}>{skill.name}</span>
                                         })}
                                     </MDBCardText>
+                                    <div>
                                     <div className="flex-row d-flex">
                                         <a href="#!" className="card-link icon icon-all-projects-width">
                                             {project.isCompleted === false ?
@@ -77,13 +78,15 @@ export default function IndividualProjectPublic({ project }) {
                                         </a>
                                         <a href="#!" className="card-link icon icon-all-projects-width"><MDBIcon icon="users indigo-text" /> {project.memberLimit} <span>Max. members</span>
                                         </a>
+                                    </div>            
+
                                         <div>
-                                    </div>
+                                   
 
-
+                                    
                                             <button className="participate-button" onClick={toggle}>
                                                 I want to be part of this project
-                                            </button><MDBModal isOpen={modal} toggle={toggle}>
+                                            </button> </div><MDBModal isOpen={modal} toggle={toggle}>
                                                 <MDBModalHeader toggle={toggle}>Privacy Measures</MDBModalHeader>
                                                 <MDBModalBody>
                                                     You need to be logged in to apply for projects. <br /> Click <Link to="/">here</Link> to login or <Link to="/signup">here</Link> to create an account.
@@ -92,7 +95,7 @@ export default function IndividualProjectPublic({ project }) {
                                                     <button className='btn btn-primary' onClick={toggle}>Close</button>
                                                 </MDBModalFooter>
                                             </MDBModal>
-
+                                                
                                         </div>
                                 </aside>
                             </MDBCard>
